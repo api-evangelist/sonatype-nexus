@@ -1,0 +1,45 @@
+aid: sonatype-nexus
+name: Sonatype Nexus
+description: >-
+  Sonatype Nexus Repository Manager provides REST APIs for managing software
+  artifacts, repositories, and components across the software development
+  lifecycle, supporting formats like Maven, npm, Docker, and more.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Repository
+  - Artifact Management
+  - DevOps
+  - Package Management
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml
+created: '2026-03-16'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+apis:
+  - aid: sonatype-nexus:nexus-repository-api
+    name: Nexus Repository API
+    description: >-
+      REST API for Sonatype Nexus Repository Manager providing endpoints for
+      managing repositories, components, assets, search, security, and
+      system configuration.
+    humanURL: https://help.sonatype.com/en/api-reference.html
+    tags:
+      - Repository
+      - Artifact Management
+      - Components
+    properties:
+      - type: Documentation
+        url: https://help.sonatype.com/en/api-reference.html
+      - type: Reference
+        url: https://help.sonatype.com/en/rest-and-integration-api.html
+common:
+  - type: Portal
+    url: https://www.sonatype.com/products/sonatype-nexus-repository
+  - type: Documentation
+    url: https://help.sonatype.com/en/sonatype-nexus-repository.html
+  - type: Website
+    url: https://www.sonatype.com/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
