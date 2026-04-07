@@ -7,10 +7,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Repository
   - Artifact Management
   - DevOps
   - Package Management
+  - Repository
 url: >-
   https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -25,9 +25,9 @@ apis:
       system configuration.
     humanURL: https://help.sonatype.com/en/api-reference.html
     tags:
-      - Repository
       - Artifact Management
       - Components
+      - Repository
     properties:
       - type: Documentation
         url: https://help.sonatype.com/en/api-reference.html
