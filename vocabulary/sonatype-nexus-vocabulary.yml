@@ -1,0 +1,147 @@
+vocabulary:
+  name: Sonatype Nexus Repository Vocabulary
+  description: >-
+    Vocabulary for Sonatype Nexus Repository Manager covering artifact management,
+    repository types, component formats, security, and DevOps concepts.
+  version: "1.0.0"
+  created: "2026-05-02"
+  modified: "2026-05-02"
+  tags:
+    - Artifact Management
+    - DevOps
+    - Repository
+    - Software Supply Chain
+
+terms:
+
+  # Repository types
+  - term: Repository
+    definition: >-
+      A storage location for software artifacts. Nexus supports hosted, proxy,
+      and group repository types.
+    type: concept
+    tags: [Repository, Core]
+
+  - term: Hosted Repository
+    definition: >-
+      A repository that stores artifacts locally on the Nexus server. Used for
+      internally developed and released artifacts.
+    type: concept
+    tags: [Repository, Core]
+
+  - term: Proxy Repository
+    definition: >-
+      A repository that caches artifacts from a remote repository (such as Maven
+      Central or npmjs.com) to improve build performance and reliability.
+    type: concept
+    tags: [Repository, Core]
+
+  - term: Group Repository
+    definition: >-
+      A virtual repository that aggregates multiple hosted and proxy repositories
+      under a single URL, simplifying client configuration.
+    type: concept
+    tags: [Repository, Core]
+
+  # Component model
+  - term: Component
+    definition: >-
+      A versioned software artifact with one or more associated binary asset files.
+      Represented by group, name, and version coordinates.
+    type: concept
+    tags: [Components, Core]
+
+  - term: Asset
+    definition: >-
+      A single binary file associated with a component, such as a JAR file, npm
+      tarball, Docker image layer, or Python wheel.
+    type: concept
+    tags: [Assets, Core]
+
+  - term: Format
+    definition: >-
+      The package format of artifacts in a repository. Nexus supports maven2, npm,
+      docker, pypi, nuget, rubygems, go, cargo, helm, terraform, r, raw, apt, yum,
+      p2, and swift.
+    type: concept
+    tags: [Repository, Core]
+
+  # Security
+  - term: Privilege
+    definition: >-
+      A granular permission in Nexus that controls access to specific API endpoints,
+      repositories, content selectors, or scripts.
+    type: concept
+    tags: [Security, Access Control]
+
+  - term: Role
+    definition: >-
+      A named collection of privileges that can be assigned to users or other roles.
+    type: concept
+    tags: [Security, Access Control]
+
+  - term: Content Selector
+    definition: >-
+      An expression (CSEL or JEXL) that filters repository content for use with
+      repository-content-selector privileges.
+    type: concept
+    tags: [Security, Access Control]
+
+  - term: Realm
+    definition: >-
+      An authentication and authorization system that Nexus uses to validate user
+      credentials. Supports Local, LDAP, Crowd, SAML, and other realms.
+    type: concept
+    tags: [Security, Authentication]
+
+  # Storage
+  - term: Blob Store
+    definition: >-
+      The physical storage backend for binary artifact data. Can be local file
+      system, S3, Azure Blob Storage, or Google Cloud Storage.
+    type: concept
+    tags: [Storage, Infrastructure]
+
+  - term: Cleanup Policy
+    definition: >-
+      A rule that automatically removes artifacts from a repository based on criteria
+      such as age, last downloaded date, or component version.
+    type: concept
+    tags: [Repository, Operations]
+
+  # Operations
+  - term: Task
+    definition: >-
+      A scheduled or on-demand background operation in Nexus, such as repository
+      cleanup, index rebuilding, or compact blob store.
+    type: concept
+    tags: [Tasks, Operations]
+
+  - term: Routing Rule
+    definition: >-
+      A rule that controls which artifacts can be fetched from a proxy repository
+      based on path patterns.
+    type: concept
+    tags: [Repository, Operations]
+
+  # Integration
+  - term: IQ Server
+    definition: >-
+      Sonatype IQ Server (formerly Nexus IQ) provides component intelligence and
+      policy enforcement for software supply chain security.
+    type: integration
+    tags: [Security, Software Supply Chain]
+
+  - term: User Token
+    definition: >-
+      An authentication token generated for a Nexus user that can be used instead
+      of their regular credentials, useful for build tool configuration.
+    type: concept
+    tags: [Security, Authentication]
+
+  - term: CSEL
+    definition: >-
+      Content Selector Expression Language, used in Nexus content selectors to
+      filter artifacts by path, format, or other attributes.
+    type: concept
+    tags: [Security, Access Control]

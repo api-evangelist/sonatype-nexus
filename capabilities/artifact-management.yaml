@@ -1,0 +1,314 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Sonatype Nexus Artifact Management"
+  description: >-
+    Workflow capability for managing software artifacts, components, assets, and
+    repositories in Sonatype Nexus Repository Manager. Supports DevOps engineers,
+    build engineers, and platform teams performing artifact lifecycle management
+    including publishing, searching, organizing, and cleaning up artifacts across
+    Maven, npm, Docker, PyPI, NuGet, and other formats.
+  tags:
+    - Sonatype Nexus
+    - Artifact Management
+    - DevOps
+    - Repository
+    - Components
+    - Assets
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      NEXUS_USERNAME: NEXUS_USERNAME
+      NEXUS_PASSWORD: NEXUS_PASSWORD
+
+capability:
+  consumes:
+    - import: nexus
+      location: ./shared/nexus-repository.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: nexus-artifact-management-api
+      description: "Unified REST API for Nexus artifact lifecycle management."
+      resources:
+        - path: /v1/repositories
+          name: repositories
+          description: "Repository management and configuration"
+          operations:
+            - method: GET
+              name: list-repositories
+              description: "List all repositories"
+              call: "nexus.list-repositories"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-repository
+              description: "Get repository details by name"
+              call: "nexus.get-repository"
+              with:
+                repositoryName: "rest.repositoryName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-repository
+              description: "Delete a repository"
+              call: "nexus.delete-repository"
+              with:
+                repositoryName: "rest.repositoryName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: invalidate-cache
+              description: "Invalidate repository cache"
+              call: "nexus.invalidate-repository-cache"
+              with:
+                repositoryName: "rest.repositoryName"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/components
+          name: components
+          description: "Software component lifecycle management"
+          operations:
+            - method: GET
+              name: list-components
+              description: "List components in a repository"
+              call: "nexus.list-components"
+              with:
+                repository: "rest.repository"
+                continuationToken: "rest.continuationToken"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-component
+              description: "Get a single component by ID"
+              call: "nexus.get-component"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-component
+              description: "Delete a component"
+              call: "nexus.delete-component"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/assets
+          name: assets
+          description: "Binary asset management"
+          operations:
+            - method: GET
+              name: list-assets
+              description: "List assets in a repository"
+              call: "nexus.list-assets"
+              with:
+                repository: "rest.repository"
+                continuationToken: "rest.continuationToken"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-asset
+              description: "Get a single asset by ID"
+              call: "nexus.get-asset"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-asset
+              description: "Delete an asset"
+              call: "nexus.delete-asset"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/search
+          name: search
+          description: "Component and asset search"
+          operations:
+            - method: GET
+              name: search-components
+              description: "Search for components across repositories"
+              call: "nexus.search-components"
+              with:
+                q: "rest.q"
+                repository: "rest.repository"
+                format: "rest.format"
+                name: "rest.name"
+                version: "rest.version"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: search-assets
+              description: "Search for assets"
+              call: "nexus.search-assets"
+              with:
+                q: "rest.q"
+                repository: "rest.repository"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: nexus-artifact-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted artifact management in Sonatype Nexus."
+      tools:
+        - name: list-repositories
+          description: "List all Nexus repositories"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.list-repositories"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-repository
+          description: "Get details for a specific repository"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.get-repository"
+          with:
+            repositoryName: "tools.repositoryName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-repository
+          description: "Delete a repository by name"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "nexus.delete-repository"
+          with:
+            repositoryName: "tools.repositoryName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: invalidate-repository-cache
+          description: "Invalidate the cache for a proxy or group repository"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "nexus.invalidate-repository-cache"
+          with:
+            repositoryName: "tools.repositoryName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-components
+          description: "List components in a repository"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.list-components"
+          with:
+            repository: "tools.repository"
+            continuationToken: "tools.continuationToken"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-component
+          description: "Get details for a specific component by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.get-component"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-component
+          description: "Delete a component by ID"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "nexus.delete-component"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-assets
+          description: "List binary assets in a repository"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.list-assets"
+          with:
+            repository: "tools.repository"
+            continuationToken: "tools.continuationToken"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-asset
+          description: "Get details for a specific asset by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.get-asset"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-asset
+          description: "Delete an asset by ID"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "nexus.delete-asset"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-components
+          description: "Search for components across Nexus repositories by name, version, format, or query"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.search-components"
+          with:
+            q: "tools.q"
+            repository: "tools.repository"
+            format: "tools.format"
+            name: "tools.name"
+            version: "tools.version"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-assets
+          description: "Search for binary assets across repositories"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.search-assets"
+          with:
+            q: "tools.q"
+            repository: "tools.repository"
+          outputParameters:
+            - type: object
+              mapping: "$."

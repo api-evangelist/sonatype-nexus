@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/main/json-schema/sonatype-nexus-component-schema.json",
+  "title": "Nexus Component",
+  "description": "A software component stored in a Sonatype Nexus Repository, representing a versioned software artifact with assets.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the component"
+    },
+    "repository": {
+      "type": "string",
+      "description": "Name of the repository containing this component"
+    },
+    "format": {
+      "type": "string",
+      "description": "Format of the component (e.g., maven2, npm, docker, pypi, nuget)",
+      "enum": ["maven2", "npm", "docker", "pypi", "nuget", "rubygems", "go", "cargo", "helm", "terraform", "r", "raw", "apt", "yum", "p2"]
+    },
+    "group": {
+      "type": ["string", "null"],
+      "description": "Component group (e.g., Maven groupId)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Component name (e.g., Maven artifactId)"
+    },
+    "version": {
+      "type": ["string", "null"],
+      "description": "Component version"
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of binary assets associated with this component",
+      "items": {
+        "$ref": "#/definitions/Asset"
+      }
+    }
+  },
+  "required": ["id", "repository", "format", "name"],
+  "definitions": {
+    "Asset": {
+      "title": "Asset",
+      "description": "A binary artifact file that is part of a component",
+      "type": "object",
+      "properties": {
+        "downloadUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to download the asset"
+        },
+        "path": {
+          "type": "string",
+          "description": "Repository path of the asset"
+        },
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the asset"
+        },
+        "repository": {
+          "type": "string",
+          "description": "Repository containing the asset"
+        },
+        "format": {
+          "type": "string",
+          "description": "Asset format"
+        },
+        "checksum": {
+          "type": "object",
+          "description": "Checksum information for the asset",
+          "properties": {
+            "sha1": {
+              "type": "string",
+              "description": "SHA1 hash of the asset"
+            },
+            "md5": {
+              "type": "string",
+              "description": "MD5 hash of the asset"
+            },
+            "sha256": {
+              "type": "string",
+              "description": "SHA256 hash of the asset"
+            }
+          }
+        },
+        "contentType": {
+          "type": "string",
+          "description": "MIME type of the asset"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last modification timestamp"
+        },
+        "lastDownloaded": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Last download timestamp"
+        },
+        "uploader": {
+          "type": ["string", "null"],
+          "description": "User who uploaded this asset"
+        },
+        "fileSize": {
+          "type": "integer",
+          "description": "File size in bytes"
+        }
+      },
+      "required": ["id", "repository", "format", "path"]
+    }
+  }
+}

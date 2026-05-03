@@ -1,0 +1,81 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "nexus": "https://help.sonatype.com/en/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Component": {
+      "@id": "schema:SoftwareSourceCode",
+      "@type": "@id"
+    },
+    "Repository": {
+      "@id": "schema:DataCatalog",
+      "@type": "@id"
+    },
+    "Asset": {
+      "@id": "schema:MediaObject",
+      "@type": "@id"
+    },
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "format": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "group": {
+      "@id": "nexus:group",
+      "@type": "xsd:string"
+    },
+    "repository": {
+      "@id": "schema:isPartOf",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "downloadUrl": {
+      "@id": "schema:downloadUrl",
+      "@type": "@id"
+    },
+    "online": {
+      "@id": "schema:available",
+      "@type": "xsd:boolean"
+    },
+    "type": {
+      "@id": "schema:additionalType",
+      "@type": "xsd:string"
+    },
+    "checksum": {
+      "@id": "schema:checksumAlgorithm",
+      "@type": "xsd:string"
+    },
+    "contentType": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "lastModified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "fileSize": {
+      "@id": "schema:fileSize",
+      "@type": "xsd:integer"
+    },
+    "assets": {
+      "@id": "schema:hasPart",
+      "@container": "@set"
+    },
+    "memberNames": {
+      "@id": "nexus:memberNames",
+      "@container": "@set"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "description": "Example response from GET /v1/repositories listing available repositories",
+  "request": {
+    "method": "GET",
+    "url": "https://nexus.example.com/service/rest/v1/repositories",
+    "headers": {
+      "Authorization": "Basic base64(username:password)",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "name": "maven-central",
+        "format": "maven2",
+        "type": "proxy",
+        "url": "https://nexus.example.com/repository/maven-central",
+        "attributes": {}
+      },
+      {
+        "name": "maven-releases",
+        "format": "maven2",
+        "type": "hosted",
+        "url": "https://nexus.example.com/repository/maven-releases",
+        "attributes": {}
+      },
+      {
+        "name": "npm-proxy",
+        "format": "npm",
+        "type": "proxy",
+        "url": "https://nexus.example.com/repository/npm-proxy",
+        "attributes": {}
+      },
+      {
+        "name": "docker-hosted",
+        "format": "docker",
+        "type": "hosted",
+        "url": "https://nexus.example.com/repository/docker-hosted",
+        "attributes": {}
+      }
+    ]
+  }
+}

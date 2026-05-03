@@ -1,0 +1,91 @@
+extends: spectral:oas
+rules:
+
+  # Nexus Repository API uses /v1/ and /beta/ versioning prefixes
+  nexus-path-version-prefix:
+    message: "Paths must start with /v1/ or /beta/"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/(v1|beta)/"
+
+  # All operation summaries should use Title Case
+  nexus-operation-summary-title-case:
+    message: "Operation summaries should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  # All operations should have an operationId
+  nexus-operation-id-required:
+    message: "Operations must have an operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+
+  # Repository name path parameters should use {repositoryName} or {name}
+  nexus-repository-path-param-naming:
+    message: "Repository path parameters should be {repositoryName} or {name}"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "\\{repo\\}|\\{repository\\}|\\{repoName\\}"
+
+  # Operations must have at least one tag
+  nexus-operation-tags-required:
+    message: "Operations must have at least one tag"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+
+  # API must define security schemes
+  nexus-security-schemes-defined:
+    message: "API must define security schemes (BasicAuth)"
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+
+  # Responses must document at least a 2xx response
+  nexus-success-response-required:
+    message: "Operations must document at least one success response"
+    severity: warn
+    given: "$.paths[*][get,post,put,delete,patch].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["204"]
+
+  # Info must have contact
+  nexus-info-contact-required:
+    message: "API info must have a contact field"
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  # No trailing slashes on paths
+  nexus-no-trailing-slash:
+    message: "Paths must not end with a trailing slash"
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"

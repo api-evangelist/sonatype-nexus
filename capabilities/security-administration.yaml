@@ -1,0 +1,229 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Sonatype Nexus Security Administration"
+  description: >-
+    Workflow capability for managing Nexus Repository security including users,
+    roles, privileges, LDAP, SAML, content selectors, and authentication realms.
+    Used by platform administrators and security teams.
+  tags:
+    - Sonatype Nexus
+    - Security
+    - Access Control
+    - Users
+    - Roles
+    - Administration
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      NEXUS_USERNAME: NEXUS_USERNAME
+      NEXUS_PASSWORD: NEXUS_PASSWORD
+
+capability:
+  consumes:
+    - import: nexus
+      location: ./shared/nexus-repository.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: nexus-security-api
+      description: "Unified REST API for Nexus security administration."
+      resources:
+        - path: /v1/users
+          name: users
+          description: "User account management"
+          operations:
+            - method: GET
+              name: list-users
+              description: "List all users"
+              call: "nexus.list-users"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-user
+              description: "Create a new user"
+              call: "nexus.create-user"
+              with:
+                userId: "rest.userId"
+                firstName: "rest.firstName"
+                lastName: "rest.lastName"
+                emailAddress: "rest.emailAddress"
+                password: "rest.password"
+                status: "rest.status"
+                roles: "rest.roles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-user
+              description: "Delete a user"
+              call: "nexus.delete-user"
+              with:
+                userId: "rest.userId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/roles
+          name: roles
+          description: "Role and permission management"
+          operations:
+            - method: GET
+              name: list-roles
+              description: "List all roles"
+              call: "nexus.list-roles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-role
+              description: "Create a new role"
+              call: "nexus.create-role"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/system-status
+          name: system-status
+          description: "System health and status"
+          operations:
+            - method: GET
+              name: get-status
+              description: "Check system health status"
+              call: "nexus.get-status"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/tasks
+          name: tasks
+          description: "Background task management"
+          operations:
+            - method: GET
+              name: list-tasks
+              description: "List all tasks"
+              call: "nexus.list-tasks"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: get-task
+              description: "Get a task by ID"
+              call: "nexus.get-task"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: run-task
+              description: "Run a task by ID"
+              call: "nexus.run-task"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9081
+      namespace: nexus-security-mcp
+      transport: http
+      description: "MCP server for AI-assisted Nexus security administration."
+      tools:
+        - name: list-users
+          description: "List all Nexus users"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.list-users"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-user
+          description: "Create a new Nexus user account"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "nexus.create-user"
+          with:
+            userId: "tools.userId"
+            firstName: "tools.firstName"
+            lastName: "tools.lastName"
+            emailAddress: "tools.emailAddress"
+            password: "tools.password"
+            status: "tools.status"
+            roles: "tools.roles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: delete-user
+          description: "Delete a Nexus user by ID"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "nexus.delete-user"
+          with:
+            userId: "tools.userId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-roles
+          description: "List all Nexus roles"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.list-roles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-role
+          description: "Create a new Nexus role with privileges"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "nexus.create-role"
+          with:
+            id: "tools.id"
+            name: "tools.name"
+            description: "tools.description"
+            privileges: "tools.privileges"
+            roles: "tools.roles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: check-system-status
+          description: "Check Nexus system health and status"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.get-status"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-tasks
+          description: "List all background tasks in Nexus"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "nexus.list-tasks"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: run-task
+          description: "Execute a Nexus background task by ID"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "nexus.run-task"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."

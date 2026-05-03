@@ -1,0 +1,43 @@
+{
+  "description": "Example response from GET /v1/search searching for components by name",
+  "request": {
+    "method": "GET",
+    "url": "https://nexus.example.com/service/rest/v1/search?name=spring-core&format=maven2",
+    "headers": {
+      "Authorization": "Basic base64(username:password)",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "bWF2ZW4tcmVsZWFzZXM6YWJjZGVm",
+          "repository": "maven-central",
+          "format": "maven2",
+          "group": "org.springframework",
+          "name": "spring-core",
+          "version": "6.1.5",
+          "assets": [
+            {
+              "downloadUrl": "https://nexus.example.com/repository/maven-central/org/springframework/spring-core/6.1.5/spring-core-6.1.5.jar",
+              "path": "org/springframework/spring-core/6.1.5/spring-core-6.1.5.jar",
+              "id": "bWF2ZW4tc3ByaW5n",
+              "repository": "maven-central",
+              "format": "maven2",
+              "checksum": {
+                "sha1": "a1b2c3d4e5f6...",
+                "md5": "1a2b3c4d5e6f..."
+              },
+              "contentType": "application/java-archive",
+              "lastModified": "2024-03-15T10:30:00.000+00:00",
+              "fileSize": 1847234
+            }
+          ]
+        }
+      ],
+      "continuationToken": null
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "title": "Nexus Component Structure",
+  "description": "JSON structure documentation for Sonatype Nexus components",
+  "structure": {
+    "id": "string - Unique component identifier",
+    "repository": "string - Repository name containing this component",
+    "format": "string - Component format (maven2|npm|docker|pypi|nuget|...)",
+    "group": "string|null - Component group (Maven groupId, npm scope)",
+    "name": "string - Component name",
+    "version": "string|null - Component version",
+    "assets": [
+      {
+        "downloadUrl": "string - URL to download the asset",
+        "path": "string - Repository path of the asset",
+        "id": "string - Unique asset identifier",
+        "repository": "string - Repository containing the asset",
+        "format": "string - Asset format",
+        "checksum": {
+          "sha1": "string - SHA1 hash",
+          "md5": "string - MD5 hash",
+          "sha256": "string - SHA256 hash"
+        },
+        "contentType": "string - MIME type",
+        "lastModified": "string - ISO 8601 timestamp",
+        "lastDownloaded": "string|null - ISO 8601 timestamp",
+        "uploader": "string|null - Uploader username",
+        "fileSize": "integer - File size in bytes"
+      }
+    ]
+  }
+}

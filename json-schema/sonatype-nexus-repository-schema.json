@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/main/json-schema/sonatype-nexus-repository-schema.json",
+  "title": "Nexus Repository",
+  "description": "A Sonatype Nexus Repository Manager repository for storing and managing software artifacts.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique name for this repository",
+      "pattern": "^[a-zA-Z0-9\\-]{1}[a-zA-Z0-9_\\-\\.]*$"
+    },
+    "format": {
+      "type": "string",
+      "description": "Format of artifacts stored in this repository",
+      "enum": ["maven2", "npm", "docker", "pypi", "nuget", "rubygems", "go", "cargo", "helm", "terraform", "r", "raw", "apt", "yum", "p2", "swift"]
+    },
+    "type": {
+      "type": "string",
+      "description": "Repository type: hosted (local storage), proxy (remote mirror), or group (aggregated view)",
+      "enum": ["hosted", "proxy", "group"]
+    },
+    "online": {
+      "type": "boolean",
+      "description": "Whether the repository accepts incoming requests"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to access this repository"
+    },
+    "storage": {
+      "type": "object",
+      "description": "Storage configuration for the repository",
+      "properties": {
+        "blobStoreName": {
+          "type": "string",
+          "description": "Name of the blob store used for storage"
+        },
+        "strictContentTypeValidation": {
+          "type": "boolean",
+          "description": "Whether to validate content types"
+        },
+        "writePolicy": {
+          "type": "string",
+          "description": "Write policy for the repository",
+          "enum": ["allow", "allow_once", "deny"]
+        }
+      }
+    },
+    "cleanup": {
+      "type": ["object", "null"],
+      "description": "Cleanup policy settings",
+      "properties": {
+        "policyNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "proxy": {
+      "type": ["object", "null"],
+      "description": "Proxy configuration (only for proxy repositories)",
+      "properties": {
+        "remoteUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the remote repository to proxy"
+        },
+        "contentMaxAge": {
+          "type": "integer",
+          "description": "Maximum age of cached content in minutes"
+        },
+        "metadataMaxAge": {
+          "type": "integer",
+          "description": "Maximum age of cached metadata in minutes"
+        }
+      }
+    },
+    "group": {
+      "type": ["object", "null"],
+      "description": "Group configuration (only for group repositories)",
+      "properties": {
+        "memberNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of repositories that are members of this group"
+        }
+      }
+    }
+  },
+  "required": ["name", "format", "type", "online"]
+}
