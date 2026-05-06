@@ -1,229 +1,600 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Sonatype Nexus Security Administration"
-  description: >-
-    Workflow capability for managing Nexus Repository security including users,
-    roles, privileges, LDAP, SAML, content selectors, and authentication realms.
-    Used by platform administrators and security teams.
+  label: Sonatype Nexus Security Administration
+  description: Workflow capability for managing Nexus Repository security including users, roles, privileges, LDAP, SAML,
+    content selectors, and authentication realms. Used by platform administrators and security teams.
   tags:
-    - Sonatype Nexus
-    - Security
-    - Access Control
-    - Users
-    - Roles
-    - Administration
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Sonatype Nexus
+  - Security
+  - Access Control
+  - Users
+  - Roles
+  - Administration
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      NEXUS_USERNAME: NEXUS_USERNAME
-      NEXUS_PASSWORD: NEXUS_PASSWORD
-
+- namespace: env
+  keys:
+    NEXUS_USERNAME: NEXUS_USERNAME
+    NEXUS_PASSWORD: NEXUS_PASSWORD
 capability:
   consumes:
-    - import: nexus
-      location: ./shared/nexus-repository.yaml
-
+  - type: http
+    namespace: nexus
+    baseUri: https://{nexus-host}/service/rest
+    description: Sonatype Nexus Repository Manager REST API v3
+    authentication:
+      type: basic
+      username: '{{NEXUS_USERNAME}}'
+      password: '{{NEXUS_PASSWORD}}'
+    resources:
+    - name: repositories
+      path: /v1/repositories
+      description: Manage artifact repositories across all supported formats
+      operations:
+      - name: list-repositories
+        method: GET
+        description: List repositories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-repository
+        method: DELETE
+        description: Delete repository of any format
+        inputParameters:
+        - name: repositoryName
+          in: path
+          type: string
+          required: true
+          description: Name of the repository to delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-repository
+        method: GET
+        description: Get repository details
+        inputParameters:
+        - name: repositoryName
+          in: path
+          type: string
+          required: true
+          description: Name of the repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: invalidate-repository-cache
+        method: POST
+        description: Invalidate repository cache (proxy or group repositories)
+        inputParameters:
+        - name: repositoryName
+          in: path
+          type: string
+          required: true
+          description: Name of the repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components
+      path: /v1/components
+      description: Manage software components in repositories
+      operations:
+      - name: list-components
+        method: GET
+        description: List components
+        inputParameters:
+        - name: repository
+          in: query
+          type: string
+          required: true
+          description: Repository name to list components from
+        - name: continuationToken
+          in: query
+          type: string
+          required: false
+          description: Token for pagination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-component
+        method: GET
+        description: Get a single component
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Component ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-component
+        method: DELETE
+        description: Delete a single component
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Component ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: assets
+      path: /v1/assets
+      description: Manage binary assets in repositories
+      operations:
+      - name: list-assets
+        method: GET
+        description: List assets
+        inputParameters:
+        - name: repository
+          in: query
+          type: string
+          required: true
+          description: Repository name
+        - name: continuationToken
+          in: query
+          type: string
+          required: false
+          description: Token for pagination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-asset
+        method: GET
+        description: Get a single asset
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Asset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-asset
+        method: DELETE
+        description: Delete a single asset
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Asset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search
+      path: /v1/search
+      description: Search for components and assets across repositories
+      operations:
+      - name: search-components
+        method: GET
+        description: Search components
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: false
+          description: Query string
+        - name: repository
+          in: query
+          type: string
+          required: false
+          description: Repository name filter
+        - name: format
+          in: query
+          type: string
+          required: false
+          description: Format filter (maven2, npm, docker, etc)
+        - name: name
+          in: query
+          type: string
+          required: false
+          description: Component name filter
+        - name: version
+          in: query
+          type: string
+          required: false
+          description: Component version filter
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: search-assets
+        method: GET
+        description: Search assets
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: false
+          description: Query string
+        - name: repository
+          in: query
+          type: string
+          required: false
+          description: Repository name filter
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: security-users
+      path: /v1/security/users
+      description: Manage Nexus users and authentication
+      operations:
+      - name: list-users
+        method: GET
+        description: Retrieve a list of users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-user
+        method: POST
+        description: Create a new user in the default source
+        body:
+          type: json
+          data:
+            userId: '{{tools.userId}}'
+            firstName: '{{tools.firstName}}'
+            lastName: '{{tools.lastName}}'
+            emailAddress: '{{tools.emailAddress}}'
+            password: '{{tools.password}}'
+            status: '{{tools.status}}'
+            roles: '{{tools.roles}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-user
+        method: DELETE
+        description: Delete a user
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User ID to delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: security-roles
+      path: /v1/security/roles
+      description: Manage Nexus roles and permissions
+      operations:
+      - name: list-roles
+        method: GET
+        description: List roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-role
+        method: POST
+        description: Create role
+        body:
+          type: json
+          data:
+            id: '{{tools.id}}'
+            name: '{{tools.name}}'
+            description: '{{tools.description}}'
+            privileges: '{{tools.privileges}}'
+            roles: '{{tools.roles}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tasks
+      path: /v1/tasks
+      description: Manage and execute background tasks
+      operations:
+      - name: list-tasks
+        method: GET
+        description: List tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-task
+        method: GET
+        description: Get a single task by id
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Task ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: run-task
+        method: POST
+        description: Run task
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Task ID to run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: status
+      path: /v1/status
+      description: System health and status checks
+      operations:
+      - name: get-status
+        method: GET
+        description: Health check endpoint that validates server can respond to read requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: check-status
+        method: GET
+        description: Health check endpoint that returns the results of the system status checks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: blob-stores
+      path: /v1/blobstores
+      description: Manage blob storage backends
+      operations:
+      - name: list-blob-stores
+        method: GET
+        description: List the blob stores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-blob-store
+        method: DELETE
+        description: Delete a blob store by name
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: Blob store name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8081
-      namespace: nexus-security-api
-      description: "Unified REST API for Nexus security administration."
-      resources:
-        - path: /v1/users
-          name: users
-          description: "User account management"
-          operations:
-            - method: GET
-              name: list-users
-              description: "List all users"
-              call: "nexus.list-users"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-user
-              description: "Create a new user"
-              call: "nexus.create-user"
-              with:
-                userId: "rest.userId"
-                firstName: "rest.firstName"
-                lastName: "rest.lastName"
-                emailAddress: "rest.emailAddress"
-                password: "rest.password"
-                status: "rest.status"
-                roles: "rest.roles"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-user
-              description: "Delete a user"
-              call: "nexus.delete-user"
-              with:
-                userId: "rest.userId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/roles
-          name: roles
-          description: "Role and permission management"
-          operations:
-            - method: GET
-              name: list-roles
-              description: "List all roles"
-              call: "nexus.list-roles"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-role
-              description: "Create a new role"
-              call: "nexus.create-role"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/system-status
-          name: system-status
-          description: "System health and status"
-          operations:
-            - method: GET
-              name: get-status
-              description: "Check system health status"
-              call: "nexus.get-status"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/tasks
-          name: tasks
-          description: "Background task management"
-          operations:
-            - method: GET
-              name: list-tasks
-              description: "List all tasks"
-              call: "nexus.list-tasks"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: GET
-              name: get-task
-              description: "Get a task by ID"
-              call: "nexus.get-task"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: run-task
-              description: "Run a task by ID"
-              call: "nexus.run-task"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9081
-      namespace: nexus-security-mcp
-      transport: http
-      description: "MCP server for AI-assisted Nexus security administration."
-      tools:
-        - name: list-users
-          description: "List all Nexus users"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.list-users"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-user
-          description: "Create a new Nexus user account"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "nexus.create-user"
-          with:
-            userId: "tools.userId"
-            firstName: "tools.firstName"
-            lastName: "tools.lastName"
-            emailAddress: "tools.emailAddress"
-            password: "tools.password"
-            status: "tools.status"
-            roles: "tools.roles"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-user
-          description: "Delete a Nexus user by ID"
-          hints:
-            readOnly: false
-            destructive: true
-            idempotent: true
-          call: "nexus.delete-user"
-          with:
-            userId: "tools.userId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-roles
-          description: "List all Nexus roles"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.list-roles"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-role
-          description: "Create a new Nexus role with privileges"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "nexus.create-role"
-          with:
-            id: "tools.id"
-            name: "tools.name"
-            description: "tools.description"
-            privileges: "tools.privileges"
-            roles: "tools.roles"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: check-system-status
-          description: "Check Nexus system health and status"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.get-status"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-tasks
-          description: "List all background tasks in Nexus"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.list-tasks"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: run-task
-          description: "Execute a Nexus background task by ID"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "nexus.run-task"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8081
+    namespace: nexus-security-api
+    description: Unified REST API for Nexus security administration.
+    resources:
+    - path: /v1/users
+      name: users
+      description: User account management
+      operations:
+      - method: GET
+        name: list-users
+        description: List all users
+        call: nexus.list-users
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-user
+        description: Create a new user
+        call: nexus.create-user
+        with:
+          userId: rest.userId
+          firstName: rest.firstName
+          lastName: rest.lastName
+          emailAddress: rest.emailAddress
+          password: rest.password
+          status: rest.status
+          roles: rest.roles
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-user
+        description: Delete a user
+        call: nexus.delete-user
+        with:
+          userId: rest.userId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/roles
+      name: roles
+      description: Role and permission management
+      operations:
+      - method: GET
+        name: list-roles
+        description: List all roles
+        call: nexus.list-roles
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-role
+        description: Create a new role
+        call: nexus.create-role
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/system-status
+      name: system-status
+      description: System health and status
+      operations:
+      - method: GET
+        name: get-status
+        description: Check system health status
+        call: nexus.get-status
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/tasks
+      name: tasks
+      description: Background task management
+      operations:
+      - method: GET
+        name: list-tasks
+        description: List all tasks
+        call: nexus.list-tasks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get-task
+        description: Get a task by ID
+        call: nexus.get-task
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: run-task
+        description: Run a task by ID
+        call: nexus.run-task
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9081
+    namespace: nexus-security-mcp
+    transport: http
+    description: MCP server for AI-assisted Nexus security administration.
+    tools:
+    - name: list-users
+      description: List all Nexus users
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.list-users
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-user
+      description: Create a new Nexus user account
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nexus.create-user
+      with:
+        userId: tools.userId
+        firstName: tools.firstName
+        lastName: tools.lastName
+        emailAddress: tools.emailAddress
+        password: tools.password
+        status: tools.status
+        roles: tools.roles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user
+      description: Delete a Nexus user by ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nexus.delete-user
+      with:
+        userId: tools.userId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-roles
+      description: List all Nexus roles
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.list-roles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-role
+      description: Create a new Nexus role with privileges
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nexus.create-role
+      with:
+        id: tools.id
+        name: tools.name
+        description: tools.description
+        privileges: tools.privileges
+        roles: tools.roles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-system-status
+      description: Check Nexus system health and status
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.get-status
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tasks
+      description: List all background tasks in Nexus
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.list-tasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: run-task
+      description: Execute a Nexus background task by ID
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nexus.run-task
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

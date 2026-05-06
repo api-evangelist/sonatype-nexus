@@ -1,314 +1,685 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Sonatype Nexus Artifact Management"
-  description: >-
-    Workflow capability for managing software artifacts, components, assets, and
-    repositories in Sonatype Nexus Repository Manager. Supports DevOps engineers,
-    build engineers, and platform teams performing artifact lifecycle management
-    including publishing, searching, organizing, and cleaning up artifacts across
-    Maven, npm, Docker, PyPI, NuGet, and other formats.
+  label: Sonatype Nexus Artifact Management
+  description: Workflow capability for managing software artifacts, components, assets, and repositories in Sonatype Nexus
+    Repository Manager. Supports DevOps engineers, build engineers, and platform teams performing artifact lifecycle management
+    including publishing, searching, organizing, and cleaning up artifacts across Maven, npm, Docker, PyPI, NuGet, and other
+    formats.
   tags:
-    - Sonatype Nexus
-    - Artifact Management
-    - DevOps
-    - Repository
-    - Components
-    - Assets
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Sonatype Nexus
+  - Artifact Management
+  - DevOps
+  - Repository
+  - Components
+  - Assets
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      NEXUS_USERNAME: NEXUS_USERNAME
-      NEXUS_PASSWORD: NEXUS_PASSWORD
-
+- namespace: env
+  keys:
+    NEXUS_USERNAME: NEXUS_USERNAME
+    NEXUS_PASSWORD: NEXUS_PASSWORD
 capability:
   consumes:
-    - import: nexus
-      location: ./shared/nexus-repository.yaml
-
+  - type: http
+    namespace: nexus
+    baseUri: https://{nexus-host}/service/rest
+    description: Sonatype Nexus Repository Manager REST API v3
+    authentication:
+      type: basic
+      username: '{{NEXUS_USERNAME}}'
+      password: '{{NEXUS_PASSWORD}}'
+    resources:
+    - name: repositories
+      path: /v1/repositories
+      description: Manage artifact repositories across all supported formats
+      operations:
+      - name: list-repositories
+        method: GET
+        description: List repositories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-repository
+        method: DELETE
+        description: Delete repository of any format
+        inputParameters:
+        - name: repositoryName
+          in: path
+          type: string
+          required: true
+          description: Name of the repository to delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-repository
+        method: GET
+        description: Get repository details
+        inputParameters:
+        - name: repositoryName
+          in: path
+          type: string
+          required: true
+          description: Name of the repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: invalidate-repository-cache
+        method: POST
+        description: Invalidate repository cache (proxy or group repositories)
+        inputParameters:
+        - name: repositoryName
+          in: path
+          type: string
+          required: true
+          description: Name of the repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: components
+      path: /v1/components
+      description: Manage software components in repositories
+      operations:
+      - name: list-components
+        method: GET
+        description: List components
+        inputParameters:
+        - name: repository
+          in: query
+          type: string
+          required: true
+          description: Repository name to list components from
+        - name: continuationToken
+          in: query
+          type: string
+          required: false
+          description: Token for pagination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-component
+        method: GET
+        description: Get a single component
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Component ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-component
+        method: DELETE
+        description: Delete a single component
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Component ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: assets
+      path: /v1/assets
+      description: Manage binary assets in repositories
+      operations:
+      - name: list-assets
+        method: GET
+        description: List assets
+        inputParameters:
+        - name: repository
+          in: query
+          type: string
+          required: true
+          description: Repository name
+        - name: continuationToken
+          in: query
+          type: string
+          required: false
+          description: Token for pagination
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-asset
+        method: GET
+        description: Get a single asset
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Asset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-asset
+        method: DELETE
+        description: Delete a single asset
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Asset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search
+      path: /v1/search
+      description: Search for components and assets across repositories
+      operations:
+      - name: search-components
+        method: GET
+        description: Search components
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: false
+          description: Query string
+        - name: repository
+          in: query
+          type: string
+          required: false
+          description: Repository name filter
+        - name: format
+          in: query
+          type: string
+          required: false
+          description: Format filter (maven2, npm, docker, etc)
+        - name: name
+          in: query
+          type: string
+          required: false
+          description: Component name filter
+        - name: version
+          in: query
+          type: string
+          required: false
+          description: Component version filter
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: search-assets
+        method: GET
+        description: Search assets
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          required: false
+          description: Query string
+        - name: repository
+          in: query
+          type: string
+          required: false
+          description: Repository name filter
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: security-users
+      path: /v1/security/users
+      description: Manage Nexus users and authentication
+      operations:
+      - name: list-users
+        method: GET
+        description: Retrieve a list of users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-user
+        method: POST
+        description: Create a new user in the default source
+        body:
+          type: json
+          data:
+            userId: '{{tools.userId}}'
+            firstName: '{{tools.firstName}}'
+            lastName: '{{tools.lastName}}'
+            emailAddress: '{{tools.emailAddress}}'
+            password: '{{tools.password}}'
+            status: '{{tools.status}}'
+            roles: '{{tools.roles}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-user
+        method: DELETE
+        description: Delete a user
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User ID to delete
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: security-roles
+      path: /v1/security/roles
+      description: Manage Nexus roles and permissions
+      operations:
+      - name: list-roles
+        method: GET
+        description: List roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-role
+        method: POST
+        description: Create role
+        body:
+          type: json
+          data:
+            id: '{{tools.id}}'
+            name: '{{tools.name}}'
+            description: '{{tools.description}}'
+            privileges: '{{tools.privileges}}'
+            roles: '{{tools.roles}}'
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: tasks
+      path: /v1/tasks
+      description: Manage and execute background tasks
+      operations:
+      - name: list-tasks
+        method: GET
+        description: List tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-task
+        method: GET
+        description: Get a single task by id
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Task ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: run-task
+        method: POST
+        description: Run task
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+          description: Task ID to run
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: status
+      path: /v1/status
+      description: System health and status checks
+      operations:
+      - name: get-status
+        method: GET
+        description: Health check endpoint that validates server can respond to read requests
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: check-status
+        method: GET
+        description: Health check endpoint that returns the results of the system status checks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: blob-stores
+      path: /v1/blobstores
+      description: Manage blob storage backends
+      operations:
+      - name: list-blob-stores
+        method: GET
+        description: List the blob stores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-blob-store
+        method: DELETE
+        description: Delete a blob store by name
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+          description: Blob store name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: nexus-artifact-management-api
-      description: "Unified REST API for Nexus artifact lifecycle management."
-      resources:
-        - path: /v1/repositories
-          name: repositories
-          description: "Repository management and configuration"
-          operations:
-            - method: GET
-              name: list-repositories
-              description: "List all repositories"
-              call: "nexus.list-repositories"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: GET
-              name: get-repository
-              description: "Get repository details by name"
-              call: "nexus.get-repository"
-              with:
-                repositoryName: "rest.repositoryName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-repository
-              description: "Delete a repository"
-              call: "nexus.delete-repository"
-              with:
-                repositoryName: "rest.repositoryName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: invalidate-cache
-              description: "Invalidate repository cache"
-              call: "nexus.invalidate-repository-cache"
-              with:
-                repositoryName: "rest.repositoryName"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/components
-          name: components
-          description: "Software component lifecycle management"
-          operations:
-            - method: GET
-              name: list-components
-              description: "List components in a repository"
-              call: "nexus.list-components"
-              with:
-                repository: "rest.repository"
-                continuationToken: "rest.continuationToken"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: GET
-              name: get-component
-              description: "Get a single component by ID"
-              call: "nexus.get-component"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-component
-              description: "Delete a component"
-              call: "nexus.delete-component"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/assets
-          name: assets
-          description: "Binary asset management"
-          operations:
-            - method: GET
-              name: list-assets
-              description: "List assets in a repository"
-              call: "nexus.list-assets"
-              with:
-                repository: "rest.repository"
-                continuationToken: "rest.continuationToken"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: GET
-              name: get-asset
-              description: "Get a single asset by ID"
-              call: "nexus.get-asset"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-asset
-              description: "Delete an asset"
-              call: "nexus.delete-asset"
-              with:
-                id: "rest.id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/search
-          name: search
-          description: "Component and asset search"
-          operations:
-            - method: GET
-              name: search-components
-              description: "Search for components across repositories"
-              call: "nexus.search-components"
-              with:
-                q: "rest.q"
-                repository: "rest.repository"
-                format: "rest.format"
-                name: "rest.name"
-                version: "rest.version"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: GET
-              name: search-assets
-              description: "Search for assets"
-              call: "nexus.search-assets"
-              with:
-                q: "rest.q"
-                repository: "rest.repository"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9080
-      namespace: nexus-artifact-management-mcp
-      transport: http
-      description: "MCP server for AI-assisted artifact management in Sonatype Nexus."
-      tools:
-        - name: list-repositories
-          description: "List all Nexus repositories"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.list-repositories"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-repository
-          description: "Get details for a specific repository"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.get-repository"
-          with:
-            repositoryName: "tools.repositoryName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-repository
-          description: "Delete a repository by name"
-          hints:
-            readOnly: false
-            destructive: true
-            idempotent: true
-          call: "nexus.delete-repository"
-          with:
-            repositoryName: "tools.repositoryName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: invalidate-repository-cache
-          description: "Invalidate the cache for a proxy or group repository"
-          hints:
-            readOnly: false
-            destructive: false
-            idempotent: false
-          call: "nexus.invalidate-repository-cache"
-          with:
-            repositoryName: "tools.repositoryName"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-components
-          description: "List components in a repository"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.list-components"
-          with:
-            repository: "tools.repository"
-            continuationToken: "tools.continuationToken"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-component
-          description: "Get details for a specific component by ID"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.get-component"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-component
-          description: "Delete a component by ID"
-          hints:
-            readOnly: false
-            destructive: true
-            idempotent: true
-          call: "nexus.delete-component"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-assets
-          description: "List binary assets in a repository"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.list-assets"
-          with:
-            repository: "tools.repository"
-            continuationToken: "tools.continuationToken"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-asset
-          description: "Get details for a specific asset by ID"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.get-asset"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-asset
-          description: "Delete an asset by ID"
-          hints:
-            readOnly: false
-            destructive: true
-            idempotent: true
-          call: "nexus.delete-asset"
-          with:
-            id: "tools.id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: search-components
-          description: "Search for components across Nexus repositories by name, version, format, or query"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.search-components"
-          with:
-            q: "tools.q"
-            repository: "tools.repository"
-            format: "tools.format"
-            name: "tools.name"
-            version: "tools.version"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: search-assets
-          description: "Search for binary assets across repositories"
-          hints:
-            readOnly: true
-            idempotent: true
-          call: "nexus.search-assets"
-          with:
-            q: "tools.q"
-            repository: "tools.repository"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: nexus-artifact-management-api
+    description: Unified REST API for Nexus artifact lifecycle management.
+    resources:
+    - path: /v1/repositories
+      name: repositories
+      description: Repository management and configuration
+      operations:
+      - method: GET
+        name: list-repositories
+        description: List all repositories
+        call: nexus.list-repositories
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get-repository
+        description: Get repository details by name
+        call: nexus.get-repository
+        with:
+          repositoryName: rest.repositoryName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-repository
+        description: Delete a repository
+        call: nexus.delete-repository
+        with:
+          repositoryName: rest.repositoryName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: invalidate-cache
+        description: Invalidate repository cache
+        call: nexus.invalidate-repository-cache
+        with:
+          repositoryName: rest.repositoryName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/components
+      name: components
+      description: Software component lifecycle management
+      operations:
+      - method: GET
+        name: list-components
+        description: List components in a repository
+        call: nexus.list-components
+        with:
+          repository: rest.repository
+          continuationToken: rest.continuationToken
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get-component
+        description: Get a single component by ID
+        call: nexus.get-component
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-component
+        description: Delete a component
+        call: nexus.delete-component
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/assets
+      name: assets
+      description: Binary asset management
+      operations:
+      - method: GET
+        name: list-assets
+        description: List assets in a repository
+        call: nexus.list-assets
+        with:
+          repository: rest.repository
+          continuationToken: rest.continuationToken
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get-asset
+        description: Get a single asset by ID
+        call: nexus.get-asset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-asset
+        description: Delete an asset
+        call: nexus.delete-asset
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search
+      name: search
+      description: Component and asset search
+      operations:
+      - method: GET
+        name: search-components
+        description: Search for components across repositories
+        call: nexus.search-components
+        with:
+          q: rest.q
+          repository: rest.repository
+          format: rest.format
+          name: rest.name
+          version: rest.version
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: search-assets
+        description: Search for assets
+        call: nexus.search-assets
+        with:
+          q: rest.q
+          repository: rest.repository
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9080
+    namespace: nexus-artifact-management-mcp
+    transport: http
+    description: MCP server for AI-assisted artifact management in Sonatype Nexus.
+    tools:
+    - name: list-repositories
+      description: List all Nexus repositories
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.list-repositories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-repository
+      description: Get details for a specific repository
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.get-repository
+      with:
+        repositoryName: tools.repositoryName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-repository
+      description: Delete a repository by name
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nexus.delete-repository
+      with:
+        repositoryName: tools.repositoryName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: invalidate-repository-cache
+      description: Invalidate the cache for a proxy or group repository
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: nexus.invalidate-repository-cache
+      with:
+        repositoryName: tools.repositoryName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-components
+      description: List components in a repository
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.list-components
+      with:
+        repository: tools.repository
+        continuationToken: tools.continuationToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-component
+      description: Get details for a specific component by ID
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.get-component
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-component
+      description: Delete a component by ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nexus.delete-component
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-assets
+      description: List binary assets in a repository
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.list-assets
+      with:
+        repository: tools.repository
+        continuationToken: tools.continuationToken
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-asset
+      description: Get details for a specific asset by ID
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.get-asset
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-asset
+      description: Delete an asset by ID
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: nexus.delete-asset
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-components
+      description: Search for components across Nexus repositories by name, version, format, or query
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.search-components
+      with:
+        q: tools.q
+        repository: tools.repository
+        format: tools.format
+        name: tools.name
+        version: tools.version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-assets
+      description: Search for binary assets across repositories
+      hints:
+        readOnly: true
+        idempotent: true
+      call: nexus.search-assets
+      with:
+        q: tools.q
+        repository: tools.repository
+      outputParameters:
+      - type: object
+        mapping: $.
