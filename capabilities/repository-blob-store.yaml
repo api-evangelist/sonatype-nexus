@@ -1,0 +1,875 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Blob store
+  description: 'Sonatype Nexus Repository Manager — Blob store. 20 operations. Lead operation: List the blob stores. Self-contained
+    Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Blob store
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-blob-store
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Blob store business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-blobstores
+      path: /v1/blobstores
+      operations:
+      - name: listblobstores
+        method: GET
+        description: List the blob stores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-blobstores-azure
+      path: /v1/blobstores/azure
+      operations:
+      - name: createblobstore1
+        method: POST
+        description: Create an Azure blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-azure-name
+      path: /v1/blobstores/azure/{name}
+      operations:
+      - name: getblobstore1
+        method: GET
+        description: Get an Azure blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: Name of the blob store configuration to fetch
+          required: true
+      - name: updateblobstore1
+        method: PUT
+        description: Update an Azure blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: Name of the blob store to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-file
+      path: /v1/blobstores/file
+      operations:
+      - name: createfileblobstore
+        method: POST
+        description: Create a file blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-file-name
+      path: /v1/blobstores/file/{name}
+      operations:
+      - name: getfileblobstoreconfiguration
+        method: GET
+        description: Get a file blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the file blob store to read
+          required: true
+      - name: updatefileblobstore
+        method: PUT
+        description: Update a file blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the file blob store to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-google
+      path: /v1/blobstores/google
+      operations:
+      - name: createblobstore2
+        method: POST
+        description: Create a Google Cloud blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-google-regions-projectId
+      path: /v1/blobstores/google/regions/{projectId}
+      operations:
+      - name: getregionsbyprojectid
+        method: GET
+        description: Get the project regions by project's id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          description: projectId
+          required: true
+    - name: v1-blobstores-google-name
+      path: /v1/blobstores/google/{name}
+      operations:
+      - name: getblobstore2
+        method: GET
+        description: Get the configuration for a Google Cloud blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: the name of the blob store
+          required: true
+      - name: updateblobstore2
+        method: PUT
+        description: Update a Google Cloud blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: the name of the blobstore
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-group
+      path: /v1/blobstores/group
+      operations:
+      - name: creategroupblobstore
+        method: POST
+        description: Create a group blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-group-convert-name-newNameForOriginal
+      path: /v1/blobstores/group/convert/{name}/{newNameForOriginal}
+      operations:
+      - name: convertblobstoretogroup
+        method: POST
+        description: Convert a blob store to a group blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the group blob store
+          required: true
+        - name: newNameForOriginal
+          in: path
+          type: string
+          description: A new name to the original blob store
+          required: true
+    - name: v1-blobstores-group-name
+      path: /v1/blobstores/group/{name}
+      operations:
+      - name: getgroupblobstoreconfiguration
+        method: GET
+        description: Get a group blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the group blob store
+          required: true
+      - name: updategroupblobstore
+        method: PUT
+        description: Update a group blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the blob store to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-s3
+      path: /v1/blobstores/s3
+      operations:
+      - name: creates3blobstore
+        method: POST
+        description: Create an S3 blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-s3-name
+      path: /v1/blobstores/s3/{name}
+      operations:
+      - name: gets3blobstore
+        method: GET
+        description: Get a S3 blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: Name of the blob store configuration to fetch
+          required: true
+      - name: updates3blobstore
+        method: PUT
+        description: Update an S3 blob store configuration by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: Name of the blob store to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-blobstores-name
+      path: /v1/blobstores/{name}
+      operations:
+      - name: deleteblobstore
+        method: DELETE
+        description: Delete a blob store by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The name of the blob store to delete
+          required: true
+    - name: v1-blobstores-name-quota-status
+      path: /v1/blobstores/{name}/quota-status
+      operations:
+      - name: quotastatus
+        method: GET
+        description: Get quota status for a given blob store
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-blob-store-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Blob store. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/blobstores
+      name: v1-blobstores
+      description: REST surface for v1-blobstores.
+      operations:
+      - method: GET
+        name: listblobstores
+        description: List the blob stores
+        call: repository-blob-store.listblobstores
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/azure
+      name: v1-blobstores-azure
+      description: REST surface for v1-blobstores-azure.
+      operations:
+      - method: POST
+        name: createblobstore1
+        description: Create an Azure blob store
+        call: repository-blob-store.createblobstore1
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/azure/{name}
+      name: v1-blobstores-azure-name
+      description: REST surface for v1-blobstores-azure-name.
+      operations:
+      - method: GET
+        name: getblobstore1
+        description: Get an Azure blob store configuration by name
+        call: repository-blob-store.getblobstore1
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateblobstore1
+        description: Update an Azure blob store configuration by name
+        call: repository-blob-store.updateblobstore1
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/file
+      name: v1-blobstores-file
+      description: REST surface for v1-blobstores-file.
+      operations:
+      - method: POST
+        name: createfileblobstore
+        description: Create a file blob store
+        call: repository-blob-store.createfileblobstore
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/file/{name}
+      name: v1-blobstores-file-name
+      description: REST surface for v1-blobstores-file-name.
+      operations:
+      - method: GET
+        name: getfileblobstoreconfiguration
+        description: Get a file blob store configuration by name
+        call: repository-blob-store.getfileblobstoreconfiguration
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatefileblobstore
+        description: Update a file blob store configuration by name
+        call: repository-blob-store.updatefileblobstore
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/google
+      name: v1-blobstores-google
+      description: REST surface for v1-blobstores-google.
+      operations:
+      - method: POST
+        name: createblobstore2
+        description: Create a Google Cloud blob store
+        call: repository-blob-store.createblobstore2
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/google/regions/{projectid}
+      name: v1-blobstores-google-regions-projectid
+      description: REST surface for v1-blobstores-google-regions-projectId.
+      operations:
+      - method: GET
+        name: getregionsbyprojectid
+        description: Get the project regions by project's id
+        call: repository-blob-store.getregionsbyprojectid
+        with:
+          projectId: rest.projectId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/google/{name}
+      name: v1-blobstores-google-name
+      description: REST surface for v1-blobstores-google-name.
+      operations:
+      - method: GET
+        name: getblobstore2
+        description: Get the configuration for a Google Cloud blob store
+        call: repository-blob-store.getblobstore2
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateblobstore2
+        description: Update a Google Cloud blob store
+        call: repository-blob-store.updateblobstore2
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/group
+      name: v1-blobstores-group
+      description: REST surface for v1-blobstores-group.
+      operations:
+      - method: POST
+        name: creategroupblobstore
+        description: Create a group blob store
+        call: repository-blob-store.creategroupblobstore
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/group/convert/{name}/{newnamefororiginal}
+      name: v1-blobstores-group-convert-name-newnamefororiginal
+      description: REST surface for v1-blobstores-group-convert-name-newNameForOriginal.
+      operations:
+      - method: POST
+        name: convertblobstoretogroup
+        description: Convert a blob store to a group blob store
+        call: repository-blob-store.convertblobstoretogroup
+        with:
+          name: rest.name
+          newNameForOriginal: rest.newNameForOriginal
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/group/{name}
+      name: v1-blobstores-group-name
+      description: REST surface for v1-blobstores-group-name.
+      operations:
+      - method: GET
+        name: getgroupblobstoreconfiguration
+        description: Get a group blob store configuration by name
+        call: repository-blob-store.getgroupblobstoreconfiguration
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updategroupblobstore
+        description: Update a group blob store configuration by name
+        call: repository-blob-store.updategroupblobstore
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/s3
+      name: v1-blobstores-s3
+      description: REST surface for v1-blobstores-s3.
+      operations:
+      - method: POST
+        name: creates3blobstore
+        description: Create an S3 blob store
+        call: repository-blob-store.creates3blobstore
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/s3/{name}
+      name: v1-blobstores-s3-name
+      description: REST surface for v1-blobstores-s3-name.
+      operations:
+      - method: GET
+        name: gets3blobstore
+        description: Get a S3 blob store configuration by name
+        call: repository-blob-store.gets3blobstore
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updates3blobstore
+        description: Update an S3 blob store configuration by name
+        call: repository-blob-store.updates3blobstore
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/{name}
+      name: v1-blobstores-name
+      description: REST surface for v1-blobstores-name.
+      operations:
+      - method: DELETE
+        name: deleteblobstore
+        description: Delete a blob store by name
+        call: repository-blob-store.deleteblobstore
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/blobstores/{name}/quota-status
+      name: v1-blobstores-name-quota-status
+      description: REST surface for v1-blobstores-name-quota-status.
+      operations:
+      - method: GET
+        name: quotastatus
+        description: Get quota status for a given blob store
+        call: repository-blob-store.quotastatus
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-blob-store-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Blob store. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-blob-stores
+      description: List the blob stores
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.listblobstores
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-azure-blob-store
+      description: Create an Azure blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-blob-store.createblobstore1
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-azure-blob-store-configuration
+      description: Get an Azure blob store configuration by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.getblobstore1
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-azure-blob-store-configuration
+      description: Update an Azure blob store configuration by name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.updateblobstore1
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-file-blob-store
+      description: Create a file blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-blob-store.createfileblobstore
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-file-blob-store-configuration
+      description: Get a file blob store configuration by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.getfileblobstoreconfiguration
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-file-blob-store-configuration
+      description: Update a file blob store configuration by name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.updatefileblobstore
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-google-cloud-blob-store
+      description: Create a Google Cloud blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-blob-store.createblobstore2
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-project-regions-project-s-id
+      description: Get the project regions by project's id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.getregionsbyprojectid
+      with:
+        projectId: tools.projectId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-configuration-google-cloud-blob
+      description: Get the configuration for a Google Cloud blob store
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.getblobstore2
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-google-cloud-blob-store
+      description: Update a Google Cloud blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.updateblobstore2
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-group-blob-store
+      description: Create a group blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-blob-store.creategroupblobstore
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: convert-blob-store-group-blob
+      description: Convert a blob store to a group blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-blob-store.convertblobstoretogroup
+      with:
+        name: tools.name
+        newNameForOriginal: tools.newNameForOriginal
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-group-blob-store-configuration
+      description: Get a group blob store configuration by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.getgroupblobstoreconfiguration
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-group-blob-store-configuration
+      description: Update a group blob store configuration by name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.updategroupblobstore
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-s3-blob-store
+      description: Create an S3 blob store
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-blob-store.creates3blobstore
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-s3-blob-store-configuration
+      description: Get a S3 blob store configuration by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.gets3blobstore
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-s3-blob-store-configuration
+      description: Update an S3 blob store configuration by name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.updates3blobstore
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-blob-store-name
+      description: Delete a blob store by name
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-blob-store.deleteblobstore
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-quota-status-given-blob
+      description: Get quota status for a given blob store
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-blob-store.quotastatus
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

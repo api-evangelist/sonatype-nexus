@@ -1,0 +1,373 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Instance configuration
+  description: 'Sonatype Nexus Repository Manager — Instance configuration. 7 operations. Lead operation: Export instance
+    configuration. Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Instance configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-instance-configuration
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Instance configuration business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: v1-configuration
+      path: /v1/configuration
+      operations:
+      - name: exportconfiguration
+        method: GET
+        description: Export instance configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+      - name: applyconfiguration
+        method: PUT
+        description: Apply instance configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-configuration-assets
+      path: /v1/configuration/assets
+      operations:
+      - name: getassets1
+        method: GET
+        description: List assets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+        - name: continuationToken
+          in: query
+          type: string
+          description: A token returned by a prior request. If present, the next page of results are returned
+        - name: repository
+          in: query
+          type: string
+          description: Repository from which you would like to retrieve assets.
+          required: true
+        - name: newerThan
+          in: query
+          type: integer
+          description: Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp
+        - name: olderThan
+          in: query
+          type: integer
+          description: Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp
+    - name: v1-configuration-assets-repositoryName-import
+      path: /v1/configuration/assets/{repositoryName}/import
+      operations:
+      - name: importasset
+        method: POST
+        description: Import assets to repository
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+        - name: repositoryName
+          in: path
+          type: string
+          description: Repository name to import assets to
+          required: true
+    - name: v1-configuration-cipher
+      path: /v1/configuration/cipher
+      operations:
+      - name: clearcipherpassword
+        method: DELETE
+        description: Clear migration cipher password
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+      - name: setcipherpassword
+        method: POST
+        description: Set migration cipher password for decrypting imported secrets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-configuration-transfer-complete
+      path: /v1/configuration/transfer-complete
+      operations:
+      - name: transfercomplete
+        method: POST
+        description: Receive transfer complete notification from migrator
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: X-Nexus-Migration-Protocol-Version
+          in: header
+          type: string
+          description: Migration protocol version (must be '1')
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-instance-configuration-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Instance configuration. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/configuration
+      name: v1-configuration
+      description: REST surface for v1-configuration.
+      operations:
+      - method: GET
+        name: exportconfiguration
+        description: Export instance configuration
+        call: repository-instance-configuration.exportconfiguration
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: applyconfiguration
+        description: Apply instance configuration
+        call: repository-instance-configuration.applyconfiguration
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configuration/assets
+      name: v1-configuration-assets
+      description: REST surface for v1-configuration-assets.
+      operations:
+      - method: GET
+        name: getassets1
+        description: List assets
+        call: repository-instance-configuration.getassets1
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+          continuationToken: rest.continuationToken
+          repository: rest.repository
+          newerThan: rest.newerThan
+          olderThan: rest.olderThan
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configuration/assets/{repositoryname}/import
+      name: v1-configuration-assets-repositoryname-import
+      description: REST surface for v1-configuration-assets-repositoryName-import.
+      operations:
+      - method: POST
+        name: importasset
+        description: Import assets to repository
+        call: repository-instance-configuration.importasset
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+          repositoryName: rest.repositoryName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configuration/cipher
+      name: v1-configuration-cipher
+      description: REST surface for v1-configuration-cipher.
+      operations:
+      - method: DELETE
+        name: clearcipherpassword
+        description: Clear migration cipher password
+        call: repository-instance-configuration.clearcipherpassword
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: setcipherpassword
+        description: Set migration cipher password for decrypting imported secrets
+        call: repository-instance-configuration.setcipherpassword
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/configuration/transfer-complete
+      name: v1-configuration-transfer-complete
+      description: REST surface for v1-configuration-transfer-complete.
+      operations:
+      - method: POST
+        name: transfercomplete
+        description: Receive transfer complete notification from migrator
+        call: repository-instance-configuration.transfercomplete
+        with:
+          X-Nexus-Migration-Protocol-Version: rest.X-Nexus-Migration-Protocol-Version
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-instance-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Instance configuration. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: export-instance-configuration
+      description: Export instance configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-instance-configuration.exportconfiguration
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apply-instance-configuration
+      description: Apply instance configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-instance-configuration.applyconfiguration
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-assets
+      description: List assets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-instance-configuration.getassets1
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+        continuationToken: tools.continuationToken
+        repository: tools.repository
+        newerThan: tools.newerThan
+        olderThan: tools.olderThan
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: import-assets-repository
+      description: Import assets to repository
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-instance-configuration.importasset
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+        repositoryName: tools.repositoryName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: clear-migration-cipher-password
+      description: Clear migration cipher password
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-instance-configuration.clearcipherpassword
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-migration-cipher-password-decrypting
+      description: Set migration cipher password for decrypting imported secrets
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-instance-configuration.setcipherpassword
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: receive-transfer-complete-notification-migrator
+      description: Receive transfer complete notification from migrator
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-instance-configuration.transfercomplete
+      with:
+        X-Nexus-Migration-Protocol-Version: tools.X-Nexus-Migration-Protocol-Version
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

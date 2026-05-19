@@ -1,0 +1,243 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Sonatype Nexus Repository Manager — Security management: roles'
+  description: 'Sonatype Nexus Repository Manager — Security management: roles. 5 operations. Lead operation: List roles.
+    Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - 'Security management: roles'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-security-management-roles
+    baseUri: ''
+    description: 'Sonatype Nexus Repository Manager — Security management: roles business capability. Self-contained, no shared
+      references.'
+    resources:
+    - name: v1-security-roles
+      path: /v1/security/roles
+      operations:
+      - name: getroles
+        method: GET
+        description: List roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: source
+          in: query
+          type: string
+          description: The id of the user source to filter the roles by, if supplied. Otherwise roles from all user sources
+            will be returned.
+      - name: create
+        method: POST
+        description: Create role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-security-roles-id
+      path: /v1/security/roles/{id}
+      operations:
+      - name: delete
+        method: DELETE
+        description: Delete role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The id of the role to delete
+          required: true
+      - name: getrole
+        method: GET
+        description: Get role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: source
+          in: query
+          type: string
+          description: The id of the user source to filter the roles by. Available sources can be fetched using the 'User
+            Sources' endpoint.
+        - name: id
+          in: path
+          type: string
+          description: The id of the role to get
+          required: true
+      - name: update
+        method: PUT
+        description: Update role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: The id of the role to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-security-management-roles-rest
+    port: 8080
+    description: 'REST adapter for Sonatype Nexus Repository Manager — Security management: roles. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/v1/security/roles
+      name: v1-security-roles
+      description: REST surface for v1-security-roles.
+      operations:
+      - method: GET
+        name: getroles
+        description: List roles
+        call: repository-security-management-roles.getroles
+        with:
+          source: rest.source
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create role
+        call: repository-security-management-roles.create
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/roles/{id}
+      name: v1-security-roles-id
+      description: REST surface for v1-security-roles-id.
+      operations:
+      - method: DELETE
+        name: delete
+        description: Delete role
+        call: repository-security-management-roles.delete
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getrole
+        description: Get role
+        call: repository-security-management-roles.getrole
+        with:
+          source: rest.source
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update role
+        call: repository-security-management-roles.update
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-security-management-roles-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Sonatype Nexus Repository Manager — Security management: roles. One tool per consumed operation,
+      routed inline through this capability''s consumes block.'
+    tools:
+    - name: list-roles
+      description: List roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-security-management-roles.getroles
+      with:
+        source: tools.source
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-role
+      description: Create role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-roles.create
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-role
+      description: Delete role
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-security-management-roles.delete
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-role
+      description: Get role
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-security-management-roles.getrole
+      with:
+        source: tools.source
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-role
+      description: Update role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-roles.update
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

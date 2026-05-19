@@ -1,0 +1,132 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Manage Sonatype HTTP System Settings
+  description: 'Sonatype Nexus Repository Manager — Manage Sonatype HTTP System Settings. 3 operations. Lead operation: Reset
+    HTTP System Settings. Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Manage Sonatype HTTP System Settings
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-manage-sonatype-http-system-settings
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Manage Sonatype HTTP System Settings business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: v1-http
+      path: /v1/http
+      operations:
+      - name: resethttpsettings
+        method: DELETE
+        description: Reset HTTP System Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: gethttpsettings
+        method: GET
+        description: Get HTTP system settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatehttpsettings
+        method: PUT
+        description: Update HTTP system settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-manage-sonatype-http-system-settings-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Manage Sonatype HTTP System Settings. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/http
+      name: v1-http
+      description: REST surface for v1-http.
+      operations:
+      - method: DELETE
+        name: resethttpsettings
+        description: Reset HTTP System Settings
+        call: repository-manage-sonatype-http-system-settings.resethttpsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: gethttpsettings
+        description: Get HTTP system settings
+        call: repository-manage-sonatype-http-system-settings.gethttpsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatehttpsettings
+        description: Update HTTP system settings
+        call: repository-manage-sonatype-http-system-settings.updatehttpsettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-manage-sonatype-http-system-settings-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Manage Sonatype HTTP System Settings. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: reset-http-system-settings
+      description: Reset HTTP System Settings
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-manage-sonatype-http-system-settings.resethttpsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-http-system-settings
+      description: Get HTTP system settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-manage-sonatype-http-system-settings.gethttpsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-http-system-settings
+      description: Update HTTP system settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-manage-sonatype-http-system-settings.updatehttpsettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

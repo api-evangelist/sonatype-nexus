@@ -1,0 +1,182 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Sonatype Nexus Repository Manager — Security: Atlassian Crowd'
+  description: 'Sonatype Nexus Repository Manager — Security: Atlassian Crowd. 4 operations. Lead operation: Retrieve Atlassian
+    Crowd settings configured in Nexus Repository Manager. Self-contained Naftiko capability covering one Sonatype Nexus business
+    surface.'
+  tags:
+  - Sonatype Nexus
+  - 'Security: Atlassian Crowd'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-security-atlassian-crowd
+    baseUri: ''
+    description: 'Sonatype Nexus Repository Manager — Security: Atlassian Crowd business capability. Self-contained, no shared
+      references.'
+    resources:
+    - name: v1-security-atlassian-crowd
+      path: /v1/security/atlassian-crowd
+      operations:
+      - name: readsettings
+        method: GET
+        description: Retrieve Atlassian Crowd settings configured in Nexus Repository Manager
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesettings
+        method: PUT
+        description: Update Atlassian Crowd settings configured in Nexus Repository Manager
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-atlassian-crowd-clear-cache
+      path: /v1/security/atlassian-crowd/clear-cache
+      operations:
+      - name: clearcache
+        method: POST
+        description: Clear Atlassian Crowd cache
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-security-atlassian-crowd-verify-connection
+      path: /v1/security/atlassian-crowd/verify-connection
+      operations:
+      - name: verifyconnection
+        method: POST
+        description: Verify connection using supplied Atlassian Crowd settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-security-atlassian-crowd-rest
+    port: 8080
+    description: 'REST adapter for Sonatype Nexus Repository Manager — Security: Atlassian Crowd. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/v1/security/atlassian-crowd
+      name: v1-security-atlassian-crowd
+      description: REST surface for v1-security-atlassian-crowd.
+      operations:
+      - method: GET
+        name: readsettings
+        description: Retrieve Atlassian Crowd settings configured in Nexus Repository Manager
+        call: repository-security-atlassian-crowd.readsettings
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesettings
+        description: Update Atlassian Crowd settings configured in Nexus Repository Manager
+        call: repository-security-atlassian-crowd.updatesettings
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/atlassian-crowd/clear-cache
+      name: v1-security-atlassian-crowd-clear-cache
+      description: REST surface for v1-security-atlassian-crowd-clear-cache.
+      operations:
+      - method: POST
+        name: clearcache
+        description: Clear Atlassian Crowd cache
+        call: repository-security-atlassian-crowd.clearcache
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/atlassian-crowd/verify-connection
+      name: v1-security-atlassian-crowd-verify-connection
+      description: REST surface for v1-security-atlassian-crowd-verify-connection.
+      operations:
+      - method: POST
+        name: verifyconnection
+        description: Verify connection using supplied Atlassian Crowd settings
+        call: repository-security-atlassian-crowd.verifyconnection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-security-atlassian-crowd-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Sonatype Nexus Repository Manager — Security: Atlassian Crowd. One tool per consumed operation,
+      routed inline through this capability''s consumes block.'
+    tools:
+    - name: retrieve-atlassian-crowd-settings-configured
+      description: Retrieve Atlassian Crowd settings configured in Nexus Repository Manager
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-security-atlassian-crowd.readsettings
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-atlassian-crowd-settings-configured
+      description: Update Atlassian Crowd settings configured in Nexus Repository Manager
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-atlassian-crowd.updatesettings
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: clear-atlassian-crowd-cache
+      description: Clear Atlassian Crowd cache
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-atlassian-crowd.clearcache
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: verify-connection-using-supplied-atlassian
+      description: Verify connection using supplied Atlassian Crowd settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-atlassian-crowd.verifyconnection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

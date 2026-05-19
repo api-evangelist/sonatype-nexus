@@ -1,0 +1,695 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Sonatype Nexus Repository Manager — Security management: privileges'
+  description: 'Sonatype Nexus Repository Manager — Security management: privileges. 15 operations. Lead operation: Retrieve
+    a list of privileges.. Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - 'Security management: privileges'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-security-management-privileges
+    baseUri: ''
+    description: 'Sonatype Nexus Repository Manager — Security management: privileges business capability. Self-contained,
+      no shared references.'
+    resources:
+    - name: v1-security-privileges
+      path: /v1/security/privileges
+      operations:
+      - name: getallprivileges
+        method: GET
+        description: Retrieve a list of privileges.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-security-privileges-application
+      path: /v1/security/privileges/application
+      operations:
+      - name: createapplicationprivilege
+        method: POST
+        description: Create an application type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-application-privilegeName
+      path: /v1/security/privileges/application/{privilegeName}
+      operations:
+      - name: updateapplicationprivilege
+        method: PUT
+        description: Update an application type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-repository-admin
+      path: /v1/security/privileges/repository-admin
+      operations:
+      - name: createrepositoryadminprivilege
+        method: POST
+        description: Create a repository admin type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-repository-admin-privilegeName
+      path: /v1/security/privileges/repository-admin/{privilegeName}
+      operations:
+      - name: updaterepositoryadminprivilege
+        method: PUT
+        description: Update a repository admin type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-repository-content-selector
+      path: /v1/security/privileges/repository-content-selector
+      operations:
+      - name: createrepositorycontentselectorprivilege
+        method: POST
+        description: Create a repository content selector type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-repository-content-selector-privilegeName
+      path: /v1/security/privileges/repository-content-selector/{privilegeName}
+      operations:
+      - name: updaterepositorycontentselectorprivilege
+        method: PUT
+        description: Update a repository content selector type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-repository-view
+      path: /v1/security/privileges/repository-view
+      operations:
+      - name: createrepositoryviewprivilege
+        method: POST
+        description: Create a repository view type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-repository-view-privilegeName
+      path: /v1/security/privileges/repository-view/{privilegeName}
+      operations:
+      - name: updaterepositoryviewprivilege
+        method: PUT
+        description: Update a repository view type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-script
+      path: /v1/security/privileges/script
+      operations:
+      - name: createscriptprivilege
+        method: POST
+        description: Create a script type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-script-privilegeName
+      path: /v1/security/privileges/script/{privilegeName}
+      operations:
+      - name: updatescriptprivilege
+        method: PUT
+        description: Update a script type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-wildcard
+      path: /v1/security/privileges/wildcard
+      operations:
+      - name: createwildcardprivilege
+        method: POST
+        description: Create a wildcard type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-wildcard-privilegeName
+      path: /v1/security/privileges/wildcard/{privilegeName}
+      operations:
+      - name: updatewildcardprivilege
+        method: PUT
+        description: Update a wildcard type privilege.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to update.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-privileges-privilegeName
+      path: /v1/security/privileges/{privilegeName}
+      operations:
+      - name: deleteprivilege
+        method: DELETE
+        description: Delete a privilege by name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to delete.
+          required: true
+      - name: getprivilege
+        method: GET
+        description: Retrieve a privilege by name.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: privilegeName
+          in: path
+          type: string
+          description: The name of the privilege to retrieve.
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-security-management-privileges-rest
+    port: 8080
+    description: 'REST adapter for Sonatype Nexus Repository Manager — Security management: privileges. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/v1/security/privileges
+      name: v1-security-privileges
+      description: REST surface for v1-security-privileges.
+      operations:
+      - method: GET
+        name: getallprivileges
+        description: Retrieve a list of privileges.
+        call: repository-security-management-privileges.getallprivileges
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/application
+      name: v1-security-privileges-application
+      description: REST surface for v1-security-privileges-application.
+      operations:
+      - method: POST
+        name: createapplicationprivilege
+        description: Create an application type privilege.
+        call: repository-security-management-privileges.createapplicationprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/application/{privilegename}
+      name: v1-security-privileges-application-privilegename
+      description: REST surface for v1-security-privileges-application-privilegeName.
+      operations:
+      - method: PUT
+        name: updateapplicationprivilege
+        description: Update an application type privilege.
+        call: repository-security-management-privileges.updateapplicationprivilege
+        with:
+          privilegeName: rest.privilegeName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/repository-admin
+      name: v1-security-privileges-repository-admin
+      description: REST surface for v1-security-privileges-repository-admin.
+      operations:
+      - method: POST
+        name: createrepositoryadminprivilege
+        description: Create a repository admin type privilege.
+        call: repository-security-management-privileges.createrepositoryadminprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/repository-admin/{privilegename}
+      name: v1-security-privileges-repository-admin-privilegename
+      description: REST surface for v1-security-privileges-repository-admin-privilegeName.
+      operations:
+      - method: PUT
+        name: updaterepositoryadminprivilege
+        description: Update a repository admin type privilege.
+        call: repository-security-management-privileges.updaterepositoryadminprivilege
+        with:
+          privilegeName: rest.privilegeName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/repository-content-selector
+      name: v1-security-privileges-repository-content-selector
+      description: REST surface for v1-security-privileges-repository-content-selector.
+      operations:
+      - method: POST
+        name: createrepositorycontentselectorprivilege
+        description: Create a repository content selector type privilege.
+        call: repository-security-management-privileges.createrepositorycontentselectorprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/repository-content-selector/{privilegename}
+      name: v1-security-privileges-repository-content-selector-privilegename
+      description: REST surface for v1-security-privileges-repository-content-selector-privilegeName.
+      operations:
+      - method: PUT
+        name: updaterepositorycontentselectorprivilege
+        description: Update a repository content selector type privilege.
+        call: repository-security-management-privileges.updaterepositorycontentselectorprivilege
+        with:
+          privilegeName: rest.privilegeName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/repository-view
+      name: v1-security-privileges-repository-view
+      description: REST surface for v1-security-privileges-repository-view.
+      operations:
+      - method: POST
+        name: createrepositoryviewprivilege
+        description: Create a repository view type privilege.
+        call: repository-security-management-privileges.createrepositoryviewprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/repository-view/{privilegename}
+      name: v1-security-privileges-repository-view-privilegename
+      description: REST surface for v1-security-privileges-repository-view-privilegeName.
+      operations:
+      - method: PUT
+        name: updaterepositoryviewprivilege
+        description: Update a repository view type privilege.
+        call: repository-security-management-privileges.updaterepositoryviewprivilege
+        with:
+          privilegeName: rest.privilegeName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/script
+      name: v1-security-privileges-script
+      description: REST surface for v1-security-privileges-script.
+      operations:
+      - method: POST
+        name: createscriptprivilege
+        description: Create a script type privilege.
+        call: repository-security-management-privileges.createscriptprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/script/{privilegename}
+      name: v1-security-privileges-script-privilegename
+      description: REST surface for v1-security-privileges-script-privilegeName.
+      operations:
+      - method: PUT
+        name: updatescriptprivilege
+        description: Update a script type privilege.
+        call: repository-security-management-privileges.updatescriptprivilege
+        with:
+          privilegeName: rest.privilegeName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/wildcard
+      name: v1-security-privileges-wildcard
+      description: REST surface for v1-security-privileges-wildcard.
+      operations:
+      - method: POST
+        name: createwildcardprivilege
+        description: Create a wildcard type privilege.
+        call: repository-security-management-privileges.createwildcardprivilege
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/wildcard/{privilegename}
+      name: v1-security-privileges-wildcard-privilegename
+      description: REST surface for v1-security-privileges-wildcard-privilegeName.
+      operations:
+      - method: PUT
+        name: updatewildcardprivilege
+        description: Update a wildcard type privilege.
+        call: repository-security-management-privileges.updatewildcardprivilege
+        with:
+          privilegeName: rest.privilegeName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/privileges/{privilegename}
+      name: v1-security-privileges-privilegename
+      description: REST surface for v1-security-privileges-privilegeName.
+      operations:
+      - method: DELETE
+        name: deleteprivilege
+        description: Delete a privilege by name.
+        call: repository-security-management-privileges.deleteprivilege
+        with:
+          privilegeName: rest.privilegeName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getprivilege
+        description: Retrieve a privilege by name.
+        call: repository-security-management-privileges.getprivilege
+        with:
+          privilegeName: rest.privilegeName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-security-management-privileges-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Sonatype Nexus Repository Manager — Security management: privileges. One tool per consumed
+      operation, routed inline through this capability''s consumes block.'
+    tools:
+    - name: retrieve-list-privileges
+      description: Retrieve a list of privileges.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.getallprivileges
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-application-type-privilege
+      description: Create an application type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-privileges.createapplicationprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-application-type-privilege
+      description: Update an application type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.updateapplicationprivilege
+      with:
+        privilegeName: tools.privilegeName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-repository-admin-type-privilege
+      description: Create a repository admin type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-privileges.createrepositoryadminprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-repository-admin-type-privilege
+      description: Update a repository admin type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.updaterepositoryadminprivilege
+      with:
+        privilegeName: tools.privilegeName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-repository-content-selector-type
+      description: Create a repository content selector type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-privileges.createrepositorycontentselectorprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-repository-content-selector-type
+      description: Update a repository content selector type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.updaterepositorycontentselectorprivilege
+      with:
+        privilegeName: tools.privilegeName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-repository-view-type-privilege
+      description: Create a repository view type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-privileges.createrepositoryviewprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-repository-view-type-privilege
+      description: Update a repository view type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.updaterepositoryviewprivilege
+      with:
+        privilegeName: tools.privilegeName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-script-type-privilege
+      description: Create a script type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-privileges.createscriptprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-script-type-privilege
+      description: Update a script type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.updatescriptprivilege
+      with:
+        privilegeName: tools.privilegeName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-wildcard-type-privilege
+      description: Create a wildcard type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-security-management-privileges.createwildcardprivilege
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-wildcard-type-privilege
+      description: Update a wildcard type privilege.
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.updatewildcardprivilege
+      with:
+        privilegeName: tools.privilegeName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-privilege-name
+      description: Delete a privilege by name.
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-security-management-privileges.deleteprivilege
+      with:
+        privilegeName: tools.privilegeName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-privilege-name
+      description: Retrieve a privilege by name.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-security-management-privileges.getprivilege
+      with:
+        privilegeName: tools.privilegeName
+      outputParameters:
+      - type: object
+        mapping: $.

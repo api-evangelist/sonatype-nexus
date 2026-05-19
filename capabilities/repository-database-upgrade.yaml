@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Database Upgrade
+  description: 'Sonatype Nexus Repository Manager — Database Upgrade. 3 operations. Lead operation: Clears a stored database
+    schema upgrade success or a recoverable error. Self-contained Naftiko capability covering one Sonatype Nexus business
+    surface.'
+  tags:
+  - Sonatype Nexus
+  - Database Upgrade
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-database-upgrade
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Database Upgrade business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-clustered-upgrade-database-schema
+      path: /v1/clustered/upgrade-database-schema
+      operations:
+      - name: clearresult
+        method: DELETE
+        description: Clears a stored database schema upgrade success or a recoverable error
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getprogress
+        method: GET
+        description: Check the progress of a database schema upgrade
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: migrate
+        method: POST
+        description: Begins a database schema upgrade
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-database-upgrade-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Database Upgrade. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/clustered/upgrade-database-schema
+      name: v1-clustered-upgrade-database-schema
+      description: REST surface for v1-clustered-upgrade-database-schema.
+      operations:
+      - method: DELETE
+        name: clearresult
+        description: Clears a stored database schema upgrade success or a recoverable error
+        call: repository-database-upgrade.clearresult
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getprogress
+        description: Check the progress of a database schema upgrade
+        call: repository-database-upgrade.getprogress
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: migrate
+        description: Begins a database schema upgrade
+        call: repository-database-upgrade.migrate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-database-upgrade-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Database Upgrade. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: clears-stored-database-schema-upgrade
+      description: Clears a stored database schema upgrade success or a recoverable error
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-database-upgrade.clearresult
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-progress-database-schema-upgrade
+      description: Check the progress of a database schema upgrade
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-database-upgrade.getprogress
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: begins-database-schema-upgrade
+      description: Begins a database schema upgrade
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-database-upgrade.migrate
+      outputParameters:
+      - type: object
+        mapping: $.

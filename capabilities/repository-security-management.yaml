@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Security management
+  description: 'Sonatype Nexus Repository Manager — Security management. 1 operations. Lead operation: Retrieve a list of
+    the available user sources.. Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Security management
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-security-management
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Security management business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-security-user-sources
+      path: /v1/security/user-sources
+      operations:
+      - name: getusersources
+        method: GET
+        description: Retrieve a list of the available user sources.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-security-management-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Security management. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/security/user-sources
+      name: v1-security-user-sources
+      description: REST surface for v1-security-user-sources.
+      operations:
+      - method: GET
+        name: getusersources
+        description: Retrieve a list of the available user sources.
+        call: repository-security-management.getusersources
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-security-management-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Security management. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: retrieve-list-available-user-sources
+      description: Retrieve a list of the available user sources.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-security-management.getusersources
+      outputParameters:
+      - type: object
+        mapping: $.

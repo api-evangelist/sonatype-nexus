@@ -1,0 +1,931 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Staging
+  description: 'Sonatype Nexus Repository Manager — Staging. 2 operations. Lead operation: Delete components. Self-contained
+    Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Staging
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-staging
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Staging business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-staging-delete
+      path: /v1/staging/delete
+      operations:
+      - name: delete2
+        method: POST
+        description: Delete components
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: q
+          in: query
+          type: string
+          description: Query by keyword
+        - name: repository
+          in: query
+          type: string
+          description: Repository name
+        - name: format
+          in: query
+          type: string
+          description: Query by format
+        - name: group
+          in: query
+          type: string
+          description: Component group
+        - name: name
+          in: query
+          type: string
+          description: Component name
+        - name: version
+          in: query
+          type: string
+          description: Component version
+        - name: prerelease
+          in: query
+          type: string
+          description: Prerelease version flag
+        - name: last_updated
+          in: query
+          type: string
+          description: Asset last modified time
+        - name: lastBlobUpdated
+          in: query
+          type: string
+          description: Asset last modified time (UI)
+        - name: md5
+          in: query
+          type: string
+          description: Specific MD5 hash of component's asset
+        - name: sha1
+          in: query
+          type: string
+          description: Specific SHA-1 hash of component's asset
+        - name: sha256
+          in: query
+          type: string
+          description: Specific SHA-256 hash of component's asset
+        - name: sha512
+          in: query
+          type: string
+          description: Specific SHA-512 hash of component's asset
+        - name: composer.vendor
+          in: query
+          type: string
+          description: Vendor
+        - name: composer.package
+          in: query
+          type: string
+          description: Package
+        - name: composer.version
+          in: query
+          type: string
+          description: Version
+        - name: conan.baseVersion
+          in: query
+          type: string
+          description: Conan base version
+        - name: conan.channel
+          in: query
+          type: string
+          description: Conan channel
+        - name: conan.revision
+          in: query
+          type: string
+          description: Conan recipe revision
+        - name: conan.packageId
+          in: query
+          type: string
+          description: Conan package id
+        - name: conan.packageRevision
+          in: query
+          type: string
+          description: Conan package revision
+        - name: conan.baseVersion.strict
+          in: query
+          type: string
+          description: Conan base version strict
+        - name: conan.revision.latest
+          in: query
+          type: string
+          description: Return latest revision
+        - name: conan.settings.arch
+          in: query
+          type: string
+          description: Conan arch
+        - name: conan.settings.os
+          in: query
+          type: string
+          description: Conan os
+        - name: conan.settings.compiler
+          in: query
+          type: string
+          description: Conan compiler
+        - name: conan.settings.compiler.version
+          in: query
+          type: string
+          description: Conan compiler version
+        - name: conan.settings.compiler.runtime
+          in: query
+          type: string
+          description: Conan compiler runtime
+        - name: docker.imageName
+          in: query
+          type: string
+          description: Docker image name
+        - name: docker.imageTag
+          in: query
+          type: string
+          description: Docker image tag
+        - name: docker.layerId
+          in: query
+          type: string
+          description: Docker layer ID
+        - name: docker.contentDigest
+          in: query
+          type: string
+          description: Docker content digest
+        - name: maven.groupId
+          in: query
+          type: string
+          description: Maven groupId
+        - name: maven.artifactId
+          in: query
+          type: string
+          description: Maven artifactId
+        - name: maven.baseVersion
+          in: query
+          type: string
+          description: Maven base version
+        - name: maven.extension
+          in: query
+          type: string
+          description: Maven extension of component's asset
+        - name: maven.classifier
+          in: query
+          type: string
+          description: Maven classifier of component's asset
+        - name: gavec
+          in: query
+          type: string
+          description: Group asset version extension classifier
+        - name: npm.scope
+          in: query
+          type: string
+          description: npm scope
+        - name: npm.author
+          in: query
+          type: string
+          description: npm author
+        - name: npm.description
+          in: query
+          type: string
+          description: npm description
+        - name: npm.keywords
+          in: query
+          type: string
+          description: npm keywords
+        - name: npm.license
+          in: query
+          type: string
+          description: npm license
+        - name: npm.tagged_is
+          in: query
+          type: string
+          description: npm tagged is
+        - name: npm.tagged_not
+          in: query
+          type: string
+          description: npm tagged not
+        - name: nuget.id
+          in: query
+          type: string
+          description: NuGet id
+        - name: nuget.tags
+          in: query
+          type: string
+          description: NuGet tags
+        - name: nuget.title
+          in: query
+          type: string
+          description: NuGet title
+        - name: nuget.authors
+          in: query
+          type: string
+          description: NuGet authors
+        - name: nuget.description
+          in: query
+          type: string
+          description: NuGet description
+        - name: nuget.summary
+          in: query
+          type: string
+          description: NuGet summary
+        - name: nuget.is_prerelease
+          in: query
+          type: string
+          description: NuGet prerelease
+        - name: p2.pluginName
+          in: query
+          type: string
+          description: p2 plugin name
+        - name: pypi.classifiers
+          in: query
+          type: string
+          description: PyPI classifiers
+        - name: pypi.description
+          in: query
+          type: string
+          description: PyPI description
+        - name: pypi.keywords
+          in: query
+          type: string
+          description: PyPI keywords
+        - name: pypi.summary
+          in: query
+          type: string
+          description: PyPI summary
+        - name: rubygems.description
+          in: query
+          type: string
+          description: RubyGems description
+        - name: rubygems.platform
+          in: query
+          type: string
+          description: RubyGems platform
+        - name: rubygems.summary
+          in: query
+          type: string
+          description: RubyGems summary
+        - name: swift.scope
+          in: query
+          type: string
+          description: swift scope
+        - name: swift.asset_kind
+          in: query
+          type: string
+          description: swift asset kind
+        - name: tag
+          in: query
+          type: string
+          description: Component tag
+        - name: terraform.provider
+          in: query
+          type: string
+          description: terraform provider
+        - name: terraform.namespace
+          in: query
+          type: string
+          description: terraform namespace
+        - name: terraform.name
+          in: query
+          type: string
+          description: terraform name
+        - name: yum.architecture
+          in: query
+          type: string
+          description: Yum architecture
+        - name: yum.name
+          in: query
+          type: string
+          description: Yum package name
+    - name: v1-staging-move-destination
+      path: /v1/staging/move/{destination}
+      operations:
+      - name: move
+        method: POST
+        description: Move components
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: destination
+          in: path
+          type: string
+          required: true
+        - name: q
+          in: query
+          type: string
+          description: Query by keyword
+        - name: repository
+          in: query
+          type: string
+          description: Repository name
+        - name: format
+          in: query
+          type: string
+          description: Query by format
+        - name: group
+          in: query
+          type: string
+          description: Component group
+        - name: name
+          in: query
+          type: string
+          description: Component name
+        - name: version
+          in: query
+          type: string
+          description: Component version
+        - name: prerelease
+          in: query
+          type: string
+          description: Prerelease version flag
+        - name: last_updated
+          in: query
+          type: string
+          description: Asset last modified time
+        - name: lastBlobUpdated
+          in: query
+          type: string
+          description: Asset last modified time (UI)
+        - name: md5
+          in: query
+          type: string
+          description: Specific MD5 hash of component's asset
+        - name: sha1
+          in: query
+          type: string
+          description: Specific SHA-1 hash of component's asset
+        - name: sha256
+          in: query
+          type: string
+          description: Specific SHA-256 hash of component's asset
+        - name: sha512
+          in: query
+          type: string
+          description: Specific SHA-512 hash of component's asset
+        - name: composer.vendor
+          in: query
+          type: string
+          description: Vendor
+        - name: composer.package
+          in: query
+          type: string
+          description: Package
+        - name: composer.version
+          in: query
+          type: string
+          description: Version
+        - name: conan.baseVersion
+          in: query
+          type: string
+          description: Conan base version
+        - name: conan.channel
+          in: query
+          type: string
+          description: Conan channel
+        - name: conan.revision
+          in: query
+          type: string
+          description: Conan recipe revision
+        - name: conan.packageId
+          in: query
+          type: string
+          description: Conan package id
+        - name: conan.packageRevision
+          in: query
+          type: string
+          description: Conan package revision
+        - name: conan.baseVersion.strict
+          in: query
+          type: string
+          description: Conan base version strict
+        - name: conan.revision.latest
+          in: query
+          type: string
+          description: Return latest revision
+        - name: conan.settings.arch
+          in: query
+          type: string
+          description: Conan arch
+        - name: conan.settings.os
+          in: query
+          type: string
+          description: Conan os
+        - name: conan.settings.compiler
+          in: query
+          type: string
+          description: Conan compiler
+        - name: conan.settings.compiler.version
+          in: query
+          type: string
+          description: Conan compiler version
+        - name: conan.settings.compiler.runtime
+          in: query
+          type: string
+          description: Conan compiler runtime
+        - name: docker.imageName
+          in: query
+          type: string
+          description: Docker image name
+        - name: docker.imageTag
+          in: query
+          type: string
+          description: Docker image tag
+        - name: docker.layerId
+          in: query
+          type: string
+          description: Docker layer ID
+        - name: docker.contentDigest
+          in: query
+          type: string
+          description: Docker content digest
+        - name: maven.groupId
+          in: query
+          type: string
+          description: Maven groupId
+        - name: maven.artifactId
+          in: query
+          type: string
+          description: Maven artifactId
+        - name: maven.baseVersion
+          in: query
+          type: string
+          description: Maven base version
+        - name: maven.extension
+          in: query
+          type: string
+          description: Maven extension of component's asset
+        - name: maven.classifier
+          in: query
+          type: string
+          description: Maven classifier of component's asset
+        - name: gavec
+          in: query
+          type: string
+          description: Group asset version extension classifier
+        - name: npm.scope
+          in: query
+          type: string
+          description: npm scope
+        - name: npm.author
+          in: query
+          type: string
+          description: npm author
+        - name: npm.description
+          in: query
+          type: string
+          description: npm description
+        - name: npm.keywords
+          in: query
+          type: string
+          description: npm keywords
+        - name: npm.license
+          in: query
+          type: string
+          description: npm license
+        - name: npm.tagged_is
+          in: query
+          type: string
+          description: npm tagged is
+        - name: npm.tagged_not
+          in: query
+          type: string
+          description: npm tagged not
+        - name: nuget.id
+          in: query
+          type: string
+          description: NuGet id
+        - name: nuget.tags
+          in: query
+          type: string
+          description: NuGet tags
+        - name: nuget.title
+          in: query
+          type: string
+          description: NuGet title
+        - name: nuget.authors
+          in: query
+          type: string
+          description: NuGet authors
+        - name: nuget.description
+          in: query
+          type: string
+          description: NuGet description
+        - name: nuget.summary
+          in: query
+          type: string
+          description: NuGet summary
+        - name: nuget.is_prerelease
+          in: query
+          type: string
+          description: NuGet prerelease
+        - name: p2.pluginName
+          in: query
+          type: string
+          description: p2 plugin name
+        - name: pypi.classifiers
+          in: query
+          type: string
+          description: PyPI classifiers
+        - name: pypi.description
+          in: query
+          type: string
+          description: PyPI description
+        - name: pypi.keywords
+          in: query
+          type: string
+          description: PyPI keywords
+        - name: pypi.summary
+          in: query
+          type: string
+          description: PyPI summary
+        - name: rubygems.description
+          in: query
+          type: string
+          description: RubyGems description
+        - name: rubygems.platform
+          in: query
+          type: string
+          description: RubyGems platform
+        - name: rubygems.summary
+          in: query
+          type: string
+          description: RubyGems summary
+        - name: swift.scope
+          in: query
+          type: string
+          description: swift scope
+        - name: swift.asset_kind
+          in: query
+          type: string
+          description: swift asset kind
+        - name: tag
+          in: query
+          type: string
+          description: Component tag
+        - name: terraform.provider
+          in: query
+          type: string
+          description: terraform provider
+        - name: terraform.namespace
+          in: query
+          type: string
+          description: terraform namespace
+        - name: terraform.name
+          in: query
+          type: string
+          description: terraform name
+        - name: yum.architecture
+          in: query
+          type: string
+          description: Yum architecture
+        - name: yum.name
+          in: query
+          type: string
+          description: Yum package name
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-staging-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Staging. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/staging/delete
+      name: v1-staging-delete
+      description: REST surface for v1-staging-delete.
+      operations:
+      - method: POST
+        name: delete2
+        description: Delete components
+        call: repository-staging.delete2
+        with:
+          q: rest.q
+          repository: rest.repository
+          format: rest.format
+          group: rest.group
+          name: rest.name
+          version: rest.version
+          prerelease: rest.prerelease
+          last_updated: rest.last_updated
+          lastBlobUpdated: rest.lastBlobUpdated
+          md5: rest.md5
+          sha1: rest.sha1
+          sha256: rest.sha256
+          sha512: rest.sha512
+          composer.vendor: rest.composer.vendor
+          composer.package: rest.composer.package
+          composer.version: rest.composer.version
+          conan.baseVersion: rest.conan.baseVersion
+          conan.channel: rest.conan.channel
+          conan.revision: rest.conan.revision
+          conan.packageId: rest.conan.packageId
+          conan.packageRevision: rest.conan.packageRevision
+          conan.baseVersion.strict: rest.conan.baseVersion.strict
+          conan.revision.latest: rest.conan.revision.latest
+          conan.settings.arch: rest.conan.settings.arch
+          conan.settings.os: rest.conan.settings.os
+          conan.settings.compiler: rest.conan.settings.compiler
+          conan.settings.compiler.version: rest.conan.settings.compiler.version
+          conan.settings.compiler.runtime: rest.conan.settings.compiler.runtime
+          docker.imageName: rest.docker.imageName
+          docker.imageTag: rest.docker.imageTag
+          docker.layerId: rest.docker.layerId
+          docker.contentDigest: rest.docker.contentDigest
+          maven.groupId: rest.maven.groupId
+          maven.artifactId: rest.maven.artifactId
+          maven.baseVersion: rest.maven.baseVersion
+          maven.extension: rest.maven.extension
+          maven.classifier: rest.maven.classifier
+          gavec: rest.gavec
+          npm.scope: rest.npm.scope
+          npm.author: rest.npm.author
+          npm.description: rest.npm.description
+          npm.keywords: rest.npm.keywords
+          npm.license: rest.npm.license
+          npm.tagged_is: rest.npm.tagged_is
+          npm.tagged_not: rest.npm.tagged_not
+          nuget.id: rest.nuget.id
+          nuget.tags: rest.nuget.tags
+          nuget.title: rest.nuget.title
+          nuget.authors: rest.nuget.authors
+          nuget.description: rest.nuget.description
+          nuget.summary: rest.nuget.summary
+          nuget.is_prerelease: rest.nuget.is_prerelease
+          p2.pluginName: rest.p2.pluginName
+          pypi.classifiers: rest.pypi.classifiers
+          pypi.description: rest.pypi.description
+          pypi.keywords: rest.pypi.keywords
+          pypi.summary: rest.pypi.summary
+          rubygems.description: rest.rubygems.description
+          rubygems.platform: rest.rubygems.platform
+          rubygems.summary: rest.rubygems.summary
+          swift.scope: rest.swift.scope
+          swift.asset_kind: rest.swift.asset_kind
+          tag: rest.tag
+          terraform.provider: rest.terraform.provider
+          terraform.namespace: rest.terraform.namespace
+          terraform.name: rest.terraform.name
+          yum.architecture: rest.yum.architecture
+          yum.name: rest.yum.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/staging/move/{destination}
+      name: v1-staging-move-destination
+      description: REST surface for v1-staging-move-destination.
+      operations:
+      - method: POST
+        name: move
+        description: Move components
+        call: repository-staging.move
+        with:
+          destination: rest.destination
+          q: rest.q
+          repository: rest.repository
+          format: rest.format
+          group: rest.group
+          name: rest.name
+          version: rest.version
+          prerelease: rest.prerelease
+          last_updated: rest.last_updated
+          lastBlobUpdated: rest.lastBlobUpdated
+          md5: rest.md5
+          sha1: rest.sha1
+          sha256: rest.sha256
+          sha512: rest.sha512
+          composer.vendor: rest.composer.vendor
+          composer.package: rest.composer.package
+          composer.version: rest.composer.version
+          conan.baseVersion: rest.conan.baseVersion
+          conan.channel: rest.conan.channel
+          conan.revision: rest.conan.revision
+          conan.packageId: rest.conan.packageId
+          conan.packageRevision: rest.conan.packageRevision
+          conan.baseVersion.strict: rest.conan.baseVersion.strict
+          conan.revision.latest: rest.conan.revision.latest
+          conan.settings.arch: rest.conan.settings.arch
+          conan.settings.os: rest.conan.settings.os
+          conan.settings.compiler: rest.conan.settings.compiler
+          conan.settings.compiler.version: rest.conan.settings.compiler.version
+          conan.settings.compiler.runtime: rest.conan.settings.compiler.runtime
+          docker.imageName: rest.docker.imageName
+          docker.imageTag: rest.docker.imageTag
+          docker.layerId: rest.docker.layerId
+          docker.contentDigest: rest.docker.contentDigest
+          maven.groupId: rest.maven.groupId
+          maven.artifactId: rest.maven.artifactId
+          maven.baseVersion: rest.maven.baseVersion
+          maven.extension: rest.maven.extension
+          maven.classifier: rest.maven.classifier
+          gavec: rest.gavec
+          npm.scope: rest.npm.scope
+          npm.author: rest.npm.author
+          npm.description: rest.npm.description
+          npm.keywords: rest.npm.keywords
+          npm.license: rest.npm.license
+          npm.tagged_is: rest.npm.tagged_is
+          npm.tagged_not: rest.npm.tagged_not
+          nuget.id: rest.nuget.id
+          nuget.tags: rest.nuget.tags
+          nuget.title: rest.nuget.title
+          nuget.authors: rest.nuget.authors
+          nuget.description: rest.nuget.description
+          nuget.summary: rest.nuget.summary
+          nuget.is_prerelease: rest.nuget.is_prerelease
+          p2.pluginName: rest.p2.pluginName
+          pypi.classifiers: rest.pypi.classifiers
+          pypi.description: rest.pypi.description
+          pypi.keywords: rest.pypi.keywords
+          pypi.summary: rest.pypi.summary
+          rubygems.description: rest.rubygems.description
+          rubygems.platform: rest.rubygems.platform
+          rubygems.summary: rest.rubygems.summary
+          swift.scope: rest.swift.scope
+          swift.asset_kind: rest.swift.asset_kind
+          tag: rest.tag
+          terraform.provider: rest.terraform.provider
+          terraform.namespace: rest.terraform.namespace
+          terraform.name: rest.terraform.name
+          yum.architecture: rest.yum.architecture
+          yum.name: rest.yum.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-staging-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Staging. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: delete-components
+      description: Delete components
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-staging.delete2
+      with:
+        q: tools.q
+        repository: tools.repository
+        format: tools.format
+        group: tools.group
+        name: tools.name
+        version: tools.version
+        prerelease: tools.prerelease
+        last_updated: tools.last_updated
+        lastBlobUpdated: tools.lastBlobUpdated
+        md5: tools.md5
+        sha1: tools.sha1
+        sha256: tools.sha256
+        sha512: tools.sha512
+        composer.vendor: tools.composer.vendor
+        composer.package: tools.composer.package
+        composer.version: tools.composer.version
+        conan.baseVersion: tools.conan.baseVersion
+        conan.channel: tools.conan.channel
+        conan.revision: tools.conan.revision
+        conan.packageId: tools.conan.packageId
+        conan.packageRevision: tools.conan.packageRevision
+        conan.baseVersion.strict: tools.conan.baseVersion.strict
+        conan.revision.latest: tools.conan.revision.latest
+        conan.settings.arch: tools.conan.settings.arch
+        conan.settings.os: tools.conan.settings.os
+        conan.settings.compiler: tools.conan.settings.compiler
+        conan.settings.compiler.version: tools.conan.settings.compiler.version
+        conan.settings.compiler.runtime: tools.conan.settings.compiler.runtime
+        docker.imageName: tools.docker.imageName
+        docker.imageTag: tools.docker.imageTag
+        docker.layerId: tools.docker.layerId
+        docker.contentDigest: tools.docker.contentDigest
+        maven.groupId: tools.maven.groupId
+        maven.artifactId: tools.maven.artifactId
+        maven.baseVersion: tools.maven.baseVersion
+        maven.extension: tools.maven.extension
+        maven.classifier: tools.maven.classifier
+        gavec: tools.gavec
+        npm.scope: tools.npm.scope
+        npm.author: tools.npm.author
+        npm.description: tools.npm.description
+        npm.keywords: tools.npm.keywords
+        npm.license: tools.npm.license
+        npm.tagged_is: tools.npm.tagged_is
+        npm.tagged_not: tools.npm.tagged_not
+        nuget.id: tools.nuget.id
+        nuget.tags: tools.nuget.tags
+        nuget.title: tools.nuget.title
+        nuget.authors: tools.nuget.authors
+        nuget.description: tools.nuget.description
+        nuget.summary: tools.nuget.summary
+        nuget.is_prerelease: tools.nuget.is_prerelease
+        p2.pluginName: tools.p2.pluginName
+        pypi.classifiers: tools.pypi.classifiers
+        pypi.description: tools.pypi.description
+        pypi.keywords: tools.pypi.keywords
+        pypi.summary: tools.pypi.summary
+        rubygems.description: tools.rubygems.description
+        rubygems.platform: tools.rubygems.platform
+        rubygems.summary: tools.rubygems.summary
+        swift.scope: tools.swift.scope
+        swift.asset_kind: tools.swift.asset_kind
+        tag: tools.tag
+        terraform.provider: tools.terraform.provider
+        terraform.namespace: tools.terraform.namespace
+        terraform.name: tools.terraform.name
+        yum.architecture: tools.yum.architecture
+        yum.name: tools.yum.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: move-components
+      description: Move components
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-staging.move
+      with:
+        destination: tools.destination
+        q: tools.q
+        repository: tools.repository
+        format: tools.format
+        group: tools.group
+        name: tools.name
+        version: tools.version
+        prerelease: tools.prerelease
+        last_updated: tools.last_updated
+        lastBlobUpdated: tools.lastBlobUpdated
+        md5: tools.md5
+        sha1: tools.sha1
+        sha256: tools.sha256
+        sha512: tools.sha512
+        composer.vendor: tools.composer.vendor
+        composer.package: tools.composer.package
+        composer.version: tools.composer.version
+        conan.baseVersion: tools.conan.baseVersion
+        conan.channel: tools.conan.channel
+        conan.revision: tools.conan.revision
+        conan.packageId: tools.conan.packageId
+        conan.packageRevision: tools.conan.packageRevision
+        conan.baseVersion.strict: tools.conan.baseVersion.strict
+        conan.revision.latest: tools.conan.revision.latest
+        conan.settings.arch: tools.conan.settings.arch
+        conan.settings.os: tools.conan.settings.os
+        conan.settings.compiler: tools.conan.settings.compiler
+        conan.settings.compiler.version: tools.conan.settings.compiler.version
+        conan.settings.compiler.runtime: tools.conan.settings.compiler.runtime
+        docker.imageName: tools.docker.imageName
+        docker.imageTag: tools.docker.imageTag
+        docker.layerId: tools.docker.layerId
+        docker.contentDigest: tools.docker.contentDigest
+        maven.groupId: tools.maven.groupId
+        maven.artifactId: tools.maven.artifactId
+        maven.baseVersion: tools.maven.baseVersion
+        maven.extension: tools.maven.extension
+        maven.classifier: tools.maven.classifier
+        gavec: tools.gavec
+        npm.scope: tools.npm.scope
+        npm.author: tools.npm.author
+        npm.description: tools.npm.description
+        npm.keywords: tools.npm.keywords
+        npm.license: tools.npm.license
+        npm.tagged_is: tools.npm.tagged_is
+        npm.tagged_not: tools.npm.tagged_not
+        nuget.id: tools.nuget.id
+        nuget.tags: tools.nuget.tags
+        nuget.title: tools.nuget.title
+        nuget.authors: tools.nuget.authors
+        nuget.description: tools.nuget.description
+        nuget.summary: tools.nuget.summary
+        nuget.is_prerelease: tools.nuget.is_prerelease
+        p2.pluginName: tools.p2.pluginName
+        pypi.classifiers: tools.pypi.classifiers
+        pypi.description: tools.pypi.description
+        pypi.keywords: tools.pypi.keywords
+        pypi.summary: tools.pypi.summary
+        rubygems.description: tools.rubygems.description
+        rubygems.platform: tools.rubygems.platform
+        rubygems.summary: tools.rubygems.summary
+        swift.scope: tools.swift.scope
+        swift.asset_kind: tools.swift.asset_kind
+        tag: tools.tag
+        terraform.provider: tools.terraform.provider
+        terraform.namespace: tools.terraform.namespace
+        terraform.name: tools.terraform.name
+        yum.architecture: tools.yum.architecture
+        yum.name: tools.yum.name
+      outputParameters:
+      - type: object
+        mapping: $.

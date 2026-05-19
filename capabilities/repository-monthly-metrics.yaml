@@ -1,0 +1,71 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Monthly Metrics
+  description: 'Sonatype Nexus Repository Manager — Monthly Metrics. 1 operations. Lead operation: Get the last 12 months
+    of metrics.. Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Monthly Metrics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-monthly-metrics
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Monthly Metrics business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-monthly-metrics
+      path: /v1/monthly-metrics
+      operations:
+      - name: getlast12monthsmetrics
+        method: GET
+        description: Get the last 12 months of metrics.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-monthly-metrics-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Monthly Metrics. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/monthly-metrics
+      name: v1-monthly-metrics
+      description: REST surface for v1-monthly-metrics.
+      operations:
+      - method: GET
+        name: getlast12monthsmetrics
+        description: Get the last 12 months of metrics.
+        call: repository-monthly-metrics.getlast12monthsmetrics
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-monthly-metrics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Monthly Metrics. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-last-12-months-metrics
+      description: Get the last 12 months of metrics.
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-monthly-metrics.getlast12monthsmetrics
+      outputParameters:
+      - type: object
+        mapping: $.

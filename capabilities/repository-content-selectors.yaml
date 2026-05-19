@@ -1,0 +1,224 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Content selectors
+  description: 'Sonatype Nexus Repository Manager — Content selectors. 5 operations. Lead operation: List content selectors.
+    Self-contained Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Content selectors
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-content-selectors
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Content selectors business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-security-content-selectors
+      path: /v1/security/content-selectors
+      operations:
+      - name: getcontentselectors
+        method: GET
+        description: List content selectors
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcontentselector
+        method: POST
+        description: Create a new content selector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-security-content-selectors-name
+      path: /v1/security/content-selectors/{name}
+      operations:
+      - name: deletecontentselector
+        method: DELETE
+        description: Delete a content selector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: getcontentselector
+        method: GET
+        description: Get a content selector by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The content selector name
+          required: true
+      - name: updatecontentselector
+        method: PUT
+        description: Update a content selector
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: The content selector name
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-content-selectors-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Content selectors. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/security/content-selectors
+      name: v1-security-content-selectors
+      description: REST surface for v1-security-content-selectors.
+      operations:
+      - method: GET
+        name: getcontentselectors
+        description: List content selectors
+        call: repository-content-selectors.getcontentselectors
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcontentselector
+        description: Create a new content selector
+        call: repository-content-selectors.createcontentselector
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/security/content-selectors/{name}
+      name: v1-security-content-selectors-name
+      description: REST surface for v1-security-content-selectors-name.
+      operations:
+      - method: DELETE
+        name: deletecontentselector
+        description: Delete a content selector
+        call: repository-content-selectors.deletecontentselector
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcontentselector
+        description: Get a content selector by name
+        call: repository-content-selectors.getcontentselector
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecontentselector
+        description: Update a content selector
+        call: repository-content-selectors.updatecontentselector
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-content-selectors-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Content selectors. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: list-content-selectors
+      description: List content selectors
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-content-selectors.getcontentselectors
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-content-selector
+      description: Create a new content selector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-content-selectors.createcontentselector
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-content-selector
+      description: Delete a content selector
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-content-selectors.deletecontentselector
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-content-selector-name
+      description: Get a content selector by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-content-selectors.getcontentselector
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-content-selector
+      description: Update a content selector
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-content-selectors.updatecontentselector
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

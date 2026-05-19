@@ -1,0 +1,270 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — Script
+  description: 'Sonatype Nexus Repository Manager — Script. 6 operations. Lead operation: List all stored scripts. Self-contained
+    Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - Script
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-script
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — Script business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-script
+      path: /v1/script
+      operations:
+      - name: browse
+        method: GET
+        description: List all stored scripts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add
+        method: POST
+        description: Add a new script
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-script-name
+      path: /v1/script/{name}
+      operations:
+      - name: delete1
+        method: DELETE
+        description: Delete stored script by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: read
+        method: GET
+        description: Read stored script by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: edit
+        method: PUT
+        description: Update stored script by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-script-name-run
+      path: /v1/script/{name}/run
+      operations:
+      - name: run1
+        method: POST
+        description: Run stored script by name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-script-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — Script. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/script
+      name: v1-script
+      description: REST surface for v1-script.
+      operations:
+      - method: GET
+        name: browse
+        description: List all stored scripts
+        call: repository-script.browse
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: add
+        description: Add a new script
+        call: repository-script.add
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/script/{name}
+      name: v1-script-name
+      description: REST surface for v1-script-name.
+      operations:
+      - method: DELETE
+        name: delete1
+        description: Delete stored script by name
+        call: repository-script.delete1
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: read
+        description: Read stored script by name
+        call: repository-script.read
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: edit
+        description: Update stored script by name
+        call: repository-script.edit
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/script/{name}/run
+      name: v1-script-name-run
+      description: REST surface for v1-script-name-run.
+      operations:
+      - method: POST
+        name: run1
+        description: Run stored script by name
+        call: repository-script.run1
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-script-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — Script. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-all-stored-scripts
+      description: List all stored scripts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-script.browse
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-new-script
+      description: Add a new script
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-script.add
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-stored-script-name
+      description: Delete stored script by name
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-script.delete1
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: read-stored-script-name
+      description: Read stored script by name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-script.read
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-stored-script-name
+      description: Update stored script by name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-script.edit
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: run-stored-script-name
+      description: Run stored script by name
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-script.run1
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

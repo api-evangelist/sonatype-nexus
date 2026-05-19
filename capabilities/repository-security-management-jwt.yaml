@@ -1,0 +1,73 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: 'Sonatype Nexus Repository Manager — Security management: JWT'
+  description: 'Sonatype Nexus Repository Manager — Security management: JWT. 1 operations. Lead operation: Reset JWT secret
+    (note that session will be expired for the all logged-in users). Self-contained Naftiko capability covering one Sonatype
+    Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - 'Security management: JWT'
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-security-management-jwt
+    baseUri: ''
+    description: 'Sonatype Nexus Repository Manager — Security management: JWT business capability. Self-contained, no shared
+      references.'
+    resources:
+    - name: v1-security-jwt
+      path: /v1/security/jwt
+      operations:
+      - name: resetsecret
+        method: PUT
+        description: Reset JWT secret (note that session will be expired for the all logged-in users)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-security-management-jwt-rest
+    port: 8080
+    description: 'REST adapter for Sonatype Nexus Repository Manager — Security management: JWT. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.'
+    resources:
+    - path: /v1/v1/security/jwt
+      name: v1-security-jwt
+      description: REST surface for v1-security-jwt.
+      operations:
+      - method: PUT
+        name: resetsecret
+        description: Reset JWT secret (note that session will be expired for the all logged-in users)
+        call: repository-security-management-jwt.resetsecret
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-security-management-jwt-mcp
+    port: 9090
+    transport: http
+    description: 'MCP adapter for Sonatype Nexus Repository Manager — Security management: JWT. One tool per consumed operation,
+      routed inline through this capability''s consumes block.'
+    tools:
+    - name: reset-jwt-secret-note-that
+      description: Reset JWT secret (note that session will be expired for the all logged-in users)
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: repository-security-management-jwt.resetsecret
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,206 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Sonatype Nexus Repository Manager — components
+  description: 'Sonatype Nexus Repository Manager — components. 4 operations. Lead operation: List components. Self-contained
+    Naftiko capability covering one Sonatype Nexus business surface.'
+  tags:
+  - Sonatype Nexus
+  - components
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SONATYPE_NEXUS_API_KEY: SONATYPE_NEXUS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: repository-components
+    baseUri: ''
+    description: Sonatype Nexus Repository Manager — components business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-components
+      path: /v1/components
+      operations:
+      - name: getcomponents
+        method: GET
+        description: List components
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: continuationToken
+          in: query
+          type: string
+          description: A token returned by a prior request. If present, the next page of results are returned
+        - name: repository
+          in: query
+          type: string
+          description: Repository from which you would like to retrieve components
+          required: true
+      - name: uploadcomponent
+        method: POST
+        description: Upload a single component
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: query
+          type: string
+          description: Name of the repository to which you would like to upload the component
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: v1-components-id
+      path: /v1/components/{id}
+      operations:
+      - name: deletecomponent
+        method: DELETE
+        description: Delete a single component
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the component to delete
+          required: true
+      - name: getcomponentbyid
+        method: GET
+        description: Get a single component
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: ID of the component to retrieve
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.SONATYPE_NEXUS_USER}}'
+      password: '{{env.SONATYPE_NEXUS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: repository-components-rest
+    port: 8080
+    description: REST adapter for Sonatype Nexus Repository Manager — components. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/components
+      name: v1-components
+      description: REST surface for v1-components.
+      operations:
+      - method: GET
+        name: getcomponents
+        description: List components
+        call: repository-components.getcomponents
+        with:
+          continuationToken: rest.continuationToken
+          repository: rest.repository
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadcomponent
+        description: Upload a single component
+        call: repository-components.uploadcomponent
+        with:
+          repository: rest.repository
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/components/{id}
+      name: v1-components-id
+      description: REST surface for v1-components-id.
+      operations:
+      - method: DELETE
+        name: deletecomponent
+        description: Delete a single component
+        call: repository-components.deletecomponent
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcomponentbyid
+        description: Get a single component
+        call: repository-components.getcomponentbyid
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: repository-components-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Sonatype Nexus Repository Manager — components. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-components
+      description: List components
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-components.getcomponents
+      with:
+        continuationToken: tools.continuationToken
+        repository: tools.repository
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-single-component
+      description: Upload a single component
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: repository-components.uploadcomponent
+      with:
+        repository: tools.repository
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-single-component
+      description: Delete a single component
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: repository-components.deletecomponent
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-single-component
+      description: Get a single component
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: repository-components.getcomponentbyid
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
