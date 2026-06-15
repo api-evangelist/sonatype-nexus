@@ -1,174 +1,89 @@
 aid: sonatype-nexus
 name: Sonatype Nexus
-description: Sonatype Nexus Repository Manager provides a comprehensive REST API for managing software artifacts, repositories,
-  and components across the software development lifecycle. It supports popular formats including Maven, npm, Docker, PyPI,
-  NuGet, RubyGems, Go, Helm, APT, Yum, Cargo, Terraform, R, Swift, and more. The API covers repository configuration, component
-  and asset management, security, blob stores, search, tasks, cleanup policies, staging, and system administration.
+description: >-
+  Sonatype Nexus Repository Manager provides a comprehensive REST API for managing software artifacts, repositories, and
+  components across the software development lifecycle. It supports popular formats including Maven, npm, Docker, PyPI,
+  NuGet, RubyGems, Go, Helm, APT, Yum, Cargo, Terraform, R, Swift, and more. The API covers repository configuration,
+  component and asset management, security, blob stores, search, tasks, cleanup policies, staging, and system
+  administration.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-- Artifact Management
-- DevOps
-- Package Management
-- Repository
-- Maven
-- npm
-- Docker
-- Software Supply Chain
+  - Artifact Management
+  - DevOps
+  - Package Management
+  - Repository
+  - Maven
+  - npm
+  - Docker
+  - Software Supply Chain
 url: https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: sonatype-nexus:nexus-repository-api
-  name: Nexus Repository API
-  description: REST API for Sonatype Nexus Repository Manager (v3.91.0) providing 238 endpoints for managing repositories
-    across many formats (Maven, npm, Docker, PyPI, NuGet, RubyGems, Go, Cargo, Helm, Terraform, R, APT, Yum, Raw, Swift, and
-    more), components, assets, blob stores (file, S3, Azure, GCS), security (users, roles, privileges, LDAP, SAML, Crowd),
-    search, tasks, cleanup policies, staging, and system administration. Authentication uses HTTP Basic Auth or User Tokens.
-  humanURL: https://help.sonatype.com/en/api-reference.html
-  baseURL: https://{nexus-host}/service/rest
-  tags:
-  - Artifact Management
-  - Components
-  - Repository
-  - Security
-  - Search
-  - Tasks
-  - Blob Store
-  - Maven
-  - npm
-  - Docker
-  properties:
-  - type: Documentation
-    url: https://help.sonatype.com/en/api-reference.html
-  - type: Reference
-    url: https://help.sonatype.com/en/rest-and-integration-api.html
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/openapi/sonatype-nexus-repository-openapi.yml
-  - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
-  - type: JSONSchema
-    url: https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
-  - type: NaftikoCapability
-    url: capabilities/repository-azure-blob-store.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-blob-store.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-capabilities.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-cleanup-policies.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-community-edition-eula.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-content-selectors.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-data-store.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-database-upgrade.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-email.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-formats.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-instance-configuration.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-lifecycle.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-malicious-risk-on-disk.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-manage-sonatype-http-system-settings.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-manage-sonatype-repository-firewall-configuration.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-monthly-metrics.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-product-licensing.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-reconcile-plan.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-recovery-mode.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-repository-management.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-routing-rules.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-script.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-search.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-anonymous-access.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-jwt.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-ldap.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-saml.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-saml-users.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-api-keys-principals-encryption.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-privileges.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-realms.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-roles.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-secrets-encryption.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-user-tokens.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-management-users.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-atlassian-crowd.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-security-certificates.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-staging.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-status.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-support.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-system-nodes.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-tags.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-tasks.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-assets.yaml
-  - type: NaftikoCapability
-    url: capabilities/repository-components.yaml
-  contact:
-  - FN: Sonatype Support
-    url: https://support.sonatype.com/
+  - aid: sonatype-nexus:nexus-repository-api
+    name: Nexus Repository API
+    description: >-
+      REST API for Sonatype Nexus Repository Manager (v3.91.0) providing 238 endpoints for managing repositories across
+      many formats (Maven, npm, Docker, PyPI, NuGet, RubyGems, Go, Cargo, Helm, Terraform, R, APT, Yum, Raw, Swift, and
+      more), components, assets, blob stores (file, S3, Azure, GCS), security (users, roles, privileges, LDAP, SAML,
+      Crowd), search, tasks, cleanup policies, staging, and system administration. Authentication uses HTTP Basic Auth
+      or User Tokens.
+    humanURL: https://help.sonatype.com/en/api-reference.html
+    baseURL: https://{nexus-host}/service/rest
+    tags:
+      - Artifact Management
+      - Components
+      - Repository
+      - Security
+      - Search
+      - Tasks
+      - Blob Store
+      - Maven
+      - npm
+      - Docker
+    properties:
+      - type: Documentation
+        url: https://help.sonatype.com/en/api-reference.html
+      - type: Reference
+        url: https://help.sonatype.com/en/rest-and-integration-api.html
+      - type: OpenAPI
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/openapi/sonatype-nexus-repository-openapi.yml
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+    contact:
+      - FN: Sonatype Support
+        url: https://support.sonatype.com/
 common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/sonatype
-- type: Portal
-  url: https://www.sonatype.com/products/sonatype-nexus-repository
-- type: Documentation
-  url: https://help.sonatype.com/en/sonatype-nexus-repository.html
-- type: Website
-  url: https://www.sonatype.com/
-- type: GitHub
-  url: https://github.com/sonatype-nexus-community
-- type: Blog
-  url: https://www.sonatype.com/blog
-- type: ChangeLog
-  url: https://help.sonatype.com/en/release-notes.html
-- type: Support
-  url: https://support.sonatype.com/
-- type: Pricing
-  url: https://www.sonatype.com/products/sonatype-nexus-repository/pricing
-- type: Integrations
-  url: https://www.sonatype.com/products/integrations
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/sonatype
+  - type: Portal
+    url: https://www.sonatype.com/products/sonatype-nexus-repository
+  - type: Documentation
+    url: https://help.sonatype.com/en/sonatype-nexus-repository.html
+  - type: Website
+    url: https://www.sonatype.com/
+  - type: GitHub
+    url: https://github.com/sonatype-nexus-community
+  - type: Blog
+    url: https://www.sonatype.com/blog
+  - type: ChangeLog
+    url: https://help.sonatype.com/en/release-notes.html
+  - type: Support
+    url: https://support.sonatype.com/
+  - type: Pricing
+    url: https://www.sonatype.com/products/sonatype-nexus-repository/pricing
+  - type: Integrations
+    url: https://www.sonatype.com/products/integrations
 integrations:
-- name: Buy with AWS
-- name: Microsoft Azure
+  - name: Buy with AWS
+  - name: Microsoft Azure
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

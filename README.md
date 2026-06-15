@@ -1,105 +1,75 @@
-# Sonatype Nexus
+# Sonatype Nexus (sonatype-nexus)
 
-Sonatype Nexus Repository Manager provides a comprehensive REST API for managing software artifacts, repositories, and components across the software development lifecycle. It supports popular formats including Maven, npm, Docker, PyPI, NuGet, RubyGems, Go, Helm, APT, Yum, Cargo, Terraform, R, Swift, and more.
+Sonatype Nexus Repository Manager provides a comprehensive REST API for managing software artifacts, repositories, and components across the software development lifecycle. It supports popular formats including Maven, npm, Docker, PyPI, NuGet, RubyGems, Go, Helm, APT, Yum, Cargo, Terraform, R, Swift, and more. The API covers repository configuration, component and asset management, security, blob stores, search, tasks, cleanup policies, staging, and system administration.
 
-**URL:** [https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
 
 ## Tags
 
-Artifact Management, DevOps, Package Management, Repository, Maven, npm, Docker, Software Supply Chain
+- Artifact Management
+- DevOps
+- Package Management
+- Repository
+- Maven
+- npm
+- Docker
+- Software Supply Chain
+
+## Timestamps
+
+- **Created:** 2026-03-16
+- **Modified:** 2026-05-19
 
 ## APIs
 
 ### Nexus Repository API
 
-REST API for Sonatype Nexus Repository Manager (v3.91.0) with 238 endpoints covering repositories (15+ formats), components, assets, blob stores (file, S3, Azure, GCS), security (users, roles, privileges, LDAP, SAML), search, tasks, cleanup policies, staging, and system administration.
+REST API for Sonatype Nexus Repository Manager (v3.91.0) providing 238 endpoints for managing repositories across many formats (Maven, npm, Docker, PyPI, NuGet, RubyGems, Go, Cargo, Helm, Terraform, R, APT, Yum, Raw, Swift, and more), components, assets, blob stores (file, S3, Azure, GCS), security (users, roles, privileges, LDAP, SAML, Crowd), search, tasks, cleanup policies, staging, and system administration. Authentication uses HTTP Basic Auth or User Tokens.
 
-**Human URL:** [https://help.sonatype.com/en/api-reference.html](https://help.sonatype.com/en/api-reference.html)
+- **Human URL:** [https://help.sonatype.com/en/api-reference.html](https://help.sonatype.com/en/api-reference.html)
+- **Base URL:** `https://{nexus-host}/service/rest`
 
 #### Tags
 
-Artifact Management, Components, Repository, Security, Search, Tasks, Blob Store, Maven, npm, Docker
+- Artifact Management
+- Components
+- Repository
+- Security
+- Search
+- Tasks
+- Blob Store
+- Maven
+- npm
+- Docker
 
 #### Properties
 
 - [Documentation](https://help.sonatype.com/en/api-reference.html)
 - [Reference](https://help.sonatype.com/en/rest-and-integration-api.html)
-- [OpenAPI](openapi/sonatype-nexus-repository-openapi.yml)
-- [JSON Schema - Component](json-schema/sonatype-nexus-component-schema.json)
-- [JSON Schema - Repository](json-schema/sonatype-nexus-repository-schema.json)
-
-## Artifacts
-
-### OpenAPI Specifications
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-repository-openapi.yml](openapi/sonatype-nexus-repository-openapi.yml) | Nexus Repository Manager REST API v3.91.0 (238 paths) |
-
-### JSON Schema
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-component-schema.json](json-schema/sonatype-nexus-component-schema.json) | Schema for Nexus component objects |
-| [sonatype-nexus-repository-schema.json](json-schema/sonatype-nexus-repository-schema.json) | Schema for Nexus repository objects |
-
-### JSON Structure
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-component-structure.json](json-structure/sonatype-nexus-component-structure.json) | Component structure documentation |
-
-### JSON-LD
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-context.jsonld](json-ld/sonatype-nexus-context.jsonld) | JSON-LD context for Nexus entities |
-
-### Examples
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-list-repositories-example.json](examples/sonatype-nexus-list-repositories-example.json) | List repositories example |
-| [sonatype-nexus-search-components-example.json](examples/sonatype-nexus-search-components-example.json) | Search components example |
-
-### Spectral Rules
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-rules.yml](rules/sonatype-nexus-rules.yml) | Spectral ruleset for Nexus API conventions |
-
-### Naftiko Capabilities
-
-#### Shared Definitions
-
-| File | Description |
-|---|---|
-| [shared/nexus-repository.yaml](capabilities/shared/nexus-repository.yaml) | Per-API capability definition for Nexus Repository API |
-
-#### Workflow Capabilities
-
-| File | Description | Tools |
-|---|---|---|
-| [artifact-management.yaml](capabilities/artifact-management.yaml) | Artifact lifecycle management for DevOps teams | 12 tools |
-| [security-administration.yaml](capabilities/security-administration.yaml) | Security and user administration for platform teams | 8 tools |
-
-### Vocabulary
-
-| File | Description |
-|---|---|
-| [sonatype-nexus-vocabulary.yml](vocabulary/sonatype-nexus-vocabulary.yml) | Nexus Repository vocabulary and domain terms |
+- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/openapi/sonatype-nexus-repository-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Postman Collection](collections/sonatype-nexus-repository.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/sonatype-nexus-repository.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
 ## Common Properties
 
+- [LinkedIn](https://www.linkedin.com/company/sonatype)
 - [Portal](https://www.sonatype.com/products/sonatype-nexus-repository)
 - [Documentation](https://help.sonatype.com/en/sonatype-nexus-repository.html)
 - [Website](https://www.sonatype.com/)
-- [GitHub](https://github.com/sonatype-nexus-community)
+- [Git Hub](https://github.com/sonatype-nexus-community)
 - [Blog](https://www.sonatype.com/blog)
 - [Changelog](https://help.sonatype.com/en/release-notes.html)
 - [Support](https://support.sonatype.com/)
+- [Pricing](https://www.sonatype.com/products/sonatype-nexus-repository/pricing)
+- [Integrations](https://www.sonatype.com/products/integrations)
 
 ## Maintainers
 
-**FN:** Kin Lane  
+**FN:** Kin Lane
 **Email:** kin@apievangelist.com
