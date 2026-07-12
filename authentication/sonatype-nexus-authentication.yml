@@ -1,0 +1,12 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sonatype-nexus-repository-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BasicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/sonatype-nexus-repository-openapi.yml
