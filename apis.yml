@@ -61,6 +61,8 @@ apis:
       - FN: Sonatype Support
         url: https://support.sonatype.com/
 common:
+  - type: AgenticAccess
+    url: agentic-access/sonatype-nexus-agentic-access.yml
   - type: DomainSecurity
     url: security/sonatype-nexus-domain-security.yml
   - type: Authentication
