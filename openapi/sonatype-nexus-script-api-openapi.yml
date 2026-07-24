@@ -1,0 +1,179 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Script API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Script
+paths:
+  /v1/script:
+    get:
+      operationId: browse
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ScriptXO'
+                type: array
+          description: successful operation
+      summary: List all stored scripts
+      tags:
+      - Script
+    post:
+      operationId: add
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScriptXO'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Script was added
+        '410':
+          content: {}
+          description: Script creation is disabled
+      summary: Add a new script
+      tags:
+      - Script
+      x-codegen-request-body-name: body
+  /v1/script/{name}:
+    delete:
+      operationId: delete_1
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Script was deleted
+        '404':
+          content: {}
+          description: No script with the specified name
+      summary: Delete stored script by name
+      tags:
+      - Script
+    get:
+      operationId: read
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScriptXO'
+          description: successful operation
+        '404':
+          content: {}
+          description: No script with the specified name
+      summary: Read stored script by name
+      tags:
+      - Script
+    put:
+      operationId: edit
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScriptXO'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Script was updated
+        '404':
+          content: {}
+          description: No script with the specified name
+        '410':
+          content: {}
+          description: Script updating is disabled
+      summary: Update stored script by name
+      tags:
+      - Script
+      x-codegen-request-body-name: body
+  /v1/script/{name}/run:
+    post:
+      operationId: run_1
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+          text/plain:
+            schema:
+              type: string
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScriptResultXO'
+          description: successful operation
+        '404':
+          content: {}
+          description: No script with the specified name
+        '500':
+          content: {}
+          description: Script execution failed with exception
+      summary: Run stored script by name
+      tags:
+      - Script
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    ScriptXO:
+      properties:
+        content:
+          type: string
+        name:
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        type:
+          type: string
+      type: object
+    ScriptResultXO:
+      properties:
+        name:
+          type: string
+        result:
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,75 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security Management: Anonymous Access API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security Management: Anonymous Access'
+paths:
+  /v1/security/anonymous:
+    get:
+      operationId: read_1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnonymousAccessSettingsXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to update settings
+      summary: Get Anonymous Access settings
+      tags:
+      - 'Security Management: Anonymous Access'
+    put:
+      operationId: update_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnonymousAccessSettingsXO'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnonymousAccessSettingsXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to update settings
+      summary: Update Anonymous Access settings
+      tags:
+      - 'Security Management: Anonymous Access'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    AnonymousAccessSettingsXO:
+      properties:
+        enabled:
+          description: Whether or not Anonymous Access is enabled
+          type: boolean
+        realmName:
+          description: The name of the authentication realm for the anonymous account
+          type: string
+        userId:
+          description: The username of the anonymous account
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

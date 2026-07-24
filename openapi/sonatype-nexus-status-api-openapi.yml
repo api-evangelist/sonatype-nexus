@@ -1,0 +1,188 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Status API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Status
+paths:
+  /beta/status/check/cluster:
+    get:
+      operationId: getClusterSystemStatusChecks
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SystemCheckResultsApiDTO'
+                type: array
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to retrieve system status checks
+      summary: Health check endpoint that returns the results of the system status checks
+      tags:
+      - Status
+  /beta/status/check/{nodeId}:
+    get:
+      operationId: getNodeSystemStatusChecks
+      parameters:
+      - description: Node Id
+        in: path
+        name: nodeId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content: {}
+          description: The system status check results
+        '404':
+          content: {}
+          description: System status information not found
+      summary: Health check endpoint that returns the results of the system status checks of specified Node
+      tags:
+      - Status
+  /v1/status:
+    get:
+      operationId: isAvailable
+      responses:
+        '200':
+          content: {}
+          description: Available to service requests
+        '503':
+          content: {}
+          description: Unavailable to service requests
+      summary: Health check endpoint that validates server can respond to read requests
+      tags:
+      - Status
+  /v1/status/check:
+    get:
+      operationId: getSystemStatusChecks
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  $ref: '#/components/schemas/Result'
+                type: object
+          description: The system status check results
+      summary: Health check endpoint that returns the results of the system status checks
+      tags:
+      - Status
+  /v1/status/writable:
+    get:
+      operationId: isWritable
+      responses:
+        '200':
+          content: {}
+          description: Available to service requests
+        '503':
+          content: {}
+          description: Unavailable to service requests
+      summary: Health check endpoint that validates server can respond to read and write requests
+      tags:
+      - Status
+components:
+  schemas:
+    SystemCheckResultsApiDTO:
+      properties:
+        hostname:
+          description: The hostname of the originating node
+          example: nexus01
+          type: string
+        nodeId:
+          description: A unique identifier for the node, should not be considered stable
+          type: string
+        results:
+          additionalProperties:
+            $ref: '#/components/schemas/SystemCheckResultDTO'
+          description: The system status check results
+          example: '{"Check": {"healthy": false, "message": "An explanation of the check"}}'
+          type: object
+      type: object
+    SystemCheckResultDTO:
+      properties:
+        healthy:
+          description: Whether the system check succeeded of failed
+          type: boolean
+        message:
+          description: A description of the success or failure
+          type: string
+      type: object
+    StackTraceElement:
+      properties:
+        classLoaderName:
+          type: string
+        className:
+          type: string
+        fileName:
+          type: string
+        lineNumber:
+          format: int32
+          type: integer
+        methodName:
+          type: string
+        moduleName:
+          type: string
+        moduleVersion:
+          type: string
+        nativeMethod:
+          type: boolean
+      type: object
+    Throwable:
+      properties:
+        cause:
+          $ref: '#/components/schemas/Throwable'
+        localizedMessage:
+          type: string
+        message:
+          type: string
+        stackTrace:
+          items:
+            $ref: '#/components/schemas/StackTraceElement'
+          type: array
+        suppressed:
+          items:
+            $ref: '#/components/schemas/Throwable'
+          type: array
+      type: object
+    Result:
+      properties:
+        details:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
+        duration:
+          format: int64
+          type: integer
+        error:
+          $ref: '#/components/schemas/Throwable'
+        healthy:
+          type: boolean
+        message:
+          type: string
+        time:
+          format: int64
+          type: integer
+        timestamp:
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

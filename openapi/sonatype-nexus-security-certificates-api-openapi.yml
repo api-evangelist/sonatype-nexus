@@ -1,0 +1,153 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security: certificates API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security: certificates'
+paths:
+  /v1/security/ssl:
+    get:
+      operationId: retrieveCertificate
+      parameters:
+      - description: The remote system's host name
+        in: query
+        name: host
+        required: true
+        schema:
+          type: string
+      - description: The port on the remote system to connect to
+        in: query
+        name: port
+        schema:
+          default: 443
+          format: int32
+          type: integer
+      - description: An optional hint of the protocol to try for the connection
+        in: query
+        name: protocolHint
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCertificate'
+          description: successful operation
+        '400':
+          content: {}
+          description: A certificate could not be retrieved, see the message for details.
+        '403':
+          content: {}
+          description: Insufficient permissions to retrieve remote certificate.
+      summary: Helper method to retrieve certificate details from a remote system.
+      tags:
+      - 'Security: certificates'
+  /v1/security/ssl/truststore:
+    get:
+      operationId: getTrustStoreCertificates
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApiCertificate'
+                type: array
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to list certificates in the trust store.
+      summary: Retrieve a list of certificates added to the trust store.
+      tags:
+      - 'Security: certificates'
+    post:
+      operationId: addCertificate
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+        description: The certificate to add encoded in PEM format
+        required: false
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCertificate'
+          description: The certificate was successfully added.
+        '403':
+          content: {}
+          description: Insufficient permissions to add certificate to the trust store.
+        '409':
+          content: {}
+          description: The certificate already exists in the system.
+      summary: Add a certificate to the trust store.
+      tags:
+      - 'Security: certificates'
+      x-codegen-request-body-name: body
+  /v1/security/ssl/truststore/{id}:
+    delete:
+      operationId: removeCertificate
+      parameters:
+      - description: The id of the certificate that should be removed.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '403':
+          content: {}
+          description: Insufficient permissions to remove certificate from the trust store
+      summary: Remove a certificate in the trust store.
+      tags:
+      - 'Security: certificates'
+components:
+  schemas:
+    ApiCertificate:
+      properties:
+        expiresOn:
+          format: int64
+          type: integer
+        fingerprint:
+          type: string
+        id:
+          type: string
+        issuedOn:
+          format: int64
+          type: integer
+        issuerCommonName:
+          type: string
+        issuerOrganization:
+          type: string
+        issuerOrganizationalUnit:
+          type: string
+        pem:
+          type: string
+        serialNumber:
+          type: string
+        subjectCommonName:
+          type: string
+        subjectOrganization:
+          type: string
+        subjectOrganizationalUnit:
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

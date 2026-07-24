@@ -1,0 +1,161 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Cleanup policies API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Cleanup policies
+paths:
+  /v1/cleanup-policies:
+    get:
+      operationId: getAll
+      responses:
+        '200':
+          content: {}
+          description: The list of existing policies
+      summary: Get a list of existing policies
+      tags:
+      - Cleanup policies
+    post:
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CleanupPolicyResourceXO'
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Policy was successfully created
+        '400':
+          content: {}
+          description: Given payload has invalid data
+        '409':
+          content: {}
+          description: Given policy name already exists
+      summary: Create a new policy
+      tags:
+      - Cleanup policies
+      x-codegen-request-body-name: body
+  /v1/cleanup-policies/{name}:
+    delete:
+      operationId: deletePolicyByName
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Given policy successfully deleted
+        '404':
+          content: {}
+          description: The policy with the given name not found
+      summary: Delete cleanup policy
+      tags:
+      - Cleanup policies
+    get:
+      operationId: getCleanupPolicyByName
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content: {}
+          description: Policy if exists
+      summary: Get a policy by name
+      tags:
+      - Cleanup policies
+  /v1/cleanup-policies/{policyName}:
+    put:
+      operationId: update_2
+      parameters:
+      - in: path
+        name: policyName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CleanupPolicyResourceXO'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Policy was successfully updated
+        '400':
+          content: {}
+          description: Given payload has invalid data
+        '404':
+          content: {}
+          description: Given policy name does not exist
+      summary: Update existing policy
+      tags:
+      - Cleanup policies
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    CleanupPolicyResourceXO:
+      properties:
+        criteriaAssetRegex:
+          description: asset name matcher (Remove components that have at least one asset name matching the following regular expression pattern:)
+          type: string
+        criteriaLastBlobUpdated:
+          description: component age (Components published over “x” days ago (e.g 1-999))
+          format: int64
+          type: integer
+        criteriaLastDownloaded:
+          description: component usage (Components downloaded in “x” amount of days (e.g 1-999))
+          format: int64
+          type: integer
+        criteriaReleaseType:
+          description: release type (Remove components that are of the following release type:)
+          enum:
+          - RELEASES
+          - PRERELEASES
+          - RELEASES_AND_PRERELEASES
+          type: string
+        format:
+          description: repository format
+          type: string
+        name:
+          description: policy name
+          maxLength: 255
+          minLength: 0
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        notes:
+          description: description
+          type: string
+        retain:
+          description: keep the latest "x" number of versions
+          format: int32
+          minimum: 1
+          type: integer
+      required:
+      - format
+      - name
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

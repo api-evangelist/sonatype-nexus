@@ -1,0 +1,459 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Instance configuration API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Instance configuration
+paths:
+  /v1/configuration:
+    get:
+      operationId: exportConfiguration
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstanceConfigurationXO'
+          description: Successful Operation
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Missing or invalid protocol version
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentication required
+        '403':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Insufficient permissions
+      summary: Export instance configuration
+      tags:
+      - Instance configuration
+    put:
+      operationId: applyConfiguration
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstanceConfigurationXO'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigurationApplyResponseXO'
+          description: Successful Operation
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Invalid request or missing/invalid protocol version
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentication required
+        '403':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Insufficient permissions
+      summary: Apply instance configuration
+      tags:
+      - Instance configuration
+      x-codegen-request-body-name: body
+  /v1/configuration/assets:
+    get:
+      operationId: getAssets_1
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      - description: A token returned by a prior request. If present, the next page of results are returned
+        in: query
+        name: continuationToken
+        schema:
+          type: string
+      - description: Repository from which you would like to retrieve assets.
+        in: query
+        name: repository
+        required: true
+        schema:
+          type: string
+      - description: Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp
+        in: query
+        name: newerThan
+        schema:
+          format: int64
+          type: integer
+      - description: Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp
+        in: query
+        name: olderThan
+        schema:
+          format: int64
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Page'
+          description: Successful Operation
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Missing or invalid protocol version
+        '403':
+          content: {}
+          description: Insufficient permissions to list assets
+        '422':
+          content: {}
+          description: Parameter 'repository' is required
+      summary: List assets
+      tags:
+      - Instance configuration
+  /v1/configuration/assets/{repositoryName}/import:
+    post:
+      operationId: importAsset
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      - description: Repository name to import assets to
+        in: path
+        name: repositoryName
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AssetImportResponseXO'
+                type: array
+          description: Assets imported successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Repository not found or missing/invalid protocol version
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentication required
+        '403':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Insufficient permissions
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Asset import failed
+      summary: Import assets to repository
+      tags:
+      - Instance configuration
+  /v1/configuration/cipher:
+    delete:
+      operationId: clearCipherPassword
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Cipher password cleared successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Missing or invalid protocol version
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentication required
+        '403':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Insufficient permissions
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Failed to clear cipher password
+      summary: Clear migration cipher password
+      tags:
+      - Instance configuration
+    post:
+      operationId: setCipherPassword
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        description: Cipher password as plain text
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Cipher password set successfully
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Missing password or invalid protocol version
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentication required
+        '403':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Insufficient permissions
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Failed to set cipher password
+      summary: Set migration cipher password for decrypting imported secrets
+      tags:
+      - Instance configuration
+      x-codegen-request-body-name: body
+  /v1/configuration/transfer-complete:
+    post:
+      operationId: transferComplete
+      parameters:
+      - description: Migration protocol version (must be '1')
+        in: header
+        name: X-Nexus-Migration-Protocol-Version
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransferCompleteXO'
+        description: Transfer completion notification data
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Transfer complete notification received
+        '400':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Missing notification data, repository name, or invalid protocol version
+        '401':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Authentication required
+        '403':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Insufficient permissions
+        '500':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: Failed to process notification
+      summary: Receive transfer complete notification from migrator
+      tags:
+      - Instance configuration
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    ApplyStatusXO:
+      properties:
+        entity:
+          type: string
+        message:
+          type: string
+        status:
+          enum:
+          - APPLIED
+          - NOT_APPLIED
+          - FAILED
+          type: string
+      type: object
+    InstanceConfigurationXO:
+      properties:
+        configurationXOs:
+          items:
+            $ref: '#/components/schemas/ConfigurationXO'
+          type: array
+      type: object
+    ConfigurationApplyResponseXO:
+      properties:
+        appliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        failedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        notAppliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+      type: object
+    AssetImportResponseXO:
+      properties:
+        assetId:
+          type: string
+        componentId:
+          type: string
+        errorMessage:
+          type: string
+        importTimestamp:
+          format: date-time
+          type: string
+        path:
+          type: string
+        repository:
+          type: string
+        status:
+          enum:
+          - SUCCESS
+          - SUCCESS_WITH_WARNINGS
+          - SKIPPED_ALREADY_EXISTS
+          - FAILED
+          type: string
+        warnings:
+          items:
+            type: string
+          type: array
+      type: object
+    ConfigurationXO:
+      properties:
+        configurationTypeId:
+          type: string
+      type: object
+    TransferCompleteXO:
+      properties:
+        failedAssetTransferCount:
+          format: int64
+          type: integer
+        message:
+          type: string
+        repositoryName:
+          type: string
+        skippedAssetTransferCount:
+          format: int64
+          type: integer
+        successful:
+          type: boolean
+        successfulAssetTransferCount:
+          format: int64
+          type: integer
+        timestamp:
+          format: int64
+          type: integer
+      type: object
+    Page:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            properties: {}
+            type: object
+          type: array
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,1273 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Search API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Search
+paths:
+  /v1/search:
+    get:
+      description: All searches require at least one criterion of at least three characters before a trailing wildcard (\*) and cannot start with a wildcard (\*). Enclose your criteria in quotation marks to search an exact phrase; otherwise, search criteria will be split by any commas, spaces, dashes, or forward slashes.
+      operationId: search
+      parameters:
+      - allowEmptyValue: true
+        description: A token returned by a prior request. If present, the next page of results are returned
+        in: query
+        name: continuationToken
+        schema:
+          type: string
+      - allowEmptyValue: true
+        description: The field to sort the results against, if left empty, a sort based on match weight will be used.
+        in: query
+        name: sort
+        schema:
+          enum:
+          - group
+          - name
+          - version
+          - repository
+          type: string
+      - allowEmptyValue: true
+        description: The direction to sort records in, defaults to ascending ('asc') for all sort fields, except version, which defaults to descending ('desc')
+        in: query
+        name: direction
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - allowEmptyValue: true
+        description: How long to wait for search results in seconds. If this value is not provided, the system default timeout will be used.
+        in: query
+        name: timeout
+        schema:
+          format: int32
+          type: integer
+      - description: Query by keyword
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Repository name
+        in: query
+        name: repository
+        schema:
+          type: string
+      - description: Query by format
+        in: query
+        name: format
+        schema:
+          type: string
+      - description: Component group
+        in: query
+        name: group
+        schema:
+          type: string
+      - description: Component name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Component version
+        in: query
+        name: version
+        schema:
+          type: string
+      - description: Prerelease version flag
+        in: query
+        name: prerelease
+        schema:
+          type: string
+      - description: Asset last modified time
+        in: query
+        name: last_updated
+        schema:
+          type: string
+      - description: Asset last modified time (UI)
+        in: query
+        name: lastBlobUpdated
+        schema:
+          type: string
+      - description: Specific MD5 hash of component's asset
+        in: query
+        name: md5
+        schema:
+          type: string
+      - description: Specific SHA-1 hash of component's asset
+        in: query
+        name: sha1
+        schema:
+          type: string
+      - description: Specific SHA-256 hash of component's asset
+        in: query
+        name: sha256
+        schema:
+          type: string
+      - description: Specific SHA-512 hash of component's asset
+        in: query
+        name: sha512
+        schema:
+          type: string
+      - description: Vendor
+        in: query
+        name: composer.vendor
+        schema:
+          type: string
+      - description: Package
+        in: query
+        name: composer.package
+        schema:
+          type: string
+      - description: Version
+        in: query
+        name: composer.version
+        schema:
+          type: string
+      - description: Conan base version
+        in: query
+        name: conan.baseVersion
+        schema:
+          type: string
+      - description: Conan channel
+        in: query
+        name: conan.channel
+        schema:
+          type: string
+      - description: Conan recipe revision
+        in: query
+        name: conan.revision
+        schema:
+          type: string
+      - description: Conan package id
+        in: query
+        name: conan.packageId
+        schema:
+          type: string
+      - description: Conan package revision
+        in: query
+        name: conan.packageRevision
+        schema:
+          type: string
+      - description: Conan base version strict
+        in: query
+        name: conan.baseVersion.strict
+        schema:
+          type: string
+      - description: Return latest revision
+        in: query
+        name: conan.revision.latest
+        schema:
+          type: string
+      - description: Conan arch
+        in: query
+        name: conan.settings.arch
+        schema:
+          type: string
+      - description: Conan os
+        in: query
+        name: conan.settings.os
+        schema:
+          type: string
+      - description: Conan compiler
+        in: query
+        name: conan.settings.compiler
+        schema:
+          type: string
+      - description: Conan compiler version
+        in: query
+        name: conan.settings.compiler.version
+        schema:
+          type: string
+      - description: Conan compiler runtime
+        in: query
+        name: conan.settings.compiler.runtime
+        schema:
+          type: string
+      - description: Docker image name
+        in: query
+        name: docker.imageName
+        schema:
+          type: string
+      - description: Docker image tag
+        in: query
+        name: docker.imageTag
+        schema:
+          type: string
+      - description: Docker layer ID
+        in: query
+        name: docker.layerId
+        schema:
+          type: string
+      - description: Docker content digest
+        in: query
+        name: docker.contentDigest
+        schema:
+          type: string
+      - description: Maven groupId
+        in: query
+        name: maven.groupId
+        schema:
+          type: string
+      - description: Maven artifactId
+        in: query
+        name: maven.artifactId
+        schema:
+          type: string
+      - description: Maven base version
+        in: query
+        name: maven.baseVersion
+        schema:
+          type: string
+      - description: Maven extension of component's asset
+        in: query
+        name: maven.extension
+        schema:
+          type: string
+      - description: Maven classifier of component's asset
+        in: query
+        name: maven.classifier
+        schema:
+          type: string
+      - description: Group asset version extension classifier
+        in: query
+        name: gavec
+        schema:
+          type: string
+      - description: npm scope
+        in: query
+        name: npm.scope
+        schema:
+          type: string
+      - description: npm author
+        in: query
+        name: npm.author
+        schema:
+          type: string
+      - description: npm description
+        in: query
+        name: npm.description
+        schema:
+          type: string
+      - description: npm keywords
+        in: query
+        name: npm.keywords
+        schema:
+          type: string
+      - description: npm license
+        in: query
+        name: npm.license
+        schema:
+          type: string
+      - description: npm tagged is
+        in: query
+        name: npm.tagged_is
+        schema:
+          type: string
+      - description: npm tagged not
+        in: query
+        name: npm.tagged_not
+        schema:
+          type: string
+      - description: NuGet id
+        in: query
+        name: nuget.id
+        schema:
+          type: string
+      - description: NuGet tags
+        in: query
+        name: nuget.tags
+        schema:
+          type: string
+      - description: NuGet title
+        in: query
+        name: nuget.title
+        schema:
+          type: string
+      - description: NuGet authors
+        in: query
+        name: nuget.authors
+        schema:
+          type: string
+      - description: NuGet description
+        in: query
+        name: nuget.description
+        schema:
+          type: string
+      - description: NuGet summary
+        in: query
+        name: nuget.summary
+        schema:
+          type: string
+      - description: NuGet prerelease
+        in: query
+        name: nuget.is_prerelease
+        schema:
+          type: string
+      - description: p2 plugin name
+        in: query
+        name: p2.pluginName
+        schema:
+          type: string
+      - description: PyPI classifiers
+        in: query
+        name: pypi.classifiers
+        schema:
+          type: string
+      - description: PyPI description
+        in: query
+        name: pypi.description
+        schema:
+          type: string
+      - description: PyPI keywords
+        in: query
+        name: pypi.keywords
+        schema:
+          type: string
+      - description: PyPI summary
+        in: query
+        name: pypi.summary
+        schema:
+          type: string
+      - description: RubyGems description
+        in: query
+        name: rubygems.description
+        schema:
+          type: string
+      - description: RubyGems platform
+        in: query
+        name: rubygems.platform
+        schema:
+          type: string
+      - description: RubyGems summary
+        in: query
+        name: rubygems.summary
+        schema:
+          type: string
+      - description: swift scope
+        in: query
+        name: swift.scope
+        schema:
+          type: string
+      - description: swift asset kind
+        in: query
+        name: swift.asset_kind
+        schema:
+          type: string
+      - description: Component tag
+        in: query
+        name: tag
+        schema:
+          type: string
+      - description: terraform provider
+        in: query
+        name: terraform.provider
+        schema:
+          type: string
+      - description: terraform namespace
+        in: query
+        name: terraform.namespace
+        schema:
+          type: string
+      - description: terraform name
+        in: query
+        name: terraform.name
+        schema:
+          type: string
+      - description: Yum architecture
+        in: query
+        name: yum.architecture
+        schema:
+          type: string
+      - description: Yum package name
+        in: query
+        name: yum.name
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageComponentXO'
+          description: successful operation
+      summary: Search components
+      tags:
+      - Search
+  /v1/search/assets:
+    get:
+      description: All searches require at least one criterion of at least three characters before a trailing wildcard (\*) and cannot start with a wildcard (\*). Enclose your criteria in quotation marks to search an exact phrase; otherwise, search criteria will be split by any commas, spaces, dashes, or forward slashes.
+      operationId: searchAssets
+      parameters:
+      - description: A token returned by a prior request. If present, the next page of results are returned
+        in: query
+        name: continuationToken
+        schema:
+          type: string
+      - allowEmptyValue: true
+        description: The field to sort the results against, if left empty, a sort based on match weight will be used.
+        in: query
+        name: sort
+        schema:
+          enum:
+          - group
+          - name
+          - version
+          - repository
+          type: string
+      - allowEmptyValue: true
+        description: The direction to sort records in, defaults to ascending ('asc') for all sort fields, except version, which defaults to descending ('desc')
+        in: query
+        name: direction
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - allowEmptyValue: true
+        description: How long to wait for search results in seconds. If this value is not provided, the system default timeout will be used.
+        in: query
+        name: timeout
+        schema:
+          format: int32
+          type: integer
+      - description: Query by keyword
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Repository name
+        in: query
+        name: repository
+        schema:
+          type: string
+      - description: Query by format
+        in: query
+        name: format
+        schema:
+          type: string
+      - description: Component group
+        in: query
+        name: group
+        schema:
+          type: string
+      - description: Component name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Component version
+        in: query
+        name: version
+        schema:
+          type: string
+      - description: Prerelease version flag
+        in: query
+        name: prerelease
+        schema:
+          type: string
+      - description: Asset last modified time
+        in: query
+        name: last_updated
+        schema:
+          type: string
+      - description: Asset last modified time (UI)
+        in: query
+        name: lastBlobUpdated
+        schema:
+          type: string
+      - description: Specific MD5 hash of component's asset
+        in: query
+        name: md5
+        schema:
+          type: string
+      - description: Specific SHA-1 hash of component's asset
+        in: query
+        name: sha1
+        schema:
+          type: string
+      - description: Specific SHA-256 hash of component's asset
+        in: query
+        name: sha256
+        schema:
+          type: string
+      - description: Specific SHA-512 hash of component's asset
+        in: query
+        name: sha512
+        schema:
+          type: string
+      - description: Vendor
+        in: query
+        name: composer.vendor
+        schema:
+          type: string
+      - description: Package
+        in: query
+        name: composer.package
+        schema:
+          type: string
+      - description: Version
+        in: query
+        name: composer.version
+        schema:
+          type: string
+      - description: Conan base version
+        in: query
+        name: conan.baseVersion
+        schema:
+          type: string
+      - description: Conan channel
+        in: query
+        name: conan.channel
+        schema:
+          type: string
+      - description: Conan recipe revision
+        in: query
+        name: conan.revision
+        schema:
+          type: string
+      - description: Conan package id
+        in: query
+        name: conan.packageId
+        schema:
+          type: string
+      - description: Conan package revision
+        in: query
+        name: conan.packageRevision
+        schema:
+          type: string
+      - description: Conan base version strict
+        in: query
+        name: conan.baseVersion.strict
+        schema:
+          type: string
+      - description: Return latest revision
+        in: query
+        name: conan.revision.latest
+        schema:
+          type: string
+      - description: Conan arch
+        in: query
+        name: conan.settings.arch
+        schema:
+          type: string
+      - description: Conan os
+        in: query
+        name: conan.settings.os
+        schema:
+          type: string
+      - description: Conan compiler
+        in: query
+        name: conan.settings.compiler
+        schema:
+          type: string
+      - description: Conan compiler version
+        in: query
+        name: conan.settings.compiler.version
+        schema:
+          type: string
+      - description: Conan compiler runtime
+        in: query
+        name: conan.settings.compiler.runtime
+        schema:
+          type: string
+      - description: Docker image name
+        in: query
+        name: docker.imageName
+        schema:
+          type: string
+      - description: Docker image tag
+        in: query
+        name: docker.imageTag
+        schema:
+          type: string
+      - description: Docker layer ID
+        in: query
+        name: docker.layerId
+        schema:
+          type: string
+      - description: Docker content digest
+        in: query
+        name: docker.contentDigest
+        schema:
+          type: string
+      - description: Maven groupId
+        in: query
+        name: maven.groupId
+        schema:
+          type: string
+      - description: Maven artifactId
+        in: query
+        name: maven.artifactId
+        schema:
+          type: string
+      - description: Maven base version
+        in: query
+        name: maven.baseVersion
+        schema:
+          type: string
+      - description: Maven extension of component's asset
+        in: query
+        name: maven.extension
+        schema:
+          type: string
+      - description: Maven classifier of component's asset
+        in: query
+        name: maven.classifier
+        schema:
+          type: string
+      - description: Group asset version extension classifier
+        in: query
+        name: gavec
+        schema:
+          type: string
+      - description: npm scope
+        in: query
+        name: npm.scope
+        schema:
+          type: string
+      - description: npm author
+        in: query
+        name: npm.author
+        schema:
+          type: string
+      - description: npm description
+        in: query
+        name: npm.description
+        schema:
+          type: string
+      - description: npm keywords
+        in: query
+        name: npm.keywords
+        schema:
+          type: string
+      - description: npm license
+        in: query
+        name: npm.license
+        schema:
+          type: string
+      - description: npm tagged is
+        in: query
+        name: npm.tagged_is
+        schema:
+          type: string
+      - description: npm tagged not
+        in: query
+        name: npm.tagged_not
+        schema:
+          type: string
+      - description: NuGet id
+        in: query
+        name: nuget.id
+        schema:
+          type: string
+      - description: NuGet tags
+        in: query
+        name: nuget.tags
+        schema:
+          type: string
+      - description: NuGet title
+        in: query
+        name: nuget.title
+        schema:
+          type: string
+      - description: NuGet authors
+        in: query
+        name: nuget.authors
+        schema:
+          type: string
+      - description: NuGet description
+        in: query
+        name: nuget.description
+        schema:
+          type: string
+      - description: NuGet summary
+        in: query
+        name: nuget.summary
+        schema:
+          type: string
+      - description: NuGet prerelease
+        in: query
+        name: nuget.is_prerelease
+        schema:
+          type: string
+      - description: p2 plugin name
+        in: query
+        name: p2.pluginName
+        schema:
+          type: string
+      - description: PyPI classifiers
+        in: query
+        name: pypi.classifiers
+        schema:
+          type: string
+      - description: PyPI description
+        in: query
+        name: pypi.description
+        schema:
+          type: string
+      - description: PyPI keywords
+        in: query
+        name: pypi.keywords
+        schema:
+          type: string
+      - description: PyPI summary
+        in: query
+        name: pypi.summary
+        schema:
+          type: string
+      - description: RubyGems description
+        in: query
+        name: rubygems.description
+        schema:
+          type: string
+      - description: RubyGems platform
+        in: query
+        name: rubygems.platform
+        schema:
+          type: string
+      - description: RubyGems summary
+        in: query
+        name: rubygems.summary
+        schema:
+          type: string
+      - description: swift scope
+        in: query
+        name: swift.scope
+        schema:
+          type: string
+      - description: swift asset kind
+        in: query
+        name: swift.asset_kind
+        schema:
+          type: string
+      - description: Component tag
+        in: query
+        name: tag
+        schema:
+          type: string
+      - description: terraform provider
+        in: query
+        name: terraform.provider
+        schema:
+          type: string
+      - description: terraform namespace
+        in: query
+        name: terraform.namespace
+        schema:
+          type: string
+      - description: terraform name
+        in: query
+        name: terraform.name
+        schema:
+          type: string
+      - description: Yum architecture
+        in: query
+        name: yum.architecture
+        schema:
+          type: string
+      - description: Yum package name
+        in: query
+        name: yum.name
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAssetXO'
+          description: successful operation
+      summary: Search assets
+      tags:
+      - Search
+  /v1/search/assets/download:
+    get:
+      description: Returns a 302 Found with location header field set to download URL. Unless a sort parameter is supplied, the search must return a single asset to receive download URL.
+      operationId: searchAndDownloadAssets
+      parameters:
+      - allowEmptyValue: true
+        description: The field to sort the results against, if left empty and more than 1 result is returned, the request will fail.
+        in: query
+        name: sort
+        schema:
+          enum:
+          - group
+          - name
+          - version
+          - repository
+          type: string
+      - allowEmptyValue: true
+        description: The direction to sort records in, defaults to ascending ('asc') for all sort fields, except version, which defaults to descending ('desc')
+        in: query
+        name: direction
+        schema:
+          enum:
+          - asc
+          - desc
+          type: string
+      - allowEmptyValue: true
+        description: How long to wait for search results in seconds. If this value is not provided, the system default timeout will be used.
+        in: query
+        name: timeout
+        schema:
+          format: int32
+          type: integer
+      - description: Query by keyword
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Repository name
+        in: query
+        name: repository
+        schema:
+          type: string
+      - description: Query by format
+        in: query
+        name: format
+        schema:
+          type: string
+      - description: Component group
+        in: query
+        name: group
+        schema:
+          type: string
+      - description: Component name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Component version
+        in: query
+        name: version
+        schema:
+          type: string
+      - description: Prerelease version flag
+        in: query
+        name: prerelease
+        schema:
+          type: string
+      - description: Asset last modified time
+        in: query
+        name: last_updated
+        schema:
+          type: string
+      - description: Asset last modified time (UI)
+        in: query
+        name: lastBlobUpdated
+        schema:
+          type: string
+      - description: Specific MD5 hash of component's asset
+        in: query
+        name: md5
+        schema:
+          type: string
+      - description: Specific SHA-1 hash of component's asset
+        in: query
+        name: sha1
+        schema:
+          type: string
+      - description: Specific SHA-256 hash of component's asset
+        in: query
+        name: sha256
+        schema:
+          type: string
+      - description: Specific SHA-512 hash of component's asset
+        in: query
+        name: sha512
+        schema:
+          type: string
+      - description: Vendor
+        in: query
+        name: composer.vendor
+        schema:
+          type: string
+      - description: Package
+        in: query
+        name: composer.package
+        schema:
+          type: string
+      - description: Version
+        in: query
+        name: composer.version
+        schema:
+          type: string
+      - description: Conan base version
+        in: query
+        name: conan.baseVersion
+        schema:
+          type: string
+      - description: Conan channel
+        in: query
+        name: conan.channel
+        schema:
+          type: string
+      - description: Conan recipe revision
+        in: query
+        name: conan.revision
+        schema:
+          type: string
+      - description: Conan package id
+        in: query
+        name: conan.packageId
+        schema:
+          type: string
+      - description: Conan package revision
+        in: query
+        name: conan.packageRevision
+        schema:
+          type: string
+      - description: Conan base version strict
+        in: query
+        name: conan.baseVersion.strict
+        schema:
+          type: string
+      - description: Return latest revision
+        in: query
+        name: conan.revision.latest
+        schema:
+          type: string
+      - description: Conan arch
+        in: query
+        name: conan.settings.arch
+        schema:
+          type: string
+      - description: Conan os
+        in: query
+        name: conan.settings.os
+        schema:
+          type: string
+      - description: Conan compiler
+        in: query
+        name: conan.settings.compiler
+        schema:
+          type: string
+      - description: Conan compiler version
+        in: query
+        name: conan.settings.compiler.version
+        schema:
+          type: string
+      - description: Conan compiler runtime
+        in: query
+        name: conan.settings.compiler.runtime
+        schema:
+          type: string
+      - description: Docker image name
+        in: query
+        name: docker.imageName
+        schema:
+          type: string
+      - description: Docker image tag
+        in: query
+        name: docker.imageTag
+        schema:
+          type: string
+      - description: Docker layer ID
+        in: query
+        name: docker.layerId
+        schema:
+          type: string
+      - description: Docker content digest
+        in: query
+        name: docker.contentDigest
+        schema:
+          type: string
+      - description: Maven groupId
+        in: query
+        name: maven.groupId
+        schema:
+          type: string
+      - description: Maven artifactId
+        in: query
+        name: maven.artifactId
+        schema:
+          type: string
+      - description: Maven base version
+        in: query
+        name: maven.baseVersion
+        schema:
+          type: string
+      - description: Maven extension of component's asset
+        in: query
+        name: maven.extension
+        schema:
+          type: string
+      - description: Maven classifier of component's asset
+        in: query
+        name: maven.classifier
+        schema:
+          type: string
+      - description: Group asset version extension classifier
+        in: query
+        name: gavec
+        schema:
+          type: string
+      - description: npm scope
+        in: query
+        name: npm.scope
+        schema:
+          type: string
+      - description: npm author
+        in: query
+        name: npm.author
+        schema:
+          type: string
+      - description: npm description
+        in: query
+        name: npm.description
+        schema:
+          type: string
+      - description: npm keywords
+        in: query
+        name: npm.keywords
+        schema:
+          type: string
+      - description: npm license
+        in: query
+        name: npm.license
+        schema:
+          type: string
+      - description: npm tagged is
+        in: query
+        name: npm.tagged_is
+        schema:
+          type: string
+      - description: npm tagged not
+        in: query
+        name: npm.tagged_not
+        schema:
+          type: string
+      - description: NuGet id
+        in: query
+        name: nuget.id
+        schema:
+          type: string
+      - description: NuGet tags
+        in: query
+        name: nuget.tags
+        schema:
+          type: string
+      - description: NuGet title
+        in: query
+        name: nuget.title
+        schema:
+          type: string
+      - description: NuGet authors
+        in: query
+        name: nuget.authors
+        schema:
+          type: string
+      - description: NuGet description
+        in: query
+        name: nuget.description
+        schema:
+          type: string
+      - description: NuGet summary
+        in: query
+        name: nuget.summary
+        schema:
+          type: string
+      - description: NuGet prerelease
+        in: query
+        name: nuget.is_prerelease
+        schema:
+          type: string
+      - description: p2 plugin name
+        in: query
+        name: p2.pluginName
+        schema:
+          type: string
+      - description: PyPI classifiers
+        in: query
+        name: pypi.classifiers
+        schema:
+          type: string
+      - description: PyPI description
+        in: query
+        name: pypi.description
+        schema:
+          type: string
+      - description: PyPI keywords
+        in: query
+        name: pypi.keywords
+        schema:
+          type: string
+      - description: PyPI summary
+        in: query
+        name: pypi.summary
+        schema:
+          type: string
+      - description: RubyGems description
+        in: query
+        name: rubygems.description
+        schema:
+          type: string
+      - description: RubyGems platform
+        in: query
+        name: rubygems.platform
+        schema:
+          type: string
+      - description: RubyGems summary
+        in: query
+        name: rubygems.summary
+        schema:
+          type: string
+      - description: swift scope
+        in: query
+        name: swift.scope
+        schema:
+          type: string
+      - description: swift asset kind
+        in: query
+        name: swift.asset_kind
+        schema:
+          type: string
+      - description: Component tag
+        in: query
+        name: tag
+        schema:
+          type: string
+      - description: terraform provider
+        in: query
+        name: terraform.provider
+        schema:
+          type: string
+      - description: terraform namespace
+        in: query
+        name: terraform.namespace
+        schema:
+          type: string
+      - description: terraform name
+        in: query
+        name: terraform.name
+        schema:
+          type: string
+      - description: Yum architecture
+        in: query
+        name: yum.architecture
+        schema:
+          type: string
+      - description: Yum package name
+        in: query
+        name: yum.name
+        schema:
+          type: string
+      responses:
+        '400':
+          content: {}
+          description: ValidationErrorXO{id='*', message='Search returned multiple assets, please refine search criteria to find a single asset or use the sort query parameter to retrieve the first result.'}
+        '404':
+          content: {}
+          description: Asset search returned no results
+      summary: Search and download asset
+      tags:
+      - Search
+components:
+  schemas:
+    AssetXO:
+      properties:
+        blobCreated:
+          format: date-time
+          type: string
+        blobRef:
+          type: string
+        blobStoreName:
+          type: string
+        blobUpdated:
+          format: date-time
+          type: string
+        checksum:
+          additionalProperties:
+            type: string
+          type: object
+        contentType:
+          type: string
+        downloadUrl:
+          type: string
+        fileSize:
+          format: int64
+          type: integer
+        format:
+          type: string
+        id:
+          type: string
+        lastDownloaded:
+          format: date-time
+          type: string
+        lastModified:
+          format: date-time
+          type: string
+        lastVerified:
+          format: date-time
+          type: string
+        path:
+          type: string
+        repository:
+          type: string
+        uploader:
+          type: string
+        uploaderIp:
+          type: string
+      type: object
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+      type: object
+    ComponentXO:
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+        extraJsonAttributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
+        format:
+          type: string
+        group:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        repository:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        version:
+          type: string
+      type: object
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

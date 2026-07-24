@@ -1,0 +1,206 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Capabilities API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Capabilities
+paths:
+  /v1/capabilities:
+    get:
+      operationId: list_1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CapabilityDTO'
+                type: array
+          description: successful operation
+      summary: List the active capabilities
+      tags:
+      - Capabilities
+    post:
+      operationId: create_4
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapabilityDTO'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapabilityDTO'
+          description: successful operation
+      summary: Create a capability
+      tags:
+      - Capabilities
+      x-codegen-request-body-name: body
+  /v1/capabilities/types:
+    get:
+      operationId: getTypes
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CapabilityType'
+                type: array
+          description: successful operation
+      summary: List all capability types available and exposed in the system
+      tags:
+      - Capabilities
+  /v1/capabilities/{capabilityId}:
+    delete:
+      operationId: delete_5
+      parameters:
+      - description: capabilityId
+        in: path
+        name: capabilityId
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Delete a capability
+      tags:
+      - Capabilities
+    put:
+      operationId: update_3
+      parameters:
+      - description: capabilityId
+        in: path
+        name: capabilityId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapabilityDTO'
+        description: capability
+        required: false
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Update a capability
+      tags:
+      - Capabilities
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    CapabilityDTO:
+      properties:
+        enabled:
+          type: boolean
+        id:
+          type: string
+        notes:
+          type: string
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+        type:
+          type: string
+      type: object
+    CapabilityType:
+      properties:
+        about:
+          description: Description of the capability type
+          type: string
+        formFields:
+          description: Form fields configuration for this capability type
+          items:
+            $ref: '#/components/schemas/FormField'
+          type: array
+        id:
+          description: Capability type identifier
+          type: string
+        name:
+          description: Display name of the capability type
+          type: string
+      type: object
+    FormField:
+      properties:
+        allowAutocomplete:
+          description: Whether autocomplete is enabled for this field
+          type: boolean
+        attributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          description: Additional attributes for the field
+          type: object
+        disabled:
+          description: Whether the field is disabled
+          type: boolean
+        helpText:
+          description: Help text shown to users
+          type: string
+        id:
+          description: Field identifier
+          type: string
+        idMapping:
+          description: Property path for the ID field in store API response
+          type: string
+        initialValue:
+          description: Initial value for the field
+          type: string
+        label:
+          description: Display label for the field
+          type: string
+        maximumValue:
+          description: Maximum value (for number fields)
+          type: string
+        minimumValue:
+          description: Minimum value (for number fields)
+          type: string
+        nameMapping:
+          description: Property path for the name/display field in store API response
+          type: string
+        readOnly:
+          description: Whether the field is read-only
+          type: boolean
+        regexValidation:
+          description: Regular expression for field validation
+          type: string
+        required:
+          description: Whether the field is required
+          type: boolean
+        storeApi:
+          description: API endpoint for fetching selectable options
+          type: string
+        storeFilters:
+          additionalProperties:
+            type: string
+          description: Filters to apply when fetching options from the store API
+          type: object
+        type:
+          description: Field type (e.g., string, password, number, checkbox, combobox)
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

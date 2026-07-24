@@ -1,0 +1,149 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Email API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Email
+paths:
+  /v1/email:
+    delete:
+      operationId: deleteEmailConfiguration
+      responses:
+        '204':
+          content: {}
+          description: Email configuration was successfully cleared
+      summary: Disable and clear the email configuration
+      tags:
+      - Email
+    get:
+      operationId: getEmailConfiguration
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEmailConfiguration'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to retrieve the email configuration
+      summary: Retrieve the current email configuration
+      tags:
+      - Email
+    put:
+      operationId: setEmailConfiguration
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/ApiEmailConfiguration'
+        required: true
+      responses:
+        '204':
+          content: {}
+          description: Email configuration was successfully updated
+        '400':
+          content: {}
+          description: Invalid request
+        '403':
+          content: {}
+          description: Insufficient permissions to update the email configuration
+      summary: Set the current email configuration
+      tags:
+      - Email
+      x-codegen-request-body-name: body
+  /v1/email/verify:
+    post:
+      operationId: testEmailConfiguration
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: string
+        description: An email address to send a test email to
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiEmailValidation'
+          description: Test email was sent successfully
+        '400':
+          content:
+            application/json:
+              example:
+                message: string
+                success: false
+              schema:
+                $ref: '#/components/schemas/ApiEmailValidation'
+          description: There was a problem sending the test email
+        '403':
+          content: {}
+          description: Insufficient permissions to verify the email configuration
+      summary: Send a test email to the email address provided in the request body
+      tags:
+      - Email
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    ApiEmailValidation:
+      properties:
+        reason:
+          type: string
+        success:
+          type: boolean
+      type: object
+    ApiEmailConfiguration:
+      properties:
+        enabled:
+          type: boolean
+        fromAddress:
+          example: nexus@example.org
+          type: string
+        host:
+          type: string
+        nexusTrustStoreEnabled:
+          description: Use the Nexus Repository Manager's certificate truststore
+          type: boolean
+        password:
+          type: string
+        port:
+          format: int32
+          type: integer
+        sslOnConnectEnabled:
+          description: Enable SSL/TLS Encryption upon Connection
+          type: boolean
+        sslServerIdentityCheckEnabled:
+          description: Verify the server certificate when using TLS or SSL
+          type: boolean
+        startTlsEnabled:
+          description: Enable STARTTLS Support for Insecure Connections
+          type: boolean
+        startTlsRequired:
+          description: Require STARTTLS Support
+          type: boolean
+        subjectPrefix:
+          description: A prefix to add to all email subjects to aid in identifying automated emails
+          type: string
+        username:
+          type: string
+      required:
+      - port
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

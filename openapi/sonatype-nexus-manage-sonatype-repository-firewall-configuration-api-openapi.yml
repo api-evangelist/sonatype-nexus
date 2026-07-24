@@ -1,0 +1,213 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Manage Sonatype Repository Firewall configuration API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Manage Sonatype Repository Firewall configuration
+paths:
+  /v1/iq:
+    get:
+      operationId: getConfiguration
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IqConnectionXo'
+          description: Sonatype Repository Firewall configuration returned
+      summary: Get Sonatype Repository Firewall configuration
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+    put:
+      operationId: updateConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IqConnectionXo'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Sonatype Repository Firewall configuration has been updated
+      summary: Update Sonatype Repository Firewall configuration
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+      x-codegen-request-body-name: body
+  /v1/iq/audit:
+    get:
+      operationId: getAllAuditStatus
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IqAuditXo'
+                type: array
+          description: Successful Operation
+      summary: List repositories audit statuses.
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+    put:
+      operationId: manageAudit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IqAuditXo'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Repository audit is successfully updated
+        '400':
+          content: {}
+          description: Given repository is not a proxy
+        '404':
+          content: {}
+          description: Given repository not found
+      summary: Manage audit
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+      x-codegen-request-body-name: body
+  /v1/iq/audit/{repositoryName}:
+    get:
+      operationId: getAuditStatus
+      parameters:
+      - in: path
+        name: repositoryName
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          content: {}
+          description: Given repository is not a proxy
+        '404':
+          content: {}
+          description: Given repository not found
+      summary: Get audit status for the repository
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+  /v1/iq/disable:
+    post:
+      operationId: disableIq
+      responses:
+        '204':
+          content: {}
+          description: Sonatype Repository Firewall has been disabled
+        '400':
+          content: {}
+          description: Sonatype Repository Firewall connection not configured
+      summary: Disable Sonatype Repository Firewall
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+  /v1/iq/enable:
+    post:
+      operationId: enableIq
+      responses:
+        '204':
+          content: {}
+          description: Sonatype Repository Firewall has been enabled
+        '400':
+          content: {}
+          description: Sonatype Repository Firewall connection not configured
+      summary: Enable Sonatype Repository Firewall
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+  /v1/iq/verify-connection:
+    post:
+      operationId: verifyIqConnection
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IqConnectionVerificationXo'
+          description: Connection verification complete, check response body for result
+      summary: Verify Sonatype Repository Firewall connection
+      tags:
+      - Manage Sonatype Repository Firewall configuration
+components:
+  schemas:
+    IqConnectionVerificationXo:
+      properties:
+        reason:
+          type: string
+        success:
+          type: boolean
+      type: object
+    IqAuditXo:
+      properties:
+        enabled:
+          description: is audit enabled
+          type: boolean
+        enabledQuarantine:
+          description: is quarantine enabled
+          type: boolean
+        repositoryName:
+          description: repository name
+          type: string
+      required:
+      - enabledQuarantine
+      - repositoryName
+      type: object
+    IqConnectionXo:
+      properties:
+        authenticationType:
+          description: Authentication method
+          enum:
+          - USER
+          - PKI
+          type: string
+        enabled:
+          description: Whether to use Sonatype Repository Firewall
+          type: boolean
+        failOpenModeEnabled:
+          description: Allow by default when quarantine is enabled and the IQ connection fails
+          example: false
+          type: boolean
+        password:
+          description: Credentials for the Sonatype Repository Firewall User
+          type: string
+        properties:
+          description: Additional properties to configure for Sonatype Repository Firewall
+          type: string
+        showLink:
+          description: Show Sonatype Repository Firewall link in Browse menu when server is enabled
+          type: boolean
+        timeoutSeconds:
+          description: Seconds to wait for activity before stopping and retrying the connection. Leave blank to use the globally defined HTTP timeout.
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        url:
+          description: The address of your Sonatype Repository Firewall
+          type: string
+        useTrustStoreForUrl:
+          description: Use certificates stored in the Nexus Repository Manager truststore to connect to Sonatype Repository Firewall
+          type: boolean
+        username:
+          description: User with access to Sonatype Repository Firewall
+          type: string
+      required:
+      - authenticationType
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

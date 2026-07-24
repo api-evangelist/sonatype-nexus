@@ -1,0 +1,65 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Community Edition Eula API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Community Edition Eula
+paths:
+  /v1/system/eula:
+    get:
+      operationId: getCommunityEulaStatus
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepted: false
+                disclaimer: Use of Sonatype Nexus Repository - Community Edition is governed by the End User License Agreement at https://links.sonatype.com/products/nxrm/ce-eula. By returning the value from ‘accepted:false’ to ‘accepted:true’, you acknowledge that you have read and agree to the End User License Agreement at https://links.sonatype.com/products/nxrm/ce-eula.
+          description: Successful response
+      summary: Get the current Community Eula status.
+      tags:
+      - Community Edition Eula
+    post:
+      operationId: setEulaAcceptedCE
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EulaStatus'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: EULA status set successfully
+        '500':
+          content: {}
+          description: Incorrect EULA Status
+      summary: Set the Community Eula status.
+      tags:
+      - Community Edition Eula
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    EulaStatus:
+      properties:
+        accepted:
+          type: boolean
+        disclaimer:
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,56 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Malicious Risk On Disk API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Malicious Risk On Disk
+paths:
+  /v1/malicious-risk/enabledRegistries:
+    get:
+      operationId: getEnabledRegistries
+      responses:
+        '200':
+          content: {}
+          description: RHC Enabled registries returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Get RHC Enabled registries for malicious risk scanning.
+      tags:
+      - Malicious Risk On Disk
+  /v1/malicious-risk/risk-on-disk:
+    get:
+      operationId: getMaliciousRiskOnDiskCount
+      responses:
+        '200':
+          content: {}
+          description: Malicious Risk On Disk Count returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Get Malicious Risk On Disk Count
+      tags:
+      - Malicious Risk On Disk
+components:
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

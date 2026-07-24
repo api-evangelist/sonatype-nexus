@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Azure blob store API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Azure blob store
+paths:
+  /v1/azureblobstore/test-connection:
+    post:
+      operationId: verifyConnection_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureConnectionXO'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Azure Blob Store connection was successful
+        '400':
+          content: {}
+          description: Azure Blob Store connection failed
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Verify connection using supplied Azure Blob Store settings
+      tags:
+      - Azure blob store
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    AzureConnectionXO:
+      properties:
+        accountKey:
+          type: string
+        accountName:
+          type: string
+        authenticationMethod:
+          type: string
+        containerName:
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

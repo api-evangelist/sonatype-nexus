@@ -1,0 +1,81 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Database Upgrade API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Database Upgrade
+paths:
+  /v1/clustered/upgrade-database-schema:
+    delete:
+      operationId: clearResult
+      responses:
+        '204':
+          content: {}
+          description: An error was successfully cleared or no errors were stored.
+        '400':
+          content: {}
+          description: An error exists which cannot be cleared. Contact support for assistance.
+      summary: Clears a stored database schema upgrade success or a recoverable error
+      tags:
+      - Database Upgrade
+    get:
+      operationId: getProgress
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiClusterDatabaseMigrationResultDTO'
+          description: See the response body for database schema upgrade details.
+      summary: Check the progress of a database schema upgrade
+      tags:
+      - Database Upgrade
+    post:
+      operationId: migrate
+      responses:
+        '204':
+          content: {}
+          description: The responding node was able to start database schema upgrade
+        '400':
+          content: {}
+          description: The cluster is not able to start the database schema upgrade; see the response for details
+        '500':
+          content: {}
+          description: An internal error occurred
+      summary: Begins a database schema upgrade
+      tags:
+      - Database Upgrade
+components:
+  schemas:
+    ApiClusterDatabaseMigrationResultDTO:
+      properties:
+        message:
+          description: Provides a message indicating the current state of the migration
+          type: string
+        state:
+          description: Provides the current migration state.
+          enum:
+          - MIGRATION_NOT_REQUIRED
+          - MIGRATION_REQUIRED
+          - MIGRATION_IN_PROGRESS
+          - MIGRATION_FAILED
+          - MIGRATION_FAILED_RETRYABLE
+          - MIGRATION_SUCCEED
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

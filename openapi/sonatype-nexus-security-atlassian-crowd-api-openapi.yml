@@ -1,0 +1,128 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security: Atlassian Crowd API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security: Atlassian Crowd'
+paths:
+  /v1/security/atlassian-crowd:
+    get:
+      operationId: readSettings
+      responses:
+        '200':
+          content: {}
+          description: Atlassian Crowd settings returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Retrieve Atlassian Crowd settings configured in Nexus Repository Manager
+      tags:
+      - 'Security: Atlassian Crowd'
+    put:
+      operationId: updateSettings
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/CrowdApiXO'
+        required: false
+      responses:
+        '200':
+          content: {}
+          description: Atlassian Crowd settings updated
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Update Atlassian Crowd settings configured in Nexus Repository Manager
+      tags:
+      - 'Security: Atlassian Crowd'
+      x-codegen-request-body-name: body
+  /v1/security/atlassian-crowd/clear-cache:
+    post:
+      operationId: clearCache
+      responses:
+        '204':
+          content: {}
+          description: Atlassian Crowd cache has been cleared
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Clear Atlassian Crowd cache
+      tags:
+      - 'Security: Atlassian Crowd'
+  /v1/security/atlassian-crowd/verify-connection:
+    post:
+      operationId: verifyConnection
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/CrowdApiXO'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Atlassian Crowd connection was successful
+        '400':
+          content: {}
+          description: Atlassian Crowd connection failed
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Verify connection using supplied Atlassian Crowd settings
+      tags:
+      - 'Security: Atlassian Crowd'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    CrowdApiXO:
+      properties:
+        applicationName:
+          type: string
+        applicationPassword:
+          type: string
+        enabled:
+          type: boolean
+        realmActive:
+          type: boolean
+        timeout:
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        url:
+          type: string
+        useTrustStoreForUrl:
+          type: boolean
+      required:
+      - enabled
+      - realmActive
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

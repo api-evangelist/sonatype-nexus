@@ -1,0 +1,168 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security management: SAML API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security management: SAML'
+paths:
+  /v1/security/saml:
+    delete:
+      operationId: deleteSamlConfiguration
+      responses:
+        '204':
+          content: {}
+          description: SAML configuration deleted
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Delete SAML configuration
+      tags:
+      - 'Security management: SAML'
+    get:
+      operationId: getSamlConfiguration
+      responses:
+        '200':
+          content: {}
+          description: SAML configuration returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: SAML configuration not found
+      summary: Get SAML configuration
+      tags:
+      - 'Security management: SAML'
+    put:
+      operationId: putSamlConfiguration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SamlConfigurationXO'
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: SAML configuration created
+        '204':
+          content: {}
+          description: SAML configuration updated
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: SAML configuration not found
+      summary: Create or update SAML configuration
+      tags:
+      - 'Security management: SAML'
+      x-codegen-request-body-name: body
+  /v1/security/saml/metadata:
+    get:
+      operationId: getMetadata
+      responses:
+        '200':
+          content: {}
+          description: Metadata Returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Metadata not found
+      summary: Get service provider metadata XML document
+      tags:
+      - 'Security management: SAML'
+  /v1/security/saml/pem:
+    get:
+      operationId: getPublicCertificateInPemFormat
+      parameters:
+      - description: 'Type of certificate to return: ''signing'' or ''decryption''. Defaults to ''signing'' if not provided.'
+        in: query
+        name: type
+        schema:
+          default: signing
+          enum:
+          - decryption
+          - signing
+          type: string
+      responses:
+        '200':
+          content: {}
+          description: PEM file Returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: PEM file not found
+      summary: Get service provider signing or decryption certificate in PEM format
+      tags:
+      - 'Security management: SAML'
+components:
+  schemas:
+    SamlConfigurationXO:
+      properties:
+        emailAttribute:
+          description: SAML attribute name for email
+          type: string
+        entityId:
+          description: SAML Service Provider's unique identifying URI
+          type: string
+        firstNameAttribute:
+          description: SAML attribute name for the first name
+          type: string
+        groupsAttribute:
+          description: SAML attribute name for groups which maps the Identity Provider groups to a Nexus Repository Manager role
+          type: string
+        idpMetadata:
+          description: SAML Identity Provider Metadata XML
+          type: string
+        lastNameAttribute:
+          description: SAML attribute name for the last name
+          type: string
+        usernameAttribute:
+          description: SAML attribute name for the username
+          type: string
+        validateAssertionSignature:
+          description: Validate signatures on assertions from Identity Provider
+          type: boolean
+        validateResponseSignature:
+          description: Validate signatures on responses from Identity Provider
+          type: boolean
+      required:
+      - idpMetadata
+      - usernameAttribute
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Routing rules API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Routing rules
+paths:
+  /v1/routing-rules:
+    get:
+      operationId: getRoutingRules
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RoutingRuleXO'
+                type: array
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to read routing rules
+      summary: List routing rules
+      tags:
+      - Routing rules
+    post:
+      operationId: createRoutingRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoutingRuleXO'
+        description: A routing rule configuration
+        required: true
+      responses:
+        '204':
+          content: {}
+          description: Routing rule was successfully created
+        '400':
+          content: {}
+          description: A routing rule with the same name already exists or required parameters missing
+        '403':
+          content: {}
+          description: Insufficient permissions to create routing rule
+      summary: Create a single routing rule
+      tags:
+      - Routing rules
+      x-codegen-request-body-name: body
+  /v1/routing-rules/{name}:
+    delete:
+      operationId: deleteRoutingRule
+      parameters:
+      - description: The name of the routing rule to delete
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Routing rule was successfully deleted
+        '403':
+          content: {}
+          description: Insufficient permissions to delete routing rules
+        '404':
+          content: {}
+          description: Routing rule not found
+      summary: Delete a single routing rule
+      tags:
+      - Routing rules
+    get:
+      operationId: getRoutingRule
+      parameters:
+      - description: The name of the routing rule to get
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoutingRuleXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to read routing rules
+        '404':
+          content: {}
+          description: Routing rule not found
+      summary: Get a single routing rule
+      tags:
+      - Routing rules
+    put:
+      operationId: updateRoutingRule
+      parameters:
+      - description: The name of the routing rule to update
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoutingRuleXO'
+        description: A routing rule configuration
+        required: true
+      responses:
+        '204':
+          content: {}
+          description: Routing rule was successfully updated
+        '400':
+          content: {}
+          description: Another routing rule with the same name already exists or required parameters missing
+        '403':
+          content: {}
+          description: Insufficient permissions to edit routing rules
+        '404':
+          content: {}
+          description: Routing rule not found
+      summary: Update a single routing rule
+      tags:
+      - Routing rules
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    RoutingRuleXO:
+      properties:
+        description:
+          type: string
+        matchers:
+          description: Regular expressions used to identify request paths that are allowed or blocked (depending on mode)
+          items:
+            type: string
+          type: array
+        mode:
+          description: Determines what should be done with requests when their path matches any of the matchers
+          enum:
+          - BLOCK
+          - ALLOW
+          type: string
+        name:
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

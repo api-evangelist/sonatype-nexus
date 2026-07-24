@@ -1,0 +1,173 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security management: user tokens API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security management: user tokens'
+paths:
+  /v1/security/user-tokens:
+    delete:
+      operationId: resetAllUserTokens
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      tags:
+      - 'Security management: user tokens'
+    get:
+      operationId: serviceStatus
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTokensApiModel'
+          description: successful operation
+      summary: Show if the user token capability is enabled or not
+      tags:
+      - 'Security management: user tokens'
+    put:
+      operationId: setServiceStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserTokensApiModel'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTokensApiModel'
+          description: successful operation
+      tags:
+      - 'Security management: user tokens'
+      x-codegen-request-body-name: body
+  /v1/security/user-tokens/tokens:
+    get:
+      description: Lists all user tokens with optional filtering and pagination. Returns metadata only, never the passCode.
+      operationId: list
+      parameters:
+      - description: The realm of the user (optional for cloud, required for self-hosted)
+        in: query
+        name: realm
+        schema:
+          type: string
+      - description: Filter by user ID (optional)
+        in: query
+        name: userId
+        schema:
+          type: string
+      - description: 'Include expired tokens (default: false)'
+        in: query
+        name: includeExpired
+        schema:
+          type: boolean
+      - description: 'Number of items to skip for pagination (default: 0)'
+        in: query
+        name: skip
+        schema:
+          format: int32
+          type: integer
+      - description: 'Maximum number of items to return (default: 25, max: 100)'
+        in: query
+        name: limit
+        schema:
+          format: int32
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserTokenListXO'
+          description: User tokens retrieved successfully
+        '400':
+          content: {}
+          description: Invalid request parameters. Check filter values and pagination settings.
+        '403':
+          content: {}
+          description: Insufficient privileges to view or audit user tokens.
+        '500':
+          content: {}
+          description: Unexpected server error. Please try again later.
+      summary: List all user tokens
+      tags:
+      - 'Security management: user tokens'
+components:
+  schemas:
+    UserTokensApiModel:
+      properties:
+        enabled:
+          description: Whether or not User Tokens feature is enabled
+          type: boolean
+        expirationDays:
+          description: Set user token expiration days (E.g., 1-999)
+          example: 30
+          format: int32
+          maximum: 999
+          minimum: 1
+          type: integer
+        expirationEnabled:
+          description: Enable user tokens expiration
+          type: boolean
+        protectContent:
+          description: Additionally require user tokens for repository authentication
+          type: boolean
+      type: object
+    UserTokenXO:
+      properties:
+        created:
+          format: date-time
+          type: string
+        createdByRealm:
+          type: string
+        createdByUserId:
+          type: string
+        expires:
+          format: date-time
+          type: string
+        isExpired:
+          type: boolean
+        nameCode:
+          type: string
+        passCode:
+          type: string
+        realm:
+          type: string
+        userId:
+          type: string
+      required:
+      - created
+      - nameCode
+      type: object
+      xml:
+        name: userToken
+    UserTokenListXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/UserTokenXO'
+          type: array
+      type: object
+      xml:
+        name: userTokenList
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

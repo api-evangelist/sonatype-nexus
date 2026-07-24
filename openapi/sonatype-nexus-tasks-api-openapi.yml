@@ -1,0 +1,324 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Tasks API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Tasks
+paths:
+  /v1/tasks:
+    get:
+      operationId: getTasks
+      parameters:
+      - description: Type of the tasks to get
+        in: query
+        name: type
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageTaskXO'
+          description: successful operation
+      summary: List tasks
+      tags:
+      - Tasks
+    post:
+      operationId: createTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TaskTemplateXO'
+        required: false
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskXO'
+          description: Task created successfully
+      summary: Create task
+      tags:
+      - Tasks
+      x-codegen-request-body-name: body
+  /v1/tasks/templates:
+    get:
+      operationId: getTaskTemplates
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TaskTemplateXO'
+                type: array
+          description: successful operation
+      summary: List tasks of template tasks. This is the base to create new tasks
+      tags:
+      - Tasks
+  /v1/tasks/templates/{typeId}:
+    get:
+      operationId: getTaskTemplate
+      parameters:
+      - in: path
+        name: typeId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskTemplateXO'
+          description: successful operation
+      summary: Get task template by type. This is the base to create new tasks
+      tags:
+      - Tasks
+  /v1/tasks/{id}:
+    delete:
+      operationId: deleteTaskById
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Delete task by id
+      tags:
+      - Tasks
+    get:
+      operationId: getTaskById
+      parameters:
+      - description: Id of the task to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskXO'
+          description: successful operation
+        '404':
+          content: {}
+          description: Task not found
+      summary: Get a single task by id
+      tags:
+      - Tasks
+  /v1/tasks/{id}/run:
+    post:
+      operationId: run
+      parameters:
+      - description: Id of the task to run
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Task was run
+        '404':
+          content: {}
+          description: Task not found
+        '405':
+          content: {}
+          description: Task is disabled
+      summary: Run task
+      tags:
+      - Tasks
+  /v1/tasks/{id}/stop:
+    post:
+      operationId: stop
+      parameters:
+      - description: Id of the task to stop
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Task was stopped
+        '404':
+          content: {}
+          description: Task not found
+        '409':
+          content: {}
+          description: Unable to stop task
+      summary: Stop task
+      tags:
+      - Tasks
+  /v1/tasks/{taskId}:
+    put:
+      operationId: updateTask
+      parameters:
+      - in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                alertEmail:
+                  description: e-mail for task notifications.
+                  type: string
+                enabled:
+                  description: Indicates if the task would be enabled.
+                  type: boolean
+                frequency:
+                  $ref: '#/components/schemas/FrequencyXO'
+                name:
+                  description: The name of the task template.
+                  type: string
+                notificationCondition:
+                  description: Condition required to notify a task execution.
+                  enum:
+                  - FAILURE
+                  - SUCCESS_FAILURE
+                  type: string
+                properties:
+                  additionalProperties:
+                    type: string
+                  description: Additional properties for the task
+                  type: object
+                type:
+                  description: The type of task to be created.
+                  type: string
+              required:
+              - enabled
+              - frequency
+              - name
+              - notificationCondition
+        required: false
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Update an existing task
+      tags:
+      - Tasks
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    TaskTemplateXO:
+      properties:
+        alertEmail:
+          description: e-mail for task notifications.
+          type: string
+        enabled:
+          description: Indicates if the task would be enabled.
+          type: boolean
+        frequency:
+          $ref: '#/components/schemas/FrequencyXO'
+        name:
+          description: The name of the task template.
+          type: string
+        notificationCondition:
+          description: Condition required to notify a task execution.
+          enum:
+          - FAILURE
+          - SUCCESS_FAILURE
+          type: string
+        properties:
+          additionalProperties:
+            type: string
+          description: Additional properties for the task
+          type: object
+        type:
+          description: The type of task to be created.
+          type: string
+      required:
+      - enabled
+      - frequency
+      - name
+      - notificationCondition
+      - type
+      type: object
+    FrequencyXO:
+      properties:
+        cronExpression:
+          description: Cron expression for the task. Only applies for for "cron" schedule.
+          example: 0 1 2 * * ?
+          type: string
+        recurringDays:
+          description: Array with the number of the days the task must run. For "weekly" schedule allowed values, 1 to 7. For "monthly" schedule allowed values, 1 to 31.
+          items:
+            format: int32
+            type: integer
+          type: array
+        schedule:
+          description: Type of schedule ("manual", "once", "hourly", "daily", "weekly", "monthly", "cron")
+          type: string
+        startDate:
+          description: Start date of the task represented in unix timestamp. Does not apply for "manual" schedule.
+          format: int64
+          type: integer
+        timeZoneOffset:
+          description: 'The offset time zone of the client. Example: '
+          example: -05:00
+          type: string
+      required:
+      - schedule
+      type: object
+    PageTaskXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/TaskXO'
+          type: array
+      type: object
+    TaskXO:
+      properties:
+        currentState:
+          type: string
+        id:
+          type: string
+        lastRun:
+          format: date-time
+          type: string
+        lastRunResult:
+          type: string
+        message:
+          type: string
+        name:
+          type: string
+        nextRun:
+          format: date-time
+          type: string
+        type:
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

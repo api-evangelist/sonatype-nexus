@@ -1,0 +1,605 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security management: LDAP API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security management: LDAP'
+paths:
+  /v1/security/ldap:
+    get:
+      operationId: getLdapServers
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReadLdapServerXo'
+                type: array
+          description: LDAP server list returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: List LDAP servers
+      tags:
+      - 'Security management: LDAP'
+    post:
+      operationId: createLdapServer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateLdapServerXo'
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: LDAP server created
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Create LDAP server
+      tags:
+      - 'Security management: LDAP'
+      x-codegen-request-body-name: body
+  /v1/security/ldap/change-order:
+    post:
+      operationId: changeOrder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                type: string
+              type: array
+        description: Ordered list of LDAP server names
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: LDAP server order changed
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Change LDAP server order
+      tags:
+      - 'Security management: LDAP'
+      x-codegen-request-body-name: body
+  /v1/security/ldap/{name}:
+    delete:
+      operationId: deleteLdapServer
+      parameters:
+      - description: Name of the LDAP server to delete
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: LDAP server deleted
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: LDAP server not found
+      summary: Delete LDAP server
+      tags:
+      - 'Security management: LDAP'
+    get:
+      operationId: getLdapServer
+      parameters:
+      - description: Name of the LDAP server to retrieve
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReadLdapServerXo'
+          description: LDAP server returned
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: LDAP server not found
+      summary: Get LDAP server
+      tags:
+      - 'Security management: LDAP'
+    put:
+      operationId: updateLdapServer
+      parameters:
+      - description: Name of the LDAP server to update
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateLdapServerXo'
+        description: Updated values of LDAP server
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: LDAP server updated
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: LDAP server not found
+      summary: Update LDAP server
+      tags:
+      - 'Security management: LDAP'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    ReadLdapServerXo:
+      properties:
+        authRealm:
+          description: The SASL realm to bind to. Required if authScheme is CRAM_MD5 or DIGEST_MD5
+          example: example.com
+          type: string
+        authScheme:
+          description: Authentication scheme used for connecting to LDAP server
+          enum:
+          - NONE
+          - SIMPLE
+          - DIGEST_MD5
+          - CRAM_MD5
+          type: string
+        authUsername:
+          description: This must be a fully qualified username if simple authentication is used. Required if authScheme other than none.
+          type: string
+        connectionRetryDelaySeconds:
+          description: How long to wait before retrying
+          format: int32
+          minimum: 0
+          type: integer
+        connectionTimeoutSeconds:
+          description: How long to wait before timeout
+          example: 1
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        groupBaseDn:
+          description: The relative DN where group objects are found (e.g. ou=Group). This value will have the Search base DN value appended to form the full Group search base DN.
+          example: ou=Group
+          type: string
+        groupIdAttribute:
+          description: This field specifies the attribute of the Object class that defines the Group ID. Required if groupType is static
+          example: cn
+          type: string
+        groupMemberAttribute:
+          description: LDAP attribute containing the usernames for the group. Required if groupType is static
+          example: memberUid
+          type: string
+        groupMemberFormat:
+          description: The format of user ID stored in the group member attribute. Required if groupType is static
+          example: uid=${username},ou=people,dc=example,dc=com
+          type: string
+        groupObjectClass:
+          description: LDAP class for group objects. Required if groupType is static
+          example: posixGroup
+          type: string
+        groupSubtree:
+          description: Are groups located in structures below the group base DN
+          type: boolean
+        groupType:
+          description: 'Defines a type of groups used: static (a group contains a list of users) or dynamic (a user contains a list of groups). Required if ldapGroupsAsRoles is true.'
+          enum:
+          - static
+          - dynamic
+          type: string
+        host:
+          description: LDAP server connection hostname
+          type: string
+        id:
+          description: LDAP server ID
+          type: string
+        ldapGroupsAsRoles:
+          description: Denotes whether LDAP assigned roles are used as Nexus Repository Manager roles
+          type: boolean
+        maxIncidentsCount:
+          description: How many retry attempts
+          format: int32
+          minimum: 0
+          type: integer
+        name:
+          description: LDAP server name
+          type: string
+        order:
+          description: Order number in which the server is being used when looking for a user
+          format: int32
+          type: integer
+        port:
+          description: LDAP server connection port to use
+          example: 636
+          format: int32
+          type: integer
+        protocol:
+          description: LDAP server connection Protocol to use
+          enum:
+          - ldap
+          - ldaps
+          type: string
+        searchBase:
+          description: LDAP location to be added to the connection URL
+          example: dc=example,dc=com
+          type: string
+        useTrustStore:
+          description: Whether to use certificates stored in Nexus Repository Manager's truststore
+          type: boolean
+        userBaseDn:
+          description: The relative DN where user objects are found (e.g. ou=people). This value will have the Search base DN value appended to form the full User search base DN.
+          example: ou=people
+          type: string
+        userEmailAddressAttribute:
+          description: This is used to find an email address given the user ID
+          example: mail
+          type: string
+        userIdAttribute:
+          description: This is used to find a user given its user ID
+          example: uid
+          type: string
+        userLdapFilter:
+          description: LDAP search filter to limit user search
+          example: (|(mail=*@example.com)(uid=dom*))
+          type: string
+        userMemberOfAttribute:
+          description: Set this to the attribute used to store the attribute which holds groups DN in the user object. Required if groupType is dynamic
+          example: memberOf
+          type: string
+        userObjectClass:
+          description: LDAP class for user objects
+          example: inetOrgPerson
+          type: string
+        userPasswordAttribute:
+          description: If this field is blank the user will be authenticated against a bind with the LDAP server
+          type: string
+        userRealNameAttribute:
+          description: This is used to find a real name given the user ID
+          example: cn
+          type: string
+        userSubtree:
+          description: Are users located in structures below the user base DN?
+          type: boolean
+      required:
+      - authPassword
+      - authScheme
+      - connectionRetryDelaySeconds
+      - connectionTimeoutSeconds
+      - host
+      - maxIncidentsCount
+      - name
+      - port
+      - protocol
+      - searchBase
+      type: object
+    CreateLdapServerXo:
+      properties:
+        authPassword:
+          description: The password to bind with. Required if authScheme other than none.
+          type: string
+        authRealm:
+          description: The SASL realm to bind to. Required if authScheme is CRAM_MD5 or DIGEST_MD5
+          example: example.com
+          type: string
+        authScheme:
+          description: Authentication scheme used for connecting to LDAP server
+          enum:
+          - NONE
+          - SIMPLE
+          - DIGEST_MD5
+          - CRAM_MD5
+          type: string
+        authUsername:
+          description: This must be a fully qualified username if simple authentication is used. Required if authScheme other than none.
+          type: string
+        connectionRetryDelaySeconds:
+          description: How long to wait before retrying
+          format: int32
+          minimum: 0
+          type: integer
+        connectionTimeoutSeconds:
+          description: How long to wait before timeout
+          example: 1
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        groupBaseDn:
+          description: The relative DN where group objects are found (e.g. ou=Group). This value will have the Search base DN value appended to form the full Group search base DN.
+          example: ou=Group
+          type: string
+        groupIdAttribute:
+          description: This field specifies the attribute of the Object class that defines the Group ID. Required if groupType is static
+          example: cn
+          type: string
+        groupMemberAttribute:
+          description: LDAP attribute containing the usernames for the group. Required if groupType is static
+          example: memberUid
+          type: string
+        groupMemberFormat:
+          description: The format of user ID stored in the group member attribute. Required if groupType is static
+          example: uid=${username},ou=people,dc=example,dc=com
+          type: string
+        groupObjectClass:
+          description: LDAP class for group objects. Required if groupType is static
+          example: posixGroup
+          type: string
+        groupSubtree:
+          description: Are groups located in structures below the group base DN
+          type: boolean
+        groupType:
+          description: 'Defines a type of groups used: static (a group contains a list of users) or dynamic (a user contains a list of groups). Required if ldapGroupsAsRoles is true.'
+          enum:
+          - static
+          - dynamic
+          type: string
+        host:
+          description: LDAP server connection hostname
+          type: string
+        ldapGroupsAsRoles:
+          description: Denotes whether LDAP assigned roles are used as Nexus Repository Manager roles
+          type: boolean
+        maxIncidentsCount:
+          description: How many retry attempts
+          format: int32
+          minimum: 0
+          type: integer
+        name:
+          description: LDAP server name
+          type: string
+        port:
+          description: LDAP server connection port to use
+          example: 636
+          format: int32
+          type: integer
+        protocol:
+          description: LDAP server connection Protocol to use
+          enum:
+          - ldap
+          - ldaps
+          type: string
+        searchBase:
+          description: LDAP location to be added to the connection URL
+          example: dc=example,dc=com
+          type: string
+        useTrustStore:
+          description: Whether to use certificates stored in Nexus Repository Manager's truststore
+          type: boolean
+        userBaseDn:
+          description: The relative DN where user objects are found (e.g. ou=people). This value will have the Search base DN value appended to form the full User search base DN.
+          example: ou=people
+          type: string
+        userEmailAddressAttribute:
+          description: This is used to find an email address given the user ID
+          example: mail
+          type: string
+        userIdAttribute:
+          description: This is used to find a user given its user ID
+          example: uid
+          type: string
+        userLdapFilter:
+          description: LDAP search filter to limit user search
+          example: (|(mail=*@example.com)(uid=dom*))
+          type: string
+        userMemberOfAttribute:
+          description: Set this to the attribute used to store the attribute which holds groups DN in the user object. Required if groupType is dynamic
+          example: memberOf
+          type: string
+        userObjectClass:
+          description: LDAP class for user objects
+          example: inetOrgPerson
+          type: string
+        userPasswordAttribute:
+          description: If this field is blank the user will be authenticated against a bind with the LDAP server
+          type: string
+        userRealNameAttribute:
+          description: This is used to find a real name given the user ID
+          example: cn
+          type: string
+        userSubtree:
+          description: Are users located in structures below the user base DN?
+          type: boolean
+      required:
+      - authPassword
+      - authScheme
+      - connectionRetryDelaySeconds
+      - connectionTimeoutSeconds
+      - host
+      - maxIncidentsCount
+      - name
+      - port
+      - protocol
+      - searchBase
+      type: object
+    UpdateLdapServerXo:
+      properties:
+        authPassword:
+          description: The password to bind with. Required if authScheme other than none.
+          type: string
+        authRealm:
+          description: The SASL realm to bind to. Required if authScheme is CRAM_MD5 or DIGEST_MD5
+          example: example.com
+          type: string
+        authScheme:
+          description: Authentication scheme used for connecting to LDAP server
+          enum:
+          - NONE
+          - SIMPLE
+          - DIGEST_MD5
+          - CRAM_MD5
+          type: string
+        authUsername:
+          description: This must be a fully qualified username if simple authentication is used. Required if authScheme other than none.
+          type: string
+        connectionRetryDelaySeconds:
+          description: How long to wait before retrying
+          format: int32
+          minimum: 0
+          type: integer
+        connectionTimeoutSeconds:
+          description: How long to wait before timeout
+          example: 1
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        groupBaseDn:
+          description: The relative DN where group objects are found (e.g. ou=Group). This value will have the Search base DN value appended to form the full Group search base DN.
+          example: ou=Group
+          type: string
+        groupIdAttribute:
+          description: This field specifies the attribute of the Object class that defines the Group ID. Required if groupType is static
+          example: cn
+          type: string
+        groupMemberAttribute:
+          description: LDAP attribute containing the usernames for the group. Required if groupType is static
+          example: memberUid
+          type: string
+        groupMemberFormat:
+          description: The format of user ID stored in the group member attribute. Required if groupType is static
+          example: uid=${username},ou=people,dc=example,dc=com
+          type: string
+        groupObjectClass:
+          description: LDAP class for group objects. Required if groupType is static
+          example: posixGroup
+          type: string
+        groupSubtree:
+          description: Are groups located in structures below the group base DN
+          type: boolean
+        groupType:
+          description: 'Defines a type of groups used: static (a group contains a list of users) or dynamic (a user contains a list of groups). Required if ldapGroupsAsRoles is true.'
+          enum:
+          - static
+          - dynamic
+          type: string
+        host:
+          description: LDAP server connection hostname
+          type: string
+        id:
+          description: LDAP server ID
+          type: string
+        ldapGroupsAsRoles:
+          description: Denotes whether LDAP assigned roles are used as Nexus Repository Manager roles
+          type: boolean
+        maxIncidentsCount:
+          description: How many retry attempts
+          format: int32
+          minimum: 0
+          type: integer
+        name:
+          description: LDAP server name
+          type: string
+        port:
+          description: LDAP server connection port to use
+          example: 636
+          format: int32
+          type: integer
+        protocol:
+          description: LDAP server connection Protocol to use
+          enum:
+          - ldap
+          - ldaps
+          type: string
+        searchBase:
+          description: LDAP location to be added to the connection URL
+          example: dc=example,dc=com
+          type: string
+        useTrustStore:
+          description: Whether to use certificates stored in Nexus Repository Manager's truststore
+          type: boolean
+        userBaseDn:
+          description: The relative DN where user objects are found (e.g. ou=people). This value will have the Search base DN value appended to form the full User search base DN.
+          example: ou=people
+          type: string
+        userEmailAddressAttribute:
+          description: This is used to find an email address given the user ID
+          example: mail
+          type: string
+        userIdAttribute:
+          description: This is used to find a user given its user ID
+          example: uid
+          type: string
+        userLdapFilter:
+          description: LDAP search filter to limit user search
+          example: (|(mail=*@example.com)(uid=dom*))
+          type: string
+        userMemberOfAttribute:
+          description: Set this to the attribute used to store the attribute which holds groups DN in the user object. Required if groupType is dynamic
+          example: memberOf
+          type: string
+        userObjectClass:
+          description: LDAP class for user objects
+          example: inetOrgPerson
+          type: string
+        userPasswordAttribute:
+          description: If this field is blank the user will be authenticated against a bind with the LDAP server
+          type: string
+        userRealNameAttribute:
+          description: This is used to find a real name given the user ID
+          example: cn
+          type: string
+        userSubtree:
+          description: Are users located in structures below the user base DN?
+          type: boolean
+      required:
+      - authPassword
+      - authScheme
+      - connectionRetryDelaySeconds
+      - connectionTimeoutSeconds
+      - host
+      - maxIncidentsCount
+      - name
+      - port
+      - protocol
+      - searchBase
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,181 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Content selectors API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Content selectors
+paths:
+  /v1/security/content-selectors:
+    get:
+      operationId: getContentSelectors
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContentSelectorApiResponse'
+                type: array
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to read content selectors
+      summary: List content selectors
+      tags:
+      - Content selectors
+    post:
+      operationId: createContentSelector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentSelectorApiCreateRequest'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Content selector successfully created
+        '400':
+          content: {}
+          description: Invalid request
+        '403':
+          content: {}
+          description: Insufficient permissions to create content selectors
+      summary: Create a new content selector
+      tags:
+      - Content selectors
+      x-codegen-request-body-name: body
+  /v1/security/content-selectors/{name}:
+    delete:
+      operationId: deleteContentSelector
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Content selector deleted successfully
+        '400':
+          content: {}
+          description: Invalid request
+        '403':
+          content: {}
+          description: Insufficient permissions to delete the content selector
+      summary: Delete a content selector
+      tags:
+      - Content selectors
+    get:
+      operationId: getContentSelector
+      parameters:
+      - description: The content selector name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentSelectorApiResponse'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to read the content selector
+      summary: Get a content selector by name
+      tags:
+      - Content selectors
+    put:
+      operationId: updateContentSelector
+      parameters:
+      - description: The content selector name
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContentSelectorApiUpdateRequest'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Content selector updated successfully
+        '400':
+          content: {}
+          description: Invalid request
+        '403':
+          content: {}
+          description: Insufficient permissions to update the content selector
+      summary: Update a content selector
+      tags:
+      - Content selectors
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    ContentSelectorApiUpdateRequest:
+      properties:
+        description:
+          description: An optional description of this content selector
+          type: string
+        expression:
+          description: The expression used to identify content
+          example: format == "maven2" and path =^ "/org/sonatype/nexus"
+          type: string
+      type: object
+    ContentSelectorApiCreateRequest:
+      properties:
+        description:
+          description: A human-readable description
+          type: string
+        expression:
+          description: The expression used to identify content
+          example: format == "maven2" and path =^ "/org/sonatype/nexus"
+          type: string
+        name:
+          description: The content selector name cannot be changed after creation
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+      type: object
+    ContentSelectorApiResponse:
+      properties:
+        description:
+          description: A human-readable description
+          type: string
+        expression:
+          description: The expression used to identify content
+          example: format == "maven2" and path =^ "/org/sonatype/nexus"
+          type: string
+        name:
+          description: The content selector name cannot be changed after creation
+          type: string
+        type:
+          description: The type of content selector the backend is using
+          enum:
+          - csel
+          - jexl
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

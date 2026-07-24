@@ -1,0 +1,91 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Data Store API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Data Store
+paths:
+  /beta/data-store:
+    get:
+      operationId: getDataStore
+      responses:
+        '200':
+          content: {}
+          description: Data Store configuration returned
+        '403':
+          content: {}
+          description: Authentication required
+      summary: Get the data store
+      tags:
+      - Data Store
+    put:
+      operationId: updateDataStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataStoreApiUpdateXO'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Data Store configuration updated
+        '400':
+          content: {}
+          description: Update Failed
+        '403':
+          content: {}
+          description: Authentication required
+      summary: Update the data store
+      tags:
+      - Data Store
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    DataStoreApiUpdateXO:
+      properties:
+        advanced:
+          type: string
+        jdbcUrl:
+          description: The JDBC connection URL for the data store.
+          type: string
+        name:
+          description: The name of the data store.
+          type: string
+        password:
+          description: The password to use for the JDBC connection.
+          type: string
+        schema:
+          type: string
+        source:
+          description: The source of the data store.
+          enum:
+          - local
+          type: string
+        type:
+          description: The type of the data store.
+          enum:
+          - jdbc
+          type: string
+        username:
+          description: The username to use for the JDBC connection.
+          type: string
+      required:
+      - jdbcUrl
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

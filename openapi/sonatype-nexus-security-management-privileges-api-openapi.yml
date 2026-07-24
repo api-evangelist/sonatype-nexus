@@ -1,0 +1,677 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: 'Sonatype Nexus Repository Manager assets Security management: privileges API'
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: 'Security management: privileges'
+paths:
+  /v1/security/privileges:
+    get:
+      operationId: getAllPrivileges
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApiPrivilegeRequest'
+                type: array
+          description: successful operation
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Retrieve a list of privileges.
+      tags:
+      - 'Security management: privileges'
+  /v1/security/privileges/application:
+    post:
+      operationId: createApplicationPrivilege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeApplicationRequest'
+        description: The privilege to create.
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Create an application type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/application/{privilegeName}:
+    put:
+      operationId: updateApplicationPrivilege
+      parameters:
+      - description: The name of the privilege to update.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeApplicationRequest'
+        description: The privilege to update.
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Update an application type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/repository-admin:
+    post:
+      operationId: createRepository-adminPrivilege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeRepositoryAdminRequest'
+        description: The privilege to create.
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Create a repository admin type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/repository-admin/{privilegeName}:
+    put:
+      operationId: updateRepository-adminPrivilege
+      parameters:
+      - description: The name of the privilege to update.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeRepositoryAdminRequest'
+        description: The privilege to update.
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Update a repository admin type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/repository-content-selector:
+    post:
+      operationId: createRepository-content-selectorPrivilege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeRepositoryContentSelectorRequest'
+        description: The privilege to create.
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Create a repository content selector type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/repository-content-selector/{privilegeName}:
+    put:
+      operationId: updateRepository-content-selectorPrivilege
+      parameters:
+      - description: The name of the privilege to update.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeRepositoryContentSelectorRequest'
+        description: The privilege to update.
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Update a repository content selector type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/repository-view:
+    post:
+      operationId: createRepository-viewPrivilege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeRepositoryViewRequest'
+        description: The privilege to create.
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Create a repository view type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/repository-view/{privilegeName}:
+    put:
+      operationId: updateRepository-viewPrivilege
+      parameters:
+      - description: The name of the privilege to update.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeRepositoryViewRequest'
+        description: The privilege to update.
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Update a repository view type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/script:
+    post:
+      operationId: createScriptPrivilege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeScriptRequest'
+        description: The privilege to create.
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Create a script type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/script/{privilegeName}:
+    put:
+      operationId: updateScriptPrivilege
+      parameters:
+      - description: The name of the privilege to update.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeScriptRequest'
+        description: The privilege to update.
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Update a script type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/wildcard:
+    post:
+      operationId: createWildcardPrivilege
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeWildcardRequest'
+        description: The privilege to create.
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+      summary: Create a wildcard type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/wildcard/{privilegeName}:
+    put:
+      operationId: updateWildcardPrivilege
+      parameters:
+      - description: The name of the privilege to update.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApiPrivilegeWildcardRequest'
+        description: The privilege to update.
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '400':
+          content: {}
+          description: Privilege object not configured properly.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Update a wildcard type privilege.
+      tags:
+      - 'Security management: privileges'
+      x-codegen-request-body-name: body
+  /v1/security/privileges/{privilegeName}:
+    delete:
+      operationId: deletePrivilege
+      parameters:
+      - description: The name of the privilege to delete.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      responses:
+        '400':
+          content: {}
+          description: The privilege is internal and may not be altered.
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Delete a privilege by name.
+      tags:
+      - 'Security management: privileges'
+    get:
+      operationId: getPrivilege
+      parameters:
+      - description: The name of the privilege to retrieve.
+        in: path
+        name: privilegeName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiPrivilegeRequest'
+          description: successful operation
+        '403':
+          content: {}
+          description: The user does not have permission to perform the operation.
+        '404':
+          content: {}
+          description: Privilege not found in the system.
+      summary: Retrieve a privilege by name.
+      tags:
+      - 'Security management: privileges'
+components:
+  schemas:
+    ApiPrivilegeApplicationRequest:
+      properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
+        description:
+          type: string
+        domain:
+          description: The domain (i.e. 'blobstores', 'capabilities' or even '*' for all) that this privilege is granting access to.  Note that creating new privileges with a domain is only necessary when using plugins that define their own domain(s).
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+      type: object
+    ApiPrivilegeWildcardRequest:
+      properties:
+        description:
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        pattern:
+          description: A colon separated list of parts that create a permission string.
+          type: string
+      type: object
+    ApiPrivilegeRequest:
+      properties:
+        actions:
+          description: 'A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as ''run'' for script privileges.
+
+
+            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view, script'
+          items:
+            type: string
+          type: array
+        contentSelector:
+          description: 'The name of a content selector that will be used to grant access to content via this privilege.
+
+
+            Only applicable for Privilege Types: repository-content-selector'
+          type: string
+        description:
+          type: string
+        domain:
+          description: 'The domain (i.e. ''blobstores'', ''capabilities'' or even ''*'' for all) that this privilege is granting access to. Note that creating new privileges with a domain is only necessary when using plugins that define their own domain(s).
+
+
+            Only applicable for Privilege Types: application'
+          type: string
+        format:
+          description: 'The repository format (i.e ''nuget'', ''npm'') this privilege will grant access to (or * for all).
+
+
+            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view'
+          type: string
+        name:
+          description: The name of the privilege. This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        pattern:
+          description: 'A colon separated list of parts that create a permission string.
+
+
+            Only applicable for Privilege Types: wildcard'
+          type: string
+        readOnly:
+          description: Indicates whether the privilege can be changed. External values supplied to this will be ignored by the system.
+          type: boolean
+        repository:
+          description: 'The name of the repository this privilege will grant access to (or * for all). The repository MUST exist.
+
+
+            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view'
+          type: string
+        scriptName:
+          description: 'The name of a script to give access to.
+
+
+            Only applicable for Privilege Types: script'
+          type: string
+        type:
+          description: The type of privilege, each type covers different portion of the system. External values supplied to this will be ignored by the system.
+          enum:
+          - application
+          - repository-admin
+          - repository-content-selector
+          - repository-view
+          - script
+          - wildcard
+          type: string
+      required:
+      - name
+      - type
+      type: object
+    ApiPrivilegeRepositoryContentSelectorRequest:
+      properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
+        contentSelector:
+          description: The name of a content selector that will be used to grant access to content via this privilege.
+          type: string
+        description:
+          type: string
+        format:
+          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        repository:
+          description: The name of the repository this privilege will grant access to (or * for all).
+          type: string
+      type: object
+    ApiPrivilegeRepositoryViewRequest:
+      properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
+        description:
+          type: string
+        format:
+          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        repository:
+          description: The name of the repository this privilege will grant access to (or * for all).
+          type: string
+      type: object
+    ApiPrivilegeScriptRequest:
+      properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
+        description:
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        scriptName:
+          description: The name of a script to give access to.
+          type: string
+      type: object
+    ApiPrivilegeRepositoryAdminRequest:
+      properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
+        description:
+          type: string
+        format:
+          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        repository:
+          description: The name of the repository this privilege will grant access to (or * for all).
+          type: string
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

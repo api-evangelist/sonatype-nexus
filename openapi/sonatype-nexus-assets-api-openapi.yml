@@ -1,0 +1,164 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: assets
+paths:
+  /v1/assets:
+    get:
+      operationId: getAssets
+      parameters:
+      - description: A token returned by a prior request. If present, the next page of results are returned
+        in: query
+        name: continuationToken
+        schema:
+          type: string
+      - description: Repository from which you would like to retrieve assets.
+        in: query
+        name: repository
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAssetXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to list assets
+        '422':
+          content: {}
+          description: Parameter 'repository' is required
+      summary: List assets
+      tags:
+      - assets
+  /v1/assets/{id}:
+    delete:
+      operationId: deleteAsset
+      parameters:
+      - description: Id of the asset to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Asset was successfully deleted
+        '403':
+          content: {}
+          description: Insufficient permissions to delete asset
+        '404':
+          content: {}
+          description: Asset not found
+        '422':
+          content: {}
+          description: Malformed ID
+      summary: Delete a single asset
+      tags:
+      - assets
+    get:
+      operationId: getAssetById
+      parameters:
+      - description: Id of the asset to get
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to get asset
+        '404':
+          content: {}
+          description: Asset not found
+        '422':
+          content: {}
+          description: Malformed ID
+      summary: Get a single asset
+      tags:
+      - assets
+components:
+  schemas:
+    AssetXO:
+      properties:
+        blobCreated:
+          format: date-time
+          type: string
+        blobRef:
+          type: string
+        blobStoreName:
+          type: string
+        blobUpdated:
+          format: date-time
+          type: string
+        checksum:
+          additionalProperties:
+            type: string
+          type: object
+        contentType:
+          type: string
+        downloadUrl:
+          type: string
+        fileSize:
+          format: int64
+          type: integer
+        format:
+          type: string
+        id:
+          type: string
+        lastDownloaded:
+          format: date-time
+          type: string
+        lastModified:
+          format: date-time
+          type: string
+        lastVerified:
+          format: date-time
+          type: string
+        path:
+          type: string
+        repository:
+          type: string
+        uploader:
+          type: string
+        uploaderIp:
+          type: string
+      type: object
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

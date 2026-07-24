@@ -1,0 +1,142 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Manage Sonatype HTTP System Settings API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Manage Sonatype HTTP System Settings
+paths:
+  /v1/http:
+    delete:
+      operationId: resetHttpSettings
+      responses:
+        '204':
+          content: {}
+          description: Configuration Reset Successful
+      summary: Reset HTTP System Settings
+      tags:
+      - Manage Sonatype HTTP System Settings
+    get:
+      operationId: getHttpSettings
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpSettingsXo'
+          description: Successful Operation
+      summary: Get HTTP system settings
+      tags:
+      - Manage Sonatype HTTP System Settings
+    put:
+      operationId: updateHttpSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpSettingsXo'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Successful Operation
+      summary: Update HTTP system settings
+      tags:
+      - Manage Sonatype HTTP System Settings
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    AuthSettingsXo:
+      properties:
+        enabled:
+          description: auth enabled
+          type: boolean
+        ntlmDomain:
+          description: Windows NTLM Domain
+          type: string
+        ntlmHost:
+          description: Windows NTLM Hostname
+          type: string
+        password:
+          description: user password
+          type: string
+        username:
+          description: user name
+          type: string
+      required:
+      - enabled
+      - ntlmDomain
+      - ntlmHost
+      - password
+      - username
+      type: object
+    ProxySettingsXo:
+      nullable: 'true'
+      properties:
+        authInfo:
+          $ref: '#/components/schemas/AuthSettingsXo'
+        enabled:
+          description: proxy enabled
+          type: boolean
+        host:
+          description: proxy host
+          type: string
+        port:
+          description: proxy port
+          type: string
+      required:
+      - authInfo
+      - enabled
+      - host
+      - port
+      type: object
+    HttpSettingsXo:
+      properties:
+        httpProxy:
+          $ref: '#/components/schemas/ProxySettingsXo'
+        httpsProxy:
+          $ref: '#/components/schemas/ProxySettingsXo'
+        nonProxyHosts:
+          items:
+            type: string
+          nullable: 'true'
+          type: array
+          uniqueItems: true
+        retries:
+          description: Connection/Socket Retry Attempts
+          format: int32
+          maximum: 10
+          minimum: 0
+          type: integer
+        timeout:
+          description: Connection/Socket Timeout
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        userAgent:
+          description: User-Agent Customization
+          nullable: 'true'
+          type: string
+      required:
+      - httpProxy
+      - httpsProxy
+      - retries
+      - timeout
+      - userAgent
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,94 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Formats API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Formats
+paths:
+  /v1/formats/upload-specs:
+    get:
+      operationId: get_1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UploadDefinitionXO'
+                type: array
+          description: successful operation
+      summary: Get upload field requirements for each supported format
+      tags:
+      - Formats
+  /v1/formats/{format}/upload-specs:
+    get:
+      operationId: get
+      parameters:
+      - description: The desired repository format
+        in: path
+        name: format
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadDefinitionXO'
+          description: successful operation
+      summary: Get upload field requirements for the desired format
+      tags:
+      - Formats
+components:
+  schemas:
+    UploadFieldDefinitionXO:
+      properties:
+        description:
+          type: string
+        group:
+          type: string
+        groupHelpText:
+          type: string
+        name:
+          type: string
+        optional:
+          type: boolean
+        options:
+          additionalProperties:
+            type: string
+          type: object
+        type:
+          type: string
+      type: object
+    UploadDefinitionXO:
+      properties:
+        assetFields:
+          items:
+            $ref: '#/components/schemas/UploadFieldDefinitionXO'
+          type: array
+        componentFields:
+          items:
+            $ref: '#/components/schemas/UploadFieldDefinitionXO'
+          type: array
+        format:
+          type: string
+        multipleUpload:
+          type: boolean
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

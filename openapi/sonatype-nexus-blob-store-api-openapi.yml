@@ -1,0 +1,902 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Blob store API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Blob store
+paths:
+  /v1/blobstores:
+    get:
+      operationId: listBlobStores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/GenericBlobStoreApiResponse'
+                type: array
+          description: successful operation
+      summary: List the blob stores
+      tags:
+      - Blob store
+  /v1/blobstores/azure:
+    post:
+      operationId: createBlobStore_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureBlobStoreApiModel'
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Azure blob store created
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Create an Azure blob store
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/azure/{name}:
+    get:
+      operationId: getBlobStore_1
+      parameters:
+      - description: Name of the blob store configuration to fetch
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AzureBlobStoreApiModel'
+          description: Success
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Specified Azure blob store doesn't exist
+      summary: Get an Azure blob store configuration by name
+      tags:
+      - Blob store
+    put:
+      operationId: updateBlobStore_1
+      parameters:
+      - description: Name of the blob store to update
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureBlobStoreApiModel'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Azure blob store updated
+        '400':
+          content: {}
+          description: Specified Azure blob store doesn't exist
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Update an Azure blob store configuration by name
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/file:
+    post:
+      operationId: createFileBlobStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileBlobStoreApiCreateRequest'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Create a file blob store
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/file/{name}:
+    get:
+      operationId: getFileBlobStoreConfiguration
+      parameters:
+      - description: The name of the file blob store to read
+        example: default
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileBlobStoreApiModel'
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Blob store not found
+      summary: Get a file blob store configuration by name
+      tags:
+      - Blob store
+    put:
+      operationId: updateFileBlobStore
+      parameters:
+      - description: The name of the file blob store to update
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FileBlobStoreApiUpdateRequest'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Blob store not found
+      summary: Update a file blob store configuration by name
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/google:
+    post:
+      operationId: createBlobStore_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleCloudBlobstoreApiModel'
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: Google Cloud blob store created
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Create a Google Cloud blob store
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/google/regions/{projectId}:
+    get:
+      operationId: getRegionsByProjectId
+      parameters:
+      - description: projectId
+        in: path
+        name: projectId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: List of regions found
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Project not found
+      summary: Get the project regions by project's id
+      tags:
+      - Blob store
+  /v1/blobstores/google/{name}:
+    get:
+      operationId: getBlobStore_2
+      parameters:
+      - description: the name of the blob store
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleCloudBlobstoreApiModel'
+          description: Google Cloud blob store configuration
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Repository not found
+      summary: Get the configuration for a Google Cloud blob store
+      tags:
+      - Blob store
+    put:
+      operationId: updateBlobStore_2
+      parameters:
+      - description: the name of the blobstore
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoogleCloudBlobstoreApiModel'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Google Cloud blob store updated
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Repository not found
+      summary: Update a Google Cloud blob store
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/group:
+    post:
+      operationId: createGroupBlobStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupBlobStoreApiCreateRequest'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Create a group blob store
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/group/convert/{name}/{newNameForOriginal}:
+    post:
+      operationId: convertBlobStoreToGroup
+      parameters:
+      - description: The name of the group blob store
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: A new name to the original blob store
+        in: path
+        name: newNameForOriginal
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupBlobStoreApiModel'
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Blob store not found
+      summary: Convert a blob store to a group blob store
+      tags:
+      - Blob store
+  /v1/blobstores/group/{name}:
+    get:
+      operationId: getGroupBlobStoreConfiguration
+      parameters:
+      - description: The name of the group blob store
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupBlobStoreApiModel'
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Blob store not found
+      summary: Get a group blob store configuration by name
+      tags:
+      - Blob store
+    put:
+      operationId: updateGroupBlobStore
+      parameters:
+      - description: The name of the blob store to update
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupBlobStoreApiUpdateRequest'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: Success
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Blob store not found
+      summary: Update a group blob store configuration by name
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/s3:
+    post:
+      operationId: CreateS3BlobStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3BlobStoreApiModel'
+        required: false
+      responses:
+        '201':
+          content: {}
+          description: S3 blob store created
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Create an S3 blob store
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/s3/{name}:
+    get:
+      operationId: GetS3BlobStore
+      parameters:
+      - description: Name of the blob store configuration to fetch
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/S3BlobStoreApiModel'
+          description: Success
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+        '404':
+          content: {}
+          description: Specified S3 blob store doesn't exist
+      summary: Get a S3 blob store configuration by name
+      tags:
+      - Blob store
+    put:
+      operationId: UpdateS3BlobStore
+      parameters:
+      - description: Name of the blob store to update
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/S3BlobStoreApiModel'
+        required: false
+      responses:
+        '204':
+          content: {}
+          description: S3 blob store updated
+        '400':
+          content: {}
+          description: Specified S3 blob store doesn't exist
+        '401':
+          content: {}
+          description: Authentication required
+        '403':
+          content: {}
+          description: Insufficient permissions
+      summary: Update an S3 blob store configuration by name
+      tags:
+      - Blob store
+      x-codegen-request-body-name: body
+  /v1/blobstores/{name}:
+    delete:
+      operationId: deleteBlobStore
+      parameters:
+      - description: The name of the blob store to delete
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          content: {}
+          description: successful operation
+      summary: Delete a blob store by name
+      tags:
+      - Blob store
+  /v1/blobstores/{name}/quota-status:
+    get:
+      operationId: quotaStatus
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlobStoreQuotaResultXO'
+          description: successful operation
+      summary: Get quota status for a given blob store
+      tags:
+      - Blob store
+components:
+  schemas:
+    GoogleCloudBlobStoreApiEncryption:
+      properties:
+        encryptionKey:
+          description: CryptoKey ID for KMS encryption.
+          type: string
+        encryptionType:
+          description: The type of GCP server side encryption to use.
+          enum:
+          - default
+          - kmsManagedEncryption
+          type: string
+      type: object
+    BlobStoreQuotaResultXO:
+      properties:
+        blobStoreName:
+          type: string
+        isViolation:
+          type: boolean
+        message:
+          type: string
+      type: object
+    S3BlobStoreApiModel:
+      properties:
+        bucketConfiguration:
+          $ref: '#/components/schemas/S3BlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the S3 blob store.
+          example: s3
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        type:
+          description: The blob store type.
+          example: S3
+          readOnly: true
+          type: string
+      required:
+      - bucketConfiguration
+      - name
+      type: object
+    GoogleCloudBlobStoreApiBucketConfiguration:
+      properties:
+        bucket:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucket'
+        bucketSecurity:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketAuthentication'
+        encryption:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiEncryption'
+      required:
+      - bucket
+      type: object
+    S3BlobStoreApiBucketSecurity:
+      properties:
+        accessKeyId:
+          description: An IAM access key ID for granting access to the S3 bucket
+          type: string
+        role:
+          description: An IAM role to assume in order to access the S3 bucket
+          type: string
+        secretAccessKey:
+          description: The secret access key associated with the specified IAM access key ID
+          type: string
+        sessionToken:
+          description: An AWS STS session token associated with temporary security credentials which grant access to the S3 bucket
+          type: string
+      type: object
+    S3BlobStoreApiAdvancedBucketConnection:
+      properties:
+        endpoint:
+          description: A custom endpoint URL for third party object stores using the S3 API.
+          type: string
+        forcePathStyle:
+          description: Setting this flag will result in path-style access being used for all requests.
+          type: boolean
+        maxConnectionPoolSize:
+          description: Setting this value will override the default connection pool size of Nexus of the s3 client for this blobstore.
+          format: int32
+          type: integer
+        signerType:
+          description: An API signature version which may be required for third party object stores using the S3 API.
+          type: string
+      type: object
+    GoogleCloudBlobStoreApiBucketAuthentication:
+      properties:
+        accountKey:
+          description: The credentials JSON file.
+          type: string
+        authenticationMethod:
+          description: The type of Google Cloud authentication to use.
+          enum:
+          - applicationDefault
+          - accountKey
+          type: string
+      required:
+      - authenticationMethod
+      type: object
+    FileBlobStoreApiUpdateRequest:
+      properties:
+        path:
+          description: An absolute path or a path relative to <data-directory>/blobs
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    GoogleCloudBlobStoreApiBucket:
+      properties:
+        name:
+          description: The name of the GC Storage bucket
+          type: string
+        prefix:
+          description: The GC Storage blob store (i.e GC Storage object) key prefix
+          readOnly: true
+          type: string
+        projectId:
+          description: GCP Project ID
+          example: project_123
+          readOnly: true
+          type: string
+        region:
+          description: The GCP region to create a new GC Storage bucket in or an existing GC Storage bucket's region. Should be the same as Nexus deployment region.
+          example: us-central1
+          type: string
+      required:
+      - name
+      type: object
+    AzureBlobStoreApiBucketConfiguration:
+      properties:
+        accountName:
+          description: Account name found under Access keys for the storage account.
+          type: string
+        authentication:
+          $ref: '#/components/schemas/AzureBlobStoreApiAuthentication'
+        containerName:
+          description: The name of an existing container to be used for storage.
+          pattern: ^[a-z0-9][a-z0-9-]{2,62}$
+          type: string
+      required:
+      - accountName
+      - authentication
+      - containerName
+      type: object
+    S3BlobStoreApiBucketConfiguration:
+      properties:
+        activeRegion:
+          description: The active region based on bucket configuration, failover buckets, and EC2 region Nexus is running.
+          readOnly: true
+          type: string
+        advancedBucketConnection:
+          $ref: '#/components/schemas/S3BlobStoreApiAdvancedBucketConnection'
+        bucket:
+          $ref: '#/components/schemas/S3BlobStoreApiBucket'
+        bucketSecurity:
+          $ref: '#/components/schemas/S3BlobStoreApiBucketSecurity'
+        encryption:
+          $ref: '#/components/schemas/S3BlobStoreApiEncryption'
+        failoverBuckets:
+          description: A list of secondary buckets which have bidirectional replication enabled and should be used when Nexus is running in the region
+          items:
+            $ref: '#/components/schemas/S3BlobStoreApiFailoverBucket'
+          type: array
+        preSignedUrlEnabled:
+          description: Whether pre assigned URL is enabled or not.
+          example: true
+          type: boolean
+      required:
+      - bucket
+      type: object
+    GroupBlobStoreApiModel:
+      properties:
+        fillPolicy:
+          enum:
+          - roundRobin
+          - writeToFirst
+          type: string
+        members:
+          description: List of the names of blob stores that are members of this group
+          items:
+            type: string
+          type: array
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    FileBlobStoreApiCreateRequest:
+      properties:
+        name:
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        path:
+          description: An absolute path or a path relative to <data-directory>/blobs
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    GroupBlobStoreApiCreateRequest:
+      properties:
+        fillPolicy:
+          enum:
+          - roundRobin
+          - writeToFirst
+          type: string
+        members:
+          description: List of the names of blob stores that are members of this group
+          items:
+            type: string
+          type: array
+        name:
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    AzureBlobStoreApiModel:
+      properties:
+        bucketConfiguration:
+          $ref: '#/components/schemas/AzureBlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the Azure blob store.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      required:
+      - bucketConfiguration
+      - name
+      type: object
+    S3BlobStoreApiEncryption:
+      properties:
+        encryptionKey:
+          description: The encryption key.
+          type: string
+        encryptionType:
+          description: The type of S3 server side encryption to use.
+          enum:
+          - s3ManagedEncryption
+          - kmsManagedEncryption
+          type: string
+      type: object
+    S3BlobStoreApiBucket:
+      properties:
+        name:
+          description: The name of the S3 bucket
+          type: string
+        prefix:
+          description: The S3 blob store (i.e S3 object) key prefix
+          type: string
+        region:
+          description: The AWS region to create a new S3 bucket in or an existing S3 bucket's region
+          example: DEFAULT
+          type: string
+      required:
+      - name
+      - region
+      type: object
+    BlobStoreApiSoftQuota:
+      properties:
+        limit:
+          description: The limit in MB.
+          format: int64
+          minimum: 0
+          type: integer
+        type:
+          description: The type to use such as spaceRemainingQuota, or spaceUsedQuota
+          enum:
+          - spaceRemainingQuota
+          - spaceUsedQuota
+          type: string
+      type: object
+    GroupBlobStoreApiUpdateRequest:
+      properties:
+        fillPolicy:
+          enum:
+          - roundRobin
+          - writeToFirst
+          type: string
+        members:
+          description: List of the names of blob stores that are members of this group
+          items:
+            type: string
+          type: array
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    AzureBlobStoreApiAuthentication:
+      properties:
+        accountKey:
+          description: The account key.
+          type: string
+        authenticationMethod:
+          description: The type of Azure authentication to use.
+          enum:
+          - ACCOUNTKEY
+          - MANAGEDIDENTITY
+          - ENVIRONMENTVARIABLE
+          type: string
+      required:
+      - authenticationMethod
+      type: object
+    GoogleCloudBlobstoreApiModel:
+      properties:
+        bucketConfiguration:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the GC Storage blob store.
+          example: gc_storage
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        type:
+          description: The blob store type.
+          example: Google Cloud Storage
+          readOnly: true
+          type: string
+      required:
+      - bucketConfiguration
+      - name
+      type: object
+    GenericBlobStoreApiResponse:
+      properties:
+        availableSpaceInBytes:
+          format: int64
+          type: integer
+        blobCount:
+          format: int64
+          type: integer
+        name:
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        totalSizeInBytes:
+          format: int64
+          type: integer
+        type:
+          type: string
+        unavailable:
+          type: boolean
+      type: object
+    FileBlobStoreApiModel:
+      properties:
+        path:
+          description: An absolute path or a path relative to <data-directory>/blobs
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    S3BlobStoreApiFailoverBucket:
+      properties:
+        bucketName:
+          description: The name of the bucket in the region
+          readOnly: true
+          type: string
+        region:
+          description: The region containing the bucket
+          readOnly: true
+          type: string
+      required:
+      - bucketName
+      - region
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

@@ -1,0 +1,903 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets Tags API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: Tags
+paths:
+  /v1/tags:
+    get:
+      operationId: getTags
+      parameters:
+      - description: A token returned by a prior request. If present, the next page of results are returned
+        in: query
+        name: continuationToken
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageTagXO'
+          description: successful operation
+      summary: List tags
+      tags:
+      - Tags
+    post:
+      operationId: create_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagXO'
+        required: false
+      responses:
+        '200':
+          content: {}
+          description: Tag was added
+        '400':
+          content: {}
+          description: Bad request. Check tag name and attributes. Name can only contain letters, numbers, underscores, hyphens and dots and cannot start with an underscore or dot. The name cannot exceed 256 characters. The attributes is a JSON document which cannot exceed 20k.
+      summary: Create a tag
+      tags:
+      - Tags
+      x-codegen-request-body-name: body
+  /v1/tags/associate/{tagName}:
+    delete:
+      operationId: disassociate
+      parameters:
+      - description: Tag to associate to the matched components
+        in: path
+        name: tagName
+        required: true
+        schema:
+          type: string
+      - description: The query waits until the indexing is complete
+        in: query
+        name: wait
+        schema:
+          default: true
+          type: boolean
+      - description: Query by keyword
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Repository name
+        in: query
+        name: repository
+        schema:
+          type: string
+      - description: Query by format
+        in: query
+        name: format
+        schema:
+          type: string
+      - description: Component group
+        in: query
+        name: group
+        schema:
+          type: string
+      - description: Component name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Component version
+        in: query
+        name: version
+        schema:
+          type: string
+      - description: Prerelease version flag
+        in: query
+        name: prerelease
+        schema:
+          type: string
+      - description: Asset last modified time
+        in: query
+        name: last_updated
+        schema:
+          type: string
+      - description: Asset last modified time (UI)
+        in: query
+        name: lastBlobUpdated
+        schema:
+          type: string
+      - description: Specific MD5 hash of component's asset
+        in: query
+        name: md5
+        schema:
+          type: string
+      - description: Specific SHA-1 hash of component's asset
+        in: query
+        name: sha1
+        schema:
+          type: string
+      - description: Specific SHA-256 hash of component's asset
+        in: query
+        name: sha256
+        schema:
+          type: string
+      - description: Specific SHA-512 hash of component's asset
+        in: query
+        name: sha512
+        schema:
+          type: string
+      - description: Vendor
+        in: query
+        name: composer.vendor
+        schema:
+          type: string
+      - description: Package
+        in: query
+        name: composer.package
+        schema:
+          type: string
+      - description: Version
+        in: query
+        name: composer.version
+        schema:
+          type: string
+      - description: Conan base version
+        in: query
+        name: conan.baseVersion
+        schema:
+          type: string
+      - description: Conan channel
+        in: query
+        name: conan.channel
+        schema:
+          type: string
+      - description: Conan recipe revision
+        in: query
+        name: conan.revision
+        schema:
+          type: string
+      - description: Conan package id
+        in: query
+        name: conan.packageId
+        schema:
+          type: string
+      - description: Conan package revision
+        in: query
+        name: conan.packageRevision
+        schema:
+          type: string
+      - description: Conan base version strict
+        in: query
+        name: conan.baseVersion.strict
+        schema:
+          type: string
+      - description: Return latest revision
+        in: query
+        name: conan.revision.latest
+        schema:
+          type: string
+      - description: Conan arch
+        in: query
+        name: conan.settings.arch
+        schema:
+          type: string
+      - description: Conan os
+        in: query
+        name: conan.settings.os
+        schema:
+          type: string
+      - description: Conan compiler
+        in: query
+        name: conan.settings.compiler
+        schema:
+          type: string
+      - description: Conan compiler version
+        in: query
+        name: conan.settings.compiler.version
+        schema:
+          type: string
+      - description: Conan compiler runtime
+        in: query
+        name: conan.settings.compiler.runtime
+        schema:
+          type: string
+      - description: Docker image name
+        in: query
+        name: docker.imageName
+        schema:
+          type: string
+      - description: Docker image tag
+        in: query
+        name: docker.imageTag
+        schema:
+          type: string
+      - description: Docker layer ID
+        in: query
+        name: docker.layerId
+        schema:
+          type: string
+      - description: Docker content digest
+        in: query
+        name: docker.contentDigest
+        schema:
+          type: string
+      - description: Maven groupId
+        in: query
+        name: maven.groupId
+        schema:
+          type: string
+      - description: Maven artifactId
+        in: query
+        name: maven.artifactId
+        schema:
+          type: string
+      - description: Maven base version
+        in: query
+        name: maven.baseVersion
+        schema:
+          type: string
+      - description: Maven extension of component's asset
+        in: query
+        name: maven.extension
+        schema:
+          type: string
+      - description: Maven classifier of component's asset
+        in: query
+        name: maven.classifier
+        schema:
+          type: string
+      - description: Group asset version extension classifier
+        in: query
+        name: gavec
+        schema:
+          type: string
+      - description: npm scope
+        in: query
+        name: npm.scope
+        schema:
+          type: string
+      - description: npm author
+        in: query
+        name: npm.author
+        schema:
+          type: string
+      - description: npm description
+        in: query
+        name: npm.description
+        schema:
+          type: string
+      - description: npm keywords
+        in: query
+        name: npm.keywords
+        schema:
+          type: string
+      - description: npm license
+        in: query
+        name: npm.license
+        schema:
+          type: string
+      - description: npm tagged is
+        in: query
+        name: npm.tagged_is
+        schema:
+          type: string
+      - description: npm tagged not
+        in: query
+        name: npm.tagged_not
+        schema:
+          type: string
+      - description: NuGet id
+        in: query
+        name: nuget.id
+        schema:
+          type: string
+      - description: NuGet tags
+        in: query
+        name: nuget.tags
+        schema:
+          type: string
+      - description: NuGet title
+        in: query
+        name: nuget.title
+        schema:
+          type: string
+      - description: NuGet authors
+        in: query
+        name: nuget.authors
+        schema:
+          type: string
+      - description: NuGet description
+        in: query
+        name: nuget.description
+        schema:
+          type: string
+      - description: NuGet summary
+        in: query
+        name: nuget.summary
+        schema:
+          type: string
+      - description: NuGet prerelease
+        in: query
+        name: nuget.is_prerelease
+        schema:
+          type: string
+      - description: p2 plugin name
+        in: query
+        name: p2.pluginName
+        schema:
+          type: string
+      - description: PyPI classifiers
+        in: query
+        name: pypi.classifiers
+        schema:
+          type: string
+      - description: PyPI description
+        in: query
+        name: pypi.description
+        schema:
+          type: string
+      - description: PyPI keywords
+        in: query
+        name: pypi.keywords
+        schema:
+          type: string
+      - description: PyPI summary
+        in: query
+        name: pypi.summary
+        schema:
+          type: string
+      - description: RubyGems description
+        in: query
+        name: rubygems.description
+        schema:
+          type: string
+      - description: RubyGems platform
+        in: query
+        name: rubygems.platform
+        schema:
+          type: string
+      - description: RubyGems summary
+        in: query
+        name: rubygems.summary
+        schema:
+          type: string
+      - description: swift scope
+        in: query
+        name: swift.scope
+        schema:
+          type: string
+      - description: swift asset kind
+        in: query
+        name: swift.asset_kind
+        schema:
+          type: string
+      - description: Component tag
+        in: query
+        name: tag
+        schema:
+          type: string
+      - description: terraform provider
+        in: query
+        name: terraform.provider
+        schema:
+          type: string
+      - description: terraform namespace
+        in: query
+        name: terraform.namespace
+        schema:
+          type: string
+      - description: terraform name
+        in: query
+        name: terraform.name
+        schema:
+          type: string
+      - description: Yum architecture
+        in: query
+        name: yum.architecture
+        schema:
+          type: string
+      - description: Yum package name
+        in: query
+        name: yum.name
+        schema:
+          type: string
+      responses:
+        '200':
+          content: {}
+          description: Disassociation was successful
+        '404':
+          content: {}
+          description: Tag or components not found
+      summary: Disassociate components from a tag
+      tags:
+      - Tags
+    post:
+      operationId: associate
+      parameters:
+      - description: Tag to associate to the matched components
+        in: path
+        name: tagName
+        required: true
+        schema:
+          type: string
+      - description: The query waits until the indexing is complete
+        in: query
+        name: wait
+        schema:
+          default: true
+          type: boolean
+      - description: Query by keyword
+        in: query
+        name: q
+        schema:
+          type: string
+      - description: Repository name
+        in: query
+        name: repository
+        schema:
+          type: string
+      - description: Query by format
+        in: query
+        name: format
+        schema:
+          type: string
+      - description: Component group
+        in: query
+        name: group
+        schema:
+          type: string
+      - description: Component name
+        in: query
+        name: name
+        schema:
+          type: string
+      - description: Component version
+        in: query
+        name: version
+        schema:
+          type: string
+      - description: Prerelease version flag
+        in: query
+        name: prerelease
+        schema:
+          type: string
+      - description: Asset last modified time
+        in: query
+        name: last_updated
+        schema:
+          type: string
+      - description: Asset last modified time (UI)
+        in: query
+        name: lastBlobUpdated
+        schema:
+          type: string
+      - description: Specific MD5 hash of component's asset
+        in: query
+        name: md5
+        schema:
+          type: string
+      - description: Specific SHA-1 hash of component's asset
+        in: query
+        name: sha1
+        schema:
+          type: string
+      - description: Specific SHA-256 hash of component's asset
+        in: query
+        name: sha256
+        schema:
+          type: string
+      - description: Specific SHA-512 hash of component's asset
+        in: query
+        name: sha512
+        schema:
+          type: string
+      - description: Vendor
+        in: query
+        name: composer.vendor
+        schema:
+          type: string
+      - description: Package
+        in: query
+        name: composer.package
+        schema:
+          type: string
+      - description: Version
+        in: query
+        name: composer.version
+        schema:
+          type: string
+      - description: Conan base version
+        in: query
+        name: conan.baseVersion
+        schema:
+          type: string
+      - description: Conan channel
+        in: query
+        name: conan.channel
+        schema:
+          type: string
+      - description: Conan recipe revision
+        in: query
+        name: conan.revision
+        schema:
+          type: string
+      - description: Conan package id
+        in: query
+        name: conan.packageId
+        schema:
+          type: string
+      - description: Conan package revision
+        in: query
+        name: conan.packageRevision
+        schema:
+          type: string
+      - description: Conan base version strict
+        in: query
+        name: conan.baseVersion.strict
+        schema:
+          type: string
+      - description: Return latest revision
+        in: query
+        name: conan.revision.latest
+        schema:
+          type: string
+      - description: Conan arch
+        in: query
+        name: conan.settings.arch
+        schema:
+          type: string
+      - description: Conan os
+        in: query
+        name: conan.settings.os
+        schema:
+          type: string
+      - description: Conan compiler
+        in: query
+        name: conan.settings.compiler
+        schema:
+          type: string
+      - description: Conan compiler version
+        in: query
+        name: conan.settings.compiler.version
+        schema:
+          type: string
+      - description: Conan compiler runtime
+        in: query
+        name: conan.settings.compiler.runtime
+        schema:
+          type: string
+      - description: Docker image name
+        in: query
+        name: docker.imageName
+        schema:
+          type: string
+      - description: Docker image tag
+        in: query
+        name: docker.imageTag
+        schema:
+          type: string
+      - description: Docker layer ID
+        in: query
+        name: docker.layerId
+        schema:
+          type: string
+      - description: Docker content digest
+        in: query
+        name: docker.contentDigest
+        schema:
+          type: string
+      - description: Maven groupId
+        in: query
+        name: maven.groupId
+        schema:
+          type: string
+      - description: Maven artifactId
+        in: query
+        name: maven.artifactId
+        schema:
+          type: string
+      - description: Maven base version
+        in: query
+        name: maven.baseVersion
+        schema:
+          type: string
+      - description: Maven extension of component's asset
+        in: query
+        name: maven.extension
+        schema:
+          type: string
+      - description: Maven classifier of component's asset
+        in: query
+        name: maven.classifier
+        schema:
+          type: string
+      - description: Group asset version extension classifier
+        in: query
+        name: gavec
+        schema:
+          type: string
+      - description: npm scope
+        in: query
+        name: npm.scope
+        schema:
+          type: string
+      - description: npm author
+        in: query
+        name: npm.author
+        schema:
+          type: string
+      - description: npm description
+        in: query
+        name: npm.description
+        schema:
+          type: string
+      - description: npm keywords
+        in: query
+        name: npm.keywords
+        schema:
+          type: string
+      - description: npm license
+        in: query
+        name: npm.license
+        schema:
+          type: string
+      - description: npm tagged is
+        in: query
+        name: npm.tagged_is
+        schema:
+          type: string
+      - description: npm tagged not
+        in: query
+        name: npm.tagged_not
+        schema:
+          type: string
+      - description: NuGet id
+        in: query
+        name: nuget.id
+        schema:
+          type: string
+      - description: NuGet tags
+        in: query
+        name: nuget.tags
+        schema:
+          type: string
+      - description: NuGet title
+        in: query
+        name: nuget.title
+        schema:
+          type: string
+      - description: NuGet authors
+        in: query
+        name: nuget.authors
+        schema:
+          type: string
+      - description: NuGet description
+        in: query
+        name: nuget.description
+        schema:
+          type: string
+      - description: NuGet summary
+        in: query
+        name: nuget.summary
+        schema:
+          type: string
+      - description: NuGet prerelease
+        in: query
+        name: nuget.is_prerelease
+        schema:
+          type: string
+      - description: p2 plugin name
+        in: query
+        name: p2.pluginName
+        schema:
+          type: string
+      - description: PyPI classifiers
+        in: query
+        name: pypi.classifiers
+        schema:
+          type: string
+      - description: PyPI description
+        in: query
+        name: pypi.description
+        schema:
+          type: string
+      - description: PyPI keywords
+        in: query
+        name: pypi.keywords
+        schema:
+          type: string
+      - description: PyPI summary
+        in: query
+        name: pypi.summary
+        schema:
+          type: string
+      - description: RubyGems description
+        in: query
+        name: rubygems.description
+        schema:
+          type: string
+      - description: RubyGems platform
+        in: query
+        name: rubygems.platform
+        schema:
+          type: string
+      - description: RubyGems summary
+        in: query
+        name: rubygems.summary
+        schema:
+          type: string
+      - description: swift scope
+        in: query
+        name: swift.scope
+        schema:
+          type: string
+      - description: swift asset kind
+        in: query
+        name: swift.asset_kind
+        schema:
+          type: string
+      - description: Component tag
+        in: query
+        name: tag
+        schema:
+          type: string
+      - description: terraform provider
+        in: query
+        name: terraform.provider
+        schema:
+          type: string
+      - description: terraform namespace
+        in: query
+        name: terraform.namespace
+        schema:
+          type: string
+      - description: terraform name
+        in: query
+        name: terraform.name
+        schema:
+          type: string
+      - description: Yum architecture
+        in: query
+        name: yum.architecture
+        schema:
+          type: string
+      - description: Yum package name
+        in: query
+        name: yum.name
+        schema:
+          type: string
+      responses:
+        '200':
+          content: {}
+          description: Associate was successful
+        '404':
+          content: {}
+          description: Tag or components not found
+      summary: Associate components with a tag
+      tags:
+      - Tags
+  /v1/tags/{name}:
+    delete:
+      operationId: delete_3
+      parameters:
+      - description: Name of the tag to delete
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Tag was deleted
+        '404':
+          content: {}
+          description: Tag not found
+      summary: Delete a tag
+      tags:
+      - Tags
+    get:
+      operationId: get_2
+      parameters:
+      - description: Name of the tag to retrieve
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagXO'
+          description: successful operation
+        '404':
+          content: {}
+          description: Tag not found
+      summary: Get a tag
+      tags:
+      - Tags
+    put:
+      operationId: replace
+      parameters:
+      - in: path
+        name: name
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseTagXO'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagXO'
+          description: successful operation
+        '400':
+          content: {}
+          description: Bad request. Check tag attributes. The attributes is a JSON document which cannot exceed 20k
+        '404':
+          content: {}
+          description: Tag not found
+      summary: Update a tags attributes
+      tags:
+      - Tags
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    PageTagXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/TagXO'
+          type: array
+      type: object
+    BaseTagXO:
+      properties:
+        attributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
+      type: object
+    TagXO:
+      properties:
+        attributes:
+          additionalProperties: {}
+          type: object
+        firstCreated:
+          format: date-time
+          type: string
+        lastUpdated:
+          format: date-time
+          type: string
+        name:
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+      required:
+      - name
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'

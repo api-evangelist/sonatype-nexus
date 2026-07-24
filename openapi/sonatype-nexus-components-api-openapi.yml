@@ -1,0 +1,407 @@
+openapi: 3.0.1
+info:
+  contact:
+    name: Sonatype Community Maintainers
+    url: https://github.com/sonatype-nexus-community
+  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Sonatype Nexus Repository Manager assets components API
+  version: 3.91.0-07
+servers:
+- url: /service/rest/
+security:
+- BasicAuth: []
+tags:
+- name: components
+paths:
+  /v1/components:
+    get:
+      operationId: getComponents
+      parameters:
+      - description: A token returned by a prior request. If present, the next page of results are returned
+        in: query
+        name: continuationToken
+        schema:
+          type: string
+      - description: Repository from which you would like to retrieve components
+        in: query
+        name: repository
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageComponentXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to list components
+        '422':
+          content: {}
+          description: Parameter 'repository' is required
+      summary: List components
+      tags:
+      - components
+    post:
+      operationId: uploadComponent
+      parameters:
+      - description: Name of the repository to which you would like to upload the component
+        in: query
+        name: repository
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                apt.asset:
+                  description: 'apt Asset '
+                  format: binary
+                  type: string
+                apt.tag:
+                  description: apt Tag
+                  type: string
+                helm.asset:
+                  description: 'helm Asset '
+                  format: binary
+                  type: string
+                helm.tag:
+                  description: helm Tag
+                  type: string
+                maven2.artifactId:
+                  description: maven2 Artifact ID
+                  type: string
+                maven2.asset1:
+                  description: maven2 Asset 1
+                  format: binary
+                  type: string
+                maven2.asset1.classifier:
+                  description: maven2 Asset 1 Classifier
+                  type: string
+                maven2.asset1.extension:
+                  description: maven2 Asset 1 Extension
+                  type: string
+                maven2.asset2:
+                  description: maven2 Asset 2
+                  format: binary
+                  type: string
+                maven2.asset2.classifier:
+                  description: maven2 Asset 2 Classifier
+                  type: string
+                maven2.asset2.extension:
+                  description: maven2 Asset 2 Extension
+                  type: string
+                maven2.asset3:
+                  description: maven2 Asset 3
+                  format: binary
+                  type: string
+                maven2.asset3.classifier:
+                  description: maven2 Asset 3 Classifier
+                  type: string
+                maven2.asset3.extension:
+                  description: maven2 Asset 3 Extension
+                  type: string
+                maven2.generate-pom:
+                  description: maven2 Generate a POM file with these coordinates
+                  type: boolean
+                maven2.groupId:
+                  description: maven2 Group ID
+                  type: string
+                maven2.packaging:
+                  description: maven2 Packaging
+                  type: string
+                maven2.tag:
+                  description: maven2 Tag
+                  type: string
+                maven2.version:
+                  description: maven2 Version
+                  type: string
+                npm.asset:
+                  description: 'npm Asset '
+                  format: binary
+                  type: string
+                npm.tag:
+                  description: npm Tag
+                  type: string
+                nuget.asset:
+                  description: 'nuget Asset '
+                  format: binary
+                  type: string
+                nuget.tag:
+                  description: nuget Tag
+                  type: string
+                pypi.asset:
+                  description: 'pypi Asset '
+                  format: binary
+                  type: string
+                pypi.tag:
+                  description: pypi Tag
+                  type: string
+                r.asset:
+                  description: 'r Asset '
+                  format: binary
+                  type: string
+                r.asset.pathId:
+                  description: r Asset  Package Path
+                  type: string
+                r.tag:
+                  description: r Tag
+                  type: string
+                raw.asset1:
+                  description: raw Asset 1
+                  format: binary
+                  type: string
+                raw.asset1.filename:
+                  description: raw Asset 1 Filename
+                  type: string
+                raw.asset2:
+                  description: raw Asset 2
+                  format: binary
+                  type: string
+                raw.asset2.filename:
+                  description: raw Asset 2 Filename
+                  type: string
+                raw.asset3:
+                  description: raw Asset 3
+                  format: binary
+                  type: string
+                raw.asset3.filename:
+                  description: raw Asset 3 Filename
+                  type: string
+                raw.directory:
+                  description: raw Directory
+                  type: string
+                raw.tag:
+                  description: raw Tag
+                  type: string
+                rubygems.asset:
+                  description: 'rubygems Asset '
+                  format: binary
+                  type: string
+                rubygems.tag:
+                  description: rubygems Tag
+                  type: string
+                swift.asset:
+                  description: 'swift Asset '
+                  format: binary
+                  type: string
+                swift.name:
+                  description: swift Name
+                  type: string
+                swift.scope:
+                  description: swift Scope
+                  type: string
+                swift.tag:
+                  description: swift Tag
+                  type: string
+                swift.version:
+                  description: swift Version
+                  type: string
+                terraform.architecture:
+                  description: terraform Architecture
+                  type: string
+                terraform.asset:
+                  description: 'terraform Asset '
+                  format: binary
+                  type: string
+                terraform.name:
+                  description: terraform Module Name
+                  type: string
+                terraform.namespace:
+                  description: terraform Namespace
+                  type: string
+                terraform.os:
+                  description: terraform Operating System
+                  type: string
+                terraform.provider:
+                  description: terraform Provider
+                  type: string
+                terraform.tag:
+                  description: terraform Tag
+                  type: string
+                terraform.type:
+                  description: terraform Provider Type
+                  type: string
+                terraform.uploadType:
+                  description: terraform Upload Type
+                  enum:
+                  - module
+                  - provider
+                  type: string
+                terraform.version:
+                  description: terraform Version
+                  type: string
+                yum.asset:
+                  description: 'yum Asset '
+                  format: binary
+                  type: string
+                yum.asset.filename:
+                  description: yum Asset  Filename
+                  type: string
+                yum.directory:
+                  description: yum Directory
+                  type: string
+                yum.tag:
+                  description: yum Tag
+                  type: string
+              type: object
+      responses:
+        '403':
+          content: {}
+          description: Insufficient permissions to upload a component
+        '422':
+          content: {}
+          description: Parameter 'repository' is required
+      summary: Upload a single component
+      tags:
+      - components
+  /v1/components/{id}:
+    delete:
+      operationId: deleteComponent
+      parameters:
+      - description: ID of the component to delete
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          content: {}
+          description: Component was successfully deleted
+        '403':
+          content: {}
+          description: Insufficient permissions to delete component
+        '404':
+          content: {}
+          description: Component not found
+        '422':
+          content: {}
+          description: Malformed ID
+      summary: Delete a single component
+      tags:
+      - components
+    get:
+      operationId: getComponentById
+      parameters:
+      - description: ID of the component to retrieve
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComponentXO'
+          description: successful operation
+        '403':
+          content: {}
+          description: Insufficient permissions to get component
+        '404':
+          content: {}
+          description: Component not found
+        '422':
+          content: {}
+          description: Malformed ID
+      summary: Get a single component
+      tags:
+      - components
+components:
+  schemas:
+    AssetXO:
+      properties:
+        blobCreated:
+          format: date-time
+          type: string
+        blobRef:
+          type: string
+        blobStoreName:
+          type: string
+        blobUpdated:
+          format: date-time
+          type: string
+        checksum:
+          additionalProperties:
+            type: string
+          type: object
+        contentType:
+          type: string
+        downloadUrl:
+          type: string
+        fileSize:
+          format: int64
+          type: integer
+        format:
+          type: string
+        id:
+          type: string
+        lastDownloaded:
+          format: date-time
+          type: string
+        lastModified:
+          format: date-time
+          type: string
+        lastVerified:
+          format: date-time
+          type: string
+        path:
+          type: string
+        repository:
+          type: string
+        uploader:
+          type: string
+        uploaderIp:
+          type: string
+      type: object
+    ComponentXO:
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+        extraJsonAttributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
+        format:
+          type: string
+        group:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        repository:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        version:
+          type: string
+      type: object
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
+  securitySchemes:
+    BasicAuth:
+      scheme: basic
+      type: http
+x-original-swagger-version: '2.0'
