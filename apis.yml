@@ -7,7 +7,20 @@ description: >-
   component and asset management, security, blob stores, search, tasks, cleanup policies, staging, and system
   administration.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sonatype-nexus.png
 tags:
   - Artifact Management
   - DevOps
@@ -22,44 +35,957 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: sonatype-nexus:nexus-repository-api
-    name: Nexus Repository API
-    description: >-
-      REST API for Sonatype Nexus Repository Manager (v3.91.0) providing 238 endpoints for managing repositories across
-      many formats (Maven, npm, Docker, PyPI, NuGet, RubyGems, Go, Cargo, Helm, Terraform, R, APT, Yum, Raw, Swift, and
-      more), components, assets, blob stores (file, S3, Azure, GCS), security (users, roles, privileges, LDAP, SAML,
-      Crowd), search, tasks, cleanup policies, staging, and system administration. Authentication uses HTTP Basic Auth
-      or User Tokens.
-    humanURL: https://help.sonatype.com/en/api-reference.html
-    baseURL: https://{nexus-host}/service/rest
-    tags:
-      - Artifact Management
-      - Components
-      - Repository
-      - Security
-      - Search
-      - Tasks
-      - Blob Store
-      - Maven
-      - npm
-      - Docker
-    properties:
-      - type: Documentation
-        url: https://help.sonatype.com/en/api-reference.html
-      - type: Reference
-        url: https://help.sonatype.com/en/rest-and-integration-api.html
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/openapi/sonatype-nexus-repository-openapi.yml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
-    contact:
-      - FN: Sonatype Support
-        url: https://support.sonatype.com/
+- aid: sonatype-nexus:sonatype-nexus-assets-api
+  name: Sonatype Nexus assets API
+  description: The assets API from Sonatype Nexus — 2 operation(s) for assets.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - assets
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-assets-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-azure-blob-store-api
+  name: Sonatype Nexus Azure blob store API
+  description: The Azure blob store API from Sonatype Nexus — 1 operation(s) for azure blob store.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Azure blob store
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-azure-blob-store-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-blob-store-api
+  name: Sonatype Nexus Blob store API
+  description: The Blob store API from Sonatype Nexus — 15 operation(s) for blob store.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Blob store
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-blob-store-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-capabilities-api
+  name: Sonatype Nexus Capabilities API
+  description: The Capabilities API from Sonatype Nexus — 3 operation(s) for capabilities.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Capabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-capabilities-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-cleanup-policies-api
+  name: Sonatype Nexus Cleanup policies API
+  description: The Cleanup policies API from Sonatype Nexus — 3 operation(s) for cleanup policies.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Cleanup policies
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-cleanup-policies-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-community-edition-eula-api
+  name: Sonatype Nexus Community Edition Eula API
+  description: >-
+    The Community Edition Eula API from Sonatype Nexus — 1 operation(s) for community edition eula.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Community Edition Eula
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-community-edition-eula-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-components-api
+  name: Sonatype Nexus components API
+  description: The components API from Sonatype Nexus — 2 operation(s) for components.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - components
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-components-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-content-selectors-api
+  name: Sonatype Nexus Content selectors API
+  description: The Content selectors API from Sonatype Nexus — 2 operation(s) for content selectors.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Content selectors
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-content-selectors-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-data-store-api
+  name: Sonatype Nexus Data Store API
+  description: The Data Store API from Sonatype Nexus — 1 operation(s) for data store.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Data Store
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-data-store-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-database-upgrade-api
+  name: Sonatype Nexus Database Upgrade API
+  description: The Database Upgrade API from Sonatype Nexus — 1 operation(s) for database upgrade.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Database Upgrade
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-database-upgrade-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-email-api
+  name: Sonatype Nexus Email API
+  description: The Email API from Sonatype Nexus — 2 operation(s) for email.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Email
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-email-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-formats-api
+  name: Sonatype Nexus Formats API
+  description: The Formats API from Sonatype Nexus — 2 operation(s) for formats.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Formats
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-formats-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-instance-configuration-api
+  name: Sonatype Nexus Instance configuration API
+  description: >-
+    The Instance configuration API from Sonatype Nexus — 5 operation(s) for instance configuration.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Instance configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-instance-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-lifecycle-api
+  name: Sonatype Nexus Lifecycle API
+  description: The Lifecycle API from Sonatype Nexus — 2 operation(s) for lifecycle.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Lifecycle
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-lifecycle-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-malicious-risk-on-disk-api
+  name: Sonatype Nexus Malicious Risk On Disk API
+  description: >-
+    The Malicious Risk On Disk API from Sonatype Nexus — 2 operation(s) for malicious risk on disk.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Malicious Risk On Disk
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-malicious-risk-on-disk-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-manage-sonatype-http-system-settings-api
+  name: Sonatype Nexus Manage Sonatype HTTP System Settings API
+  description: >-
+    The Manage Sonatype HTTP System Settings API from Sonatype Nexus — 1 operation(s) for manage sonatype
+    http system settings.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Manage Sonatype HTTP System Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-manage-sonatype-http-system-settings-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-manage-sonatype-repository-firewall-configuration-api
+  name: Sonatype Nexus Manage Sonatype Repository Firewall configuration API
+  description: >-
+    The Manage Sonatype Repository Firewall configuration API from Sonatype Nexus — 6 operation(s) for
+    manage sonatype repository firewall configuration.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Manage Sonatype Repository Firewall configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-manage-sonatype-repository-firewall-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-monthly-metrics-api
+  name: Sonatype Nexus Monthly Metrics API
+  description: The Monthly Metrics API from Sonatype Nexus — 1 operation(s) for monthly metrics.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Monthly Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-monthly-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-product-licensing-api
+  name: Sonatype Nexus Product licensing API
+  description: The Product licensing API from Sonatype Nexus — 1 operation(s) for product licensing.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Product licensing
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-product-licensing-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-reconcile-plan-api
+  name: Sonatype Nexus Reconcile Plan API
+  description: The Reconcile Plan API from Sonatype Nexus — 3 operation(s) for reconcile plan.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Reconcile Plan
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-reconcile-plan-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-recovery-mode-api
+  name: Sonatype Nexus Recovery Mode API
+  description: The Recovery Mode API from Sonatype Nexus — 1 operation(s) for recovery mode.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Recovery Mode
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-recovery-mode-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-repository-management-api
+  name: Sonatype Nexus Repository Management API
+  description: >-
+    The Repository Management API from Sonatype Nexus — 108 operation(s) for repository management.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Repository Management
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-repository-management-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-routing-rules-api
+  name: Sonatype Nexus Routing rules API
+  description: The Routing rules API from Sonatype Nexus — 2 operation(s) for routing rules.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Routing rules
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-routing-rules-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-script-api
+  name: Sonatype Nexus Script API
+  description: The Script API from Sonatype Nexus — 3 operation(s) for script.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Script
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-script-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-search-api
+  name: Sonatype Nexus Search API
+  description: The Search API from Sonatype Nexus — 3 operation(s) for search.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-search-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-atlassian-crowd-api
+  name: 'Sonatype Nexus Security: Atlassian Crowd API'
+  description: >-
+    The Security: Atlassian Crowd API from Sonatype Nexus — 3 operation(s) for security: atlassian crowd.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security: Atlassian Crowd'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-atlassian-crowd-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-certificates-api
+  name: 'Sonatype Nexus Security: certificates API'
+  description: >-
+    The Security: certificates API from Sonatype Nexus — 3 operation(s) for security: certificates.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security: certificates'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-certificates-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-anonymous-access-api
+  name: 'Sonatype Nexus Security Management: Anonymous Access API'
+  description: >-
+    The Security Management: Anonymous Access API from Sonatype Nexus — 1 operation(s) for security management:
+    anonymous access.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security Management: Anonymous Access'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-anonymous-access-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-api-keys-principals-encryption-api
+  name: 'Sonatype Nexus Security management: api keys principals encryption API'
+  description: >-
+    The Security management: api keys principals encryption API from Sonatype Nexus — 1 operation(s) for
+    security management: api keys principals encryption.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: api keys principals encryption'
+  properties:
+  - type: OpenAPI
+    url: >-
+      openapi/sonatype-nexus-security-management-api-keys-principals-encryption-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-api
+  name: Sonatype Nexus Security management API
+  description: >-
+    The Security management API from Sonatype Nexus — 1 operation(s) for security management.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Security management
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-jwt-api
+  name: 'Sonatype Nexus Security management: JWT API'
+  description: >-
+    The Security management: JWT API from Sonatype Nexus — 1 operation(s) for security management: jwt.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: JWT'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-jwt-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-ldap-api
+  name: 'Sonatype Nexus Security management: LDAP API'
+  description: >-
+    The Security management: LDAP API from Sonatype Nexus — 3 operation(s) for security management: ldap.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: LDAP'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-ldap-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-privileges-api
+  name: 'Sonatype Nexus Security management: privileges API'
+  description: >-
+    The Security management: privileges API from Sonatype Nexus — 14 operation(s) for security management:
+    privileges.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: privileges'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-privileges-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-realms-api
+  name: 'Sonatype Nexus Security management: realms API'
+  description: >-
+    The Security management: realms API from Sonatype Nexus — 2 operation(s) for security management:
+    realms.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: realms'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-realms-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-roles-api
+  name: 'Sonatype Nexus Security management: roles API'
+  description: >-
+    The Security management: roles API from Sonatype Nexus — 2 operation(s) for security management: roles.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: roles'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-roles-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-saml-api
+  name: 'Sonatype Nexus Security management: SAML API'
+  description: >-
+    The Security management: SAML API from Sonatype Nexus — 3 operation(s) for security management: saml.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: SAML'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-saml-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-saml-users-api
+  name: 'Sonatype Nexus Security management: SAML users API'
+  description: >-
+    The Security management: SAML users API from Sonatype Nexus — 2 operation(s) for security management:
+    saml users.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: SAML users'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-saml-users-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-secrets-encryption-api
+  name: 'Sonatype Nexus Security management: secrets encryption API'
+  description: >-
+    The Security management: secrets encryption API from Sonatype Nexus — 1 operation(s) for security
+    management: secrets encryption.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: secrets encryption'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-secrets-encryption-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-user-tokens-api
+  name: 'Sonatype Nexus Security management: user tokens API'
+  description: >-
+    The Security management: user tokens API from Sonatype Nexus — 2 operation(s) for security management:
+    user tokens.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: user tokens'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-user-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-security-management-users-api
+  name: 'Sonatype Nexus Security management: users API'
+  description: >-
+    The Security management: users API from Sonatype Nexus — 5 operation(s) for security management: users.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'Security management: users'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-security-management-users-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-staging-api
+  name: Sonatype Nexus Staging API
+  description: The Staging API from Sonatype Nexus — 2 operation(s) for staging.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Staging
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-staging-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-status-api
+  name: Sonatype Nexus Status API
+  description: The Status API from Sonatype Nexus — 5 operation(s) for status.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-status-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-support-api
+  name: Sonatype Nexus Support API
+  description: The Support API from Sonatype Nexus — 2 operation(s) for support.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Support
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-support-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-system-nodes-api
+  name: 'Sonatype Nexus System: Nodes API'
+  description: 'The System: Nodes API from Sonatype Nexus — 2 operation(s) for system: nodes.'
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - 'System: Nodes'
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-system-nodes-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-tags-api
+  name: Sonatype Nexus Tags API
+  description: The Tags API from Sonatype Nexus — 3 operation(s) for tags.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-tags-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-tasks-api
+  name: Sonatype Nexus Tasks API
+  description: The Tasks API from Sonatype Nexus — 7 operation(s) for tasks.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
 common:
   - type: AgenticAccess
     url: agentic-access/sonatype-nexus-agentic-access.yml
