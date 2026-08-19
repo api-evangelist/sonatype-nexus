@@ -1,0 +1,2211 @@
+{
+  "item": [
+    {
+      "id": "597ce771-7792-4dd4-94ec-3e60ab3f5bdc",
+      "name": "components",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d9a5fe8-c01b-4a17-937b-b6fb532106a2",
+          "name": "List components",
+          "request": {
+            "name": "List components",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "continuationToken",
+                  "value": "<string>",
+                  "description": "A token returned by a prior request. If present, the next page of results are returned"
+                },
+                {
+                  "disabled": false,
+                  "key": "repository",
+                  "value": "<string>",
+                  "description": "(Required) Repository from which you would like to retrieve components"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "646f1dc7-8df3-41d0-a819-1e98212123ca",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "continuationToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"continuationToken\": \"string\",\n  \"items\": [\n    {\n      \"assets\": [\n        {\n          \"blobCreated\": \"1973-07-20T07:07:09.039Z\",\n          \"blobRef\": \"string\",\n          \"blobStoreName\": \"string\",\n          \"blobUpdated\": \"1962-05-01T07:32:55.258Z\",\n          \"checksum\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"contentType\": \"string\",\n          \"downloadUrl\": \"string\",\n          \"fileSize\": 7802,\n          \"format\": \"string\",\n          \"id\": \"string\",\n          \"lastDownloaded\": \"1968-12-29T22:47:55.103Z\",\n          \"lastModified\": \"1983-05-31T01:51:35.151Z\",\n          \"lastVerified\": \"1966-04-03T04:15:00.159Z\",\n          \"path\": \"string\",\n          \"repository\": \"string\",\n          \"uploader\": \"string\",\n          \"uploaderIp\": \"string\"\n        },\n        {\n          \"blobCreated\": \"2007-06-28T11:01:41.155Z\",\n          \"blobRef\": \"string\",\n          \"blobStoreName\": \"string\",\n          \"blobUpdated\": \"1996-10-16T05:28:33.740Z\",\n          \"checksum\": {\n            \"key_0\": \"string\"\n          },\n          \"contentType\": \"string\",\n          \"downloadUrl\": \"string\",\n          \"fileSize\": 7958,\n          \"format\": \"string\",\n          \"id\": \"string\",\n          \"lastDownloaded\": \"1965-12-15T18:47:13.428Z\",\n          \"lastModified\": \"2024-10-21T18:44:04.541Z\",\n          \"lastVerified\": \"2020-05-21T07:38:15.281Z\",\n          \"path\": \"string\",\n          \"repository\": \"string\",\n          \"uploader\": \"string\",\n          \"uploaderIp\": \"string\"\n        }\n      ],\n      \"extraJsonAttributes\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"format\": \"string\",\n      \"group\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"repository\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"string\"\n    },\n    {\n      \"assets\": [\n        {\n          \"blobCreated\": \"1992-03-07T17:43:08.700Z\",\n          \"blobRef\": \"string\",\n          \"blobStoreName\": \"string\",\n          \"blobUpdated\": \"1986-11-29T07:18:36.964Z\",\n          \"checksum\": {\n            \"key_0\": \"string\"\n          },\n          \"contentType\": \"string\",\n          \"downloadUrl\": \"string\",\n          \"fileSize\": 303,\n          \"format\": \"string\",\n          \"id\": \"string\",\n          \"lastDownloaded\": \"1996-06-19T20:02:08.128Z\",\n          \"lastModified\": \"2001-05-12T01:55:51.977Z\",\n          \"lastVerified\": \"1973-04-16T19:03:26.808Z\",\n          \"path\": \"string\",\n          \"repository\": \"string\",\n          \"uploader\": \"string\",\n          \"uploaderIp\": \"string\"\n        },\n        {\n          \"blobCreated\": \"1949-11-28T20:03:16.929Z\",\n          \"blobRef\": \"string\",\n          \"blobStoreName\": \"string\",\n          \"blobUpdated\": \"2016-11-26T05:36:09.591Z\",\n          \"checksum\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          },\n          \"contentType\": \"string\",\n          \"downloadUrl\": \"string\",\n          \"fileSize\": 6298,\n          \"format\": \"string\",\n          \"id\": \"string\",\n          \"lastDownloaded\": \"1981-07-08T06:03:32.195Z\",\n          \"lastModified\": \"1996-05-24T05:48:38.358Z\",\n          \"lastVerified\": \"2004-06-02T01:59:37.860Z\",\n          \"path\": \"string\",\n          \"repository\": \"string\",\n          \"uploader\": \"string\",\n          \"uploaderIp\": \"string\"\n        }\n      ],\n      \"extraJsonAttributes\": {\n        \"key_0\": {}\n      },\n      \"format\": \"string\",\n      \"group\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"repository\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dcee887-a138-4597-8f99-e82521e674d9",
+              "name": "Insufficient permissions to list components",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "continuationToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "991a16fa-cf05-44bd-8d41-04502bccae7b",
+              "name": "Parameter 'repository' is required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "continuationToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b0a7140-aa03-4681-a1ca-c517b9d75872",
+          "name": "Upload a single component",
+          "request": {
+            "name": "Upload a single component",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "components"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "repository",
+                  "value": "<string>",
+                  "description": "(Required) Name of the repository to which you would like to upload the component"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "apt.asset",
+                  "type": "file",
+                  "description": "apt Asset "
+                },
+                {
+                  "key": "apt.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "apt Tag"
+                },
+                {
+                  "key": "helm.asset",
+                  "type": "file",
+                  "description": "helm Asset "
+                },
+                {
+                  "key": "helm.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "helm Tag"
+                },
+                {
+                  "key": "maven2.artifactId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Artifact ID"
+                },
+                {
+                  "key": "maven2.asset1",
+                  "type": "file",
+                  "description": "maven2 Asset 1"
+                },
+                {
+                  "key": "maven2.asset1.classifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Asset 1 Classifier"
+                },
+                {
+                  "key": "maven2.asset1.extension",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Asset 1 Extension"
+                },
+                {
+                  "key": "maven2.asset2",
+                  "type": "file",
+                  "description": "maven2 Asset 2"
+                },
+                {
+                  "key": "maven2.asset2.classifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Asset 2 Classifier"
+                },
+                {
+                  "key": "maven2.asset2.extension",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Asset 2 Extension"
+                },
+                {
+                  "key": "maven2.asset3",
+                  "type": "file",
+                  "description": "maven2 Asset 3"
+                },
+                {
+                  "key": "maven2.asset3.classifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Asset 3 Classifier"
+                },
+                {
+                  "key": "maven2.asset3.extension",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Asset 3 Extension"
+                },
+                {
+                  "key": "maven2.generate-pom",
+                  "value": "<boolean>",
+                  "type": "text",
+                  "description": "maven2 Generate a POM file with these coordinates"
+                },
+                {
+                  "key": "maven2.groupId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Group ID"
+                },
+                {
+                  "key": "maven2.packaging",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Packaging"
+                },
+                {
+                  "key": "maven2.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Tag"
+                },
+                {
+                  "key": "maven2.version",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "maven2 Version"
+                },
+                {
+                  "key": "npm.asset",
+                  "type": "file",
+                  "description": "npm Asset "
+                },
+                {
+                  "key": "npm.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "npm Tag"
+                },
+                {
+                  "key": "nuget.asset",
+                  "type": "file",
+                  "description": "nuget Asset "
+                },
+                {
+                  "key": "nuget.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "nuget Tag"
+                },
+                {
+                  "key": "pypi.asset",
+                  "type": "file",
+                  "description": "pypi Asset "
+                },
+                {
+                  "key": "pypi.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "pypi Tag"
+                },
+                {
+                  "key": "r.asset",
+                  "type": "file",
+                  "description": "r Asset "
+                },
+                {
+                  "key": "r.asset.pathId",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "r Asset  Package Path"
+                },
+                {
+                  "key": "r.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "r Tag"
+                },
+                {
+                  "key": "raw.asset1",
+                  "type": "file",
+                  "description": "raw Asset 1"
+                },
+                {
+                  "key": "raw.asset1.filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "raw Asset 1 Filename"
+                },
+                {
+                  "key": "raw.asset2",
+                  "type": "file",
+                  "description": "raw Asset 2"
+                },
+                {
+                  "key": "raw.asset2.filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "raw Asset 2 Filename"
+                },
+                {
+                  "key": "raw.asset3",
+                  "type": "file",
+                  "description": "raw Asset 3"
+                },
+                {
+                  "key": "raw.asset3.filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "raw Asset 3 Filename"
+                },
+                {
+                  "key": "raw.directory",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "raw Directory"
+                },
+                {
+                  "key": "raw.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "raw Tag"
+                },
+                {
+                  "key": "rubygems.asset",
+                  "type": "file",
+                  "description": "rubygems Asset "
+                },
+                {
+                  "key": "rubygems.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "rubygems Tag"
+                },
+                {
+                  "key": "swift.asset",
+                  "type": "file",
+                  "description": "swift Asset "
+                },
+                {
+                  "key": "swift.name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "swift Name"
+                },
+                {
+                  "key": "swift.scope",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "swift Scope"
+                },
+                {
+                  "key": "swift.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "swift Tag"
+                },
+                {
+                  "key": "swift.version",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "swift Version"
+                },
+                {
+                  "key": "terraform.architecture",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Architecture"
+                },
+                {
+                  "key": "terraform.asset",
+                  "type": "file",
+                  "description": "terraform Asset "
+                },
+                {
+                  "key": "terraform.name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Module Name"
+                },
+                {
+                  "key": "terraform.namespace",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Namespace"
+                },
+                {
+                  "key": "terraform.os",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Operating System"
+                },
+                {
+                  "key": "terraform.provider",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Provider"
+                },
+                {
+                  "key": "terraform.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Tag"
+                },
+                {
+                  "key": "terraform.type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Provider Type"
+                },
+                {
+                  "key": "terraform.uploadType",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Upload Type (This can only be one of module,provider)"
+                },
+                {
+                  "key": "terraform.version",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "terraform Version"
+                },
+                {
+                  "key": "yum.asset",
+                  "type": "file",
+                  "description": "yum Asset "
+                },
+                {
+                  "key": "yum.asset.filename",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "yum Asset  Filename"
+                },
+                {
+                  "key": "yum.directory",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "yum Directory"
+                },
+                {
+                  "key": "yum.tag",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "yum Tag"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ad941e60-893a-43c6-9afe-f5771b5f30c1",
+              "name": "Insufficient permissions to upload a component",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "apt Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "apt.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "apt Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "apt.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "helm Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "helm.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "helm Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "helm.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Artifact ID",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.artifactId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 1",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset1",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 1 Classifier",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset1.classifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 1 Extension",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset1.extension",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 2",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset2",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 2 Classifier",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset2.classifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 2 Extension",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset2.extension",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 3",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset3",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 3 Classifier",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset3.classifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 3 Extension",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset3.extension",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Generate a POM file with these coordinates",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.generate-pom",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Group ID",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.groupId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Packaging",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.packaging",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Version",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.version",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "npm Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "npm.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "npm Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "npm.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "nuget Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "nuget.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "nuget Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "nuget.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "pypi Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "pypi.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "pypi Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "pypi.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "r Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "r.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "r Asset  Package Path",
+                        "type": "text/plain"
+                      },
+                      "key": "r.asset.pathId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "r Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "r.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 1",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset1",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 1 Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset1.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 2",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset2",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 2 Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset2.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 3",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset3",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 3 Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset3.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Directory",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.directory",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "rubygems Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "rubygems.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "rubygems Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "rubygems.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Name",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Scope",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.scope",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Version",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.version",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Architecture",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.architecture",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Module Name",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Namespace",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.namespace",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Operating System",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.os",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Provider",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.provider",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Provider Type",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Upload Type (This can only be one of module,provider)",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.uploadType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Version",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.version",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Asset  Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.asset.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Directory",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.directory",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9716d9eb-514c-4415-bbbc-e392b5b18ea7",
+              "name": "Parameter 'repository' is required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "apt Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "apt.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "apt Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "apt.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "helm Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "helm.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "helm Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "helm.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Artifact ID",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.artifactId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 1",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset1",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 1 Classifier",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset1.classifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 1 Extension",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset1.extension",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 2",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset2",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 2 Classifier",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset2.classifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 2 Extension",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset2.extension",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 3",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset3",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 3 Classifier",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset3.classifier",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Asset 3 Extension",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.asset3.extension",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Generate a POM file with these coordinates",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.generate-pom",
+                      "value": "<boolean>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Group ID",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.groupId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Packaging",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.packaging",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "maven2 Version",
+                        "type": "text/plain"
+                      },
+                      "key": "maven2.version",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "npm Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "npm.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "npm Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "npm.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "nuget Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "nuget.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "nuget Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "nuget.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "pypi Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "pypi.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "pypi Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "pypi.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "r Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "r.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "r Asset  Package Path",
+                        "type": "text/plain"
+                      },
+                      "key": "r.asset.pathId",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "r Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "r.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 1",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset1",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 1 Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset1.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 2",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset2",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 2 Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset2.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 3",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset3",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Asset 3 Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.asset3.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Directory",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.directory",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "raw Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "raw.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "rubygems Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "rubygems.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "rubygems Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "rubygems.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Name",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Scope",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.scope",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "swift Version",
+                        "type": "text/plain"
+                      },
+                      "key": "swift.version",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Architecture",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.architecture",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Module Name",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.name",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Namespace",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.namespace",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Operating System",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.os",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Provider",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.provider",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Provider Type",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.type",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Upload Type (This can only be one of module,provider)",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.uploadType",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "terraform Version",
+                        "type": "text/plain"
+                      },
+                      "key": "terraform.version",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Asset ",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.asset",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Asset  Filename",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.asset.filename",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Directory",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.directory",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "yum Tag",
+                        "type": "text/plain"
+                      },
+                      "key": "yum.tag",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "075aaf57-ac1a-4776-b991-549a244183d2",
+          "name": "Delete a single component",
+          "request": {
+            "name": "Delete a single component",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "components",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the component to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "94e7c95a-3f9c-4a2d-ada9-f1ad46d6970f",
+              "name": "Component was successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71edec60-83d3-40e5-a91f-0af34d407c59",
+              "name": "Insufficient permissions to delete component",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e08011b7-3f38-4d4c-8c04-484a951805cc",
+              "name": "Component not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "105c88e2-11b2-490d-a2b8-35e1f8ba10e7",
+              "name": "Malformed ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5247e4a1-3e19-4a65-b229-4a3997ca7080",
+          "name": "Get a single component",
+          "request": {
+            "name": "Get a single component",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "components",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of the component to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67aa9a2a-07f8-4d66-b0c8-27c145f353af",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assets\": [\n    {\n      \"blobCreated\": \"1951-08-12T07:04:02.837Z\",\n      \"blobRef\": \"string\",\n      \"blobStoreName\": \"string\",\n      \"blobUpdated\": \"1982-09-27T16:28:51.951Z\",\n      \"checksum\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"contentType\": \"string\",\n      \"downloadUrl\": \"string\",\n      \"fileSize\": 4440,\n      \"format\": \"string\",\n      \"id\": \"string\",\n      \"lastDownloaded\": \"1977-05-20T12:04:24.235Z\",\n      \"lastModified\": \"2009-05-13T19:08:08.434Z\",\n      \"lastVerified\": \"1998-07-23T07:43:00.429Z\",\n      \"path\": \"string\",\n      \"repository\": \"string\",\n      \"uploader\": \"string\",\n      \"uploaderIp\": \"string\"\n    },\n    {\n      \"blobCreated\": \"2003-07-21T17:00:12.989Z\",\n      \"blobRef\": \"string\",\n      \"blobStoreName\": \"string\",\n      \"blobUpdated\": \"1981-08-05T07:12:46.806Z\",\n      \"checksum\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"contentType\": \"string\",\n      \"downloadUrl\": \"string\",\n      \"fileSize\": 3205,\n      \"format\": \"string\",\n      \"id\": \"string\",\n      \"lastDownloaded\": \"1959-04-06T14:00:06.461Z\",\n      \"lastModified\": \"1952-04-10T08:11:48.310Z\",\n      \"lastVerified\": \"1990-12-30T09:12:30.632Z\",\n      \"path\": \"string\",\n      \"repository\": \"string\",\n      \"uploader\": \"string\",\n      \"uploaderIp\": \"string\"\n    }\n  ],\n  \"extraJsonAttributes\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"format\": \"string\",\n  \"group\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"repository\": \"string\",\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ],\n  \"version\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe77e669-79bd-44e9-ac19-7179567a8b13",
+              "name": "Insufficient permissions to get component",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fed04b37-83d8-4132-b67d-dd09da66108d",
+              "name": "Component not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9125b9de-eb14-4efc-b21d-ae2e3c383262",
+              "name": "Malformed ID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "components",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of the component to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2586f49f-008c-4c18-955c-a22744b334dc",
+    "name": "Sonatype Nexus Repository Manager assets components API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

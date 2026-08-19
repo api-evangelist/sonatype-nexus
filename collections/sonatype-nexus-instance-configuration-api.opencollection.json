@@ -1,0 +1,186 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Instance configuration API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instance configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Export instance configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/configuration",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Export instance configuration"
+        },
+        {
+          "info": {
+            "name": "Apply instance configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/configuration",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply instance configuration"
+        },
+        {
+          "info": {
+            "name": "List assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/configuration/assets",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "continuationToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned by a prior request. If present, the next page of results are returned"
+              },
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query",
+                "description": "Repository from which you would like to retrieve assets."
+              },
+              {
+                "name": "newerThan",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp"
+              },
+              {
+                "name": "olderThan",
+                "value": "",
+                "type": "query",
+                "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp"
+              }
+            ]
+          },
+          "docs": "List assets"
+        },
+        {
+          "info": {
+            "name": "Import assets to repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/configuration/assets/:repositoryName/import",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Repository name to import assets to"
+              }
+            ]
+          },
+          "docs": "Import assets to repository"
+        },
+        {
+          "info": {
+            "name": "Set migration cipher password for decrypting imported secrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/configuration/cipher",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Set migration cipher password for decrypting imported secrets"
+        },
+        {
+          "info": {
+            "name": "Clear migration cipher password",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/configuration/cipher",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Clear migration cipher password"
+        },
+        {
+          "info": {
+            "name": "Receive transfer complete notification from migrator",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/configuration/transfer-complete",
+            "headers": [
+              {
+                "name": "X-Nexus-Migration-Protocol-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Receive transfer complete notification from migrator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

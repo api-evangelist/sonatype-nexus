@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Security Management: Anonymous Access API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security Management: Anonymous Access",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Anonymous Access settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/anonymous"
+          },
+          "docs": "Get Anonymous Access settings"
+        },
+        {
+          "info": {
+            "name": "Update Anonymous Access settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/security/anonymous",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Anonymous Access settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

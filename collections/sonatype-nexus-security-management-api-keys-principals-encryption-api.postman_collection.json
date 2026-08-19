@@ -1,0 +1,292 @@
+{
+  "item": [
+    {
+      "id": "c7ce8589-2c53-4d5c-b6ef-f4ac0146df82",
+      "name": "Security management: api keys principals encryption",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16c1456c-d48b-445f-92ca-4c3610de00c8",
+          "name": "Re-encrypt api keys principals using the specified configuration",
+          "request": {
+            "name": "Re-encrypt api keys principals using the specified configuration",
+            "description": {
+              "content": "Ensure all nodes have access to the key, and they use the same key",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "apikeys",
+                "encryption",
+                "re-encrypt"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"algorithmForDecryption\": \"<string>\",\n  \"iterationsForDecryption\": \"<integer>\",\n  \"notifyEmail\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7b8db6e-d0c4-4c0c-9f08-4370e0942fe1",
+              "name": "Re-encrypt task successfully submitted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apikeys",
+                    "encryption",
+                    "re-encrypt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmForDecryption\": \"<string>\",\n  \"iterationsForDecryption\": \"<integer>\",\n  \"notifyEmail\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d3cbbb7-19cf-41b1-9a0a-8d94718a034e",
+              "name": "Invalid request. See the response for more information. Possible causes: The key is not available to all nodes, upgrade needed or empty key id.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apikeys",
+                    "encryption",
+                    "re-encrypt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmForDecryption\": \"<string>\",\n  \"iterationsForDecryption\": \"<integer>\",\n  \"notifyEmail\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d792234e-579c-4604-b893-d48fd423fef8",
+              "name": "Insufficient permissions to re-encrypt secrets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apikeys",
+                    "encryption",
+                    "re-encrypt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmForDecryption\": \"<string>\",\n  \"iterationsForDecryption\": \"<integer>\",\n  \"notifyEmail\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b6232e6-6e6a-4482-8c65-baf28a8db564",
+              "name": "Re-encryption task in progress.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "apikeys",
+                    "encryption",
+                    "re-encrypt"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"algorithmForDecryption\": \"<string>\",\n  \"iterationsForDecryption\": \"<integer>\",\n  \"notifyEmail\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6130db29-8c82-4b62-a928-e112bb844eff",
+    "name": "Sonatype Nexus Repository Manager assets Security management: api keys principals encryption API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

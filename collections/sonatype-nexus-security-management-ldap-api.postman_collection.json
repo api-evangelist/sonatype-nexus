@@ -1,0 +1,1358 @@
+{
+  "item": [
+    {
+      "id": "670ef6c3-e0ac-4189-a6ad-bfd4488c5eb9",
+      "name": "Security management: LDAP",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42e3a6f8-2713-479e-986a-fa210b16fd63",
+          "name": "List LDAP servers",
+          "request": {
+            "name": "List LDAP servers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "security",
+                "ldap"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "474eef25-8585-4d34-99c4-475273cc7ca7",
+              "name": "LDAP server list returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"authScheme\": \"SIMPLE\",\n    \"connectionRetryDelaySeconds\": 5398,\n    \"connectionTimeoutSeconds\": 1,\n    \"host\": \"string\",\n    \"maxIncidentsCount\": 2831,\n    \"name\": \"string\",\n    \"port\": 636,\n    \"protocol\": \"ldap\",\n    \"searchBase\": \"dc=example,dc=com\",\n    \"authRealm\": \"example.com\",\n    \"authUsername\": \"string\",\n    \"groupBaseDn\": \"ou=Group\",\n    \"groupIdAttribute\": \"cn\",\n    \"groupMemberAttribute\": \"memberUid\",\n    \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n    \"groupObjectClass\": \"posixGroup\",\n    \"groupSubtree\": false,\n    \"groupType\": \"static\",\n    \"id\": \"string\",\n    \"ldapGroupsAsRoles\": false,\n    \"order\": 2904,\n    \"useTrustStore\": true,\n    \"userBaseDn\": \"ou=people\",\n    \"userEmailAddressAttribute\": \"mail\",\n    \"userIdAttribute\": \"uid\",\n    \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n    \"userMemberOfAttribute\": \"memberOf\",\n    \"userObjectClass\": \"inetOrgPerson\",\n    \"userPasswordAttribute\": \"string\",\n    \"userRealNameAttribute\": \"cn\",\n    \"userSubtree\": false\n  },\n  {\n    \"authScheme\": \"SIMPLE\",\n    \"connectionRetryDelaySeconds\": 8010,\n    \"connectionTimeoutSeconds\": 1,\n    \"host\": \"string\",\n    \"maxIncidentsCount\": 1361,\n    \"name\": \"string\",\n    \"port\": 636,\n    \"protocol\": \"ldaps\",\n    \"searchBase\": \"dc=example,dc=com\",\n    \"authRealm\": \"example.com\",\n    \"authUsername\": \"string\",\n    \"groupBaseDn\": \"ou=Group\",\n    \"groupIdAttribute\": \"cn\",\n    \"groupMemberAttribute\": \"memberUid\",\n    \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n    \"groupObjectClass\": \"posixGroup\",\n    \"groupSubtree\": true,\n    \"groupType\": \"static\",\n    \"id\": \"string\",\n    \"ldapGroupsAsRoles\": false,\n    \"order\": 9652,\n    \"useTrustStore\": true,\n    \"userBaseDn\": \"ou=people\",\n    \"userEmailAddressAttribute\": \"mail\",\n    \"userIdAttribute\": \"uid\",\n    \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n    \"userMemberOfAttribute\": \"memberOf\",\n    \"userObjectClass\": \"inetOrgPerson\",\n    \"userPasswordAttribute\": \"string\",\n    \"userRealNameAttribute\": \"cn\",\n    \"userSubtree\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c89ea0a8-611f-4f32-bd37-3f4f7e7d292f",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4b4ec7c-1d43-4f28-a881-4fac6bb0f6c6",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49a41d7b-f11f-4c68-8fbd-4893e53d86fe",
+          "name": "Create LDAP server",
+          "request": {
+            "name": "Create LDAP server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "security",
+                "ldap"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": \"<integer>\",\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"<string>\",\n  \"authRealm\": \"<string>\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"<string>\",\n  \"groupIdAttribute\": \"<string>\",\n  \"groupMemberAttribute\": \"<string>\",\n  \"groupMemberFormat\": \"<string>\",\n  \"groupObjectClass\": \"<string>\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"<string>\",\n  \"userEmailAddressAttribute\": \"<string>\",\n  \"userIdAttribute\": \"<string>\",\n  \"userLdapFilter\": \"<string>\",\n  \"userMemberOfAttribute\": \"<string>\",\n  \"userObjectClass\": \"<string>\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"<string>\",\n  \"userSubtree\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7e30e697-5c97-4faa-8b81-005029ce1884",
+              "name": "LDAP server created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4366f0e0-3b69-40ec-a5fb-04eb22257afb",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3248f569-68a6-4830-8af2-bfee14352cd2",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8ee0823-21be-477b-9016-330f5ca13e34",
+          "name": "Change LDAP server order",
+          "request": {
+            "name": "Change LDAP server order",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "security",
+                "ldap",
+                "change-order"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c34e7456-e0b1-4127-8ce6-84401c3f8b47",
+              "name": "LDAP server order changed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    "change-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fdf3e93c-b454-4fce-9252-3a1deba067d8",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    "change-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2954153-3665-4949-914f-dd8885a2aaca",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    "change-order"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66d27fe1-430e-47c0-a6a8-27cadba76f3d",
+          "name": "Delete LDAP server",
+          "request": {
+            "name": "Delete LDAP server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "security",
+                "ldap",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the LDAP server to delete"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7067226-f67b-47f1-95f8-a2e8840f735d",
+              "name": "LDAP server deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fb2c0e3b-09a1-4480-87ac-af1396c580a9",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5eb457f5-3f1b-4be3-b882-6f87ce8c7f23",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d53d17c7-9953-4afa-ae98-20d81a5463ed",
+              "name": "LDAP server not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to delete"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5893d15f-51f7-4f4e-bdc9-8fce5ac2d0fb",
+          "name": "Get LDAP server",
+          "request": {
+            "name": "Get LDAP server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "security",
+                "ldap",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the LDAP server to retrieve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "768c9ddb-76d3-4902-95a4-2982ac84c1f6",
+              "name": "LDAP server returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authScheme\": \"CRAM_MD5\",\n  \"connectionRetryDelaySeconds\": 8590,\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"string\",\n  \"maxIncidentsCount\": 2596,\n  \"name\": \"string\",\n  \"port\": 636,\n  \"protocol\": \"ldaps\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"string\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": false,\n  \"groupType\": \"static\",\n  \"id\": \"string\",\n  \"ldapGroupsAsRoles\": false,\n  \"order\": 5426,\n  \"useTrustStore\": true,\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"string\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "338374d1-6e5e-435a-9959-5754d863217b",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9587c1c7-0bbd-4527-9d81-62418533a78c",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48d8338b-3ea6-4a10-9d2a-248b42412327",
+              "name": "LDAP server not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to retrieve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2f98292-9cf4-4ae9-b7d5-48b4b1b34cb9",
+          "name": "Update LDAP server",
+          "request": {
+            "name": "Update LDAP server",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "security",
+                "ldap",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Name of the LDAP server to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": \"<integer>\",\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": \"<integer>\",\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"<string>\",\n  \"authRealm\": \"<string>\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"<string>\",\n  \"groupIdAttribute\": \"<string>\",\n  \"groupMemberAttribute\": \"<string>\",\n  \"groupMemberFormat\": \"<string>\",\n  \"groupObjectClass\": \"<string>\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"<string>\",\n  \"userEmailAddressAttribute\": \"<string>\",\n  \"userIdAttribute\": \"<string>\",\n  \"userLdapFilter\": \"<string>\",\n  \"userMemberOfAttribute\": \"<string>\",\n  \"userObjectClass\": \"<string>\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"<string>\",\n  \"userSubtree\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b371f0b3-2594-4611-99c9-43b3cfc12478",
+              "name": "LDAP server updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b52cf0c0-23a7-4ff9-8cbb-fe7ccf509faf",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d47af89-c9fa-4392-8461-7eea947bd03f",
+              "name": "Insufficient permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "723b913d-ccc5-4beb-850e-0f69358d80d3",
+              "name": "LDAP server not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "security",
+                    "ldap",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Name of the LDAP server to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authPassword\": \"<string>\",\n  \"authScheme\": \"<string>\",\n  \"connectionRetryDelaySeconds\": \"<integer>\",\n  \"connectionTimeoutSeconds\": 1,\n  \"host\": \"<string>\",\n  \"maxIncidentsCount\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"port\": 636,\n  \"protocol\": \"<string>\",\n  \"searchBase\": \"dc=example,dc=com\",\n  \"authRealm\": \"example.com\",\n  \"authUsername\": \"<string>\",\n  \"groupBaseDn\": \"ou=Group\",\n  \"groupIdAttribute\": \"cn\",\n  \"groupMemberAttribute\": \"memberUid\",\n  \"groupMemberFormat\": \"uid=${username},ou=people,dc=example,dc=com\",\n  \"groupObjectClass\": \"posixGroup\",\n  \"groupSubtree\": \"<boolean>\",\n  \"groupType\": \"<string>\",\n  \"id\": \"<string>\",\n  \"ldapGroupsAsRoles\": \"<boolean>\",\n  \"useTrustStore\": \"<boolean>\",\n  \"userBaseDn\": \"ou=people\",\n  \"userEmailAddressAttribute\": \"mail\",\n  \"userIdAttribute\": \"uid\",\n  \"userLdapFilter\": \"(|(mail=*@example.com)(uid=dom*))\",\n  \"userMemberOfAttribute\": \"memberOf\",\n  \"userObjectClass\": \"inetOrgPerson\",\n  \"userPasswordAttribute\": \"<string>\",\n  \"userRealNameAttribute\": \"cn\",\n  \"userSubtree\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "43736b85-8717-472e-9d6f-14d18e0543fb",
+    "name": "Sonatype Nexus Repository Manager assets Security management: LDAP API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

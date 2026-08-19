@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Lifecycle API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lifecycle",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bounce lifecycle phase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/lifecycle/bounce"
+          },
+          "docs": "Re-runs all phases from the given phase to the current phase"
+        },
+        {
+          "info": {
+            "name": "Get current lifecycle phase",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/lifecycle/phase"
+          },
+          "docs": "Get current lifecycle phase"
+        },
+        {
+          "info": {
+            "name": "Move to new lifecycle phase",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/lifecycle/phase"
+          },
+          "docs": "Move to new lifecycle phase"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

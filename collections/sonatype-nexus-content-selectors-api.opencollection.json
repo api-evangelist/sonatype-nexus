@@ -1,0 +1,111 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Content selectors API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Content selectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List content selectors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/content-selectors"
+          },
+          "docs": "List content selectors"
+        },
+        {
+          "info": {
+            "name": "Create a new content selector",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/security/content-selectors",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new content selector"
+        },
+        {
+          "info": {
+            "name": "Get a content selector by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/content-selectors/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The content selector name"
+              }
+            ]
+          },
+          "docs": "Get a content selector by name"
+        },
+        {
+          "info": {
+            "name": "Update a content selector",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/security/content-selectors/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The content selector name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a content selector"
+        },
+        {
+          "info": {
+            "name": "Delete a content selector",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/security/content-selectors/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a content selector"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

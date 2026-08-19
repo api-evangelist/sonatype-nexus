@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Reconcile Plan API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reconcile Plan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of currently available plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/plan",
+            "params": [
+              {
+                "name": "continuationToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned by a prior request. If present, the next page of results are returned"
+              }
+            ]
+          },
+          "docs": "Get list of currently available plans"
+        },
+        {
+          "info": {
+            "name": "Create reconciliation plans with selected parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/plan",
+            "params": [
+              {
+                "name": "repositories",
+                "value": "",
+                "type": "query",
+                "description": "repository(ies) which should be processed with high priority"
+              },
+              {
+                "name": "blobStores",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sinceDays",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sinceHours",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sinceMinutes",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Create reconciliation plans with selected parameters"
+        },
+        {
+          "info": {
+            "name": "Execute all non executed reconciliation plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/plan"
+          },
+          "docs": "Execute all non executed reconciliation plans"
+        },
+        {
+          "info": {
+            "name": "Delete all non executed reconciliation plans",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/plan"
+          },
+          "docs": "Delete all non executed reconciliation plans"
+        },
+        {
+          "info": {
+            "name": "Get reconciliation plan details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/plan/details",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "query",
+                "description": "Id of the plan"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "continuationToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned by a prior request. If present, the next page of results are returned"
+              }
+            ]
+          },
+          "docs": "Get reconciliation plan details"
+        },
+        {
+          "info": {
+            "name": "Get single reconciliation plan with details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/plan/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Id of the plan"
+              },
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "continuationToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned by a prior request. If present, the next page of results are returned"
+              }
+            ]
+          },
+          "docs": "Get single reconciliation plan with details"
+        },
+        {
+          "info": {
+            "name": "Execute a reconciliation plan based on its Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/plan/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Id of the plan to execute"
+              }
+            ]
+          },
+          "docs": "Execute a reconciliation plan based on its Id"
+        },
+        {
+          "info": {
+            "name": "Delete a reconciliation plan based on its Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/plan/:planId",
+            "params": [
+              {
+                "name": "planId",
+                "value": "",
+                "type": "path",
+                "description": "Id of the plan to delete"
+              }
+            ]
+          },
+          "docs": "Delete a reconciliation plan based on its Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

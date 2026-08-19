@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "08c18e42-ce79-435c-98f4-d48a9fd54a2e",
+      "name": "Manage Sonatype HTTP System Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7c84f81a-3836-4f7f-9c58-099643e45cd6",
+          "name": "Reset HTTP System Settings",
+          "request": {
+            "name": "Reset HTTP System Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "http"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a6b3aff-7a3c-4ea4-85bd-d81b671a04a1",
+              "name": "Configuration Reset Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "http"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f7a8867-19e8-4393-bb2e-8551ee07dbc4",
+          "name": "Get HTTP system settings",
+          "request": {
+            "name": "Get HTTP system settings",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "http"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8d2bf0b-633c-47a3-a540-4d88248fbf10",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "http"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"httpProxy\": {\n    \"authInfo\": {\n      \"enabled\": true,\n      \"ntlmDomain\": \"string\",\n      \"ntlmHost\": \"string\",\n      \"password\": \"string\",\n      \"username\": \"string\"\n    },\n    \"enabled\": true,\n    \"host\": \"string\",\n    \"port\": \"string\"\n  },\n  \"httpsProxy\": {\n    \"authInfo\": {\n      \"enabled\": true,\n      \"ntlmDomain\": \"string\",\n      \"ntlmHost\": \"string\",\n      \"password\": \"string\",\n      \"username\": \"string\"\n    },\n    \"enabled\": true,\n    \"host\": \"string\",\n    \"port\": \"string\"\n  },\n  \"retries\": 5,\n  \"timeout\": 3235,\n  \"userAgent\": \"string\",\n  \"nonProxyHosts\": [\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c77bcee-ef50-4fd3-9b9e-aefacc291ebd",
+          "name": "Update HTTP system settings",
+          "request": {
+            "name": "Update HTTP system settings",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "http"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"httpProxy\": {\n    \"authInfo\": {\n      \"enabled\": \"<boolean>\",\n      \"ntlmDomain\": \"<string>\",\n      \"ntlmHost\": \"<string>\",\n      \"password\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\",\n    \"host\": \"<string>\",\n    \"port\": \"<string>\"\n  },\n  \"httpsProxy\": {\n    \"authInfo\": {\n      \"enabled\": \"<boolean>\",\n      \"ntlmDomain\": \"<string>\",\n      \"ntlmHost\": \"<string>\",\n      \"password\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\",\n    \"host\": \"<string>\",\n    \"port\": \"<string>\"\n  },\n  \"retries\": \"<integer>\",\n  \"timeout\": \"<integer>\",\n  \"userAgent\": \"<string>\",\n  \"nonProxyHosts\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "688e3bad-9fce-4ed5-b8ef-84fddb9a2084",
+              "name": "Successful Operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "http"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"httpProxy\": {\n    \"authInfo\": {\n      \"enabled\": \"<boolean>\",\n      \"ntlmDomain\": \"<string>\",\n      \"ntlmHost\": \"<string>\",\n      \"password\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\",\n    \"host\": \"<string>\",\n    \"port\": \"<string>\"\n  },\n  \"httpsProxy\": {\n    \"authInfo\": {\n      \"enabled\": \"<boolean>\",\n      \"ntlmDomain\": \"<string>\",\n      \"ntlmHost\": \"<string>\",\n      \"password\": \"<string>\",\n      \"username\": \"<string>\"\n    },\n    \"enabled\": \"<boolean>\",\n    \"host\": \"<string>\",\n    \"port\": \"<string>\"\n  },\n  \"retries\": \"<integer>\",\n  \"timeout\": \"<integer>\",\n  \"userAgent\": \"<string>\",\n  \"nonProxyHosts\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0340f0ac-fa62-455c-a6d5-ab02d442d094",
+    "name": "Sonatype Nexus Repository Manager assets Manage Sonatype HTTP System Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

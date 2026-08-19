@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Capabilities API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Capabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the active capabilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/capabilities"
+          },
+          "docs": "List the active capabilities"
+        },
+        {
+          "info": {
+            "name": "Create a capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/capabilities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a capability"
+        },
+        {
+          "info": {
+            "name": "List all capability types available and exposed in the system",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/capabilities/types"
+          },
+          "docs": "List all capability types available and exposed in the system"
+        },
+        {
+          "info": {
+            "name": "Update a capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/capabilities/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path",
+                "description": "capabilityId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a capability"
+        },
+        {
+          "info": {
+            "name": "Delete a capability",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/capabilities/:capabilityId",
+            "params": [
+              {
+                "name": "capabilityId",
+                "value": "",
+                "type": "path",
+                "description": "capabilityId"
+              }
+            ]
+          },
+          "docs": "Delete a capability"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

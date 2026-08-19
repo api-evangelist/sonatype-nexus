@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Security management: JWT API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security management: JWT",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reset JWT secret (note that session will be expired for the all logged-in users)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/security/jwt"
+          },
+          "docs": "Reset JWT secret (note that session will be expired for the all logged-in users)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

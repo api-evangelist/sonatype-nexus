@@ -1,0 +1,221 @@
+{
+  "item": [
+    {
+      "id": "b77e852d-b3f5-4d83-b528-cb00d0d007f2",
+      "name": "Formats",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3eab8cfa-cdc0-48d0-810d-c7c940e18356",
+          "name": "Get upload field requirements for each supported format",
+          "request": {
+            "name": "Get upload field requirements for each supported format",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "formats",
+                "upload-specs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "516b32a3-2fbc-48c8-b3ae-5b96418ae610",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "formats",
+                    "upload-specs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"assetFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"componentFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"format\": \"string\",\n    \"multipleUpload\": false\n  },\n  {\n    \"assetFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"componentFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"format\": \"string\",\n    \"multipleUpload\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cadc73b9-9bd5-477d-b8a2-ecd276942b9e",
+          "name": "Get upload field requirements for the desired format",
+          "request": {
+            "name": "Get upload field requirements for the desired format",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "formats",
+                ":format",
+                "upload-specs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "format",
+                  "description": "(Required) The desired repository format"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e6ed699-3c56-485d-9992-e46cdb80f757",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "formats",
+                    ":format",
+                    "upload-specs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "format",
+                      "description": "(Required) The desired repository format"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assetFields\": [\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": true,\n      \"options\": {\n        \"key_0\": \"string\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": true,\n      \"options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"componentFields\": [\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": false,\n      \"options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": true,\n      \"options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"format\": \"string\",\n  \"multipleUpload\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b8de259a-9b5d-454f-82da-4707aead2fc1",
+    "name": "Sonatype Nexus Repository Manager assets Formats API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

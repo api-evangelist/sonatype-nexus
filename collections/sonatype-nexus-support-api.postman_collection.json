@@ -1,0 +1,327 @@
+{
+  "item": [
+    {
+      "id": "23b78f7f-6af5-4ff1-a980-db2549d27692",
+      "name": "Support",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c806e0f1-d5d4-40c4-b933-dde0323bd0fd",
+          "name": "Creates and downloads a support zip",
+          "request": {
+            "name": "Creates and downloads a support zip",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "support",
+                "supportzip"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"archivedLog\": \"<integer>\",\n  \"auditLog\": \"<boolean>\",\n  \"configuration\": \"<boolean>\",\n  \"hostname\": \"<string>\",\n  \"jmx\": \"<boolean>\",\n  \"limitFileSizes\": \"<boolean>\",\n  \"limitZipSize\": \"<boolean>\",\n  \"log\": \"<boolean>\",\n  \"metrics\": \"<boolean>\",\n  \"replication\": \"<boolean>\",\n  \"security\": \"<boolean>\",\n  \"systemInformation\": \"<boolean>\",\n  \"taskLog\": \"<boolean>\",\n  \"threadDump\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62cd404c-3260-49e4-b198-da448fd82664",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "support",
+                    "supportzip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archivedLog\": \"<integer>\",\n  \"auditLog\": \"<boolean>\",\n  \"configuration\": \"<boolean>\",\n  \"hostname\": \"<string>\",\n  \"jmx\": \"<boolean>\",\n  \"limitFileSizes\": \"<boolean>\",\n  \"limitZipSize\": \"<boolean>\",\n  \"log\": \"<boolean>\",\n  \"metrics\": \"<boolean>\",\n  \"replication\": \"<boolean>\",\n  \"security\": \"<boolean>\",\n  \"systemInformation\": \"<boolean>\",\n  \"taskLog\": \"<boolean>\",\n  \"threadDump\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "605106d3-ca39-4e29-b808-a1fee9c11c8f",
+              "name": "Insufficient permissions to generate support zip",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "support",
+                    "supportzip"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archivedLog\": \"<integer>\",\n  \"auditLog\": \"<boolean>\",\n  \"configuration\": \"<boolean>\",\n  \"hostname\": \"<string>\",\n  \"jmx\": \"<boolean>\",\n  \"limitFileSizes\": \"<boolean>\",\n  \"limitZipSize\": \"<boolean>\",\n  \"log\": \"<boolean>\",\n  \"metrics\": \"<boolean>\",\n  \"replication\": \"<boolean>\",\n  \"security\": \"<boolean>\",\n  \"systemInformation\": \"<boolean>\",\n  \"taskLog\": \"<boolean>\",\n  \"threadDump\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9804ddf-807f-4663-99ee-70539ea386db",
+          "name": "Creates a support zip and returns the path",
+          "request": {
+            "name": "Creates a support zip and returns the path",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "support",
+                "supportzippath"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"archivedLog\": \"<integer>\",\n  \"auditLog\": \"<boolean>\",\n  \"configuration\": \"<boolean>\",\n  \"hostname\": \"<string>\",\n  \"jmx\": \"<boolean>\",\n  \"limitFileSizes\": \"<boolean>\",\n  \"limitZipSize\": \"<boolean>\",\n  \"log\": \"<boolean>\",\n  \"metrics\": \"<boolean>\",\n  \"replication\": \"<boolean>\",\n  \"security\": \"<boolean>\",\n  \"systemInformation\": \"<boolean>\",\n  \"taskLog\": \"<boolean>\",\n  \"threadDump\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c6afa31-e5db-4d6f-ab5c-061572a3db54",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "support",
+                    "supportzippath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archivedLog\": \"<integer>\",\n  \"auditLog\": \"<boolean>\",\n  \"configuration\": \"<boolean>\",\n  \"hostname\": \"<string>\",\n  \"jmx\": \"<boolean>\",\n  \"limitFileSizes\": \"<boolean>\",\n  \"limitZipSize\": \"<boolean>\",\n  \"log\": \"<boolean>\",\n  \"metrics\": \"<boolean>\",\n  \"replication\": \"<boolean>\",\n  \"security\": \"<boolean>\",\n  \"systemInformation\": \"<boolean>\",\n  \"taskLog\": \"<boolean>\",\n  \"threadDump\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "398efe4d-5340-4ce4-89ae-24d4cae190d6",
+              "name": "Insufficient permissions to generate support zip",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "support",
+                    "supportzippath"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archivedLog\": \"<integer>\",\n  \"auditLog\": \"<boolean>\",\n  \"configuration\": \"<boolean>\",\n  \"hostname\": \"<string>\",\n  \"jmx\": \"<boolean>\",\n  \"limitFileSizes\": \"<boolean>\",\n  \"limitZipSize\": \"<boolean>\",\n  \"log\": \"<boolean>\",\n  \"metrics\": \"<boolean>\",\n  \"replication\": \"<boolean>\",\n  \"security\": \"<boolean>\",\n  \"systemInformation\": \"<boolean>\",\n  \"taskLog\": \"<boolean>\",\n  \"threadDump\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c4902b73-bdf9-4291-b324-aa6d2dc8d333",
+    "name": "Sonatype Nexus Repository Manager assets Support API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Script API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Script",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all stored scripts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/script"
+          },
+          "docs": "List all stored scripts"
+        },
+        {
+          "info": {
+            "name": "Add a new script",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/script",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new script"
+        },
+        {
+          "info": {
+            "name": "Read stored script by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/script/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Read stored script by name"
+        },
+        {
+          "info": {
+            "name": "Update stored script by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/script/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update stored script by name"
+        },
+        {
+          "info": {
+            "name": "Delete stored script by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/script/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete stored script by name"
+        },
+        {
+          "info": {
+            "name": "Run stored script by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/script/:name/run",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run stored script by name"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

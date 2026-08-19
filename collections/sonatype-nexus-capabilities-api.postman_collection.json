@@ -1,0 +1,492 @@
+{
+  "item": [
+    {
+      "id": "630deddc-5efc-419f-a658-8363de57e091",
+      "name": "Capabilities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "466bbdee-9365-4168-a999-4381b3d51ab0",
+          "name": "List the active capabilities",
+          "request": {
+            "name": "List the active capabilities",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "capabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb58900d-71b0-4d2b-8d82-a49f3b608320",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"enabled\": true,\n    \"id\": \"string\",\n    \"notes\": \"string\",\n    \"properties\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"type\": \"string\"\n  },\n  {\n    \"enabled\": false,\n    \"id\": \"string\",\n    \"notes\": \"string\",\n    \"properties\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"type\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b11fe93-ed7d-41c0-9200-3f93aee9d28f",
+          "name": "Create a capability",
+          "request": {
+            "name": "Create a capability",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "capabilities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"id\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7aba2fa9-0267-4ccf-bebd-08a81e7921a0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "capabilities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"id\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabled\": \"<boolean>\",\n  \"id\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24ecc3ee-ba79-4108-ab54-72d5b4a5d4ed",
+          "name": "List all capability types available and exposed in the system",
+          "request": {
+            "name": "List all capability types available and exposed in the system",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "capabilities",
+                "types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "115048a6-dc0a-4622-b604-2b6e75fbe0a1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "capabilities",
+                    "types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"about\": \"string\",\n    \"formFields\": [\n      {\n        \"allowAutocomplete\": true,\n        \"attributes\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"disabled\": false,\n        \"helpText\": \"string\",\n        \"id\": \"string\",\n        \"idMapping\": \"string\",\n        \"initialValue\": \"string\",\n        \"label\": \"string\",\n        \"maximumValue\": \"string\",\n        \"minimumValue\": \"string\",\n        \"nameMapping\": \"string\",\n        \"readOnly\": true,\n        \"regexValidation\": \"string\",\n        \"required\": false,\n        \"storeApi\": \"string\",\n        \"storeFilters\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"allowAutocomplete\": false,\n        \"attributes\": {\n          \"key_0\": {}\n        },\n        \"disabled\": false,\n        \"helpText\": \"string\",\n        \"id\": \"string\",\n        \"idMapping\": \"string\",\n        \"initialValue\": \"string\",\n        \"label\": \"string\",\n        \"maximumValue\": \"string\",\n        \"minimumValue\": \"string\",\n        \"nameMapping\": \"string\",\n        \"readOnly\": true,\n        \"regexValidation\": \"string\",\n        \"required\": false,\n        \"storeApi\": \"string\",\n        \"storeFilters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"about\": \"string\",\n    \"formFields\": [\n      {\n        \"allowAutocomplete\": false,\n        \"attributes\": {\n          \"key_0\": {}\n        },\n        \"disabled\": true,\n        \"helpText\": \"string\",\n        \"id\": \"string\",\n        \"idMapping\": \"string\",\n        \"initialValue\": \"string\",\n        \"label\": \"string\",\n        \"maximumValue\": \"string\",\n        \"minimumValue\": \"string\",\n        \"nameMapping\": \"string\",\n        \"readOnly\": true,\n        \"regexValidation\": \"string\",\n        \"required\": false,\n        \"storeApi\": \"string\",\n        \"storeFilters\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"allowAutocomplete\": false,\n        \"attributes\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"disabled\": true,\n        \"helpText\": \"string\",\n        \"id\": \"string\",\n        \"idMapping\": \"string\",\n        \"initialValue\": \"string\",\n        \"label\": \"string\",\n        \"maximumValue\": \"string\",\n        \"minimumValue\": \"string\",\n        \"nameMapping\": \"string\",\n        \"readOnly\": false,\n        \"regexValidation\": \"string\",\n        \"required\": true,\n        \"storeApi\": \"string\",\n        \"storeFilters\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a8d0586-9d5a-4e99-b8b3-59784253c41c",
+          "name": "Delete a capability",
+          "request": {
+            "name": "Delete a capability",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "capabilities",
+                ":capabilityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "capabilityId",
+                  "description": "(Required) capabilityId"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "452dcf9f-767f-4380-ac05-848ebc8a346b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) capabilityId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6537c4f-031d-42d2-8727-19aba1b1a6fe",
+          "name": "Update a capability",
+          "request": {
+            "name": "Update a capability",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "capabilities",
+                ":capabilityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "capabilityId",
+                  "description": "(Required) capabilityId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"id\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c7a65da-a794-486a-a59b-569cb5297e8a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "capabilities",
+                    ":capabilityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "capabilityId",
+                      "description": "(Required) capabilityId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"id\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dbe228ce-2993-4a31-92a8-d826a5cc2667",
+    "name": "Sonatype Nexus Repository Manager assets Capabilities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

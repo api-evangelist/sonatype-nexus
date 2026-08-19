@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Product licensing API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product licensing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the current license status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/system/license"
+          },
+          "docs": "Get the current license status."
+        },
+        {
+          "info": {
+            "name": "Upload a new license file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/system/license"
+          },
+          "docs": "Server must be restarted to take effect"
+        },
+        {
+          "info": {
+            "name": "Uninstall license if present.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/system/license"
+          },
+          "docs": "Uninstall license if present."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

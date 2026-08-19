@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Routing rules API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routing rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List routing rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/routing-rules"
+          },
+          "docs": "List routing rules"
+        },
+        {
+          "info": {
+            "name": "Create a single routing rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/routing-rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a single routing rule"
+        },
+        {
+          "info": {
+            "name": "Get a single routing rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/routing-rules/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the routing rule to get"
+              }
+            ]
+          },
+          "docs": "Get a single routing rule"
+        },
+        {
+          "info": {
+            "name": "Update a single routing rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/routing-rules/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the routing rule to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a single routing rule"
+        },
+        {
+          "info": {
+            "name": "Delete a single routing rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/routing-rules/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the routing rule to delete"
+              }
+            ]
+          },
+          "docs": "Delete a single routing rule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

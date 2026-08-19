@@ -1,0 +1,3017 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Repository Management API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Repository Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories"
+          },
+          "docs": "List repositories"
+        },
+        {
+          "info": {
+            "name": "Create APT hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/apt/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create APT hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/apt/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update APT hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/apt/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update APT hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create APT proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/apt/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create APT proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/apt/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update APT proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/apt/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update APT proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create cargo group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/cargo/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create cargo group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/cargo/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update cargo group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/cargo/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update cargo group repository"
+        },
+        {
+          "info": {
+            "name": "Create cargo hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/cargo/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create cargo hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/cargo/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update cargo hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/cargo/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update cargo hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create cargo proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/cargo/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create cargo proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/cargo/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update cargo proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/cargo/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update cargo proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Cocoapods proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/cocoapods/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Cocoapods proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/cocoapods/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Cocoapods proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/cocoapods/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Cocoapods proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create composer proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/composer/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create composer proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/composer/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update composer proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/composer/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update composer proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Conan group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/conan/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Conan group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/conan/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Conan group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/conan/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Conan group repository"
+        },
+        {
+          "info": {
+            "name": "Create Conan hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/conan/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Conan hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/conan/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Conan hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/conan/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Conan hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create Conan proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/conan/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Conan proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/conan/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Conan proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/conan/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Conan proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create conda proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/conda/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create conda proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/conda/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update conda proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/conda/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update conda proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Docker group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/docker/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Docker group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/docker/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Docker group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/docker/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Docker group repository"
+        },
+        {
+          "info": {
+            "name": "Create Docker hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/docker/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Docker hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/docker/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Docker hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/docker/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Docker hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create Docker proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/docker/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Docker proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/docker/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Docker proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/docker/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Docker proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Git LFS hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/gitlfs/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Git LFS hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/gitlfs/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Git LFS hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/gitlfs/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Git LFS hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create a Go group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/go/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Go group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/go/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update a Go group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/go/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Go group repository"
+        },
+        {
+          "info": {
+            "name": "Create a Go proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/go/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Go proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/go/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update a Go proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/go/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Go proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Helm hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/helm/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Helm hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/helm/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Helm hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/helm/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Helm hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create Helm proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/helm/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Helm proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/helm/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Helm proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/helm/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Helm proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create huggingface proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/huggingface/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create huggingface proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/huggingface/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update huggingface proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/huggingface/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update huggingface proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Maven group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/maven/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Maven group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/maven/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Maven group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/maven/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Maven group repository"
+        },
+        {
+          "info": {
+            "name": "Create Maven hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/maven/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Maven hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/maven/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Maven hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/maven/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Maven hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create Maven proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/maven/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Maven proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/maven/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Maven proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/maven/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Maven proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create npm group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/npm/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create npm group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/npm/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update npm group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/npm/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update npm group repository"
+        },
+        {
+          "info": {
+            "name": "Create npm hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/npm/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create npm hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/npm/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update npm hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/npm/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update npm hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create npm proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/npm/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create npm proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/npm/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update npm proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/npm/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update npm proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create NuGet group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/nuget/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create NuGet group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/nuget/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update NuGet group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/nuget/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update NuGet group repository"
+        },
+        {
+          "info": {
+            "name": "Create NuGet hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/nuget/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create NuGet hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/nuget/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update NuGet hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/nuget/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update NuGet hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create NuGet proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/nuget/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create NuGet proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/nuget/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update NuGet proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/nuget/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update NuGet proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create p2 proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/p2/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create p2 proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/p2/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update p2 proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/p2/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update p2 proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create PyPI group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/pypi/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create PyPI group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/pypi/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update PyPI group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/pypi/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update PyPI group repository"
+        },
+        {
+          "info": {
+            "name": "Create PyPI hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/pypi/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create PyPI hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/pypi/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update PyPI hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/pypi/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update PyPI hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create PyPI proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/pypi/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create PyPI proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/pypi/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update PyPI proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/pypi/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update PyPI proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create R group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/r/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create R group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/r/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update R group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/r/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update R group repository"
+        },
+        {
+          "info": {
+            "name": "Create R hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/r/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create R hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/r/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update R hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/r/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update R hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create R proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/r/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create R proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/r/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update R proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/r/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update R proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create raw group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/raw/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create raw group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/raw/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update raw group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/raw/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update raw group repository"
+        },
+        {
+          "info": {
+            "name": "Create raw hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/raw/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create raw hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/raw/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update raw hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/raw/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update raw hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create raw proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/raw/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create raw proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/raw/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update raw proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/raw/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update raw proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create RubyGems group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/rubygems/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create RubyGems group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/rubygems/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update RubyGems group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/rubygems/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update RubyGems group repository"
+        },
+        {
+          "info": {
+            "name": "Create RubyGems hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/rubygems/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create RubyGems hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/rubygems/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update RubyGems hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/rubygems/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update RubyGems hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create RubyGems proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/rubygems/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create RubyGems proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/rubygems/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update RubyGems proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/rubygems/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update RubyGems proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Swift group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/swift/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Swift group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/swift/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Swift group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/swift/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Swift group repository"
+        },
+        {
+          "info": {
+            "name": "Create swift hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/swift/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create swift hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/swift/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update swift hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/swift/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update swift hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create swift proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/swift/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create swift proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/swift/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update swift proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/swift/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update swift proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Terraform group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/terraform/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Terraform group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/terraform/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Terraform group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/terraform/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Terraform group repository"
+        },
+        {
+          "info": {
+            "name": "Create terraform hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/terraform/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create terraform hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/terraform/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update terraform hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/terraform/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update terraform hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create terraform proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/terraform/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Terraform proxy repository that proxies requests to an upstream Terraform Registry"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/terraform/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update terraform proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/terraform/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing Terraform proxy repository"
+        },
+        {
+          "info": {
+            "name": "Create Yum group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/yum/group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Yum group repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/yum/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Yum group repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/yum/group/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Yum group repository"
+        },
+        {
+          "info": {
+            "name": "Create Yum hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/yum/hosted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Yum hosted repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/yum/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Yum hosted repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/yum/hosted/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Yum hosted repository"
+        },
+        {
+          "info": {
+            "name": "Create Yum proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/yum/proxy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Yum proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/yum/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get repository"
+        },
+        {
+          "info": {
+            "name": "Update Yum proxy repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/repositories/yum/proxy/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Yum proxy repository"
+        },
+        {
+          "info": {
+            "name": "Get repository details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositories/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to get"
+              }
+            ]
+          },
+          "docs": "Get repository details"
+        },
+        {
+          "info": {
+            "name": "Delete repository of any format",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/repositories/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to delete"
+              }
+            ]
+          },
+          "docs": "Delete repository of any format"
+        },
+        {
+          "info": {
+            "name": "Enable repository health check. Proxy repositories only.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/:repositoryName/health-check",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to enable Repository Health Check for"
+              }
+            ]
+          },
+          "docs": "Enable repository health check. Proxy repositories only."
+        },
+        {
+          "info": {
+            "name": "Disable repository health check. Proxy repositories only.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/repositories/:repositoryName/health-check",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to disable Repository Health Check for"
+              }
+            ]
+          },
+          "docs": "Disable repository health check. Proxy repositories only."
+        },
+        {
+          "info": {
+            "name": "Invalidate repository cache. Proxy or group repositories only.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/:repositoryName/invalidate-cache",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to invalidate cache"
+              }
+            ]
+          },
+          "docs": "Invalidate repository cache. Proxy or group repositories only."
+        },
+        {
+          "info": {
+            "name": "Schedule a 'Repair - Rebuild repository search' Task. Hosted or proxy repositories only.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/repositories/:repositoryName/rebuild-index",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path",
+                "description": "Name of the repository to rebuild index"
+              }
+            ]
+          },
+          "docs": "Schedule a 'Repair - Rebuild repository search' Task. Hosted or proxy repositories only."
+        },
+        {
+          "info": {
+            "name": "List repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/repositorySettings"
+          },
+          "docs": "List repositories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

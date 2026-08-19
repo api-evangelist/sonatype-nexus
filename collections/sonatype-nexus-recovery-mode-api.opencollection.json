@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Recovery Mode API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recovery Mode",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enables recovery mode and cancels conflicting tasks if running",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/recovery-mode"
+          },
+          "docs": "Enables recovery mode and cancels conflicting tasks if running"
+        },
+        {
+          "info": {
+            "name": "Disables recovery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/recovery-mode"
+          },
+          "docs": "Disables recovery mode"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

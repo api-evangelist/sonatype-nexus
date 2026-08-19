@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Status API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Health check endpoint that returns the results of the system status checks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/beta/status/check/cluster"
+          },
+          "docs": "Health check endpoint that returns the results of the system status checks"
+        },
+        {
+          "info": {
+            "name": "Health check endpoint that returns the results of the system status checks of specified Node",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/beta/status/check/:nodeId",
+            "params": [
+              {
+                "name": "nodeId",
+                "value": "",
+                "type": "path",
+                "description": "Node Id"
+              }
+            ]
+          },
+          "docs": "Health check endpoint that returns the results of the system status checks of specified Node"
+        },
+        {
+          "info": {
+            "name": "Health check endpoint that validates server can respond to read requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/status"
+          },
+          "docs": "Health check endpoint that validates server can respond to read requests"
+        },
+        {
+          "info": {
+            "name": "Health check endpoint that returns the results of the system status checks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/status/check"
+          },
+          "docs": "Health check endpoint that returns the results of the system status checks"
+        },
+        {
+          "info": {
+            "name": "Health check endpoint that validates server can respond to read and write requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/status/writable"
+          },
+          "docs": "Health check endpoint that validates server can respond to read and write requests"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

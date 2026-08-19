@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Manage Sonatype Repository Firewall configuration API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manage Sonatype Repository Firewall configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Sonatype Repository Firewall configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/iq"
+          },
+          "docs": "Get Sonatype Repository Firewall configuration"
+        },
+        {
+          "info": {
+            "name": "Update Sonatype Repository Firewall configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/iq",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Sonatype Repository Firewall configuration"
+        },
+        {
+          "info": {
+            "name": "List repositories audit statuses.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/iq/audit"
+          },
+          "docs": "List repositories audit statuses."
+        },
+        {
+          "info": {
+            "name": "Manage audit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/iq/audit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Manage audit"
+        },
+        {
+          "info": {
+            "name": "Get audit status for the repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/iq/audit/:repositoryName",
+            "params": [
+              {
+                "name": "repositoryName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get audit status for the repository"
+        },
+        {
+          "info": {
+            "name": "Disable Sonatype Repository Firewall",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/iq/disable"
+          },
+          "docs": "Disable Sonatype Repository Firewall"
+        },
+        {
+          "info": {
+            "name": "Enable Sonatype Repository Firewall",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/iq/enable"
+          },
+          "docs": "Enable Sonatype Repository Firewall"
+        },
+        {
+          "info": {
+            "name": "Verify Sonatype Repository Firewall connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/iq/verify-connection"
+          },
+          "docs": "Verify Sonatype Repository Firewall connection"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

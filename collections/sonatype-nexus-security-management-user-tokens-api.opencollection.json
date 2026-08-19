@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Security management: user tokens API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security management: user tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show if the user token capability is enabled or not",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/user-tokens"
+          },
+          "docs": "Show if the user token capability is enabled or not"
+        },
+        {
+          "info": {
+            "name": "setServiceStatus",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/security/user-tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "resetAllUserTokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/security/user-tokens"
+          }
+        },
+        {
+          "info": {
+            "name": "List all user tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/user-tokens/tokens",
+            "params": [
+              {
+                "name": "realm",
+                "value": "",
+                "type": "query",
+                "description": "The realm of the user (optional for cloud, required for self-hosted)"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID (optional)"
+              },
+              {
+                "name": "includeExpired",
+                "value": "",
+                "type": "query",
+                "description": "Include expired tokens (default: false)"
+              },
+              {
+                "name": "skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to skip for pagination (default: 0)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return (default: 25, max: 100)"
+              }
+            ]
+          },
+          "docs": "Lists all user tokens with optional filtering and pagination. Returns metadata only, never the passCode."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

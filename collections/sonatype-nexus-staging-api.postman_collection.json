@@ -1,0 +1,4113 @@
+{
+  "item": [
+    {
+      "id": "4cf13c3d-cd4b-460e-b9dd-8608611ae2ab",
+      "name": "Staging",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "271514dc-19b3-4d96-b3a1-198abf44a46c",
+          "name": "Delete components",
+          "request": {
+            "name": "Delete components",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "staging",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Query by keyword"
+                },
+                {
+                  "disabled": false,
+                  "key": "repository",
+                  "value": "<string>",
+                  "description": "Repository name"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Query by format"
+                },
+                {
+                  "disabled": false,
+                  "key": "group",
+                  "value": "<string>",
+                  "description": "Component group"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Component name"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Component version"
+                },
+                {
+                  "disabled": false,
+                  "key": "prerelease",
+                  "value": "<string>",
+                  "description": "Prerelease version flag"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_updated",
+                  "value": "<string>",
+                  "description": "Asset last modified time"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastBlobUpdated",
+                  "value": "<string>",
+                  "description": "Asset last modified time (UI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "md5",
+                  "value": "<string>",
+                  "description": "Specific MD5 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha1",
+                  "value": "<string>",
+                  "description": "Specific SHA-1 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha256",
+                  "value": "<string>",
+                  "description": "Specific SHA-256 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha512",
+                  "value": "<string>",
+                  "description": "Specific SHA-512 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "composer.vendor",
+                  "value": "<string>",
+                  "description": "Vendor"
+                },
+                {
+                  "disabled": false,
+                  "key": "composer.package",
+                  "value": "<string>",
+                  "description": "Package"
+                },
+                {
+                  "disabled": false,
+                  "key": "composer.version",
+                  "value": "<string>",
+                  "description": "Version"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.baseVersion",
+                  "value": "<string>",
+                  "description": "Conan base version"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.channel",
+                  "value": "<string>",
+                  "description": "Conan channel"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.revision",
+                  "value": "<string>",
+                  "description": "Conan recipe revision"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.packageId",
+                  "value": "<string>",
+                  "description": "Conan package id"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.packageRevision",
+                  "value": "<string>",
+                  "description": "Conan package revision"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.baseVersion.strict",
+                  "value": "<string>",
+                  "description": "Conan base version strict"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.revision.latest",
+                  "value": "<string>",
+                  "description": "Return latest revision"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.arch",
+                  "value": "<string>",
+                  "description": "Conan arch"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.os",
+                  "value": "<string>",
+                  "description": "Conan os"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.compiler",
+                  "value": "<string>",
+                  "description": "Conan compiler"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.compiler.version",
+                  "value": "<string>",
+                  "description": "Conan compiler version"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.compiler.runtime",
+                  "value": "<string>",
+                  "description": "Conan compiler runtime"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.imageName",
+                  "value": "<string>",
+                  "description": "Docker image name"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.imageTag",
+                  "value": "<string>",
+                  "description": "Docker image tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.layerId",
+                  "value": "<string>",
+                  "description": "Docker layer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.contentDigest",
+                  "value": "<string>",
+                  "description": "Docker content digest"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.groupId",
+                  "value": "<string>",
+                  "description": "Maven groupId"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.artifactId",
+                  "value": "<string>",
+                  "description": "Maven artifactId"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.baseVersion",
+                  "value": "<string>",
+                  "description": "Maven base version"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.extension",
+                  "value": "<string>",
+                  "description": "Maven extension of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.classifier",
+                  "value": "<string>",
+                  "description": "Maven classifier of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "gavec",
+                  "value": "<string>",
+                  "description": "Group asset version extension classifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.scope",
+                  "value": "<string>",
+                  "description": "npm scope"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.author",
+                  "value": "<string>",
+                  "description": "npm author"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.description",
+                  "value": "<string>",
+                  "description": "npm description"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.keywords",
+                  "value": "<string>",
+                  "description": "npm keywords"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.license",
+                  "value": "<string>",
+                  "description": "npm license"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.tagged_is",
+                  "value": "<string>",
+                  "description": "npm tagged is"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.tagged_not",
+                  "value": "<string>",
+                  "description": "npm tagged not"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.id",
+                  "value": "<string>",
+                  "description": "NuGet id"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.tags",
+                  "value": "<string>",
+                  "description": "NuGet tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.title",
+                  "value": "<string>",
+                  "description": "NuGet title"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.authors",
+                  "value": "<string>",
+                  "description": "NuGet authors"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.description",
+                  "value": "<string>",
+                  "description": "NuGet description"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.summary",
+                  "value": "<string>",
+                  "description": "NuGet summary"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.is_prerelease",
+                  "value": "<string>",
+                  "description": "NuGet prerelease"
+                },
+                {
+                  "disabled": false,
+                  "key": "p2.pluginName",
+                  "value": "<string>",
+                  "description": "p2 plugin name"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.classifiers",
+                  "value": "<string>",
+                  "description": "PyPI classifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.description",
+                  "value": "<string>",
+                  "description": "PyPI description"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.keywords",
+                  "value": "<string>",
+                  "description": "PyPI keywords"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.summary",
+                  "value": "<string>",
+                  "description": "PyPI summary"
+                },
+                {
+                  "disabled": false,
+                  "key": "rubygems.description",
+                  "value": "<string>",
+                  "description": "RubyGems description"
+                },
+                {
+                  "disabled": false,
+                  "key": "rubygems.platform",
+                  "value": "<string>",
+                  "description": "RubyGems platform"
+                },
+                {
+                  "disabled": false,
+                  "key": "rubygems.summary",
+                  "value": "<string>",
+                  "description": "RubyGems summary"
+                },
+                {
+                  "disabled": false,
+                  "key": "swift.scope",
+                  "value": "<string>",
+                  "description": "swift scope"
+                },
+                {
+                  "disabled": false,
+                  "key": "swift.asset_kind",
+                  "value": "<string>",
+                  "description": "swift asset kind"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Component tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "terraform.provider",
+                  "value": "<string>",
+                  "description": "terraform provider"
+                },
+                {
+                  "disabled": false,
+                  "key": "terraform.namespace",
+                  "value": "<string>",
+                  "description": "terraform namespace"
+                },
+                {
+                  "disabled": false,
+                  "key": "terraform.name",
+                  "value": "<string>",
+                  "description": "terraform name"
+                },
+                {
+                  "disabled": false,
+                  "key": "yum.architecture",
+                  "value": "<string>",
+                  "description": "Yum architecture"
+                },
+                {
+                  "disabled": false,
+                  "key": "yum.name",
+                  "value": "<string>",
+                  "description": "Yum package name"
+                }
+              ],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81990cda-df0f-43ed-b30a-6be66fdc1fc7",
+              "name": "Delete Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "eb52d902-c0d2-4792-a228-de4ae5ed5d15",
+              "name": "Invalid client request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1df24272-699a-44fe-a674-afcfa3a74a60",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2e52a1d-5f4d-48db-83bd-6594636b29c1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30485aa9-5b20-4e84-af7f-29b273b70382",
+              "name": "No components found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fe684e5-480a-4c01-9d4b-ad3c6746047d",
+          "name": "Move components",
+          "request": {
+            "name": "Move components",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "staging",
+                "move",
+                ":destination"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Query by keyword"
+                },
+                {
+                  "disabled": false,
+                  "key": "repository",
+                  "value": "<string>",
+                  "description": "Repository name"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "Query by format"
+                },
+                {
+                  "disabled": false,
+                  "key": "group",
+                  "value": "<string>",
+                  "description": "Component group"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Component name"
+                },
+                {
+                  "disabled": false,
+                  "key": "version",
+                  "value": "<string>",
+                  "description": "Component version"
+                },
+                {
+                  "disabled": false,
+                  "key": "prerelease",
+                  "value": "<string>",
+                  "description": "Prerelease version flag"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_updated",
+                  "value": "<string>",
+                  "description": "Asset last modified time"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastBlobUpdated",
+                  "value": "<string>",
+                  "description": "Asset last modified time (UI)"
+                },
+                {
+                  "disabled": false,
+                  "key": "md5",
+                  "value": "<string>",
+                  "description": "Specific MD5 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha1",
+                  "value": "<string>",
+                  "description": "Specific SHA-1 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha256",
+                  "value": "<string>",
+                  "description": "Specific SHA-256 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha512",
+                  "value": "<string>",
+                  "description": "Specific SHA-512 hash of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "composer.vendor",
+                  "value": "<string>",
+                  "description": "Vendor"
+                },
+                {
+                  "disabled": false,
+                  "key": "composer.package",
+                  "value": "<string>",
+                  "description": "Package"
+                },
+                {
+                  "disabled": false,
+                  "key": "composer.version",
+                  "value": "<string>",
+                  "description": "Version"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.baseVersion",
+                  "value": "<string>",
+                  "description": "Conan base version"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.channel",
+                  "value": "<string>",
+                  "description": "Conan channel"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.revision",
+                  "value": "<string>",
+                  "description": "Conan recipe revision"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.packageId",
+                  "value": "<string>",
+                  "description": "Conan package id"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.packageRevision",
+                  "value": "<string>",
+                  "description": "Conan package revision"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.baseVersion.strict",
+                  "value": "<string>",
+                  "description": "Conan base version strict"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.revision.latest",
+                  "value": "<string>",
+                  "description": "Return latest revision"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.arch",
+                  "value": "<string>",
+                  "description": "Conan arch"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.os",
+                  "value": "<string>",
+                  "description": "Conan os"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.compiler",
+                  "value": "<string>",
+                  "description": "Conan compiler"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.compiler.version",
+                  "value": "<string>",
+                  "description": "Conan compiler version"
+                },
+                {
+                  "disabled": false,
+                  "key": "conan.settings.compiler.runtime",
+                  "value": "<string>",
+                  "description": "Conan compiler runtime"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.imageName",
+                  "value": "<string>",
+                  "description": "Docker image name"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.imageTag",
+                  "value": "<string>",
+                  "description": "Docker image tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.layerId",
+                  "value": "<string>",
+                  "description": "Docker layer ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "docker.contentDigest",
+                  "value": "<string>",
+                  "description": "Docker content digest"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.groupId",
+                  "value": "<string>",
+                  "description": "Maven groupId"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.artifactId",
+                  "value": "<string>",
+                  "description": "Maven artifactId"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.baseVersion",
+                  "value": "<string>",
+                  "description": "Maven base version"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.extension",
+                  "value": "<string>",
+                  "description": "Maven extension of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "maven.classifier",
+                  "value": "<string>",
+                  "description": "Maven classifier of component's asset"
+                },
+                {
+                  "disabled": false,
+                  "key": "gavec",
+                  "value": "<string>",
+                  "description": "Group asset version extension classifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.scope",
+                  "value": "<string>",
+                  "description": "npm scope"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.author",
+                  "value": "<string>",
+                  "description": "npm author"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.description",
+                  "value": "<string>",
+                  "description": "npm description"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.keywords",
+                  "value": "<string>",
+                  "description": "npm keywords"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.license",
+                  "value": "<string>",
+                  "description": "npm license"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.tagged_is",
+                  "value": "<string>",
+                  "description": "npm tagged is"
+                },
+                {
+                  "disabled": false,
+                  "key": "npm.tagged_not",
+                  "value": "<string>",
+                  "description": "npm tagged not"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.id",
+                  "value": "<string>",
+                  "description": "NuGet id"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.tags",
+                  "value": "<string>",
+                  "description": "NuGet tags"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.title",
+                  "value": "<string>",
+                  "description": "NuGet title"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.authors",
+                  "value": "<string>",
+                  "description": "NuGet authors"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.description",
+                  "value": "<string>",
+                  "description": "NuGet description"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.summary",
+                  "value": "<string>",
+                  "description": "NuGet summary"
+                },
+                {
+                  "disabled": false,
+                  "key": "nuget.is_prerelease",
+                  "value": "<string>",
+                  "description": "NuGet prerelease"
+                },
+                {
+                  "disabled": false,
+                  "key": "p2.pluginName",
+                  "value": "<string>",
+                  "description": "p2 plugin name"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.classifiers",
+                  "value": "<string>",
+                  "description": "PyPI classifiers"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.description",
+                  "value": "<string>",
+                  "description": "PyPI description"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.keywords",
+                  "value": "<string>",
+                  "description": "PyPI keywords"
+                },
+                {
+                  "disabled": false,
+                  "key": "pypi.summary",
+                  "value": "<string>",
+                  "description": "PyPI summary"
+                },
+                {
+                  "disabled": false,
+                  "key": "rubygems.description",
+                  "value": "<string>",
+                  "description": "RubyGems description"
+                },
+                {
+                  "disabled": false,
+                  "key": "rubygems.platform",
+                  "value": "<string>",
+                  "description": "RubyGems platform"
+                },
+                {
+                  "disabled": false,
+                  "key": "rubygems.summary",
+                  "value": "<string>",
+                  "description": "RubyGems summary"
+                },
+                {
+                  "disabled": false,
+                  "key": "swift.scope",
+                  "value": "<string>",
+                  "description": "swift scope"
+                },
+                {
+                  "disabled": false,
+                  "key": "swift.asset_kind",
+                  "value": "<string>",
+                  "description": "swift asset kind"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Component tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "terraform.provider",
+                  "value": "<string>",
+                  "description": "terraform provider"
+                },
+                {
+                  "disabled": false,
+                  "key": "terraform.namespace",
+                  "value": "<string>",
+                  "description": "terraform namespace"
+                },
+                {
+                  "disabled": false,
+                  "key": "terraform.name",
+                  "value": "<string>",
+                  "description": "terraform name"
+                },
+                {
+                  "disabled": false,
+                  "key": "yum.architecture",
+                  "value": "<string>",
+                  "description": "Yum architecture"
+                },
+                {
+                  "disabled": false,
+                  "key": "yum.name",
+                  "value": "<string>",
+                  "description": "Yum package name"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "destination",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07337f90-ce7b-4247-bead-f55b0532102d",
+              "name": "Move Successful",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "move",
+                    ":destination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a59daea2-d69e-4920-8978-d7b625e0ee30",
+              "name": "Invalid client request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "move",
+                    ":destination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "169fe641-7f01-49a2-9fd2-d12855ed1897",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "move",
+                    ":destination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15579e0d-1e64-4826-a20f-c8f184d6ca5b",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "move",
+                    ":destination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "46469013-9daf-4417-8f22-2fc2f2b6a9c3",
+              "name": "No components found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "staging",
+                    "move",
+                    ":destination"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "repository",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "last_updated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastBlobUpdated",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "md5",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha1",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha256",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sha512",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.vendor",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.package",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "composer.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.channel",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.packageRevision",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.baseVersion.strict",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.revision.latest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.arch",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.os",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.version",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "conan.settings.compiler.runtime",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.imageTag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.layerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "docker.contentDigest",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.groupId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.artifactId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.baseVersion",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.extension",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maven.classifier",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "gavec",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.author",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.license",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_is",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "npm.tagged_not",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.title",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.authors",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "nuget.is_prerelease",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "p2.pluginName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.classifiers",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.keywords",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pypi.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "rubygems.summary",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "swift.asset_kind",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.provider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.namespace",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "terraform.name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.architecture",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "yum.name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "destination",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/service/rest/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "70e6f3c4-1c84-4ff2-9f6b-2ce1050b145c",
+    "name": "Sonatype Nexus Repository Manager assets Staging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+      "type": "text/plain"
+    }
+  }
+}

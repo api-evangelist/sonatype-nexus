@@ -1,0 +1,397 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets components API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "components",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List components",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/components",
+            "params": [
+              {
+                "name": "continuationToken",
+                "value": "",
+                "type": "query",
+                "description": "A token returned by a prior request. If present, the next page of results are returned"
+              },
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query",
+                "description": "Repository from which you would like to retrieve components"
+              }
+            ]
+          },
+          "docs": "List components"
+        },
+        {
+          "info": {
+            "name": "Upload a single component",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/components",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query",
+                "description": "Name of the repository to which you would like to upload the component"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "apt.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "apt.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "helm.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "helm.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.artifactId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset1",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset1.classifier",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset1.extension",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset2",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset2.classifier",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset2.extension",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset3",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset3.classifier",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.asset3.extension",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.generate-pom",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.groupId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.packaging",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "maven2.version",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "npm.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "npm.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "nuget.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "nuget.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "pypi.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "pypi.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "r.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "r.asset.pathId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "r.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.asset1",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.asset1.filename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.asset2",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.asset2.filename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.asset3",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.asset3.filename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.directory",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "raw.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "rubygems.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "rubygems.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "swift.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "swift.name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "swift.scope",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "swift.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "swift.version",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.architecture",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.namespace",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.os",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.provider",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.tag",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.type",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.uploadType",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "terraform.version",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "yum.asset",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "yum.asset.filename",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "yum.directory",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "yum.tag",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a single component"
+        },
+        {
+          "info": {
+            "name": "Get a single component",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/components/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the component to retrieve"
+              }
+            ]
+          },
+          "docs": "Get a single component"
+        },
+        {
+          "info": {
+            "name": "Delete a single component",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/components/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the component to delete"
+              }
+            ]
+          },
+          "docs": "Delete a single component"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

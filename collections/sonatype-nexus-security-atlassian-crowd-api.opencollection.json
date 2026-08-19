@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Security: Atlassian Crowd API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security: Atlassian Crowd",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Atlassian Crowd settings configured in Nexus Repository Manager",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/atlassian-crowd"
+          },
+          "docs": "Retrieve Atlassian Crowd settings configured in Nexus Repository Manager"
+        },
+        {
+          "info": {
+            "name": "Update Atlassian Crowd settings configured in Nexus Repository Manager",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/security/atlassian-crowd"
+          },
+          "docs": "Update Atlassian Crowd settings configured in Nexus Repository Manager"
+        },
+        {
+          "info": {
+            "name": "Clear Atlassian Crowd cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/security/atlassian-crowd/clear-cache"
+          },
+          "docs": "Clear Atlassian Crowd cache"
+        },
+        {
+          "info": {
+            "name": "Verify connection using supplied Atlassian Crowd settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/security/atlassian-crowd/verify-connection"
+          },
+          "docs": "Verify connection using supplied Atlassian Crowd settings"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

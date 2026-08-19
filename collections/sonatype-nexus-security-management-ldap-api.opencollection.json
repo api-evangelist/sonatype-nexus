@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Security management: LDAP API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security management: LDAP",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List LDAP servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/ldap"
+          },
+          "docs": "List LDAP servers"
+        },
+        {
+          "info": {
+            "name": "Create LDAP server",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/security/ldap",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create LDAP server"
+        },
+        {
+          "info": {
+            "name": "Change LDAP server order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/security/ldap/change-order",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change LDAP server order"
+        },
+        {
+          "info": {
+            "name": "Get LDAP server",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/ldap/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the LDAP server to retrieve"
+              }
+            ]
+          },
+          "docs": "Get LDAP server"
+        },
+        {
+          "info": {
+            "name": "Update LDAP server",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/security/ldap/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the LDAP server to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update LDAP server"
+        },
+        {
+          "info": {
+            "name": "Delete LDAP server",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/security/ldap/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Name of the LDAP server to delete"
+              }
+            ]
+          },
+          "docs": "Delete LDAP server"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

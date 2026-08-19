@@ -1,0 +1,872 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Staging API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Staging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete components",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/staging/delete",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query by keyword"
+              },
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query",
+                "description": "Repository name"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Query by format"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Component group"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Component name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Component version"
+              },
+              {
+                "name": "prerelease",
+                "value": "",
+                "type": "query",
+                "description": "Prerelease version flag"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query",
+                "description": "Asset last modified time"
+              },
+              {
+                "name": "lastBlobUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Asset last modified time (UI)"
+              },
+              {
+                "name": "md5",
+                "value": "",
+                "type": "query",
+                "description": "Specific MD5 hash of component's asset"
+              },
+              {
+                "name": "sha1",
+                "value": "",
+                "type": "query",
+                "description": "Specific SHA-1 hash of component's asset"
+              },
+              {
+                "name": "sha256",
+                "value": "",
+                "type": "query",
+                "description": "Specific SHA-256 hash of component's asset"
+              },
+              {
+                "name": "sha512",
+                "value": "",
+                "type": "query",
+                "description": "Specific SHA-512 hash of component's asset"
+              },
+              {
+                "name": "composer.vendor",
+                "value": "",
+                "type": "query",
+                "description": "Vendor"
+              },
+              {
+                "name": "composer.package",
+                "value": "",
+                "type": "query",
+                "description": "Package"
+              },
+              {
+                "name": "composer.version",
+                "value": "",
+                "type": "query",
+                "description": "Version"
+              },
+              {
+                "name": "conan.baseVersion",
+                "value": "",
+                "type": "query",
+                "description": "Conan base version"
+              },
+              {
+                "name": "conan.channel",
+                "value": "",
+                "type": "query",
+                "description": "Conan channel"
+              },
+              {
+                "name": "conan.revision",
+                "value": "",
+                "type": "query",
+                "description": "Conan recipe revision"
+              },
+              {
+                "name": "conan.packageId",
+                "value": "",
+                "type": "query",
+                "description": "Conan package id"
+              },
+              {
+                "name": "conan.packageRevision",
+                "value": "",
+                "type": "query",
+                "description": "Conan package revision"
+              },
+              {
+                "name": "conan.baseVersion.strict",
+                "value": "",
+                "type": "query",
+                "description": "Conan base version strict"
+              },
+              {
+                "name": "conan.revision.latest",
+                "value": "",
+                "type": "query",
+                "description": "Return latest revision"
+              },
+              {
+                "name": "conan.settings.arch",
+                "value": "",
+                "type": "query",
+                "description": "Conan arch"
+              },
+              {
+                "name": "conan.settings.os",
+                "value": "",
+                "type": "query",
+                "description": "Conan os"
+              },
+              {
+                "name": "conan.settings.compiler",
+                "value": "",
+                "type": "query",
+                "description": "Conan compiler"
+              },
+              {
+                "name": "conan.settings.compiler.version",
+                "value": "",
+                "type": "query",
+                "description": "Conan compiler version"
+              },
+              {
+                "name": "conan.settings.compiler.runtime",
+                "value": "",
+                "type": "query",
+                "description": "Conan compiler runtime"
+              },
+              {
+                "name": "docker.imageName",
+                "value": "",
+                "type": "query",
+                "description": "Docker image name"
+              },
+              {
+                "name": "docker.imageTag",
+                "value": "",
+                "type": "query",
+                "description": "Docker image tag"
+              },
+              {
+                "name": "docker.layerId",
+                "value": "",
+                "type": "query",
+                "description": "Docker layer ID"
+              },
+              {
+                "name": "docker.contentDigest",
+                "value": "",
+                "type": "query",
+                "description": "Docker content digest"
+              },
+              {
+                "name": "maven.groupId",
+                "value": "",
+                "type": "query",
+                "description": "Maven groupId"
+              },
+              {
+                "name": "maven.artifactId",
+                "value": "",
+                "type": "query",
+                "description": "Maven artifactId"
+              },
+              {
+                "name": "maven.baseVersion",
+                "value": "",
+                "type": "query",
+                "description": "Maven base version"
+              },
+              {
+                "name": "maven.extension",
+                "value": "",
+                "type": "query",
+                "description": "Maven extension of component's asset"
+              },
+              {
+                "name": "maven.classifier",
+                "value": "",
+                "type": "query",
+                "description": "Maven classifier of component's asset"
+              },
+              {
+                "name": "gavec",
+                "value": "",
+                "type": "query",
+                "description": "Group asset version extension classifier"
+              },
+              {
+                "name": "npm.scope",
+                "value": "",
+                "type": "query",
+                "description": "npm scope"
+              },
+              {
+                "name": "npm.author",
+                "value": "",
+                "type": "query",
+                "description": "npm author"
+              },
+              {
+                "name": "npm.description",
+                "value": "",
+                "type": "query",
+                "description": "npm description"
+              },
+              {
+                "name": "npm.keywords",
+                "value": "",
+                "type": "query",
+                "description": "npm keywords"
+              },
+              {
+                "name": "npm.license",
+                "value": "",
+                "type": "query",
+                "description": "npm license"
+              },
+              {
+                "name": "npm.tagged_is",
+                "value": "",
+                "type": "query",
+                "description": "npm tagged is"
+              },
+              {
+                "name": "npm.tagged_not",
+                "value": "",
+                "type": "query",
+                "description": "npm tagged not"
+              },
+              {
+                "name": "nuget.id",
+                "value": "",
+                "type": "query",
+                "description": "NuGet id"
+              },
+              {
+                "name": "nuget.tags",
+                "value": "",
+                "type": "query",
+                "description": "NuGet tags"
+              },
+              {
+                "name": "nuget.title",
+                "value": "",
+                "type": "query",
+                "description": "NuGet title"
+              },
+              {
+                "name": "nuget.authors",
+                "value": "",
+                "type": "query",
+                "description": "NuGet authors"
+              },
+              {
+                "name": "nuget.description",
+                "value": "",
+                "type": "query",
+                "description": "NuGet description"
+              },
+              {
+                "name": "nuget.summary",
+                "value": "",
+                "type": "query",
+                "description": "NuGet summary"
+              },
+              {
+                "name": "nuget.is_prerelease",
+                "value": "",
+                "type": "query",
+                "description": "NuGet prerelease"
+              },
+              {
+                "name": "p2.pluginName",
+                "value": "",
+                "type": "query",
+                "description": "p2 plugin name"
+              },
+              {
+                "name": "pypi.classifiers",
+                "value": "",
+                "type": "query",
+                "description": "PyPI classifiers"
+              },
+              {
+                "name": "pypi.description",
+                "value": "",
+                "type": "query",
+                "description": "PyPI description"
+              },
+              {
+                "name": "pypi.keywords",
+                "value": "",
+                "type": "query",
+                "description": "PyPI keywords"
+              },
+              {
+                "name": "pypi.summary",
+                "value": "",
+                "type": "query",
+                "description": "PyPI summary"
+              },
+              {
+                "name": "rubygems.description",
+                "value": "",
+                "type": "query",
+                "description": "RubyGems description"
+              },
+              {
+                "name": "rubygems.platform",
+                "value": "",
+                "type": "query",
+                "description": "RubyGems platform"
+              },
+              {
+                "name": "rubygems.summary",
+                "value": "",
+                "type": "query",
+                "description": "RubyGems summary"
+              },
+              {
+                "name": "swift.scope",
+                "value": "",
+                "type": "query",
+                "description": "swift scope"
+              },
+              {
+                "name": "swift.asset_kind",
+                "value": "",
+                "type": "query",
+                "description": "swift asset kind"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Component tag"
+              },
+              {
+                "name": "terraform.provider",
+                "value": "",
+                "type": "query",
+                "description": "terraform provider"
+              },
+              {
+                "name": "terraform.namespace",
+                "value": "",
+                "type": "query",
+                "description": "terraform namespace"
+              },
+              {
+                "name": "terraform.name",
+                "value": "",
+                "type": "query",
+                "description": "terraform name"
+              },
+              {
+                "name": "yum.architecture",
+                "value": "",
+                "type": "query",
+                "description": "Yum architecture"
+              },
+              {
+                "name": "yum.name",
+                "value": "",
+                "type": "query",
+                "description": "Yum package name"
+              }
+            ]
+          },
+          "docs": "Delete components"
+        },
+        {
+          "info": {
+            "name": "Move components",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/staging/move/:destination",
+            "params": [
+              {
+                "name": "destination",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query by keyword"
+              },
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query",
+                "description": "Repository name"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Query by format"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "query",
+                "description": "Component group"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Component name"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Component version"
+              },
+              {
+                "name": "prerelease",
+                "value": "",
+                "type": "query",
+                "description": "Prerelease version flag"
+              },
+              {
+                "name": "last_updated",
+                "value": "",
+                "type": "query",
+                "description": "Asset last modified time"
+              },
+              {
+                "name": "lastBlobUpdated",
+                "value": "",
+                "type": "query",
+                "description": "Asset last modified time (UI)"
+              },
+              {
+                "name": "md5",
+                "value": "",
+                "type": "query",
+                "description": "Specific MD5 hash of component's asset"
+              },
+              {
+                "name": "sha1",
+                "value": "",
+                "type": "query",
+                "description": "Specific SHA-1 hash of component's asset"
+              },
+              {
+                "name": "sha256",
+                "value": "",
+                "type": "query",
+                "description": "Specific SHA-256 hash of component's asset"
+              },
+              {
+                "name": "sha512",
+                "value": "",
+                "type": "query",
+                "description": "Specific SHA-512 hash of component's asset"
+              },
+              {
+                "name": "composer.vendor",
+                "value": "",
+                "type": "query",
+                "description": "Vendor"
+              },
+              {
+                "name": "composer.package",
+                "value": "",
+                "type": "query",
+                "description": "Package"
+              },
+              {
+                "name": "composer.version",
+                "value": "",
+                "type": "query",
+                "description": "Version"
+              },
+              {
+                "name": "conan.baseVersion",
+                "value": "",
+                "type": "query",
+                "description": "Conan base version"
+              },
+              {
+                "name": "conan.channel",
+                "value": "",
+                "type": "query",
+                "description": "Conan channel"
+              },
+              {
+                "name": "conan.revision",
+                "value": "",
+                "type": "query",
+                "description": "Conan recipe revision"
+              },
+              {
+                "name": "conan.packageId",
+                "value": "",
+                "type": "query",
+                "description": "Conan package id"
+              },
+              {
+                "name": "conan.packageRevision",
+                "value": "",
+                "type": "query",
+                "description": "Conan package revision"
+              },
+              {
+                "name": "conan.baseVersion.strict",
+                "value": "",
+                "type": "query",
+                "description": "Conan base version strict"
+              },
+              {
+                "name": "conan.revision.latest",
+                "value": "",
+                "type": "query",
+                "description": "Return latest revision"
+              },
+              {
+                "name": "conan.settings.arch",
+                "value": "",
+                "type": "query",
+                "description": "Conan arch"
+              },
+              {
+                "name": "conan.settings.os",
+                "value": "",
+                "type": "query",
+                "description": "Conan os"
+              },
+              {
+                "name": "conan.settings.compiler",
+                "value": "",
+                "type": "query",
+                "description": "Conan compiler"
+              },
+              {
+                "name": "conan.settings.compiler.version",
+                "value": "",
+                "type": "query",
+                "description": "Conan compiler version"
+              },
+              {
+                "name": "conan.settings.compiler.runtime",
+                "value": "",
+                "type": "query",
+                "description": "Conan compiler runtime"
+              },
+              {
+                "name": "docker.imageName",
+                "value": "",
+                "type": "query",
+                "description": "Docker image name"
+              },
+              {
+                "name": "docker.imageTag",
+                "value": "",
+                "type": "query",
+                "description": "Docker image tag"
+              },
+              {
+                "name": "docker.layerId",
+                "value": "",
+                "type": "query",
+                "description": "Docker layer ID"
+              },
+              {
+                "name": "docker.contentDigest",
+                "value": "",
+                "type": "query",
+                "description": "Docker content digest"
+              },
+              {
+                "name": "maven.groupId",
+                "value": "",
+                "type": "query",
+                "description": "Maven groupId"
+              },
+              {
+                "name": "maven.artifactId",
+                "value": "",
+                "type": "query",
+                "description": "Maven artifactId"
+              },
+              {
+                "name": "maven.baseVersion",
+                "value": "",
+                "type": "query",
+                "description": "Maven base version"
+              },
+              {
+                "name": "maven.extension",
+                "value": "",
+                "type": "query",
+                "description": "Maven extension of component's asset"
+              },
+              {
+                "name": "maven.classifier",
+                "value": "",
+                "type": "query",
+                "description": "Maven classifier of component's asset"
+              },
+              {
+                "name": "gavec",
+                "value": "",
+                "type": "query",
+                "description": "Group asset version extension classifier"
+              },
+              {
+                "name": "npm.scope",
+                "value": "",
+                "type": "query",
+                "description": "npm scope"
+              },
+              {
+                "name": "npm.author",
+                "value": "",
+                "type": "query",
+                "description": "npm author"
+              },
+              {
+                "name": "npm.description",
+                "value": "",
+                "type": "query",
+                "description": "npm description"
+              },
+              {
+                "name": "npm.keywords",
+                "value": "",
+                "type": "query",
+                "description": "npm keywords"
+              },
+              {
+                "name": "npm.license",
+                "value": "",
+                "type": "query",
+                "description": "npm license"
+              },
+              {
+                "name": "npm.tagged_is",
+                "value": "",
+                "type": "query",
+                "description": "npm tagged is"
+              },
+              {
+                "name": "npm.tagged_not",
+                "value": "",
+                "type": "query",
+                "description": "npm tagged not"
+              },
+              {
+                "name": "nuget.id",
+                "value": "",
+                "type": "query",
+                "description": "NuGet id"
+              },
+              {
+                "name": "nuget.tags",
+                "value": "",
+                "type": "query",
+                "description": "NuGet tags"
+              },
+              {
+                "name": "nuget.title",
+                "value": "",
+                "type": "query",
+                "description": "NuGet title"
+              },
+              {
+                "name": "nuget.authors",
+                "value": "",
+                "type": "query",
+                "description": "NuGet authors"
+              },
+              {
+                "name": "nuget.description",
+                "value": "",
+                "type": "query",
+                "description": "NuGet description"
+              },
+              {
+                "name": "nuget.summary",
+                "value": "",
+                "type": "query",
+                "description": "NuGet summary"
+              },
+              {
+                "name": "nuget.is_prerelease",
+                "value": "",
+                "type": "query",
+                "description": "NuGet prerelease"
+              },
+              {
+                "name": "p2.pluginName",
+                "value": "",
+                "type": "query",
+                "description": "p2 plugin name"
+              },
+              {
+                "name": "pypi.classifiers",
+                "value": "",
+                "type": "query",
+                "description": "PyPI classifiers"
+              },
+              {
+                "name": "pypi.description",
+                "value": "",
+                "type": "query",
+                "description": "PyPI description"
+              },
+              {
+                "name": "pypi.keywords",
+                "value": "",
+                "type": "query",
+                "description": "PyPI keywords"
+              },
+              {
+                "name": "pypi.summary",
+                "value": "",
+                "type": "query",
+                "description": "PyPI summary"
+              },
+              {
+                "name": "rubygems.description",
+                "value": "",
+                "type": "query",
+                "description": "RubyGems description"
+              },
+              {
+                "name": "rubygems.platform",
+                "value": "",
+                "type": "query",
+                "description": "RubyGems platform"
+              },
+              {
+                "name": "rubygems.summary",
+                "value": "",
+                "type": "query",
+                "description": "RubyGems summary"
+              },
+              {
+                "name": "swift.scope",
+                "value": "",
+                "type": "query",
+                "description": "swift scope"
+              },
+              {
+                "name": "swift.asset_kind",
+                "value": "",
+                "type": "query",
+                "description": "swift asset kind"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Component tag"
+              },
+              {
+                "name": "terraform.provider",
+                "value": "",
+                "type": "query",
+                "description": "terraform provider"
+              },
+              {
+                "name": "terraform.namespace",
+                "value": "",
+                "type": "query",
+                "description": "terraform namespace"
+              },
+              {
+                "name": "terraform.name",
+                "value": "",
+                "type": "query",
+                "description": "terraform name"
+              },
+              {
+                "name": "yum.architecture",
+                "value": "",
+                "type": "query",
+                "description": "Yum architecture"
+              },
+              {
+                "name": "yum.name",
+                "value": "",
+                "type": "query",
+                "description": "Yum package name"
+              }
+            ]
+          },
+          "docs": "Move components"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

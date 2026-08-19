@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Security: certificates API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security: certificates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Helper method to retrieve certificate details from a remote system.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/ssl",
+            "params": [
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "The remote system's host name"
+              },
+              {
+                "name": "port",
+                "value": "",
+                "type": "query",
+                "description": "The port on the remote system to connect to"
+              },
+              {
+                "name": "protocolHint",
+                "value": "",
+                "type": "query",
+                "description": "An optional hint of the protocol to try for the connection"
+              }
+            ]
+          },
+          "docs": "Helper method to retrieve certificate details from a remote system."
+        },
+        {
+          "info": {
+            "name": "Retrieve a list of certificates added to the trust store.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/security/ssl/truststore"
+          },
+          "docs": "Retrieve a list of certificates added to the trust store."
+        },
+        {
+          "info": {
+            "name": "Add a certificate to the trust store.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/security/ssl/truststore"
+          },
+          "docs": "Add a certificate to the trust store."
+        },
+        {
+          "info": {
+            "name": "Remove a certificate in the trust store.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/security/ssl/truststore/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the certificate that should be removed."
+              }
+            ]
+          },
+          "docs": "Remove a certificate in the trust store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

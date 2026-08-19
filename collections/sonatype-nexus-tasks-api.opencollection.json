@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Tasks API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/tasks",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the tasks to get"
+              }
+            ]
+          },
+          "docs": "List tasks"
+        },
+        {
+          "info": {
+            "name": "Create task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create task"
+        },
+        {
+          "info": {
+            "name": "List tasks of template tasks. This is the base to create new tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/tasks/templates"
+          },
+          "docs": "List tasks of template tasks. This is the base to create new tasks"
+        },
+        {
+          "info": {
+            "name": "Get task template by type. This is the base to create new tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/tasks/templates/:typeId",
+            "params": [
+              {
+                "name": "typeId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get task template by type. This is the base to create new tasks"
+        },
+        {
+          "info": {
+            "name": "Get a single task by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the task to get"
+              }
+            ]
+          },
+          "docs": "Get a single task by id"
+        },
+        {
+          "info": {
+            "name": "Delete task by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete task by id"
+        },
+        {
+          "info": {
+            "name": "Run task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/tasks/:id/run",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the task to run"
+              }
+            ]
+          },
+          "docs": "Run task"
+        },
+        {
+          "info": {
+            "name": "Stop task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/tasks/:id/stop",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the task to stop"
+              }
+            ]
+          },
+          "docs": "Stop task"
+        },
+        {
+          "info": {
+            "name": "Update an existing task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/service/rest/v1/tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

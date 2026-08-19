@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Sonatype Nexus Repository Manager assets Database Upgrade API",
+    "version": "3.91.0-07"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Database Upgrade",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check the progress of a database schema upgrade",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/service/rest/v1/clustered/upgrade-database-schema"
+          },
+          "docs": "Check the progress of a database schema upgrade"
+        },
+        {
+          "info": {
+            "name": "Begins a database schema upgrade",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/service/rest/v1/clustered/upgrade-database-schema"
+          },
+          "docs": "Begins a database schema upgrade"
+        },
+        {
+          "info": {
+            "name": "Clears a stored database schema upgrade success or a recoverable error",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/service/rest/v1/clustered/upgrade-database-schema"
+          },
+          "docs": "Clears a stored database schema upgrade success or a recoverable error"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
