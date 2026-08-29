@@ -7,6 +7,18 @@ description: >-
   component and asset management, security, blob stores, search, tasks, cleanup policies, staging, and system
   administration.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -997,6 +1009,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
 common:
+  - type: CapabilityMap
+    url: capabilities/sonatype-nexus-capability-edges.yml
+    name: Sonatype Nexus Business Capability Map
   - type: AgenticAccess
     url: agentic-access/sonatype-nexus-agentic-access.yml
   - type: DomainSecurity
