@@ -218,7 +218,7 @@ apis:
   humanURL: https://help.sonatype.com/en/api-reference.html
   baseURL: https://{nexus-host}/service/rest
   tags:
-  - Data Store
+  - Datastore
   tags_raw:
   - Data Store
   properties:
@@ -655,7 +655,7 @@ apis:
   humanURL: https://help.sonatype.com/en/api-reference.html
   baseURL: https://{nexus-host}/service/rest
   tags:
-  - Security management
+  - Security Management
   tags_raw:
   - Security management
   properties:
