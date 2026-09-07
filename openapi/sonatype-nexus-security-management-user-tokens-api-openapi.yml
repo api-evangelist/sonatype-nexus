@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -108,25 +108,17 @@ paths:
       - 'Security management: user tokens'
 components:
   schemas:
-    UserTokensApiModel:
+    UserTokenListXO:
       properties:
-        enabled:
-          description: Whether or not User Tokens feature is enabled
-          type: boolean
-        expirationDays:
-          description: Set user token expiration days (E.g., 1-999)
-          example: 30
-          format: int32
-          maximum: 999
-          minimum: 1
-          type: integer
-        expirationEnabled:
-          description: Enable user tokens expiration
-          type: boolean
-        protectContent:
-          description: Additionally require user tokens for repository authentication
-          type: boolean
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/UserTokenXO'
+          type: array
       type: object
+      xml:
+        name: userTokenList
     UserTokenXO:
       properties:
         created:
@@ -155,17 +147,25 @@ components:
       type: object
       xml:
         name: userToken
-    UserTokenListXO:
+    UserTokensApiModel:
       properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/UserTokenXO'
-          type: array
+        enabled:
+          description: Whether or not User Tokens feature is enabled
+          type: boolean
+        expirationDays:
+          description: Set user token expiration days (E.g., 1-999)
+          example: 30
+          format: int32
+          maximum: 999
+          minimum: 1
+          type: integer
+        expirationEnabled:
+          description: Enable user tokens expiration
+          type: boolean
+        protectContent:
+          description: Additionally require user tokens for repository authentication
+          type: boolean
       type: object
-      xml:
-        name: userTokenList
   securitySchemes:
     BasicAuth:
       scheme: basic

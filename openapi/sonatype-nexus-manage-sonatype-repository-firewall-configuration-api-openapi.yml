@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -142,13 +142,6 @@ paths:
       - Manage Sonatype Repository Firewall configuration
 components:
   schemas:
-    IqConnectionVerificationXo:
-      properties:
-        reason:
-          type: string
-        success:
-          type: boolean
-      type: object
     IqAuditXo:
       properties:
         enabled:
@@ -163,6 +156,13 @@ components:
       required:
       - enabledQuarantine
       - repositoryName
+      type: object
+    IqConnectionVerificationXo:
+      properties:
+        reason:
+          type: string
+        success:
+          type: boolean
       type: object
     IqConnectionXo:
       properties:

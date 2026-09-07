@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets API
+  title: Sonatype Nexus Repository Manager Assets API
   version: 3.91.0-07
 servers:
 - url: /service/rest/

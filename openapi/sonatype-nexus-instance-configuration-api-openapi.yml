@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -354,41 +354,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ApplyStatusXO:
-      properties:
-        entity:
-          type: string
-        message:
-          type: string
-        status:
-          enum:
-          - APPLIED
-          - NOT_APPLIED
-          - FAILED
-          type: string
-      type: object
-    InstanceConfigurationXO:
-      properties:
-        configurationXOs:
-          items:
-            $ref: '#/components/schemas/ConfigurationXO'
-          type: array
-      type: object
-    ConfigurationApplyResponseXO:
-      properties:
-        appliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        failedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        notAppliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-      type: object
     AssetImportResponseXO:
       properties:
         assetId:
@@ -415,11 +380,6 @@ components:
           items:
             type: string
           type: array
-      type: object
-    ConfigurationXO:
-      properties:
-        configurationTypeId:
-          type: string
       type: object
     TransferCompleteXO:
       properties:
@@ -451,6 +411,46 @@ components:
             properties: {}
             type: object
           type: array
+      type: object
+    ConfigurationApplyResponseXO:
+      properties:
+        appliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        failedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        notAppliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+      type: object
+    ApplyStatusXO:
+      properties:
+        entity:
+          type: string
+        message:
+          type: string
+        status:
+          enum:
+          - APPLIED
+          - NOT_APPLIED
+          - FAILED
+          type: string
+      type: object
+    InstanceConfigurationXO:
+      properties:
+        configurationXOs:
+          items:
+            $ref: '#/components/schemas/ConfigurationXO'
+          type: array
+      type: object
+    ConfigurationXO:
+      properties:
+        configurationTypeId:
+          type: string
       type: object
   securitySchemes:
     BasicAuth:

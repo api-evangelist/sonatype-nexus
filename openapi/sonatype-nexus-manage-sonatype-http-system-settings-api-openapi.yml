@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -56,50 +56,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    AuthSettingsXo:
-      properties:
-        enabled:
-          description: auth enabled
-          type: boolean
-        ntlmDomain:
-          description: Windows NTLM Domain
-          type: string
-        ntlmHost:
-          description: Windows NTLM Hostname
-          type: string
-        password:
-          description: user password
-          type: string
-        username:
-          description: user name
-          type: string
-      required:
-      - enabled
-      - ntlmDomain
-      - ntlmHost
-      - password
-      - username
-      type: object
-    ProxySettingsXo:
-      nullable: 'true'
-      properties:
-        authInfo:
-          $ref: '#/components/schemas/AuthSettingsXo'
-        enabled:
-          description: proxy enabled
-          type: boolean
-        host:
-          description: proxy host
-          type: string
-        port:
-          description: proxy port
-          type: string
-      required:
-      - authInfo
-      - enabled
-      - host
-      - port
-      type: object
     HttpSettingsXo:
       properties:
         httpProxy:
@@ -134,6 +90,50 @@ components:
       - retries
       - timeout
       - userAgent
+      type: object
+    ProxySettingsXo:
+      nullable: 'true'
+      properties:
+        authInfo:
+          $ref: '#/components/schemas/AuthSettingsXo'
+        enabled:
+          description: proxy enabled
+          type: boolean
+        host:
+          description: proxy host
+          type: string
+        port:
+          description: proxy port
+          type: string
+      required:
+      - authInfo
+      - enabled
+      - host
+      - port
+      type: object
+    AuthSettingsXo:
+      properties:
+        enabled:
+          description: auth enabled
+          type: boolean
+        ntlmDomain:
+          description: Windows NTLM Domain
+          type: string
+        ntlmHost:
+          description: Windows NTLM Hostname
+          type: string
+        password:
+          description: user password
+          type: string
+        username:
+          description: user name
+          type: string
+      required:
+      - enabled
+      - ntlmDomain
+      - ntlmHost
+      - password
+      - username
       type: object
   securitySchemes:
     BasicAuth:

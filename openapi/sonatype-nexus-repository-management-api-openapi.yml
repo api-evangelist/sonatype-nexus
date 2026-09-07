@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -4073,561 +4073,22 @@ paths:
       - Repository Management
 components:
   schemas:
-    DockerGroupRepositoryApiRequest:
+    AptProxyRepositoriesAttributes:
       properties:
-        docker:
-          $ref: '#/components/schemas/DockerAttributes'
-        group:
-          $ref: '#/components/schemas/GroupDeployAttributes'
-        name:
-          description: A unique identifier for this repository (must be lowercase for Docker repositories)
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+        distribution:
+          description: Distribution name. When enforceDistribution is false (default), this field is optional and informational only - proxy repositories forward all distribution requests to upstream transparently. When enforceDistribution is true, this field is required and restricts requests to only the specified distribution.
+          example: bionic
           type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - docker
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    PypiProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        pypi:
-          $ref: '#/components/schemas/PyPiProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    ProxyAttributes:
-      properties:
-        contentMaxAge:
-          description: How long to cache artifacts before rechecking the remote repository (in minutes)
-          example: 1440
-          format: int32
-          type: integer
-        metadataMaxAge:
-          description: How long to cache metadata before rechecking the remote repository (in minutes)
-          example: 1440
-          format: int32
-          type: integer
-        preserveEncodedCharacters:
-          description: 'When true, preserves encoded characters like %2B (plus), %23 (hash), and %20 (space) in their encoded form when proxying to the remote repository. Enable this when proxying to AWS S3, Cloudflare CDN, or Azure Blob Storage, which require encoded characters to remain encoded. When false (default), uses standard encoding that preserves literal + characters (works for crates.io and most remotes). This feature is only available when nexus.proxy.urlEncodingMode.enabled=true is set. SECURITY NOTE: Only enable this for trusted remote repositories. Path traversal sequences (..) in redirects are automatically normalized.'
+        enforceDistribution:
+          description: Whether to restrict requests to only the specified distribution
           example: false
           type: boolean
-        remoteUrl:
-          description: Location of the remote repository being proxied
-          example: https://remote.repository.com
-          type: string
-      required:
-      - contentMaxAge
-      - metadataMaxAge
-      type: object
-    GitLfsHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    MavenGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    GolangGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    YumGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        yumSigning:
-          $ref: '#/components/schemas/YumSigningRepositoriesAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    MavenProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributesWithPreemptiveAuth'
-        maven:
-          $ref: '#/components/schemas/MavenAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - maven
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    ReplicationAttributes:
-      properties:
-        assetPathRegex:
-          description: Regular Expression of Asset Paths to pull pre-emptively pull
-          type: string
-        preemptivePullEnabled:
-          description: Whether pre-emptive pull is enabled
+        flat:
+          description: Whether the upstream repository uses a flat structure (without distribution subdirectories). Set to true for flat repositories, false for standard hierarchical repositories.
           example: false
           type: boolean
       required:
-      - preemptivePullEnabled
-      type: object
-    HelmProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    SwiftHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    YumAttributes:
-      properties:
-        deployPolicy:
-          description: Validate that all paths are RPMs or yum metadata
-          enum:
-          - PERMISSIVE
-          - STRICT
-          example: STRICT
-          type: string
-        repodataDepth:
-          description: Specifies the repository depth where repodata folder(s) are created
-          example: 5
-          format: int32
-          maximum: 5
-          minimum: 0
-          type: integer
-      required:
-      - repodataDepth
-      type: object
-    NugetGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    MavenHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        maven:
-          $ref: '#/components/schemas/MavenAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - maven
-      - name
-      - online
-      - storage
-      type: object
-    SimpleApiHostedRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        format:
-          description: Component format held in this repository
-          example: simpleapihostedrepository
-          type: string
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: hosted
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/simpleapihostedrepository-example
-          type: string
-      required:
-      - online
-      - storage
-      type: object
-    ConanProxyAttributes:
-      properties:
-        conanVersion:
-          description: Conan protocol version;
-          enum:
-          - V1
-          - V2
-          example: V1
-          type: string
-      type: object
-    TerraformHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        format:
-          default: terraform
-          type: string
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-        terraformSigning:
-          $ref: '#/components/schemas/TerraformSigningAttributes'
-        type:
-          default: hosted
-          type: string
-        url:
-          type: string
-      required:
-      - name
-      - online
-      - storage
-      - terraformSigning
-      type: object
-    TerraformSigningAttributes:
-      properties:
-        keypair:
-          description: PGP signing key pair (armored private key e.g. gpg --export-secret-key --armor). Required.
-          example: '-----BEGIN PGP PRIVATE KEY BLOCK-----
-
-            ...
-
-            -----END PGP PRIVATE KEY BLOCK-----'
-          type: string
-        passphrase:
-          description: Passphrase to access PGP signing key (optional)
-          type: string
-      required:
-      - keypair
-      type: object
-    ConanProxyApiRepository:
-      allOf:
-      - $ref: '#/components/schemas/ConanProxyRepositoryApiRequest'
-      - properties:
-          format:
-            default: conan
-            type: string
-          routingRuleName:
-            description: The name of the routing rule assigned to this repository
-            type: string
-          type:
-            default: proxy
-            type: string
-          url:
-            type: string
-        required:
-        - format
-        - type
-        - url
-        type: object
-    DockerAttributes:
-      properties:
-        forceBasicAuth:
-          description: Whether to force authentication (Docker Bearer Token Realm required if false)
-          example: true
-          type: boolean
-        httpPort:
-          description: Create an HTTP connector at specified port
-          example: 8082
-          format: int32
-          type: integer
-        httpsPort:
-          description: Create an HTTPS connector at specified port
-          example: 8083
-          format: int32
-          type: integer
-        pathEnabled:
-          description: Allows to use repository name in Docker image paths
-          example: true
-          type: boolean
-        subdomain:
-          description: Allows to use subdomain
-          example: docker-a
-          type: string
-        v1Enabled:
-          description: Whether to allow clients to use the V1 API to interact with this repository
-          example: false
-          type: boolean
-      required:
-      - forceBasicAuth
-      - v1Enabled
-      type: object
-    MavenAttributes:
-      properties:
-        contentDisposition:
-          description: Content Disposition
-          enum:
-          - INLINE
-          - ATTACHMENT
-          example: ATTACHMENT
-          pattern: INLINE|ATTACHMENT
-          type: string
-        layoutPolicy:
-          description: Validate that all paths are maven artifact or metadata paths
-          enum:
-          - STRICT
-          - PERMISSIVE
-          example: STRICT
-          pattern: STRICT|PERMISSIVE
-          type: string
-        versionPolicy:
-          description: What type of artifacts does this repository store?
-          enum:
-          - RELEASE
-          - SNAPSHOT
-          - MIXED
-          example: MIXED
-          pattern: RELEASE|SNAPSHOT|MIXED
-          type: string
-      type: object
-    SimpleApiGroupRepository:
-      properties:
-        format:
-          description: Component format held in this repository
-          example: simpleapigrouprepository
-          type: string
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: group
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/simpleapigrouprepository-example
-          type: string
-      required:
-      - group
-      - online
-      - storage
-      type: object
-    GroupAttributes:
-      properties:
-        memberNames:
-          description: Member repositories' names
-          items:
-            type: string
-          type: array
+      - flat
       type: object
     RawHostedRepositoryApiRequest:
       properties:
@@ -4653,29 +4114,145 @@ components:
       - online
       - storage
       type: object
-    HttpClientConnectionAuthenticationAttributesWithPreemptive:
+    CondaProxyRepositoryApiRequest:
       properties:
-        bearerToken:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        ntlmDomain:
-          type: string
-        ntlmHost:
-          type: string
-        password:
-          type: string
-        preemptive:
-          description: Whether to use pre-emptive authentication. Use with caution. Defaults to false.
-          example: false
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
           type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    RProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    AptProxyRepositoryApiRequest:
+      properties:
+        apt:
+          $ref: '#/components/schemas/AptProxyRepositoriesAttributes'
+        aptSigning:
+          $ref: '#/components/schemas/AptSigningRepositoriesAttributes'
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - apt
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    SwiftGroupApiRepository:
+      properties:
+        format:
+          description: Component format held in this repository
+          example: swift
+          type: string
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
         type:
-          description: Authentication type
+          description: Controls if deployments of and updates to artifacts are allowed
           enum:
-          - username
-          - ntlm
-          - bearerToken
+          - hosted
+          - proxy
+          - group
+          example: group
           type: string
-        username:
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/swift-example
           type: string
+      required:
+      - group
+      - online
+      - storage
       type: object
     RawProxyRepositoryApiRequest:
       properties:
@@ -4712,39 +4289,14 @@ components:
       - proxy
       - storage
       type: object
-    NpmGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupDeployAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    DockerProxyRepositoryApiRequest:
+    SwiftProxyRepositoryApiRequest:
       properties:
         cleanup:
           $ref: '#/components/schemas/CleanupPolicyAttributes'
-        docker:
-          $ref: '#/components/schemas/DockerAttributes'
-        dockerProxy:
-          $ref: '#/components/schemas/DockerProxyAttributes'
         httpClient:
           $ref: '#/components/schemas/HttpClientAttributes'
         name:
-          description: A unique identifier for this repository (must be lowercase for Docker repositories)
+          description: A unique identifier for this repository
           example: internal
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
@@ -4762,15 +4314,161 @@ components:
           type: string
         storage:
           $ref: '#/components/schemas/StorageAttributes'
+        swift:
+          $ref: '#/components/schemas/SwiftAttributes'
       required:
-      - docker
-      - dockerProxy
       - httpClient
       - name
       - negativeCache
       - online
       - proxy
       - storage
+      type: object
+    NpmHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    NugetProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        nugetProxy:
+          $ref: '#/components/schemas/NugetAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - nugetProxy
+      - online
+      - proxy
+      - storage
+      type: object
+    DockerHostedStorageAttributes:
+      properties:
+        blobStoreName:
+          description: Blob store used to store repository contents
+          example: default
+          type: string
+        latestPolicy:
+          description: Whether to allow redeploying the 'latest' tag but defer to the Deployment Policy for all other tags
+          example: true
+          type: boolean
+        strictContentTypeValidation:
+          description: Whether to validate uploaded content's MIME type appropriate for the repository format
+          example: true
+          type: boolean
+        writePolicy:
+          description: Controls if deployments of and updates to assets are allowed
+          enum:
+          - ALLOW
+          - ALLOW_ONCE
+          - DENY
+          example: ALLOW_ONCE
+          type: string
+      required:
+      - blobStoreName
+      - strictContentTypeValidation
+      - writePolicy
+      type: object
+    StorageAttributes:
+      properties:
+        blobStoreName:
+          description: Blob store used to store repository contents
+          example: default
+          type: string
+        strictContentTypeValidation:
+          description: Whether to validate uploaded content's MIME type appropriate for the repository format
+          example: true
+          type: boolean
+        writePolicy:
+          description: Controls if deployments of and updates to assets are allowed
+          enum:
+          - allow
+          - allow_once
+          - deny
+          example: allow_once
+          type: string
+      required:
+      - blobStoreName
+      - strictContentTypeValidation
+      type: object
+    DockerGroupRepositoryApiRequest:
+      properties:
+        docker:
+          $ref: '#/components/schemas/DockerAttributes'
+        group:
+          $ref: '#/components/schemas/GroupDeployAttributes'
+        name:
+          description: A unique identifier for this repository (must be lowercase for Docker repositories)
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - docker
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    HttpClientAttributesWithPreemptiveAuth:
+      properties:
+        authentication:
+          $ref: '#/components/schemas/HttpClientConnectionAuthenticationAttributesWithPreemptive'
+        autoBlock:
+          description: Whether to auto-block outbound connections if remote peer is detected as unreachable/unresponsive
+          example: true
+          type: boolean
+        blocked:
+          description: Whether to block outbound connections on the repository
+          example: false
+          type: boolean
+        connection:
+          $ref: '#/components/schemas/HttpClientConnectionAttributes'
       type: object
     RubyGemsProxyRepositoryApiRequest:
       properties:
@@ -4805,43 +4503,25 @@ components:
       - proxy
       - storage
       type: object
-    CargoGroupApiRepository:
+    RepositoryXO:
       properties:
-        cargo:
-          $ref: '#/components/schemas/CargoAttributes'
+        attributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
         format:
-          description: Component format held in this repository
-          example: cargo
           type: string
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
         name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
+        size:
+          description: Size of the repository in bytes
+          format: int64
+          type: integer
         type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: group
           type: string
         url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/cargo-example
           type: string
-      required:
-      - group
-      - online
-      - storage
       type: object
     RawAttributes:
       properties:
@@ -4853,170 +4533,13 @@ components:
           example: ATTACHMENT
           type: string
       type: object
-    RHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    HttpClientAttributesWithPreemptiveAuth:
-      properties:
-        authentication:
-          $ref: '#/components/schemas/HttpClientConnectionAuthenticationAttributesWithPreemptive'
-        autoBlock:
-          description: Whether to auto-block outbound connections if remote peer is detected as unreachable/unresponsive
-          example: true
-          type: boolean
-        blocked:
-          description: Whether to block outbound connections on the repository
-          example: false
-          type: boolean
-        connection:
-          $ref: '#/components/schemas/HttpClientConnectionAttributes'
-      type: object
-    HttpClientConnectionAttributes:
-      properties:
-        enableCircularRedirects:
-          description: Whether to enable redirects to the same location (may be required by some servers)
-          example: false
-          type: boolean
-        enableCookies:
-          description: Whether to allow cookies to be stored and used
-          example: false
-          type: boolean
-        retries:
-          description: Total retries if the initial connection attempt suffers a timeout
-          example: 0
-          format: int32
-          maximum: 10
-          minimum: 0
-          type: integer
-        timeout:
-          description: Seconds to wait for activity before stopping and retrying the connection
-          example: 60
-          format: int32
-          maximum: 3600
-          minimum: 1
-          type: integer
-        useTrustStore:
-          description: Use certificates stored in the Nexus Repository Manager truststore to connect to external systems
-          example: false
-          type: boolean
-        userAgentSuffix:
-          description: Custom fragment to append to User-Agent header in HTTP requests
-          type: string
-      type: object
-    NegativeCacheAttributes:
-      properties:
-        enabled:
-          description: Whether to cache responses for content not present in the proxied repository
-          example: true
-          type: boolean
-        timeToLive:
-          description: How long to cache the fact that a file was not found in the repository (in minutes)
-          example: 1440
-          format: int32
-          type: integer
-      required:
-      - enabled
-      - timeToLive
-      type: object
-    ComponentAttributes:
-      properties:
-        proprietaryComponents:
-          description: Components in this repository count as proprietary for namespace conflict attacks (requires Sonatype Nexus Firewall)
-          type: boolean
-      type: object
-    TerraformGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        terraform:
-          $ref: '#/components/schemas/TerraformAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    RawGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        raw:
-          $ref: '#/components/schemas/RawAttributes'
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    RGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    NugetProxyApiRepository:
+    SimpleApiProxyRepository:
       properties:
         cleanup:
           $ref: '#/components/schemas/CleanupPolicyAttributes'
         format:
           description: Component format held in this repository
-          example: nuget
+          example: simpleapiproxyrepository
           type: string
         httpClient:
           $ref: '#/components/schemas/HttpClientAttributes'
@@ -5027,8 +4550,6 @@ components:
           type: string
         negativeCache:
           $ref: '#/components/schemas/NegativeCacheAttributes'
-        nugetProxy:
-          $ref: '#/components/schemas/NugetAttributes'
         online:
           description: Whether this repository accepts incoming requests
           example: true
@@ -5052,56 +4573,16 @@ components:
           type: string
         url:
           description: URL to the repository
-          example: http://localhost:8081/repository/nuget-example
+          example: http://localhost:8081/repository/simpleapiproxyrepository-example
           type: string
       required:
       - httpClient
       - negativeCache
-      - nugetProxy
       - online
       - proxy
       - storage
       type: object
-    TerraformGroupApiRepository:
-      properties:
-        format:
-          description: Component format held in this repository
-          example: terraform
-          type: string
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        terraform:
-          $ref: '#/components/schemas/TerraformAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: group
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/terraform-example
-          type: string
-      required:
-      - group
-      - online
-      - storage
-      - terraform
-      type: object
-    RubyGemsGroupRepositoryApiRequest:
+    RGroupRepositoryApiRequest:
       properties:
         group:
           $ref: '#/components/schemas/GroupAttributes'
@@ -5120,97 +4601,6 @@ components:
       - group
       - name
       - online
-      - storage
-      type: object
-    HostedStorageAttributes:
-      properties:
-        blobStoreName:
-          description: Blob store used to store repository contents
-          example: default
-          type: string
-        strictContentTypeValidation:
-          description: Whether to validate uploaded content's MIME type appropriate for the repository format
-          example: true
-          type: boolean
-        writePolicy:
-          description: Controls if deployments of and updates to assets are allowed
-          enum:
-          - ALLOW
-          - ALLOW_ONCE
-          - DENY
-          example: ALLOW_ONCE
-          type: string
-      required:
-      - blobStoreName
-      - strictContentTypeValidation
-      - writePolicy
-      type: object
-    NpmProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        npm:
-          $ref: '#/components/schemas/NpmAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    ComposerProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
       - storage
       type: object
     NpmProxyApiRepository:
@@ -5264,6 +4654,1996 @@ components:
       - proxy
       - storage
       type: object
+    DockerProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        docker:
+          $ref: '#/components/schemas/DockerAttributes'
+        dockerProxy:
+          $ref: '#/components/schemas/DockerProxyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository (must be lowercase for Docker repositories)
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - docker
+      - dockerProxy
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    DockerProxyAttributes:
+      properties:
+        cacheForeignLayers:
+          description: Allow Nexus Repository Manager to download and cache foreign layers
+          type: boolean
+        foreignLayerUrlWhitelist:
+          items:
+            type: string
+          type: array
+        indexType:
+          description: Type of Docker Index
+          enum:
+          - HUB
+          - REGISTRY
+          - CUSTOM
+          example: HUB
+          type: string
+        indexUrl:
+          description: Url of Docker Index to use
+          type: string
+      type: object
+    GroupAttributes:
+      properties:
+        memberNames:
+          description: Member repositories' names
+          items:
+            type: string
+          type: array
+      type: object
+    TerraformSigningAttributes:
+      properties:
+        keypair:
+          description: PGP signing key pair (armored private key e.g. gpg --export-secret-key --armor). Required.
+          example: '-----BEGIN PGP PRIVATE KEY BLOCK-----
+
+            ...
+
+            -----END PGP PRIVATE KEY BLOCK-----'
+          type: string
+        passphrase:
+          description: Passphrase to access PGP signing key (optional)
+          type: string
+      required:
+      - keypair
+      type: object
+    GolangGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    GolangProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    YumHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+        yum:
+          $ref: '#/components/schemas/YumAttributes'
+      required:
+      - name
+      - online
+      - storage
+      - yum
+      type: object
+    CargoProxyRepositoryApiRequest:
+      properties:
+        cargo:
+          $ref: '#/components/schemas/CargoAttributes'
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    YumSigningRepositoriesAttributes:
+      properties:
+        keypair:
+          description: PGP signing key pair (armored private key e.g. gpg --export-secret-key --armor)
+          type: string
+        passphrase:
+          description: Passphrase to access PGP signing key
+          type: string
+      type: object
+    AptHostedApiRepository:
+      properties:
+        apt:
+          $ref: '#/components/schemas/AptHostedRepositoriesAttributes'
+        aptSigning:
+          $ref: '#/components/schemas/AptSigningRepositoriesAttributes'
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        format:
+          description: Component format held in this repository
+          example: apt
+          type: string
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: hosted
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/apt-example
+          type: string
+      required:
+      - apt
+      - aptSigning
+      - online
+      - storage
+      type: object
+    NugetHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    PypiGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupDeployAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    TerraformProxyRepositoryApiRequest:
+      description: Request body for creating or updating a Terraform proxy repository
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        terraform:
+          $ref: '#/components/schemas/TerraformAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    ConanGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupDeployAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    ComponentAttributes:
+      properties:
+        proprietaryComponents:
+          description: Components in this repository count as proprietary for namespace conflict attacks (requires Sonatype Nexus Firewall)
+          type: boolean
+      type: object
+    YumProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        yumSigning:
+          $ref: '#/components/schemas/YumSigningRepositoriesAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    NugetAttributes:
+      properties:
+        nugetVersion:
+          description: Nuget protocol version
+          enum:
+          - V2
+          - V3
+          example: V3
+          type: string
+        queryCacheItemMaxAge:
+          description: How long to cache query results from the proxied repository (in seconds)
+          example: 3600
+          format: int32
+          type: integer
+      type: object
+    DockerProxyApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        docker:
+          $ref: '#/components/schemas/DockerAttributes'
+        dockerProxy:
+          $ref: '#/components/schemas/DockerProxyAttributes'
+        format:
+          description: Component format held in this repository
+          example: docker
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          description: The name of the routing rule assigned to this repository
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: proxy
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/docker-example
+          type: string
+      required:
+      - docker
+      - dockerProxy
+      - httpClient
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    HostedStorageAttributes:
+      properties:
+        blobStoreName:
+          description: Blob store used to store repository contents
+          example: default
+          type: string
+        strictContentTypeValidation:
+          description: Whether to validate uploaded content's MIME type appropriate for the repository format
+          example: true
+          type: boolean
+        writePolicy:
+          description: Controls if deployments of and updates to assets are allowed
+          enum:
+          - ALLOW
+          - ALLOW_ONCE
+          - DENY
+          example: ALLOW_ONCE
+          type: string
+      required:
+      - blobStoreName
+      - strictContentTypeValidation
+      - writePolicy
+      type: object
+    SwiftAttributes:
+      properties:
+        requireAuthentication:
+          description: Indicates if this repository requires authentication overriding anonymous access.
+          example: false
+          type: boolean
+      type: object
+    RawGroupApiRepository:
+      properties:
+        format:
+          default: raw
+          type: string
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          type: boolean
+        raw:
+          $ref: '#/components/schemas/RawAttributes'
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          default: group
+          type: string
+        url:
+          type: string
+      required:
+      - format
+      - group
+      - name
+      - online
+      - raw
+      - storage
+      - type
+      - url
+    NugetProxyApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        format:
+          description: Component format held in this repository
+          example: nuget
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        nugetProxy:
+          $ref: '#/components/schemas/NugetAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          description: The name of the routing rule assigned to this repository
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: proxy
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/nuget-example
+          type: string
+      required:
+      - httpClient
+      - negativeCache
+      - nugetProxy
+      - online
+      - proxy
+      - storage
+      type: object
+    PyPiProxyAttributes:
+      properties:
+        indexPath:
+          description: Remote Index Path
+          example: /simple
+          type: string
+        removeQuarantined:
+          description: Remove Quarantined Versions
+          example: true
+          type: boolean
+      required:
+      - removeQuarantined
+      type: object
+    NpmGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupDeployAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    TerraformHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        format:
+          default: terraform
+          type: string
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+        terraformSigning:
+          $ref: '#/components/schemas/TerraformSigningAttributes'
+        type:
+          default: hosted
+          type: string
+        url:
+          type: string
+      required:
+      - name
+      - online
+      - storage
+      - terraformSigning
+      type: object
+    MavenGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    RubyGemsGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    TerraformAttributes:
+      properties:
+        requireAuthentication:
+          description: Indicates if this repository requires authentication overriding anonymous access.
+          example: false
+          type: boolean
+      type: object
+    AptHostedRepositoryApiRequest:
+      properties:
+        apt:
+          $ref: '#/components/schemas/AptHostedRepositoriesAttributes'
+        aptSigning:
+          $ref: '#/components/schemas/AptSigningRepositoriesAttributes'
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - apt
+      - aptSigning
+      - name
+      - online
+      - storage
+      type: object
+    GroupDeployAttributes:
+      properties:
+        memberNames:
+          description: Member repositories' names
+          items:
+            type: string
+          type: array
+        writableMember:
+          description: 'Pro-only: This field is for the Group Deployment feature available in NXRM Pro.'
+          type: string
+      type: object
+    SimpleApiGroupDeployRepository:
+      properties:
+        format:
+          description: Component format held in this repository
+          example: simpleapigroupdeployrepository
+          readOnly: true
+          type: string
+        group:
+          $ref: '#/components/schemas/GroupDeployAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          readOnly: true
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          readOnly: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: group
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/simpleapigroupdeployrepository-example
+          readOnly: true
+          type: string
+      required:
+      - group
+      - online
+      - storage
+      type: object
+    CargoGroupApiRepository:
+      properties:
+        cargo:
+          $ref: '#/components/schemas/CargoAttributes'
+        format:
+          description: Component format held in this repository
+          example: cargo
+          type: string
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: group
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/cargo-example
+          type: string
+      required:
+      - group
+      - online
+      - storage
+      type: object
+    ConanProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        conanProxy:
+          $ref: '#/components/schemas/ConanProxyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    SimpleApiHostedRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        format:
+          description: Component format held in this repository
+          example: simpleapihostedrepository
+          type: string
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: hosted
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/simpleapihostedrepository-example
+          type: string
+      required:
+      - online
+      - storage
+      type: object
+    MavenProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributesWithPreemptiveAuth'
+        maven:
+          $ref: '#/components/schemas/MavenAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - maven
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    CargoHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    TerraformProxyApiRepository:
+      description: Terraform proxy repository configuration
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        format:
+          description: Component format held in this repository
+          example: terraform
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          description: The name of the routing rule assigned to this repository
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        terraform:
+          $ref: '#/components/schemas/TerraformAttributes'
+        type:
+          description: Repository type
+          example: proxy
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/terraform-example
+          type: string
+      required:
+      - httpClient
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    PypiProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        pypi:
+          $ref: '#/components/schemas/PyPiProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    AptSigningRepositoriesAttributes:
+      properties:
+        keypair:
+          description: PGP signing key pair (armored private key e.g. gpg --export-secret-key --armor)
+          type: string
+        passphrase:
+          description: Passphrase to access PGP signing key
+          type: string
+      type: object
+    SwiftGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    PypiHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    RubyGemsHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    HttpClientConnectionAttributes:
+      properties:
+        enableCircularRedirects:
+          description: Whether to enable redirects to the same location (may be required by some servers)
+          example: false
+          type: boolean
+        enableCookies:
+          description: Whether to allow cookies to be stored and used
+          example: false
+          type: boolean
+        retries:
+          description: Total retries if the initial connection attempt suffers a timeout
+          example: 0
+          format: int32
+          maximum: 10
+          minimum: 0
+          type: integer
+        timeout:
+          description: Seconds to wait for activity before stopping and retrying the connection
+          example: 60
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        useTrustStore:
+          description: Use certificates stored in the Nexus Repository Manager truststore to connect to external systems
+          example: false
+          type: boolean
+        userAgentSuffix:
+          description: Custom fragment to append to User-Agent header in HTTP requests
+          type: string
+      type: object
+    NugetGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    HttpClientConnectionAuthenticationAttributesWithPreemptive:
+      properties:
+        bearerToken:
+          type: string
+        ntlmDomain:
+          type: string
+        ntlmHost:
+          type: string
+        password:
+          type: string
+        preemptive:
+          description: Whether to use pre-emptive authentication. Use with caution. Defaults to false.
+          example: false
+          type: boolean
+        type:
+          description: Authentication type
+          enum:
+          - username
+          - ntlm
+          - bearerToken
+          type: string
+        username:
+          type: string
+      type: object
+    DockerHostedApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        docker:
+          $ref: '#/components/schemas/DockerAttributes'
+        format:
+          description: Component format held in this repository
+          example: docker
+          type: string
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/DockerHostedStorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: hosted
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/docker-example
+          type: string
+      required:
+      - docker
+      - online
+      - storage
+      type: object
+    RawProxyApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        format:
+          default: pypi
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        raw:
+          $ref: '#/components/schemas/RawAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          default: raw
+          type: string
+        url:
+          type: string
+      required:
+      - format
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - raw
+      - storage
+      - type
+      - url
+    MavenAttributes:
+      properties:
+        contentDisposition:
+          description: Content Disposition
+          enum:
+          - INLINE
+          - ATTACHMENT
+          example: ATTACHMENT
+          pattern: INLINE|ATTACHMENT
+          type: string
+        layoutPolicy:
+          description: Validate that all paths are maven artifact or metadata paths
+          enum:
+          - STRICT
+          - PERMISSIVE
+          example: STRICT
+          pattern: STRICT|PERMISSIVE
+          type: string
+        versionPolicy:
+          description: What type of artifacts does this repository store?
+          enum:
+          - RELEASE
+          - SNAPSHOT
+          - MIXED
+          example: MIXED
+          pattern: RELEASE|SNAPSHOT|MIXED
+          type: string
+      type: object
+    HelmHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    YumGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        yumSigning:
+          $ref: '#/components/schemas/YumSigningRepositoriesAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    HelmProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    TerraformGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        terraform:
+          $ref: '#/components/schemas/TerraformAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    HttpClientConnectionAuthenticationAttributes:
+      properties:
+        bearerToken:
+          type: string
+        ntlmDomain:
+          type: string
+        ntlmHost:
+          type: string
+        password:
+          type: string
+        preemptive:
+          description: Whether to use pre-emptive authentication. Use with caution. Defaults to false.
+          example: 'false'
+          type: boolean
+        type:
+          description: Authentication type
+          enum:
+          - username
+          - ntlm
+          - bearerToken
+          type: string
+        username:
+          type: string
+      type: object
+    SwiftProxyApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        format:
+          description: Component format held in this repository
+          example: swift
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          description: The name of the routing rule assigned to this repository
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        swift:
+          $ref: '#/components/schemas/SwiftAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: proxy
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/swift-example
+          type: string
+      required:
+      - httpClient
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    AptHostedRepositoriesAttributes:
+      properties:
+        distribution:
+          description: Distribution name for this repository. Defines the distribution path used in metadata structure (e.g., dists/{distribution}/Release). Clients must configure this exact distribution name in their APT sources.
+          example: bionic
+          type: string
+      required:
+      - distribution
+      type: object
+    HuggingFaceProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    ConanHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    CargoProxyApiRepository:
+      properties:
+        cargo:
+          $ref: '#/components/schemas/CargoAttributes'
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        format:
+          description: Component format held in this repository
+          example: cargo
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          description: The name of the routing rule assigned to this repository
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: proxy
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/cargo-example
+          type: string
+      required:
+      - httpClient
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    SimpleApiGroupRepository:
+      properties:
+        format:
+          description: Component format held in this repository
+          example: simpleapigrouprepository
+          type: string
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: group
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/simpleapigrouprepository-example
+          type: string
+      required:
+      - group
+      - online
+      - storage
+      type: object
+    TerraformGroupApiRepository:
+      properties:
+        format:
+          description: Component format held in this repository
+          example: terraform
+          type: string
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        terraform:
+          $ref: '#/components/schemas/TerraformAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: group
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/terraform-example
+          type: string
+      required:
+      - group
+      - online
+      - storage
+      - terraform
+      type: object
+    NegativeCacheAttributes:
+      properties:
+        enabled:
+          description: Whether to cache responses for content not present in the proxied repository
+          example: true
+          type: boolean
+        timeToLive:
+          description: How long to cache the fact that a file was not found in the repository (in minutes)
+          example: 1440
+          format: int32
+          type: integer
+      required:
+      - enabled
+      - timeToLive
+      type: object
+    NpmProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        npm:
+          $ref: '#/components/schemas/NpmAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    MavenHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        maven:
+          $ref: '#/components/schemas/MavenAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - maven
+      - name
+      - online
+      - storage
+      type: object
+    RHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    ConanProxyAttributes:
+      properties:
+        conanVersion:
+          description: Conan protocol version;
+          enum:
+          - V1
+          - V2
+          example: V1
+          type: string
+      type: object
+    HttpClientAttributes:
+      properties:
+        authentication:
+          $ref: '#/components/schemas/HttpClientConnectionAuthenticationAttributes'
+        autoBlock:
+          description: Whether to auto-block outbound connections if remote peer is detected as unreachable/unresponsive
+          example: true
+          type: boolean
+        blocked:
+          description: Whether to block outbound connections on the repository
+          example: false
+          type: boolean
+        connection:
+          $ref: '#/components/schemas/HttpClientConnectionAttributes'
+      type: object
+    ProxyAttributes:
+      properties:
+        contentMaxAge:
+          description: How long to cache artifacts before rechecking the remote repository (in minutes)
+          example: 1440
+          format: int32
+          type: integer
+        metadataMaxAge:
+          description: How long to cache metadata before rechecking the remote repository (in minutes)
+          example: 1440
+          format: int32
+          type: integer
+        preserveEncodedCharacters:
+          description: 'When true, preserves encoded characters like %2B (plus), %23 (hash), and %20 (space) in their encoded form when proxying to the remote repository. Enable this when proxying to AWS S3, Cloudflare CDN, or Azure Blob Storage, which require encoded characters to remain encoded. When false (default), uses standard encoding that preserves literal + characters (works for crates.io and most remotes). This feature is only available when nexus.proxy.urlEncodingMode.enabled=true is set. SECURITY NOTE: Only enable this for trusted remote repositories. Path traversal sequences (..) in redirects are automatically normalized.'
+          example: false
+          type: boolean
+        remoteUrl:
+          description: Location of the remote repository being proxied
+          example: https://remote.repository.com
+          type: string
+      required:
+      - contentMaxAge
+      - metadataMaxAge
+      type: object
+    CleanupPolicyAttributes:
+      properties:
+        policyNames:
+          description: Components that match any of the applied policies will be deleted
+          items:
+            type: string
+          type: array
+      type: object
+    YumHostedApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        format:
+          description: Component format held in this repository
+          example: yum
+          type: string
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: hosted
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/yum-example
+          type: string
+        yum:
+          $ref: '#/components/schemas/YumAttributes'
+      required:
+      - online
+      - storage
+      - yum
+      type: object
+    MavenProxyApiRepository:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        format:
+          description: Component format held in this repository
+          example: maven2
+          type: string
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        maven:
+          $ref: '#/components/schemas/MavenAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRuleName:
+          description: The name of the routing rule assigned to this repository
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: proxy
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/maven2-example
+          type: string
+      required:
+      - httpClient
+      - maven
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
+    GitLfsHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        component:
+          $ref: '#/components/schemas/ComponentAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    RawGroupRepositoryApiRequest:
+      properties:
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        raw:
+          $ref: '#/components/schemas/RawAttributes'
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - group
+      - name
+      - online
+      - storage
+      type: object
+    YumAttributes:
+      properties:
+        deployPolicy:
+          description: Validate that all paths are RPMs or yum metadata
+          enum:
+          - PERMISSIVE
+          - STRICT
+          example: STRICT
+          type: string
+        repodataDepth:
+          description: Specifies the repository depth where repodata folder(s) are created
+          example: 5
+          format: int32
+          maximum: 5
+          minimum: 0
+          type: integer
+      required:
+      - repodataDepth
+      type: object
+    AbstractApiRepository:
+      properties:
+        format:
+          description: Component format held in this repository
+          example: abstractapirepository
+          type: string
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        type:
+          description: Controls if deployments of and updates to artifacts are allowed
+          enum:
+          - hosted
+          - proxy
+          - group
+          example: hosted
+          type: string
+        url:
+          description: URL to the repository
+          example: http://localhost:8081/repository/abstractapirepository-example
+          type: string
+      required:
+      - online
+      type: object
     DockerGroupApiRepository:
       properties:
         docker:
@@ -5303,6 +6683,66 @@ components:
       - online
       - storage
       type: object
+    SwiftHostedRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        storage:
+          $ref: '#/components/schemas/HostedStorageAttributes'
+      required:
+      - name
+      - online
+      - storage
+      type: object
+    CargoAttributes:
+      properties:
+        requireAuthentication:
+          description: Indicates if this repository requires authentication overriding anonymous access.
+          example: false
+          type: boolean
+      type: object
+    P2ProxyRepositoryApiRequest:
+      properties:
+        cleanup:
+          $ref: '#/components/schemas/CleanupPolicyAttributes'
+        httpClient:
+          $ref: '#/components/schemas/HttpClientAttributes'
+        name:
+          description: A unique identifier for this repository
+          example: internal
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        negativeCache:
+          $ref: '#/components/schemas/NegativeCacheAttributes'
+        online:
+          description: Whether this repository accepts incoming requests
+          example: true
+          type: boolean
+        proxy:
+          $ref: '#/components/schemas/ProxyAttributes'
+        replication:
+          $ref: '#/components/schemas/ReplicationAttributes'
+        routingRule:
+          type: string
+        storage:
+          $ref: '#/components/schemas/StorageAttributes'
+      required:
+      - httpClient
+      - name
+      - negativeCache
+      - online
+      - proxy
+      - storage
+      type: object
     DockerHostedRepositoryApiRequest:
       properties:
         cleanup:
@@ -5328,290 +6768,42 @@ components:
       - online
       - storage
       type: object
-    RepositoryXO:
+    CargoGroupRepositoryApiRequest:
       properties:
-        attributes:
-          additionalProperties:
-            properties: {}
-            type: object
-          type: object
-        format:
-          type: string
-        name:
-          type: string
-        size:
-          description: Size of the repository in bytes
-          format: int64
-          type: integer
-        type:
-          type: string
-        url:
-          type: string
-      type: object
-    SwiftProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
+        cargo:
+          $ref: '#/components/schemas/CargoAttributes'
+        group:
+          $ref: '#/components/schemas/GroupAttributes'
         name:
           description: A unique identifier for this repository
           example: internal
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
         online:
           description: Whether this repository accepts incoming requests
           example: true
           type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        swift:
-          $ref: '#/components/schemas/SwiftAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    GolangProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
         storage:
           $ref: '#/components/schemas/StorageAttributes'
       required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    NugetHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
+      - group
       - name
       - online
       - storage
       type: object
-    YumSigningRepositoriesAttributes:
+    ReplicationAttributes:
       properties:
-        keypair:
-          description: PGP signing key pair (armored private key e.g. gpg --export-secret-key --armor)
+        assetPathRegex:
+          description: Regular Expression of Asset Paths to pull pre-emptively pull
           type: string
-        passphrase:
-          description: Passphrase to access PGP signing key
-          type: string
-      type: object
-    TerraformAttributes:
-      properties:
-        requireAuthentication:
-          description: Indicates if this repository requires authentication overriding anonymous access.
+        preemptivePullEnabled:
+          description: Whether pre-emptive pull is enabled
           example: false
           type: boolean
-      type: object
-    NugetProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        nugetProxy:
-          $ref: '#/components/schemas/NugetAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
       required:
-      - httpClient
-      - name
-      - negativeCache
-      - nugetProxy
-      - online
-      - proxy
-      - storage
+      - preemptivePullEnabled
       type: object
-    GroupDeployAttributes:
-      properties:
-        memberNames:
-          description: Member repositories' names
-          items:
-            type: string
-          type: array
-        writableMember:
-          description: 'Pro-only: This field is for the Group Deployment feature available in NXRM Pro.'
-          type: string
-      type: object
-    RubyGemsHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    AbstractApiRepository:
-      properties:
-        format:
-          description: Component format held in this repository
-          example: abstractapirepository
-          type: string
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: hosted
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/abstractapirepository-example
-          type: string
-      required:
-      - online
-      type: object
-    NugetAttributes:
-      properties:
-        nugetVersion:
-          description: Nuget protocol version
-          enum:
-          - V2
-          - V3
-          example: V3
-          type: string
-        queryCacheItemMaxAge:
-          description: How long to cache query results from the proxied repository (in seconds)
-          example: 3600
-          format: int32
-          type: integer
-      type: object
-    DockerProxyAttributes:
-      properties:
-        cacheForeignLayers:
-          description: Allow Nexus Repository Manager to download and cache foreign layers
-          type: boolean
-        foreignLayerUrlWhitelist:
-          items:
-            type: string
-          type: array
-        indexType:
-          description: Type of Docker Index
-          enum:
-          - HUB
-          - REGISTRY
-          - CUSTOM
-          example: HUB
-          type: string
-        indexUrl:
-          description: Url of Docker Index to use
-          type: string
-      type: object
-    ConanHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    P2ProxyRepositoryApiRequest:
+    CocoapodsProxyRepositoryApiRequest:
       properties:
         cleanup:
           $ref: '#/components/schemas/CleanupPolicyAttributes'
@@ -5684,317 +6876,58 @@ components:
       - online
       - storage
       type: object
-    StorageAttributes:
+    DockerAttributes:
       properties:
-        blobStoreName:
-          description: Blob store used to store repository contents
-          example: default
-          type: string
-        strictContentTypeValidation:
-          description: Whether to validate uploaded content's MIME type appropriate for the repository format
+        forceBasicAuth:
+          description: Whether to force authentication (Docker Bearer Token Realm required if false)
           example: true
           type: boolean
-        writePolicy:
-          description: Controls if deployments of and updates to assets are allowed
-          enum:
-          - allow
-          - allow_once
-          - deny
-          example: allow_once
-          type: string
-      required:
-      - blobStoreName
-      - strictContentTypeValidation
-      type: object
-    ConanGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupDeployAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
+        httpPort:
+          description: Create an HTTP connector at specified port
+          example: 8082
+          format: int32
+          type: integer
+        httpsPort:
+          description: Create an HTTPS connector at specified port
+          example: 8083
+          format: int32
+          type: integer
+        pathEnabled:
+          description: Allows to use repository name in Docker image paths
           example: true
           type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    CargoProxyRepositoryApiRequest:
-      properties:
-        cargo:
-          $ref: '#/components/schemas/CargoAttributes'
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+        subdomain:
+          description: Allows to use subdomain
+          example: docker-a
           type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    YumProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        yumSigning:
-          $ref: '#/components/schemas/YumSigningRepositoriesAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    RawProxyApiRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        format:
-          default: pypi
-          type: string
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        raw:
-          $ref: '#/components/schemas/RawAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          default: raw
-          type: string
-        url:
-          type: string
-      required:
-      - format
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - raw
-      - storage
-      - type
-      - url
-    ConanProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        conanProxy:
-          $ref: '#/components/schemas/ConanProxyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    CargoGroupRepositoryApiRequest:
-      properties:
-        cargo:
-          $ref: '#/components/schemas/CargoAttributes'
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    HttpClientConnectionAuthenticationAttributes:
-      properties:
-        bearerToken:
-          type: string
-        ntlmDomain:
-          type: string
-        ntlmHost:
-          type: string
-        password:
-          type: string
-        preemptive:
-          description: Whether to use pre-emptive authentication. Use with caution. Defaults to false.
-          example: 'false'
-          type: boolean
-        type:
-          description: Authentication type
-          enum:
-          - username
-          - ntlm
-          - bearerToken
-          type: string
-        username:
-          type: string
-      type: object
-    RawGroupApiRepository:
-      properties:
-        format:
-          default: raw
-          type: string
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          type: boolean
-        raw:
-          $ref: '#/components/schemas/RawAttributes'
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          default: group
-          type: string
-        url:
-          type: string
-      required:
-      - format
-      - group
-      - name
-      - online
-      - raw
-      - storage
-      - type
-      - url
-    HuggingFaceProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    SwiftAttributes:
-      properties:
-        requireAuthentication:
-          description: Indicates if this repository requires authentication overriding anonymous access.
+        v1Enabled:
+          description: Whether to allow clients to use the V1 API to interact with this repository
           example: false
           type: boolean
+      required:
+      - forceBasicAuth
+      - v1Enabled
       type: object
+    ConanProxyApiRepository:
+      allOf:
+      - $ref: '#/components/schemas/ConanProxyRepositoryApiRequest'
+      - properties:
+          format:
+            default: conan
+            type: string
+          routingRuleName:
+            description: The name of the routing rule assigned to this repository
+            type: string
+          type:
+            default: proxy
+            type: string
+          url:
+            type: string
+        required:
+        - format
+        - type
+        - url
+        type: object
     AptProxyApiRepository:
       properties:
         apt:
@@ -6049,15 +6982,19 @@ components:
       - proxy
       - storage
       type: object
-    TerraformProxyApiRepository:
-      description: Terraform proxy repository configuration
+    NpmAttributes:
+      properties:
+        removeQuarantined:
+          description: Remove Quarantined Versions
+          example: true
+          type: boolean
+      required:
+      - removeQuarantined
+      type: object
+    ComposerProxyRepositoryApiRequest:
       properties:
         cleanup:
           $ref: '#/components/schemas/CleanupPolicyAttributes'
-        format:
-          description: Component format held in this repository
-          example: terraform
-          type: string
         httpClient:
           $ref: '#/components/schemas/HttpClientAttributes'
         name:
@@ -6075,113 +7012,16 @@ components:
           $ref: '#/components/schemas/ProxyAttributes'
         replication:
           $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          description: The name of the routing rule assigned to this repository
+        routingRule:
           type: string
         storage:
           $ref: '#/components/schemas/StorageAttributes'
-        terraform:
-          $ref: '#/components/schemas/TerraformAttributes'
-        type:
-          description: Repository type
-          example: proxy
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/terraform-example
-          type: string
       required:
       - httpClient
+      - name
       - negativeCache
       - online
       - proxy
-      - storage
-      type: object
-    AptHostedRepositoriesAttributes:
-      properties:
-        distribution:
-          description: Distribution name for this repository. Defines the distribution path used in metadata structure (e.g., dists/{distribution}/Release). Clients must configure this exact distribution name in their APT sources.
-          example: bionic
-          type: string
-      required:
-      - distribution
-      type: object
-    YumHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-        yum:
-          $ref: '#/components/schemas/YumAttributes'
-      required:
-      - name
-      - online
-      - storage
-      - yum
-      type: object
-    PyPiProxyAttributes:
-      properties:
-        indexPath:
-          description: Remote Index Path
-          example: /simple
-          type: string
-        removeQuarantined:
-          description: Remove Quarantined Versions
-          example: true
-          type: boolean
-      required:
-      - removeQuarantined
-      type: object
-    SimpleApiGroupDeployRepository:
-      properties:
-        format:
-          description: Component format held in this repository
-          example: simpleapigroupdeployrepository
-          readOnly: true
-          type: string
-        group:
-          $ref: '#/components/schemas/GroupDeployAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          readOnly: true
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          readOnly: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: group
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/simpleapigroupdeployrepository-example
-          readOnly: true
-          type: string
-      required:
-      - group
-      - online
       - storage
       type: object
     PyPiProxyApiRepository:
@@ -6228,289 +7068,6 @@ components:
       - storage
       - type
       - url
-    SimpleApiProxyRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        format:
-          description: Component format held in this repository
-          example: simpleapiproxyrepository
-          type: string
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          description: The name of the routing rule assigned to this repository
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: proxy
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/simpleapiproxyrepository-example
-          type: string
-      required:
-      - httpClient
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    CargoHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    PypiHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    SwiftGroupApiRepository:
-      properties:
-        format:
-          description: Component format held in this repository
-          example: swift
-          type: string
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: group
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/swift-example
-          type: string
-      required:
-      - group
-      - online
-      - storage
-      type: object
-    HttpClientAttributes:
-      properties:
-        authentication:
-          $ref: '#/components/schemas/HttpClientConnectionAuthenticationAttributes'
-        autoBlock:
-          description: Whether to auto-block outbound connections if remote peer is detected as unreachable/unresponsive
-          example: true
-          type: boolean
-        blocked:
-          description: Whether to block outbound connections on the repository
-          example: false
-          type: boolean
-        connection:
-          $ref: '#/components/schemas/HttpClientConnectionAttributes'
-      type: object
-    SwiftGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    CocoapodsProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    DockerHostedApiRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        docker:
-          $ref: '#/components/schemas/DockerAttributes'
-        format:
-          description: Component format held in this repository
-          example: docker
-          type: string
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/DockerHostedStorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: hosted
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/docker-example
-          type: string
-      required:
-      - docker
-      - online
-      - storage
-      type: object
-    TerraformProxyRepositoryApiRequest:
-      description: Request body for creating or updating a Terraform proxy repository
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        terraform:
-          $ref: '#/components/schemas/TerraformAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    NpmAttributes:
-      properties:
-        removeQuarantined:
-          description: Remove Quarantined Versions
-          example: true
-          type: boolean
-      required:
-      - removeQuarantined
-      type: object
     RawHostedApiRepository:
       properties:
         cleanup:
@@ -6544,563 +7101,6 @@ components:
       - storage
       - type
       - url
-    DockerHostedStorageAttributes:
-      properties:
-        blobStoreName:
-          description: Blob store used to store repository contents
-          example: default
-          type: string
-        latestPolicy:
-          description: Whether to allow redeploying the 'latest' tag but defer to the Deployment Policy for all other tags
-          example: true
-          type: boolean
-        strictContentTypeValidation:
-          description: Whether to validate uploaded content's MIME type appropriate for the repository format
-          example: true
-          type: boolean
-        writePolicy:
-          description: Controls if deployments of and updates to assets are allowed
-          enum:
-          - ALLOW
-          - ALLOW_ONCE
-          - DENY
-          example: ALLOW_ONCE
-          type: string
-      required:
-      - blobStoreName
-      - strictContentTypeValidation
-      - writePolicy
-      type: object
-    CargoAttributes:
-      properties:
-        requireAuthentication:
-          description: Indicates if this repository requires authentication overriding anonymous access.
-          example: false
-          type: boolean
-      type: object
-    PypiGroupRepositoryApiRequest:
-      properties:
-        group:
-          $ref: '#/components/schemas/GroupDeployAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - group
-      - name
-      - online
-      - storage
-      type: object
-    CondaProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    CleanupPolicyAttributes:
-      properties:
-        policyNames:
-          description: Components that match any of the applied policies will be deleted
-          items:
-            type: string
-          type: array
-      type: object
-    AptHostedApiRepository:
-      properties:
-        apt:
-          $ref: '#/components/schemas/AptHostedRepositoriesAttributes'
-        aptSigning:
-          $ref: '#/components/schemas/AptSigningRepositoriesAttributes'
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        format:
-          description: Component format held in this repository
-          example: apt
-          type: string
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: hosted
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/apt-example
-          type: string
-      required:
-      - apt
-      - aptSigning
-      - online
-      - storage
-      type: object
-    CargoProxyApiRepository:
-      properties:
-        cargo:
-          $ref: '#/components/schemas/CargoAttributes'
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        format:
-          description: Component format held in this repository
-          example: cargo
-          type: string
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          description: The name of the routing rule assigned to this repository
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: proxy
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/cargo-example
-          type: string
-      required:
-      - httpClient
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    AptHostedRepositoryApiRequest:
-      properties:
-        apt:
-          $ref: '#/components/schemas/AptHostedRepositoriesAttributes'
-        aptSigning:
-          $ref: '#/components/schemas/AptSigningRepositoriesAttributes'
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - apt
-      - aptSigning
-      - name
-      - online
-      - storage
-      type: object
-    HelmHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    MavenProxyApiRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        format:
-          description: Component format held in this repository
-          example: maven2
-          type: string
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        maven:
-          $ref: '#/components/schemas/MavenAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          description: The name of the routing rule assigned to this repository
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: proxy
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/maven2-example
-          type: string
-      required:
-      - httpClient
-      - maven
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    YumHostedApiRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        format:
-          description: Component format held in this repository
-          example: yum
-          type: string
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: hosted
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/yum-example
-          type: string
-        yum:
-          $ref: '#/components/schemas/YumAttributes'
-      required:
-      - online
-      - storage
-      - yum
-      type: object
-    AptProxyRepositoriesAttributes:
-      properties:
-        distribution:
-          description: Distribution name. When enforceDistribution is false (default), this field is optional and informational only - proxy repositories forward all distribution requests to upstream transparently. When enforceDistribution is true, this field is required and restricts requests to only the specified distribution.
-          example: bionic
-          type: string
-        enforceDistribution:
-          description: Whether to restrict requests to only the specified distribution
-          example: false
-          type: boolean
-        flat:
-          description: Whether the upstream repository uses a flat structure (without distribution subdirectories). Set to true for flat repositories, false for standard hierarchical repositories.
-          example: false
-          type: boolean
-      required:
-      - flat
-      type: object
-    SwiftProxyApiRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        format:
-          description: Component format held in this repository
-          example: swift
-          type: string
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          description: The name of the routing rule assigned to this repository
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        swift:
-          $ref: '#/components/schemas/SwiftAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: proxy
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/swift-example
-          type: string
-      required:
-      - httpClient
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    AptProxyRepositoryApiRequest:
-      properties:
-        apt:
-          $ref: '#/components/schemas/AptProxyRepositoriesAttributes'
-        aptSigning:
-          $ref: '#/components/schemas/AptSigningRepositoriesAttributes'
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - apt
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    AptSigningRepositoriesAttributes:
-      properties:
-        keypair:
-          description: PGP signing key pair (armored private key e.g. gpg --export-secret-key --armor)
-          type: string
-        passphrase:
-          description: Passphrase to access PGP signing key
-          type: string
-      type: object
-    NpmHostedRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        component:
-          $ref: '#/components/schemas/ComponentAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        storage:
-          $ref: '#/components/schemas/HostedStorageAttributes'
-      required:
-      - name
-      - online
-      - storage
-      type: object
-    RProxyRepositoryApiRequest:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRule:
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-      required:
-      - httpClient
-      - name
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
-    DockerProxyApiRepository:
-      properties:
-        cleanup:
-          $ref: '#/components/schemas/CleanupPolicyAttributes'
-        docker:
-          $ref: '#/components/schemas/DockerAttributes'
-        dockerProxy:
-          $ref: '#/components/schemas/DockerProxyAttributes'
-        format:
-          description: Component format held in this repository
-          example: docker
-          type: string
-        httpClient:
-          $ref: '#/components/schemas/HttpClientAttributes'
-        name:
-          description: A unique identifier for this repository
-          example: internal
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        negativeCache:
-          $ref: '#/components/schemas/NegativeCacheAttributes'
-        online:
-          description: Whether this repository accepts incoming requests
-          example: true
-          type: boolean
-        proxy:
-          $ref: '#/components/schemas/ProxyAttributes'
-        replication:
-          $ref: '#/components/schemas/ReplicationAttributes'
-        routingRuleName:
-          description: The name of the routing rule assigned to this repository
-          type: string
-        storage:
-          $ref: '#/components/schemas/StorageAttributes'
-        type:
-          description: Controls if deployments of and updates to artifacts are allowed
-          enum:
-          - hosted
-          - proxy
-          - group
-          example: proxy
-          type: string
-        url:
-          description: URL to the repository
-          example: http://localhost:8081/repository/docker-example
-          type: string
-      required:
-      - docker
-      - dockerProxy
-      - httpClient
-      - negativeCache
-      - online
-      - proxy
-      - storage
-      type: object
   securitySchemes:
     BasicAuth:
       scheme: basic

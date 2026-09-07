@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -7,7 +7,7 @@ info:
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets components API
+  title: Sonatype Nexus Repository Manager assets Components API
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -318,6 +318,43 @@ paths:
       - components
 components:
   schemas:
+    ComponentXO:
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+        extraJsonAttributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
+        format:
+          type: string
+        group:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        repository:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        version:
+          type: string
+      type: object
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
     AssetXO:
       properties:
         blobCreated:
@@ -362,43 +399,6 @@ components:
           type: string
         uploaderIp:
           type: string
-      type: object
-    ComponentXO:
-      properties:
-        assets:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
-        extraJsonAttributes:
-          additionalProperties:
-            properties: {}
-            type: object
-          type: object
-        format:
-          type: string
-        group:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        repository:
-          type: string
-        tags:
-          items:
-            type: string
-          type: array
-        version:
-          type: string
-      type: object
-    PageComponentXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/ComponentXO'
-          type: array
       type: object
   securitySchemes:
     BasicAuth:

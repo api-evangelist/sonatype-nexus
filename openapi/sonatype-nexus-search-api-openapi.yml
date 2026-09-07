@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -1175,6 +1175,34 @@ paths:
       - Search
 components:
   schemas:
+    ComponentXO:
+      properties:
+        assets:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+        extraJsonAttributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
+        format:
+          type: string
+        group:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        repository:
+          type: string
+        tags:
+          items:
+            type: string
+          type: array
+        version:
+          type: string
+      type: object
     AssetXO:
       properties:
         blobCreated:
@@ -1220,43 +1248,6 @@ components:
         uploaderIp:
           type: string
       type: object
-    PageAssetXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
-      type: object
-    ComponentXO:
-      properties:
-        assets:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
-        extraJsonAttributes:
-          additionalProperties:
-            properties: {}
-            type: object
-          type: object
-        format:
-          type: string
-        group:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        repository:
-          type: string
-        tags:
-          items:
-            type: string
-          type: array
-        version:
-          type: string
-      type: object
     PageComponentXO:
       properties:
         continuationToken:
@@ -1264,6 +1255,15 @@ components:
         items:
           items:
             $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
           type: array
       type: object
   securitySchemes:

@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -60,9 +60,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    InputStream:
-      format: binary
-      type: string
     ApiLicenseDetailsXO:
       properties:
         contactCompany:
@@ -92,6 +89,9 @@ components:
           format: int64
           type: integer
       type: object
+    InputStream:
+      format: binary
+      type: string
   securitySchemes:
     BasicAuth:
       scheme: basic

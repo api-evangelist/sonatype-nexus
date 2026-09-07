@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -432,7 +432,7 @@ paths:
       - 'Security management: privileges'
 components:
   schemas:
-    ApiPrivilegeApplicationRequest:
+    ApiPrivilegeRepositoryAdminRequest:
       properties:
         actions:
           description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
@@ -451,119 +451,6 @@ components:
             - ALL
             type: string
           type: array
-        description:
-          type: string
-        domain:
-          description: The domain (i.e. 'blobstores', 'capabilities' or even '*' for all) that this privilege is granting access to.  Note that creating new privileges with a domain is only necessary when using plugins that define their own domain(s).
-          type: string
-        name:
-          description: The name of the privilege.  This value cannot be changed.
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-      type: object
-    ApiPrivilegeWildcardRequest:
-      properties:
-        description:
-          type: string
-        name:
-          description: The name of the privilege.  This value cannot be changed.
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        pattern:
-          description: A colon separated list of parts that create a permission string.
-          type: string
-      type: object
-    ApiPrivilegeRequest:
-      properties:
-        actions:
-          description: 'A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as ''run'' for script privileges.
-
-
-            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view, script'
-          items:
-            type: string
-          type: array
-        contentSelector:
-          description: 'The name of a content selector that will be used to grant access to content via this privilege.
-
-
-            Only applicable for Privilege Types: repository-content-selector'
-          type: string
-        description:
-          type: string
-        domain:
-          description: 'The domain (i.e. ''blobstores'', ''capabilities'' or even ''*'' for all) that this privilege is granting access to. Note that creating new privileges with a domain is only necessary when using plugins that define their own domain(s).
-
-
-            Only applicable for Privilege Types: application'
-          type: string
-        format:
-          description: 'The repository format (i.e ''nuget'', ''npm'') this privilege will grant access to (or * for all).
-
-
-            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view'
-          type: string
-        name:
-          description: The name of the privilege. This value cannot be changed.
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        pattern:
-          description: 'A colon separated list of parts that create a permission string.
-
-
-            Only applicable for Privilege Types: wildcard'
-          type: string
-        readOnly:
-          description: Indicates whether the privilege can be changed. External values supplied to this will be ignored by the system.
-          type: boolean
-        repository:
-          description: 'The name of the repository this privilege will grant access to (or * for all). The repository MUST exist.
-
-
-            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view'
-          type: string
-        scriptName:
-          description: 'The name of a script to give access to.
-
-
-            Only applicable for Privilege Types: script'
-          type: string
-        type:
-          description: The type of privilege, each type covers different portion of the system. External values supplied to this will be ignored by the system.
-          enum:
-          - application
-          - repository-admin
-          - repository-content-selector
-          - repository-view
-          - script
-          - wildcard
-          type: string
-      required:
-      - name
-      - type
-      type: object
-    ApiPrivilegeRepositoryContentSelectorRequest:
-      properties:
-        actions:
-          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
-          items:
-            enum:
-            - READ
-            - BROWSE
-            - EDIT
-            - ADD
-            - DELETE
-            - RUN
-            - START
-            - STOP
-            - ASSOCIATE
-            - DISASSOCIATE
-            - ALL
-            type: string
-          type: array
-        contentSelector:
-          description: The name of a content selector that will be used to grant access to content via this privilege.
-          type: string
         description:
           type: string
         format:
@@ -638,7 +525,54 @@ components:
           description: The name of a script to give access to.
           type: string
       type: object
-    ApiPrivilegeRepositoryAdminRequest:
+    ApiPrivilegeWildcardRequest:
+      properties:
+        description:
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        pattern:
+          description: A colon separated list of parts that create a permission string.
+          type: string
+      type: object
+    ApiPrivilegeRepositoryContentSelectorRequest:
+      properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
+        contentSelector:
+          description: The name of a content selector that will be used to grant access to content via this privilege.
+          type: string
+        description:
+          type: string
+        format:
+          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        repository:
+          description: The name of the repository this privilege will grant access to (or * for all).
+          type: string
+      type: object
+    ApiPrivilegeApplicationRequest:
       properties:
         actions:
           description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
@@ -659,16 +593,82 @@ components:
           type: array
         description:
           type: string
-        format:
-          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
+        domain:
+          description: The domain (i.e. 'blobstores', 'capabilities' or even '*' for all) that this privilege is granting access to.  Note that creating new privileges with a domain is only necessary when using plugins that define their own domain(s).
           type: string
         name:
           description: The name of the privilege.  This value cannot be changed.
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        repository:
-          description: The name of the repository this privilege will grant access to (or * for all).
+      type: object
+    ApiPrivilegeRequest:
+      properties:
+        actions:
+          description: 'A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as ''run'' for script privileges.
+
+
+            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view, script'
+          items:
+            type: string
+          type: array
+        contentSelector:
+          description: 'The name of a content selector that will be used to grant access to content via this privilege.
+
+
+            Only applicable for Privilege Types: repository-content-selector'
           type: string
+        description:
+          type: string
+        domain:
+          description: 'The domain (i.e. ''blobstores'', ''capabilities'' or even ''*'' for all) that this privilege is granting access to. Note that creating new privileges with a domain is only necessary when using plugins that define their own domain(s).
+
+
+            Only applicable for Privilege Types: application'
+          type: string
+        format:
+          description: 'The repository format (i.e ''nuget'', ''npm'') this privilege will grant access to (or * for all).
+
+
+            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view'
+          type: string
+        name:
+          description: The name of the privilege. This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        pattern:
+          description: 'A colon separated list of parts that create a permission string.
+
+
+            Only applicable for Privilege Types: wildcard'
+          type: string
+        readOnly:
+          description: Indicates whether the privilege can be changed. External values supplied to this will be ignored by the system.
+          type: boolean
+        repository:
+          description: 'The name of the repository this privilege will grant access to (or * for all). The repository MUST exist.
+
+
+            Only applicable for Privilege Types: repository-admin, repository-content-selector, repository-view'
+          type: string
+        scriptName:
+          description: 'The name of a script to give access to.
+
+
+            Only applicable for Privilege Types: script'
+          type: string
+        type:
+          description: The type of privilege, each type covers different portion of the system. External values supplied to this will be ignored by the system.
+          enum:
+          - application
+          - repository-admin
+          - repository-content-selector
+          - repository-view
+          - script
+          - wildcard
+          type: string
+      required:
+      - name
+      - type
       type: object
   securitySchemes:
     BasicAuth:

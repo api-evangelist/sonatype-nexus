@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   contact:
     name: Sonatype Community Maintainers
@@ -152,6 +152,30 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    RoleXORequest:
+      properties:
+        description:
+          description: The description of this role.
+          type: string
+        id:
+          description: The id of the role.
+          type: string
+        name:
+          description: The name of the role.
+          type: string
+        privileges:
+          description: The list of privileges assigned to this role.
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        roles:
+          description: The list of roles assigned to this role.
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+      type: object
     RoleXOResponse:
       properties:
         description:
@@ -181,30 +205,6 @@ components:
         source:
           description: The user source which is the origin of this role.
           type: string
-      type: object
-    RoleXORequest:
-      properties:
-        description:
-          description: The description of this role.
-          type: string
-        id:
-          description: The id of the role.
-          type: string
-        name:
-          description: The name of the role.
-          type: string
-        privileges:
-          description: The list of privileges assigned to this role.
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        roles:
-          description: The list of roles assigned to this role.
-          items:
-            type: string
-          type: array
-          uniqueItems: true
       type: object
   securitySchemes:
     BasicAuth:
