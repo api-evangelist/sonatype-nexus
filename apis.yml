@@ -214,28 +214,6 @@ apis:
   - type: JSONSchema
     url: >-
       https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
-- aid: sonatype-nexus:sonatype-nexus-data-store-api
-  name: Sonatype Nexus Data Store API
-  description: The Data Store API from Sonatype Nexus — 1 operation(s) for data store.
-  humanURL: https://help.sonatype.com/en/api-reference.html
-  baseURL: https://{nexus-host}/service/rest
-  tags:
-  - Datastore
-  tags_raw:
-  - Data Store
-  properties:
-  - type: OpenAPI
-    url: openapi/sonatype-nexus-data-store-api-openapi.yml
-  - type: Documentation
-    url: https://help.sonatype.com/en/api-reference.html
-  - type: Reference
-    url: https://help.sonatype.com/en/rest-and-integration-api.html
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
-  - type: JSONSchema
-    url: >-
-      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
 - aid: sonatype-nexus:sonatype-nexus-database-upgrade-api
   name: Sonatype Nexus Database Upgrade API
   description: The Database Upgrade API from Sonatype Nexus — 1 operation(s) for database upgrade.
@@ -1000,6 +978,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/sonatype-nexus-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://help.sonatype.com/en/api-reference.html
+  - type: Reference
+    url: https://help.sonatype.com/en/rest-and-integration-api.html
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-component-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
+- aid: sonatype-nexus:sonatype-nexus-datastore-api
+  name: Sonatype Nexus Datastore API
+  description: The Datastore API from Sonatype Nexus — 1 operation(s) for datastore.
+  humanURL: https://help.sonatype.com/en/api-reference.html
+  baseURL: https://{nexus-host}/service/rest
+  tags:
+  - Datastore
+  properties:
+  - type: OpenAPI
+    url: openapi/sonatype-nexus-datastore-api-openapi.yml
   - type: Documentation
     url: https://help.sonatype.com/en/api-reference.html
   - type: Reference
