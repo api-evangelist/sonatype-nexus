@@ -1,0 +1,120 @@
+slug: sonatype-nexus
+provider: Sonatype Nexus
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 11
+edges:
+- tag: 'Security management: users'
+  spec_file: sonatype-nexus-security-management-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: POST /v1/security/users "Create a new user in the default source."; PUT /v1/security/users/{userId}/change-password
+    "Change a user's password."
+  reason: User account lifecycle and password management for the platform — unambiguously Identity & Access
+    Management, not HR employee records.
+- tag: 'Security management: privileges'
+  spec_file: sonatype-nexus-security-management-privileges-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: GET /v1/security/privileges "Retrieve a list of privileges."; "Create an application type
+    privilege"; "Create a repository view type privilege"
+  reason: CRUD over authorization privileges (application, repository-admin, content-selector, view, script,
+    wildcard) is classic access-rights administration, i.e. Identity & Access Management for this devtool.
+- tag: 'Security management: roles'
+  spec_file: sonatype-nexus-security-management-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: POST /v1/security/roles "Create role"; schemas RoleXORequest, RoleXOResponse
+  reason: Role lifecycle management (list/create/update/delete security roles) is role-based access control
+    administration — Identity & Access Management.
+- tag: 'Security management: SAML users'
+  spec_file: sonatype-nexus-security-management-saml-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.82
+  evidence: '"Create a new SAML user. This allows administrators to pre-create SAML users with roles before
+    their first login.", "Update a SAML user''s roles and attributes."'
+  reason: CRUD over federated user accounts and their role assignments is user provisioning and entitlement
+    administration, i.e. Identity & Access Management.
+- tag: 'Security management: LDAP'
+  spec_file: sonatype-nexus-security-management-ldap-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: '"Create LDAP server", "Change LDAP server order", schema "ReadLdapServerXo"'
+  reason: Configuration of LDAP directory servers used to authenticate and authorise users is directory/federation
+    configuration, squarely Identity & Access Management.
+- tag: 'Security management: SAML'
+  spec_file: sonatype-nexus-security-management-saml-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: '"Create or update SAML configuration", "Get service provider metadata XML document"'
+  reason: SAML service-provider configuration establishes single sign-on federation for users, which is
+    Identity & Access Management (federation).
+- tag: 'Security management: realms'
+  spec_file: sonatype-nexus-security-management-realms-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: PUT /v1/security/realms/active "Set the active security realms in the order they should be
+    used"
+  reason: Configuring which authentication realms are active and their precedence is authentication/federation
+    configuration, within Identity & Access Management. Small surface, hence moderate confidence.
+- tag: 'Security: Atlassian Crowd'
+  spec_file: sonatype-nexus-security-atlassian-crowd-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: GET /v1/security/atlassian-crowd "Retrieve Atlassian Crowd settings configured in Nexus Repository
+    Manager"; "Verify connection using supplied Atlassian Crowd settings"
+  reason: Configuration and connection verification of an external identity provider (Atlassian Crowd)
+    for authentication — identity federation, within Identity & Access Management.
+- tag: 'Security management: user tokens'
+  spec_file: sonatype-nexus-security-management-user-tokens-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: GET /v1/security/user-tokens/tokens "List all user tokens"; DELETE /v1/security/user-tokens
+    resetAllUserTokens
+  reason: Issuance, listing and reset of per-user authentication tokens is user credential administration,
+    part of Identity & Access Management. Some ambiguity as it also resembles developer credential issuance.
+- tag: Blob store
+  spec_file: sonatype-nexus-blob-store-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: Create an Azure blob store / Create a file blob store / Create a Google Cloud blob store
+  reason: Configuration of underlying object-storage backends (file, S3, Azure, Google Cloud) for the
+    artifact repository is storage/cloud infrastructure management.
+- tag: 'Security Management: Anonymous Access'
+  spec_file: sonatype-nexus-security-management-anonymous-access-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: '"Get Anonymous Access settings", schema "AnonymousAccessSettingsXO"'
+  reason: Controls whether unauthenticated users may access the system, i.e. access-control configuration,
+    which sits under Identity & Access Management. Thin surface (two operations) so confidence is moderate.
