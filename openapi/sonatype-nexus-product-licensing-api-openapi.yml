@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets Product licensing API
+  title: Sonatype Nexus Repository Manager Product licensing API
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -23,7 +23,7 @@ paths:
         default:
           content: {}
           description: successful operation
-      summary: Uninstall license if present.
+      summary: Uninstall license if present
       tags:
       - Product licensing
     get:
@@ -35,7 +35,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiLicenseDetailsXO'
           description: successful operation
-      summary: Get the current license status.
+      summary: Get the current license status
       tags:
       - Product licensing
     post:
@@ -54,7 +54,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ApiLicenseDetailsXO'
           description: successful operation
-      summary: Upload a new license file.
+      summary: Upload a new license file
       tags:
       - Product licensing
       x-codegen-request-body-name: body

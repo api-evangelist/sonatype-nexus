@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Sonatype Nexus Repository Manager assets Security management: users API'
+  title: Sonatype Nexus Repository Manager Security management…
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -45,7 +45,7 @@ paths:
         '403':
           content: {}
           description: The user does not have permission to perform the operation.
-      summary: Retrieve a list of users. For SAML user sources a limit of 1000 users will be applied.
+      summary: Retrieve a list of users.
       tags:
       - 'Security management: users'
     post:
@@ -70,7 +70,7 @@ paths:
         '403':
           content: {}
           description: The user does not have permission to perform the operation.
-      summary: Create a new user in the default source.
+      summary: Create a new user in the default source
       tags:
       - 'Security management: users'
       x-codegen-request-body-name: body
@@ -99,7 +99,7 @@ paths:
         '404':
           content: {}
           description: User or user source not found in the system.
-      summary: Delete a user.
+      summary: Delete a user
       tags:
       - 'Security management: users'
     put:
@@ -131,7 +131,7 @@ paths:
         '404':
           content: {}
           description: User or user source not found in the system.
-      summary: Update an existing user.
+      summary: Update an existing user
       tags:
       - 'Security management: users'
       x-codegen-request-body-name: body
@@ -165,7 +165,7 @@ paths:
         '404':
           content: {}
           description: User not found in the system.
-      summary: Change a user's password.
+      summary: Change a user's password
       tags:
       - 'Security management: users'
       x-codegen-request-body-name: body
@@ -205,7 +205,7 @@ paths:
         '500':
           content: {}
           description: Unexpected server error
-      summary: Delete the user token for the given user.
+      summary: Delete the user token for the given user
       tags:
       - 'Security management: users'
     get:
@@ -246,7 +246,7 @@ paths:
         '500':
           content: {}
           description: Unexpected server error
-      summary: Get user token metadata for the given user.
+      summary: Get user token metadata for the given user
       tags:
       - 'Security management: users'
     post:
@@ -290,7 +290,7 @@ paths:
         '500':
           content: {}
           description: Unexpected server error
-      summary: Create a user token for the given user.
+      summary: Create a user token for the given user
       tags:
       - 'Security management: users'
   /v1/security/users/{userId}/{realm}/user-token-reset:
@@ -327,11 +327,54 @@ paths:
         '422':
           content: {}
           description: Invalid realm
-      summary: Reset the user token for the given user.
+      summary: Reset the user token for the given user
       tags:
       - 'Security management: users'
 components:
   schemas:
+    ApiUser:
+      properties:
+        emailAddress:
+          description: The email address associated with the user.
+          type: string
+        externalRoles:
+          description: The roles which the user has been assigned in an external source, e.g. LDAP group. These cannot be changed within the Nexus Repository Manager.
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        readOnly:
+          description: Indicates whether the user's properties could be modified by the Nexus Repository Manager. When false only roles are considered during update.
+          type: boolean
+        roles:
+          description: The roles which the user has been assigned within Nexus.
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        source:
+          description: The source of the user. When creating user, if the source is "default", the local Nexus Security User will be created. If the source is anything but "default" (i.e., LDAP or SAML), a local LdapUser (or SamlUser) will be created and have the listed roles assigned to that user.
+          type: string
+        status:
+          description: The user's status, e.g. active or disabled.
+          enum:
+          - active
+          - locked
+          - disabled
+          - changepassword
+          type: string
+        userId:
+          description: The userid which is required for login. This value cannot be changed.
+          type: string
+      required:
+      - status
+      type: object
     ApiCreateUser:
       properties:
         emailAddress:
@@ -394,49 +437,6 @@ components:
       type: object
       xml:
         name: userToken
-    ApiUser:
-      properties:
-        emailAddress:
-          description: The email address associated with the user.
-          type: string
-        externalRoles:
-          description: The roles which the user has been assigned in an external source, e.g. LDAP group. These cannot be changed within the Nexus Repository Manager.
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        firstName:
-          description: The first name of the user.
-          type: string
-        lastName:
-          description: The last name of the user.
-          type: string
-        readOnly:
-          description: Indicates whether the user's properties could be modified by the Nexus Repository Manager. When false only roles are considered during update.
-          type: boolean
-        roles:
-          description: The roles which the user has been assigned within Nexus.
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        source:
-          description: The source of the user. When creating user, if the source is "default", the local Nexus Security User will be created. If the source is anything but "default" (i.e., LDAP or SAML), a local LdapUser (or SamlUser) will be created and have the listed roles assigned to that user.
-          type: string
-        status:
-          description: The user's status, e.g. active or disabled.
-          enum:
-          - active
-          - locked
-          - disabled
-          - changepassword
-          type: string
-        userId:
-          description: The userid which is required for login. This value cannot be changed.
-          type: string
-      required:
-      - status
-      type: object
   securitySchemes:
     BasicAuth:
       scheme: basic

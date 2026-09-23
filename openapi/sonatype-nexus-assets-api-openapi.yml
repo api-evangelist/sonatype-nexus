@@ -3,7 +3,7 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -14,7 +14,7 @@ servers:
 security:
 - BasicAuth: []
 tags:
-- name: assets
+- name: Assets
 paths:
   /v1/assets:
     get:
@@ -46,7 +46,7 @@ paths:
           description: Parameter 'repository' is required
       summary: List assets
       tags:
-      - assets
+      - Assets
   /v1/assets/{id}:
     delete:
       operationId: deleteAsset
@@ -72,7 +72,7 @@ paths:
           description: Malformed ID
       summary: Delete a single asset
       tags:
-      - assets
+      - Assets
     get:
       operationId: getAssetById
       parameters:
@@ -100,9 +100,18 @@ paths:
           description: Malformed ID
       summary: Get a single asset
       tags:
-      - assets
+      - Assets
 components:
   schemas:
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+      type: object
     AssetXO:
       properties:
         blobCreated:
@@ -147,15 +156,6 @@ components:
           type: string
         uploaderIp:
           type: string
-      type: object
-    PageAssetXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
       type: object
   securitySchemes:
     BasicAuth:

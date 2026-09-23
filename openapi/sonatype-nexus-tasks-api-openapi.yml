@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets Tasks API
+  title: Sonatype Nexus Repository Manager Tasks API
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -227,32 +227,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    FrequencyXO:
-      properties:
-        cronExpression:
-          description: Cron expression for the task. Only applies for for "cron" schedule.
-          example: 0 1 2 * * ?
-          type: string
-        recurringDays:
-          description: Array with the number of the days the task must run. For "weekly" schedule allowed values, 1 to 7. For "monthly" schedule allowed values, 1 to 31.
-          items:
-            format: int32
-            type: integer
-          type: array
-        schedule:
-          description: Type of schedule ("manual", "once", "hourly", "daily", "weekly", "monthly", "cron")
-          type: string
-        startDate:
-          description: Start date of the task represented in unix timestamp. Does not apply for "manual" schedule.
-          format: int64
-          type: integer
-        timeZoneOffset:
-          description: 'The offset time zone of the client. Example: '
-          example: -05:00
-          type: string
-      required:
-      - schedule
-      type: object
     TaskTemplateXO:
       properties:
         alertEmail:
@@ -287,15 +261,6 @@ components:
       - notificationCondition
       - type
       type: object
-    PageTaskXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/TaskXO'
-          type: array
-      type: object
     TaskXO:
       properties:
         currentState:
@@ -316,6 +281,41 @@ components:
           type: string
         type:
           type: string
+      type: object
+    PageTaskXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/TaskXO'
+          type: array
+      type: object
+    FrequencyXO:
+      properties:
+        cronExpression:
+          description: Cron expression for the task. Only applies for for "cron" schedule.
+          example: 0 1 2 * * ?
+          type: string
+        recurringDays:
+          description: Array with the number of the days the task must run. For "weekly" schedule allowed values, 1 to 7. For "monthly" schedule allowed values, 1 to 31.
+          items:
+            format: int32
+            type: integer
+          type: array
+        schedule:
+          description: Type of schedule ("manual", "once", "hourly", "daily", "weekly", "monthly", "cron")
+          type: string
+        startDate:
+          description: Start date of the task represented in unix timestamp. Does not apply for "manual" schedule.
+          format: int64
+          type: integer
+        timeZoneOffset:
+          description: 'The offset time zone of the client. Example: '
+          example: -05:00
+          type: string
+      required:
+      - schedule
       type: object
   securitySchemes:
     BasicAuth:

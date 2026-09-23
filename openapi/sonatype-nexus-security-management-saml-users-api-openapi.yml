@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Sonatype Nexus Repository Manager assets Security management: SAML users API'
+  title: 'Sonatype Nexus Repository Manager Security management: SAML…'
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -32,7 +32,7 @@ paths:
         '403':
           content: {}
           description: Insufficient permissions
-      summary: Retrieve a list of SAML users. The response is limited to 1,000 users.
+      summary: Retrieve a list of SAML users. The response is limited to 1,000 users
       tags:
       - 'Security management: SAML users'
     post:
@@ -54,7 +54,7 @@ paths:
         '403':
           content: {}
           description: Insufficient permissions
-      summary: Create a new SAML user. This allows administrators to pre-create SAML users with roles before their first login.
+      summary: Create a new SAML user.
       tags:
       - 'Security management: SAML users'
       x-codegen-request-body-name: body
@@ -78,7 +78,7 @@ paths:
         '404':
           content: {}
           description: User not found
-      summary: Delete a SAML user.
+      summary: Delete a SAML user
       tags:
       - 'Security management: SAML users'
     get:
@@ -100,7 +100,7 @@ paths:
         '404':
           content: {}
           description: User not found
-      summary: Retrieve a SAML user by userId.
+      summary: Retrieve a SAML user by userId
       tags:
       - 'Security management: SAML users'
     put:
@@ -132,7 +132,7 @@ paths:
         '404':
           content: {}
           description: User not found
-      summary: Update a SAML user's roles and attributes.
+      summary: Update a SAML user's roles and attributes
       tags:
       - 'Security management: SAML users'
       x-codegen-request-body-name: body

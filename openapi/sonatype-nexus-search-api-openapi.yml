@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets Search API
+  title: Sonatype Nexus Repository Manager Search API
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -1203,6 +1203,24 @@ components:
         version:
           type: string
       type: object
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+      type: object
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
     AssetXO:
       properties:
         blobCreated:
@@ -1247,24 +1265,6 @@ components:
           type: string
         uploaderIp:
           type: string
-      type: object
-    PageComponentXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/ComponentXO'
-          type: array
-      type: object
-    PageAssetXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
       type: object
   securitySchemes:
     BasicAuth:

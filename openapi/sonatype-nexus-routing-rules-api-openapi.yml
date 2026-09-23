@@ -3,18 +3,18 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets Routing rules API
+  title: Sonatype Nexus Repository Manager Routing rules API
   version: 3.91.0-07
 servers:
 - url: /service/rest/
 security:
 - BasicAuth: []
 tags:
-- name: Routing rules
+- name: Routing Rules
 paths:
   /v1/routing-rules:
     get:
@@ -33,7 +33,7 @@ paths:
           description: Insufficient permissions to read routing rules
       summary: List routing rules
       tags:
-      - Routing rules
+      - Routing Rules
     post:
       operationId: createRoutingRule
       requestBody:
@@ -55,7 +55,7 @@ paths:
           description: Insufficient permissions to create routing rule
       summary: Create a single routing rule
       tags:
-      - Routing rules
+      - Routing Rules
       x-codegen-request-body-name: body
   /v1/routing-rules/{name}:
     delete:
@@ -79,7 +79,7 @@ paths:
           description: Routing rule not found
       summary: Delete a single routing rule
       tags:
-      - Routing rules
+      - Routing Rules
     get:
       operationId: getRoutingRule
       parameters:
@@ -104,7 +104,7 @@ paths:
           description: Routing rule not found
       summary: Get a single routing rule
       tags:
-      - Routing rules
+      - Routing Rules
     put:
       operationId: updateRoutingRule
       parameters:
@@ -136,7 +136,7 @@ paths:
           description: Routing rule not found
       summary: Update a single routing rule
       tags:
-      - Routing rules
+      - Routing Rules
       x-codegen-request-body-name: body
 components:
   schemas:

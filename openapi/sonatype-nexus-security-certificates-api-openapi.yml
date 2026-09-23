@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Sonatype Nexus Repository Manager assets Security: certificates API'
+  title: 'Sonatype Nexus Repository Manager Security: certificates API'
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -51,7 +51,7 @@ paths:
         '403':
           content: {}
           description: Insufficient permissions to retrieve remote certificate.
-      summary: Helper method to retrieve certificate details from a remote system.
+      summary: Helper method to retrieve certificate details from a remote system
       tags:
       - 'Security: certificates'
   /v1/security/ssl/truststore:
@@ -69,7 +69,7 @@ paths:
         '403':
           content: {}
           description: Insufficient permissions to list certificates in the trust store.
-      summary: Retrieve a list of certificates added to the trust store.
+      summary: Retrieve a list of certificates added to the trust store
       tags:
       - 'Security: certificates'
     post:
@@ -94,7 +94,7 @@ paths:
         '409':
           content: {}
           description: The certificate already exists in the system.
-      summary: Add a certificate to the trust store.
+      summary: Add a certificate to the trust store
       tags:
       - 'Security: certificates'
       x-codegen-request-body-name: body
@@ -112,7 +112,7 @@ paths:
         '403':
           content: {}
           description: Insufficient permissions to remove certificate from the trust store
-      summary: Remove a certificate in the trust store.
+      summary: Remove a certificate in the trust store
       tags:
       - 'Security: certificates'
 components:

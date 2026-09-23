@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: Sonatype Nexus Repository Manager assets Status API
+  title: Sonatype Nexus Repository Manager Status API
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -51,7 +51,7 @@ paths:
         '404':
           content: {}
           description: System status information not found
-      summary: Health check endpoint that returns the results of the system status checks of specified Node
+      summary: Health check endpoint that returns the results of the system status checks of…
       tags:
       - Status
   /v1/status:
@@ -92,7 +92,7 @@ paths:
         '503':
           content: {}
           description: Unavailable to service requests
-      summary: Health check endpoint that validates server can respond to read and write requests
+      summary: Health check endpoint that validates server can respond to read and write…
       tags:
       - Status
 components:
@@ -119,15 +119,6 @@ components:
         timestamp:
           type: string
       type: object
-    SystemCheckResultDTO:
-      properties:
-        healthy:
-          description: Whether the system check succeeded of failed
-          type: boolean
-        message:
-          description: A description of the success or failure
-          type: string
-      type: object
     SystemCheckResultsApiDTO:
       properties:
         hostname:
@@ -143,6 +134,15 @@ components:
           description: The system status check results
           example: '{"Check": {"healthy": false, "message": "An explanation of the check"}}'
           type: object
+      type: object
+    SystemCheckResultDTO:
+      properties:
+        healthy:
+          description: Whether the system check succeeded of failed
+          type: boolean
+        message:
+          description: A description of the success or failure
+          type: string
       type: object
     Throwable:
       properties:

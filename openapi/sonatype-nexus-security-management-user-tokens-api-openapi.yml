@@ -3,11 +3,11 @@ info:
   contact:
     name: Sonatype Community Maintainers
     url: https://github.com/sonatype-nexus-community
-  description: This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.
+  description: This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  title: 'Sonatype Nexus Repository Manager assets Security management: user tokens API'
+  title: 'Sonatype Nexus Repository Manager Security management: user…'
   version: 3.91.0-07
 servers:
 - url: /service/rest/
@@ -25,6 +25,8 @@ paths:
           description: successful operation
       tags:
       - 'Security management: user tokens'
+      summary: Reset all user tokens
+      x-summary-source: derived
     get:
       operationId: serviceStatus
       responses:
@@ -55,6 +57,8 @@ paths:
       tags:
       - 'Security management: user tokens'
       x-codegen-request-body-name: body
+      summary: Set service status
+      x-summary-source: derived
   /v1/security/user-tokens/tokens:
     get:
       description: Lists all user tokens with optional filtering and pagination. Returns metadata only, never the passCode.
@@ -108,17 +112,6 @@ paths:
       - 'Security management: user tokens'
 components:
   schemas:
-    UserTokenListXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/UserTokenXO'
-          type: array
-      type: object
-      xml:
-        name: userTokenList
     UserTokenXO:
       properties:
         created:
@@ -147,6 +140,17 @@ components:
       type: object
       xml:
         name: userToken
+    UserTokenListXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/UserTokenXO'
+          type: array
+      type: object
+      xml:
+        name: userTokenList
     UserTokensApiModel:
       properties:
         enabled:
