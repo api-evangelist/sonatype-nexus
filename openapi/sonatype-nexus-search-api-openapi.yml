@@ -1175,6 +1175,24 @@ paths:
       - Search
 components:
   schemas:
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+      type: object
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
     ComponentXO:
       properties:
         assets:
@@ -1202,24 +1220,6 @@ components:
           type: array
         version:
           type: string
-      type: object
-    PageAssetXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
-      type: object
-    PageComponentXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/ComponentXO'
-          type: array
       type: object
     AssetXO:
       properties:

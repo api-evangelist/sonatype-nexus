@@ -860,23 +860,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    BaseTagXO:
-      properties:
-        attributes:
-          additionalProperties:
-            properties: {}
-            type: object
-          type: object
-      type: object
-    PageTagXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/TagXO'
-          type: array
-      type: object
     TagXO:
       properties:
         attributes:
@@ -895,6 +878,23 @@ components:
           type: string
       required:
       - name
+      type: object
+    PageTagXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/TagXO'
+          type: array
+      type: object
+    BaseTagXO:
+      properties:
+        attributes:
+          additionalProperties:
+            properties: {}
+            type: object
+          type: object
       type: object
   securitySchemes:
     BasicAuth:

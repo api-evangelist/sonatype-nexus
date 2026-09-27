@@ -318,6 +318,15 @@ paths:
       - Components
 components:
   schemas:
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
+      type: object
     ComponentXO:
       properties:
         assets:
@@ -345,15 +354,6 @@ components:
           type: array
         version:
           type: string
-      type: object
-    PageComponentXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/ComponentXO'
-          type: array
       type: object
     AssetXO:
       properties:

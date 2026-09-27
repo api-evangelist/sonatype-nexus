@@ -97,6 +97,52 @@ paths:
       - Status
 components:
   schemas:
+    StackTraceElement:
+      properties:
+        classLoaderName:
+          type: string
+        className:
+          type: string
+        fileName:
+          type: string
+        lineNumber:
+          format: int32
+          type: integer
+        methodName:
+          type: string
+        moduleName:
+          type: string
+        moduleVersion:
+          type: string
+        nativeMethod:
+          type: boolean
+      type: object
+    SystemCheckResultDTO:
+      properties:
+        healthy:
+          description: Whether the system check succeeded of failed
+          type: boolean
+        message:
+          description: A description of the success or failure
+          type: string
+      type: object
+    Throwable:
+      properties:
+        cause:
+          $ref: '#/components/schemas/Throwable'
+        localizedMessage:
+          type: string
+        message:
+          type: string
+        stackTrace:
+          items:
+            $ref: '#/components/schemas/StackTraceElement'
+          type: array
+        suppressed:
+          items:
+            $ref: '#/components/schemas/Throwable'
+          type: array
+      type: object
     Result:
       properties:
         details:
@@ -134,52 +180,6 @@ components:
           description: The system status check results
           example: '{"Check": {"healthy": false, "message": "An explanation of the check"}}'
           type: object
-      type: object
-    SystemCheckResultDTO:
-      properties:
-        healthy:
-          description: Whether the system check succeeded of failed
-          type: boolean
-        message:
-          description: A description of the success or failure
-          type: string
-      type: object
-    Throwable:
-      properties:
-        cause:
-          $ref: '#/components/schemas/Throwable'
-        localizedMessage:
-          type: string
-        message:
-          type: string
-        stackTrace:
-          items:
-            $ref: '#/components/schemas/StackTraceElement'
-          type: array
-        suppressed:
-          items:
-            $ref: '#/components/schemas/Throwable'
-          type: array
-      type: object
-    StackTraceElement:
-      properties:
-        classLoaderName:
-          type: string
-        className:
-          type: string
-        fileName:
-          type: string
-        lineNumber:
-          format: int32
-          type: integer
-        methodName:
-          type: string
-        moduleName:
-          type: string
-        moduleVersion:
-          type: string
-        nativeMethod:
-          type: boolean
       type: object
   securitySchemes:
     BasicAuth:

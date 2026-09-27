@@ -131,6 +131,16 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    ContentSelectorApiUpdateRequest:
+      properties:
+        description:
+          description: An optional description of this content selector
+          type: string
+        expression:
+          description: The expression used to identify content
+          example: format == "maven2" and path =^ "/org/sonatype/nexus"
+          type: string
+      type: object
     ContentSelectorApiCreateRequest:
       properties:
         description:
@@ -162,16 +172,6 @@ components:
           enum:
           - csel
           - jexl
-          type: string
-      type: object
-    ContentSelectorApiUpdateRequest:
-      properties:
-        description:
-          description: An optional description of this content selector
-          type: string
-        expression:
-          description: The expression used to identify content
-          example: format == "maven2" and path =^ "/org/sonatype/nexus"
           type: string
       type: object
   securitySchemes:

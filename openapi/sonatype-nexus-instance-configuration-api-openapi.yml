@@ -354,62 +354,17 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    TransferCompleteXO:
+    ApplyStatusXO:
       properties:
-        failedAssetTransferCount:
-          format: int64
-          type: integer
+        entity:
+          type: string
         message:
           type: string
-        repositoryName:
-          type: string
-        skippedAssetTransferCount:
-          format: int64
-          type: integer
-        successful:
-          type: boolean
-        successfulAssetTransferCount:
-          format: int64
-          type: integer
-        timestamp:
-          format: int64
-          type: integer
-      type: object
-    Page:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            properties: {}
-            type: object
-          type: array
-      type: object
-    InstanceConfigurationXO:
-      properties:
-        configurationXOs:
-          items:
-            $ref: '#/components/schemas/ConfigurationXO'
-          type: array
-      type: object
-    ConfigurationApplyResponseXO:
-      properties:
-        appliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        failedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        notAppliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-      type: object
-    ConfigurationXO:
-      properties:
-        configurationTypeId:
+        status:
+          enum:
+          - APPLIED
+          - NOT_APPLIED
+          - FAILED
           type: string
       type: object
     AssetImportResponseXO:
@@ -439,18 +394,63 @@ components:
             type: string
           type: array
       type: object
-    ApplyStatusXO:
+    TransferCompleteXO:
       properties:
-        entity:
-          type: string
+        failedAssetTransferCount:
+          format: int64
+          type: integer
         message:
           type: string
-        status:
-          enum:
-          - APPLIED
-          - NOT_APPLIED
-          - FAILED
+        repositoryName:
           type: string
+        skippedAssetTransferCount:
+          format: int64
+          type: integer
+        successful:
+          type: boolean
+        successfulAssetTransferCount:
+          format: int64
+          type: integer
+        timestamp:
+          format: int64
+          type: integer
+      type: object
+    ConfigurationApplyResponseXO:
+      properties:
+        appliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        failedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        notAppliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+      type: object
+    ConfigurationXO:
+      properties:
+        configurationTypeId:
+          type: string
+      type: object
+    InstanceConfigurationXO:
+      properties:
+        configurationXOs:
+          items:
+            $ref: '#/components/schemas/ConfigurationXO'
+          type: array
+      type: object
+    Page:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            properties: {}
+            type: object
+          type: array
       type: object
   securitySchemes:
     BasicAuth:

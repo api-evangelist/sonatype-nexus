@@ -50,7 +50,7 @@ modified: '2026-05-19'
 specificationVersion: '0.23'
 apis:
 - aid: sonatype-nexus:sonatype-nexus-assets-api
-  name: Sonatype Nexus assets API
+  name: Sonatype Nexus Assets API
   description: The assets API from Sonatype Nexus — 2 operation(s) for assets.
   humanURL: https://help.sonatype.com/en/api-reference.html
   baseURL: https://{nexus-host}/service/rest
@@ -173,7 +173,7 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
 - aid: sonatype-nexus:sonatype-nexus-components-api
-  name: Sonatype Nexus components API
+  name: Sonatype Nexus Components API
   description: The components API from Sonatype Nexus — 2 operation(s) for components.
   humanURL: https://help.sonatype.com/en/api-reference.html
   baseURL: https://{nexus-host}/service/rest

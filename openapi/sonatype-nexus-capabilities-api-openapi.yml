@@ -108,19 +108,21 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    CapabilityDTO:
+    CapabilityType:
       properties:
-        enabled:
-          type: boolean
+        about:
+          description: Description of the capability type
+          type: string
+        formFields:
+          description: Form fields configuration for this capability type
+          items:
+            $ref: '#/components/schemas/FormField'
+          type: array
         id:
+          description: Capability type identifier
           type: string
-        notes:
-          type: string
-        properties:
-          additionalProperties:
-            type: string
-          type: object
-        type:
+        name:
+          description: Display name of the capability type
           type: string
       type: object
     FormField:
@@ -182,21 +184,19 @@ components:
           description: Field type (e.g., string, password, number, checkbox, combobox)
           type: string
       type: object
-    CapabilityType:
+    CapabilityDTO:
       properties:
-        about:
-          description: Description of the capability type
-          type: string
-        formFields:
-          description: Form fields configuration for this capability type
-          items:
-            $ref: '#/components/schemas/FormField'
-          type: array
+        enabled:
+          type: boolean
         id:
-          description: Capability type identifier
           type: string
-        name:
-          description: Display name of the capability type
+        notes:
+          type: string
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+        type:
           type: string
       type: object
   securitySchemes:
