@@ -227,62 +227,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    FrequencyXO:
-      properties:
-        cronExpression:
-          description: Cron expression for the task. Only applies for for "cron" schedule.
-          example: 0 1 2 * * ?
-          type: string
-        recurringDays:
-          description: Array with the number of the days the task must run. For "weekly" schedule allowed values, 1 to 7. For "monthly" schedule allowed values, 1 to 31.
-          items:
-            format: int32
-            type: integer
-          type: array
-        schedule:
-          description: Type of schedule ("manual", "once", "hourly", "daily", "weekly", "monthly", "cron")
-          type: string
-        startDate:
-          description: Start date of the task represented in unix timestamp. Does not apply for "manual" schedule.
-          format: int64
-          type: integer
-        timeZoneOffset:
-          description: 'The offset time zone of the client. Example: '
-          example: -05:00
-          type: string
-      required:
-      - schedule
-      type: object
-    PageTaskXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/TaskXO'
-          type: array
-      type: object
-    TaskXO:
-      properties:
-        currentState:
-          type: string
-        id:
-          type: string
-        lastRun:
-          format: date-time
-          type: string
-        lastRunResult:
-          type: string
-        message:
-          type: string
-        name:
-          type: string
-        nextRun:
-          format: date-time
-          type: string
-        type:
-          type: string
-      type: object
     TaskTemplateXO:
       properties:
         alertEmail:
@@ -316,6 +260,62 @@ components:
       - name
       - notificationCondition
       - type
+      type: object
+    FrequencyXO:
+      properties:
+        cronExpression:
+          description: Cron expression for the task. Only applies for for "cron" schedule.
+          example: 0 1 2 * * ?
+          type: string
+        recurringDays:
+          description: Array with the number of the days the task must run. For "weekly" schedule allowed values, 1 to 7. For "monthly" schedule allowed values, 1 to 31.
+          items:
+            format: int32
+            type: integer
+          type: array
+        schedule:
+          description: Type of schedule ("manual", "once", "hourly", "daily", "weekly", "monthly", "cron")
+          type: string
+        startDate:
+          description: Start date of the task represented in unix timestamp. Does not apply for "manual" schedule.
+          format: int64
+          type: integer
+        timeZoneOffset:
+          description: 'The offset time zone of the client. Example: '
+          example: -05:00
+          type: string
+      required:
+      - schedule
+      type: object
+    TaskXO:
+      properties:
+        currentState:
+          type: string
+        id:
+          type: string
+        lastRun:
+          format: date-time
+          type: string
+        lastRunResult:
+          type: string
+        message:
+          type: string
+        name:
+          type: string
+        nextRun:
+          format: date-time
+          type: string
+        type:
+          type: string
+      type: object
+    PageTaskXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/TaskXO'
+          type: array
       type: object
   securitySchemes:
     BasicAuth:

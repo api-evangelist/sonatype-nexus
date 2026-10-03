@@ -142,6 +142,28 @@ paths:
       - Manage Sonatype Repository Firewall configuration
 components:
   schemas:
+    IqConnectionVerificationXo:
+      properties:
+        reason:
+          type: string
+        success:
+          type: boolean
+      type: object
+    IqAuditXo:
+      properties:
+        enabled:
+          description: is audit enabled
+          type: boolean
+        enabledQuarantine:
+          description: is quarantine enabled
+          type: boolean
+        repositoryName:
+          description: repository name
+          type: string
+      required:
+      - enabledQuarantine
+      - repositoryName
+      type: object
     IqConnectionXo:
       properties:
         authenticationType:
@@ -183,28 +205,6 @@ components:
           type: string
       required:
       - authenticationType
-      type: object
-    IqAuditXo:
-      properties:
-        enabled:
-          description: is audit enabled
-          type: boolean
-        enabledQuarantine:
-          description: is quarantine enabled
-          type: boolean
-        repositoryName:
-          description: repository name
-          type: string
-      required:
-      - enabledQuarantine
-      - repositoryName
-      type: object
-    IqConnectionVerificationXo:
-      properties:
-        reason:
-          type: string
-        success:
-          type: boolean
       type: object
   securitySchemes:
     BasicAuth:

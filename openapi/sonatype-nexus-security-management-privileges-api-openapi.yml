@@ -432,7 +432,7 @@ paths:
       - 'Security management: privileges'
 components:
   schemas:
-    ApiPrivilegeScriptRequest:
+    ApiPrivilegeRepositoryAdminRequest:
       properties:
         actions:
           description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
@@ -453,12 +453,27 @@ components:
           type: array
         description:
           type: string
+        format:
+          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
+          type: string
         name:
           description: The name of the privilege.  This value cannot be changed.
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        scriptName:
-          description: The name of a script to give access to.
+        repository:
+          description: The name of the repository this privilege will grant access to (or * for all).
+          type: string
+      type: object
+    ApiPrivilegeWildcardRequest:
+      properties:
+        description:
+          type: string
+        name:
+          description: The name of the privilege.  This value cannot be changed.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        pattern:
+          description: A colon separated list of parts that create a permission string.
           type: string
       type: object
     ApiPrivilegeRequest:
@@ -530,38 +545,6 @@ components:
       - name
       - type
       type: object
-    ApiPrivilegeRepositoryViewRequest:
-      properties:
-        actions:
-          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
-          items:
-            enum:
-            - READ
-            - BROWSE
-            - EDIT
-            - ADD
-            - DELETE
-            - RUN
-            - START
-            - STOP
-            - ASSOCIATE
-            - DISASSOCIATE
-            - ALL
-            type: string
-          type: array
-        description:
-          type: string
-        format:
-          description: The repository format (i.e 'nuget', 'npm') this privilege will grant access to (or * for all).
-          type: string
-        name:
-          description: The name of the privilege.  This value cannot be changed.
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        repository:
-          description: The name of the repository this privilege will grant access to (or * for all).
-          type: string
-      type: object
     ApiPrivilegeRepositoryContentSelectorRequest:
       properties:
         actions:
@@ -626,7 +609,7 @@ components:
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
       type: object
-    ApiPrivilegeRepositoryAdminRequest:
+    ApiPrivilegeRepositoryViewRequest:
       properties:
         actions:
           description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
@@ -658,16 +641,33 @@ components:
           description: The name of the repository this privilege will grant access to (or * for all).
           type: string
       type: object
-    ApiPrivilegeWildcardRequest:
+    ApiPrivilegeScriptRequest:
       properties:
+        actions:
+          description: A collection of actions to associate with the privilege, using BREAD syntax (browse,read,edit,add,delete,all) as well as 'run' for script privileges.
+          items:
+            enum:
+            - READ
+            - BROWSE
+            - EDIT
+            - ADD
+            - DELETE
+            - RUN
+            - START
+            - STOP
+            - ASSOCIATE
+            - DISASSOCIATE
+            - ALL
+            type: string
+          type: array
         description:
           type: string
         name:
           description: The name of the privilege.  This value cannot be changed.
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        pattern:
-          description: A colon separated list of parts that create a permission string.
+        scriptName:
+          description: The name of a script to give access to.
           type: string
       type: object
   securitySchemes:

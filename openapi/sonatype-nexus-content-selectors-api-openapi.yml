@@ -141,20 +141,6 @@ components:
           example: format == "maven2" and path =^ "/org/sonatype/nexus"
           type: string
       type: object
-    ContentSelectorApiCreateRequest:
-      properties:
-        description:
-          description: A human-readable description
-          type: string
-        expression:
-          description: The expression used to identify content
-          example: format == "maven2" and path =^ "/org/sonatype/nexus"
-          type: string
-        name:
-          description: The content selector name cannot be changed after creation
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-      type: object
     ContentSelectorApiResponse:
       properties:
         description:
@@ -172,6 +158,20 @@ components:
           enum:
           - csel
           - jexl
+          type: string
+      type: object
+    ContentSelectorApiCreateRequest:
+      properties:
+        description:
+          description: A human-readable description
+          type: string
+        expression:
+          description: The expression used to identify content
+          example: format == "maven2" and path =^ "/org/sonatype/nexus"
+          type: string
+        name:
+          description: The content selector name cannot be changed after creation
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
       type: object
   securitySchemes:

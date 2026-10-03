@@ -354,18 +354,20 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ApplyStatusXO:
+    ConfigurationApplyResponseXO:
       properties:
-        entity:
-          type: string
-        message:
-          type: string
-        status:
-          enum:
-          - APPLIED
-          - NOT_APPLIED
-          - FAILED
-          type: string
+        appliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        failedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        notAppliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
       type: object
     AssetImportResponseXO:
       properties:
@@ -394,6 +396,29 @@ components:
             type: string
           type: array
       type: object
+    Page:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            properties: {}
+            type: object
+          type: array
+      type: object
+    ApplyStatusXO:
+      properties:
+        entity:
+          type: string
+        message:
+          type: string
+        status:
+          enum:
+          - APPLIED
+          - NOT_APPLIED
+          - FAILED
+          type: string
+      type: object
     TransferCompleteXO:
       properties:
         failedAssetTransferCount:
@@ -415,21 +440,6 @@ components:
           format: int64
           type: integer
       type: object
-    ConfigurationApplyResponseXO:
-      properties:
-        appliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        failedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        notAppliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-      type: object
     ConfigurationXO:
       properties:
         configurationTypeId:
@@ -440,16 +450,6 @@ components:
         configurationXOs:
           items:
             $ref: '#/components/schemas/ConfigurationXO'
-          type: array
-      type: object
-    Page:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            properties: {}
-            type: object
           type: array
       type: object
   securitySchemes:

@@ -56,6 +56,41 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    HttpSettingsXo:
+      properties:
+        httpProxy:
+          $ref: '#/components/schemas/ProxySettingsXo'
+        httpsProxy:
+          $ref: '#/components/schemas/ProxySettingsXo'
+        nonProxyHosts:
+          items:
+            type: string
+          nullable: 'true'
+          type: array
+          uniqueItems: true
+        retries:
+          description: Connection/Socket Retry Attempts
+          format: int32
+          maximum: 10
+          minimum: 0
+          type: integer
+        timeout:
+          description: Connection/Socket Timeout
+          format: int32
+          maximum: 3600
+          minimum: 1
+          type: integer
+        userAgent:
+          description: User-Agent Customization
+          nullable: 'true'
+          type: string
+      required:
+      - httpProxy
+      - httpsProxy
+      - retries
+      - timeout
+      - userAgent
+      type: object
     ProxySettingsXo:
       nullable: 'true'
       properties:
@@ -99,41 +134,6 @@ components:
       - ntlmHost
       - password
       - username
-      type: object
-    HttpSettingsXo:
-      properties:
-        httpProxy:
-          $ref: '#/components/schemas/ProxySettingsXo'
-        httpsProxy:
-          $ref: '#/components/schemas/ProxySettingsXo'
-        nonProxyHosts:
-          items:
-            type: string
-          nullable: 'true'
-          type: array
-          uniqueItems: true
-        retries:
-          description: Connection/Socket Retry Attempts
-          format: int32
-          maximum: 10
-          minimum: 0
-          type: integer
-        timeout:
-          description: Connection/Socket Timeout
-          format: int32
-          maximum: 3600
-          minimum: 1
-          type: integer
-        userAgent:
-          description: User-Agent Customization
-          nullable: 'true'
-          type: string
-      required:
-      - httpProxy
-      - httpsProxy
-      - retries
-      - timeout
-      - userAgent
       type: object
   securitySchemes:
     BasicAuth:

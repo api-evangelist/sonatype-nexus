@@ -174,11 +174,8 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    CreateLdapServerXo:
+    ReadLdapServerXo:
       properties:
-        authPassword:
-          description: The password to bind with. Required if authScheme other than none.
-          type: string
         authRealm:
           description: The SASL realm to bind to. Required if authScheme is CRAM_MD5 or DIGEST_MD5
           example: example.com
@@ -238,6 +235,9 @@ components:
         host:
           description: LDAP server connection hostname
           type: string
+        id:
+          description: LDAP server ID
+          type: string
         ldapGroupsAsRoles:
           description: Denotes whether LDAP assigned roles are used as Nexus Repository Manager roles
           type: boolean
@@ -249,6 +249,10 @@ components:
         name:
           description: LDAP server name
           type: string
+        order:
+          description: Order number in which the server is being used when looking for a user
+          format: int32
+          type: integer
         port:
           description: LDAP server connection port to use
           example: 636
@@ -455,8 +459,11 @@ components:
       - protocol
       - searchBase
       type: object
-    ReadLdapServerXo:
+    CreateLdapServerXo:
       properties:
+        authPassword:
+          description: The password to bind with. Required if authScheme other than none.
+          type: string
         authRealm:
           description: The SASL realm to bind to. Required if authScheme is CRAM_MD5 or DIGEST_MD5
           example: example.com
@@ -516,9 +523,6 @@ components:
         host:
           description: LDAP server connection hostname
           type: string
-        id:
-          description: LDAP server ID
-          type: string
         ldapGroupsAsRoles:
           description: Denotes whether LDAP assigned roles are used as Nexus Repository Manager roles
           type: boolean
@@ -530,10 +534,6 @@ components:
         name:
           description: LDAP server name
           type: string
-        order:
-          description: Order number in which the server is being used when looking for a user
-          format: int32
-          type: integer
         port:
           description: LDAP server connection port to use
           example: 636

@@ -318,15 +318,6 @@ paths:
       - Components
 components:
   schemas:
-    PageComponentXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/ComponentXO'
-          type: array
-      type: object
     ComponentXO:
       properties:
         assets:
@@ -399,6 +390,15 @@ components:
           type: string
         uploaderIp:
           type: string
+      type: object
+    PageComponentXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/ComponentXO'
+          type: array
       type: object
   securitySchemes:
     BasicAuth:

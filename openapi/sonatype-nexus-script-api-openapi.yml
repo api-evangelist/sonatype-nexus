@@ -155,13 +155,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ScriptResultXO:
-      properties:
-        name:
-          type: string
-        result:
-          type: string
-      type: object
     ScriptXO:
       properties:
         content:
@@ -170,6 +163,13 @@ components:
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
         type:
+          type: string
+      type: object
+    ScriptResultXO:
+      properties:
+        name:
+          type: string
+        result:
           type: string
       type: object
   securitySchemes:

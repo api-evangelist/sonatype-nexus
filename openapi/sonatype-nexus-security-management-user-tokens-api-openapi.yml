@@ -112,17 +112,6 @@ paths:
       - 'Security management: user tokens'
 components:
   schemas:
-    UserTokenListXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/UserTokenXO'
-          type: array
-      type: object
-      xml:
-        name: userTokenList
     UserTokenXO:
       properties:
         created:
@@ -151,6 +140,17 @@ components:
       type: object
       xml:
         name: userToken
+    UserTokenListXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/UserTokenXO'
+          type: array
+      type: object
+      xml:
+        name: userTokenList
     UserTokensApiModel:
       properties:
         enabled:
