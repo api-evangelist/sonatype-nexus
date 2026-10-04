@@ -354,20 +354,23 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ConfigurationApplyResponseXO:
+    ApplyStatusXO:
       properties:
-        appliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        failedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
-        notAppliedConfigurations:
-          items:
-            $ref: '#/components/schemas/ApplyStatusXO'
-          type: array
+        entity:
+          type: string
+        message:
+          type: string
+        status:
+          enum:
+          - APPLIED
+          - NOT_APPLIED
+          - FAILED
+          type: string
+      type: object
+    ConfigurationXO:
+      properties:
+        configurationTypeId:
+          type: string
       type: object
     AssetImportResponseXO:
       properties:
@@ -396,6 +399,21 @@ components:
             type: string
           type: array
       type: object
+    ConfigurationApplyResponseXO:
+      properties:
+        appliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        failedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+        notAppliedConfigurations:
+          items:
+            $ref: '#/components/schemas/ApplyStatusXO'
+          type: array
+      type: object
     Page:
       properties:
         continuationToken:
@@ -406,18 +424,12 @@ components:
             type: object
           type: array
       type: object
-    ApplyStatusXO:
+    InstanceConfigurationXO:
       properties:
-        entity:
-          type: string
-        message:
-          type: string
-        status:
-          enum:
-          - APPLIED
-          - NOT_APPLIED
-          - FAILED
-          type: string
+        configurationXOs:
+          items:
+            $ref: '#/components/schemas/ConfigurationXO'
+          type: array
       type: object
     TransferCompleteXO:
       properties:
@@ -439,18 +451,6 @@ components:
         timestamp:
           format: int64
           type: integer
-      type: object
-    ConfigurationXO:
-      properties:
-        configurationTypeId:
-          type: string
-      type: object
-    InstanceConfigurationXO:
-      properties:
-        configurationXOs:
-          items:
-            $ref: '#/components/schemas/ConfigurationXO'
-          type: array
       type: object
   securitySchemes:
     BasicAuth:

@@ -108,6 +108,38 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
+    CapabilityType:
+      properties:
+        about:
+          description: Description of the capability type
+          type: string
+        formFields:
+          description: Form fields configuration for this capability type
+          items:
+            $ref: '#/components/schemas/FormField'
+          type: array
+        id:
+          description: Capability type identifier
+          type: string
+        name:
+          description: Display name of the capability type
+          type: string
+      type: object
+    CapabilityDTO:
+      properties:
+        enabled:
+          type: boolean
+        id:
+          type: string
+        notes:
+          type: string
+        properties:
+          additionalProperties:
+            type: string
+          type: object
+        type:
+          type: string
+      type: object
     FormField:
       properties:
         allowAutocomplete:
@@ -165,38 +197,6 @@ components:
           type: object
         type:
           description: Field type (e.g., string, password, number, checkbox, combobox)
-          type: string
-      type: object
-    CapabilityType:
-      properties:
-        about:
-          description: Description of the capability type
-          type: string
-        formFields:
-          description: Form fields configuration for this capability type
-          items:
-            $ref: '#/components/schemas/FormField'
-          type: array
-        id:
-          description: Capability type identifier
-          type: string
-        name:
-          description: Display name of the capability type
-          type: string
-      type: object
-    CapabilityDTO:
-      properties:
-        enabled:
-          type: boolean
-        id:
-          type: string
-        notes:
-          type: string
-        properties:
-          additionalProperties:
-            type: string
-          type: object
-        type:
           type: string
       type: object
   securitySchemes:

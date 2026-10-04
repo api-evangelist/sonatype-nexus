@@ -287,6 +287,15 @@ components:
       required:
       - schedule
       type: object
+    PageTaskXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/TaskXO'
+          type: array
+      type: object
     TaskXO:
       properties:
         currentState:
@@ -307,15 +316,6 @@ components:
           type: string
         type:
           type: string
-      type: object
-    PageTaskXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/TaskXO'
-          type: array
       type: object
   securitySchemes:
     BasicAuth:

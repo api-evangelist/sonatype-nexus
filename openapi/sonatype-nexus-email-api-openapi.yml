@@ -98,13 +98,6 @@ paths:
       x-codegen-request-body-name: body
 components:
   schemas:
-    ApiEmailValidation:
-      properties:
-        reason:
-          type: string
-        success:
-          type: boolean
-      type: object
     ApiEmailConfiguration:
       properties:
         enabled:
@@ -141,6 +134,13 @@ components:
           type: string
       required:
       - port
+      type: object
+    ApiEmailValidation:
+      properties:
+        reason:
+          type: string
+        success:
+          type: boolean
       type: object
   securitySchemes:
     BasicAuth:

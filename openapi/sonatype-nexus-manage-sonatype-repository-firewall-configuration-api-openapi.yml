@@ -142,13 +142,6 @@ paths:
       - Manage Sonatype Repository Firewall configuration
 components:
   schemas:
-    IqConnectionVerificationXo:
-      properties:
-        reason:
-          type: string
-        success:
-          type: boolean
-      type: object
     IqAuditXo:
       properties:
         enabled:
@@ -205,6 +198,13 @@ components:
           type: string
       required:
       - authenticationType
+      type: object
+    IqConnectionVerificationXo:
+      properties:
+        reason:
+          type: string
+        success:
+          type: boolean
       type: object
   securitySchemes:
     BasicAuth:

@@ -53,21 +53,6 @@ paths:
       - Formats
 components:
   schemas:
-    UploadDefinitionXO:
-      properties:
-        assetFields:
-          items:
-            $ref: '#/components/schemas/UploadFieldDefinitionXO'
-          type: array
-        componentFields:
-          items:
-            $ref: '#/components/schemas/UploadFieldDefinitionXO'
-          type: array
-        format:
-          type: string
-        multipleUpload:
-          type: boolean
-      type: object
     UploadFieldDefinitionXO:
       properties:
         description:
@@ -86,6 +71,21 @@ components:
           type: object
         type:
           type: string
+      type: object
+    UploadDefinitionXO:
+      properties:
+        assetFields:
+          items:
+            $ref: '#/components/schemas/UploadFieldDefinitionXO'
+          type: array
+        componentFields:
+          items:
+            $ref: '#/components/schemas/UploadFieldDefinitionXO'
+          type: array
+        format:
+          type: string
+        multipleUpload:
+          type: boolean
       type: object
   securitySchemes:
     BasicAuth:

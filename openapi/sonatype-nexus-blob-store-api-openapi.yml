@@ -535,50 +535,18 @@ paths:
       - Blob store
 components:
   schemas:
-    BlobStoreApiSoftQuota:
+    FileBlobStoreApiCreateRequest:
       properties:
-        limit:
-          description: The limit in MB.
-          format: int64
-          minimum: 0
-          type: integer
-        type:
-          description: The type to use such as spaceRemainingQuota, or spaceUsedQuota
-          enum:
-          - spaceRemainingQuota
-          - spaceUsedQuota
-          type: string
-      type: object
-    S3BlobStoreApiModel:
-      properties:
-        bucketConfiguration:
-          $ref: '#/components/schemas/S3BlobStoreApiBucketConfiguration'
         name:
-          description: The name of the S3 blob store.
-          example: s3
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        path:
+          description: An absolute path or a path relative to <data-directory>/blobs
           type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-        type:
-          description: The blob store type.
-          example: S3
-          readOnly: true
-          type: string
-      required:
-      - bucketConfiguration
-      - name
       type: object
-    BlobStoreQuotaResultXO:
-      properties:
-        blobStoreName:
-          type: string
-        isViolation:
-          type: boolean
-        message:
-          type: string
-      type: object
-    GroupBlobStoreApiCreateRequest:
+    GroupBlobStoreApiModel:
       properties:
         fillPolicy:
           enum:
@@ -590,55 +558,35 @@ components:
           items:
             type: string
           type: array
-        name:
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
       type: object
-    FileBlobStoreApiUpdateRequest:
+    S3BlobStoreApiAdvancedBucketConnection:
       properties:
-        path:
-          description: An absolute path or a path relative to <data-directory>/blobs
+        endpoint:
+          description: A custom endpoint URL for third party object stores using the S3 API.
           type: string
-        softQuota:
-          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-      type: object
-    GenericBlobStoreApiResponse:
-      properties:
-        availableSpaceInBytes:
-          format: int64
-          type: integer
-        blobCount:
-          format: int64
-          type: integer
-        name:
-          type: string
-        softQuota:
-          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-        totalSizeInBytes:
-          format: int64
-          type: integer
-        type:
-          type: string
-        unavailable:
+        forcePathStyle:
+          description: Setting this flag will result in path-style access being used for all requests.
           type: boolean
+        maxConnectionPoolSize:
+          description: Setting this value will override the default connection pool size of Nexus of the s3 client for this blobstore.
+          format: int32
+          type: integer
+        signerType:
+          description: An API signature version which may be required for third party object stores using the S3 API.
+          type: string
       type: object
-    S3BlobStoreApiBucket:
+    GoogleCloudBlobStoreApiBucketConfiguration:
       properties:
-        name:
-          description: The name of the S3 bucket
-          type: string
-        prefix:
-          description: The S3 blob store (i.e S3 object) key prefix
-          type: string
-        region:
-          description: The AWS region to create a new S3 bucket in or an existing S3 bucket's region
-          example: DEFAULT
-          type: string
+        bucket:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucket'
+        bucketSecurity:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketAuthentication'
+        encryption:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiEncryption'
       required:
-      - name
-      - region
+      - bucket
       type: object
     AzureBlobStoreApiBucketConfiguration:
       properties:
@@ -656,6 +604,48 @@ components:
       - authentication
       - containerName
       type: object
+    BlobStoreQuotaResultXO:
+      properties:
+        blobStoreName:
+          type: string
+        isViolation:
+          type: boolean
+        message:
+          type: string
+      type: object
+    GoogleCloudBlobStoreApiBucket:
+      properties:
+        name:
+          description: The name of the GC Storage bucket
+          type: string
+        prefix:
+          description: The GC Storage blob store (i.e GC Storage object) key prefix
+          readOnly: true
+          type: string
+        projectId:
+          description: GCP Project ID
+          example: project_123
+          readOnly: true
+          type: string
+        region:
+          description: The GCP region to create a new GC Storage bucket in or an existing GC Storage bucket's region. Should be the same as Nexus deployment region.
+          example: us-central1
+          type: string
+      required:
+      - name
+      type: object
+    S3BlobStoreApiEncryption:
+      properties:
+        encryptionKey:
+          description: The encryption key.
+          type: string
+        encryptionType:
+          description: The type of S3 server side encryption to use.
+          enum:
+          - s3ManagedEncryption
+          - kmsManagedEncryption
+          type: string
+      type: object
     GoogleCloudBlobStoreApiEncryption:
       properties:
         encryptionKey:
@@ -668,50 +658,13 @@ components:
           - kmsManagedEncryption
           type: string
       type: object
-    GoogleCloudBlobstoreApiModel:
+    FileBlobStoreApiModel:
       properties:
-        bucketConfiguration:
-          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketConfiguration'
-        name:
-          description: The name of the GC Storage blob store.
-          example: gc_storage
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        softQuota:
-          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-        type:
-          description: The blob store type.
-          example: Google Cloud Storage
-          readOnly: true
-          type: string
-      required:
-      - bucketConfiguration
-      - name
-      type: object
-    FileBlobStoreApiCreateRequest:
-      properties:
-        name:
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
         path:
           description: An absolute path or a path relative to <data-directory>/blobs
           type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-      type: object
-    GoogleCloudBlobStoreApiBucketAuthentication:
-      properties:
-        accountKey:
-          description: The credentials JSON file.
-          type: string
-        authenticationMethod:
-          description: The type of Google Cloud authentication to use.
-          enum:
-          - applicationDefault
-          - accountKey
-          type: string
-      required:
-      - authenticationMethod
       type: object
     S3BlobStoreApiBucketConfiguration:
       properties:
@@ -754,7 +707,37 @@ components:
           description: An AWS STS session token associated with temporary security credentials which grant access to the S3 bucket
           type: string
       type: object
-    FileBlobStoreApiModel:
+    GoogleCloudBlobStoreApiBucketAuthentication:
+      properties:
+        accountKey:
+          description: The credentials JSON file.
+          type: string
+        authenticationMethod:
+          description: The type of Google Cloud authentication to use.
+          enum:
+          - applicationDefault
+          - accountKey
+          type: string
+      required:
+      - authenticationMethod
+      type: object
+    S3BlobStoreApiBucket:
+      properties:
+        name:
+          description: The name of the S3 bucket
+          type: string
+        prefix:
+          description: The S3 blob store (i.e S3 object) key prefix
+          type: string
+        region:
+          description: The AWS region to create a new S3 bucket in or an existing S3 bucket's region
+          example: DEFAULT
+          type: string
+      required:
+      - name
+      - region
+      type: object
+    FileBlobStoreApiUpdateRequest:
       properties:
         path:
           description: An absolute path or a path relative to <data-directory>/blobs
@@ -762,7 +745,89 @@ components:
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
       type: object
-    GroupBlobStoreApiModel:
+    BlobStoreApiSoftQuota:
+      properties:
+        limit:
+          description: The limit in MB.
+          format: int64
+          minimum: 0
+          type: integer
+        type:
+          description: The type to use such as spaceRemainingQuota, or spaceUsedQuota
+          enum:
+          - spaceRemainingQuota
+          - spaceUsedQuota
+          type: string
+      type: object
+    S3BlobStoreApiFailoverBucket:
+      properties:
+        bucketName:
+          description: The name of the bucket in the region
+          readOnly: true
+          type: string
+        region:
+          description: The region containing the bucket
+          readOnly: true
+          type: string
+      required:
+      - bucketName
+      - region
+      type: object
+    GenericBlobStoreApiResponse:
+      properties:
+        availableSpaceInBytes:
+          format: int64
+          type: integer
+        blobCount:
+          format: int64
+          type: integer
+        name:
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        totalSizeInBytes:
+          format: int64
+          type: integer
+        type:
+          type: string
+        unavailable:
+          type: boolean
+      type: object
+    GoogleCloudBlobstoreApiModel:
+      properties:
+        bucketConfiguration:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the GC Storage blob store.
+          example: gc_storage
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        type:
+          description: The blob store type.
+          example: Google Cloud Storage
+          readOnly: true
+          type: string
+      required:
+      - bucketConfiguration
+      - name
+      type: object
+    AzureBlobStoreApiModel:
+      properties:
+        bucketConfiguration:
+          $ref: '#/components/schemas/AzureBlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the Azure blob store.
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      required:
+      - bucketConfiguration
+      - name
+      type: object
+    GroupBlobStoreApiUpdateRequest:
       properties:
         fillPolicy:
           enum:
@@ -792,7 +857,27 @@ components:
       required:
       - authenticationMethod
       type: object
-    GroupBlobStoreApiUpdateRequest:
+    S3BlobStoreApiModel:
+      properties:
+        bucketConfiguration:
+          $ref: '#/components/schemas/S3BlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the S3 blob store.
+          example: s3
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        type:
+          description: The blob store type.
+          example: S3
+          readOnly: true
+          type: string
+      required:
+      - bucketConfiguration
+      - name
+      type: object
+    GroupBlobStoreApiCreateRequest:
       properties:
         fillPolicy:
           enum:
@@ -804,96 +889,11 @@ components:
           items:
             type: string
           type: array
-        softQuota:
-          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-      type: object
-    S3BlobStoreApiFailoverBucket:
-      properties:
-        bucketName:
-          description: The name of the bucket in the region
-          readOnly: true
-          type: string
-        region:
-          description: The region containing the bucket
-          readOnly: true
-          type: string
-      required:
-      - bucketName
-      - region
-      type: object
-    S3BlobStoreApiEncryption:
-      properties:
-        encryptionKey:
-          description: The encryption key.
-          type: string
-        encryptionType:
-          description: The type of S3 server side encryption to use.
-          enum:
-          - s3ManagedEncryption
-          - kmsManagedEncryption
-          type: string
-      type: object
-    GoogleCloudBlobStoreApiBucket:
-      properties:
         name:
-          description: The name of the GC Storage bucket
-          type: string
-        prefix:
-          description: The GC Storage blob store (i.e GC Storage object) key prefix
-          readOnly: true
-          type: string
-        projectId:
-          description: GCP Project ID
-          example: project_123
-          readOnly: true
-          type: string
-        region:
-          description: The GCP region to create a new GC Storage bucket in or an existing GC Storage bucket's region. Should be the same as Nexus deployment region.
-          example: us-central1
-          type: string
-      required:
-      - name
-      type: object
-    GoogleCloudBlobStoreApiBucketConfiguration:
-      properties:
-        bucket:
-          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucket'
-        bucketSecurity:
-          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketAuthentication'
-        encryption:
-          $ref: '#/components/schemas/GoogleCloudBlobStoreApiEncryption'
-      required:
-      - bucket
-      type: object
-    AzureBlobStoreApiModel:
-      properties:
-        bucketConfiguration:
-          $ref: '#/components/schemas/AzureBlobStoreApiBucketConfiguration'
-        name:
-          description: The name of the Azure blob store.
           pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-      required:
-      - bucketConfiguration
-      - name
-      type: object
-    S3BlobStoreApiAdvancedBucketConnection:
-      properties:
-        endpoint:
-          description: A custom endpoint URL for third party object stores using the S3 API.
-          type: string
-        forcePathStyle:
-          description: Setting this flag will result in path-style access being used for all requests.
-          type: boolean
-        maxConnectionPoolSize:
-          description: Setting this value will override the default connection pool size of Nexus of the s3 client for this blobstore.
-          format: int32
-          type: integer
-        signerType:
-          description: An API signature version which may be required for third party object stores using the S3 API.
-          type: string
       type: object
   securitySchemes:
     BasicAuth:

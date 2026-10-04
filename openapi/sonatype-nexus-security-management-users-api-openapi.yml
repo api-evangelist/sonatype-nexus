@@ -332,49 +332,6 @@ paths:
       - 'Security management: users'
 components:
   schemas:
-    ApiUser:
-      properties:
-        emailAddress:
-          description: The email address associated with the user.
-          type: string
-        externalRoles:
-          description: The roles which the user has been assigned in an external source, e.g. LDAP group. These cannot be changed within the Nexus Repository Manager.
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        firstName:
-          description: The first name of the user.
-          type: string
-        lastName:
-          description: The last name of the user.
-          type: string
-        readOnly:
-          description: Indicates whether the user's properties could be modified by the Nexus Repository Manager. When false only roles are considered during update.
-          type: boolean
-        roles:
-          description: The roles which the user has been assigned within Nexus.
-          items:
-            type: string
-          type: array
-          uniqueItems: true
-        source:
-          description: The source of the user. When creating user, if the source is "default", the local Nexus Security User will be created. If the source is anything but "default" (i.e., LDAP or SAML), a local LdapUser (or SamlUser) will be created and have the listed roles assigned to that user.
-          type: string
-        status:
-          description: The user's status, e.g. active or disabled.
-          enum:
-          - active
-          - locked
-          - disabled
-          - changepassword
-          type: string
-        userId:
-          description: The userid which is required for login. This value cannot be changed.
-          type: string
-      required:
-      - status
-      type: object
     UserTokenXO:
       properties:
         created:
@@ -423,6 +380,49 @@ components:
             type: string
           type: array
           uniqueItems: true
+        status:
+          description: The user's status, e.g. active or disabled.
+          enum:
+          - active
+          - locked
+          - disabled
+          - changepassword
+          type: string
+        userId:
+          description: The userid which is required for login. This value cannot be changed.
+          type: string
+      required:
+      - status
+      type: object
+    ApiUser:
+      properties:
+        emailAddress:
+          description: The email address associated with the user.
+          type: string
+        externalRoles:
+          description: The roles which the user has been assigned in an external source, e.g. LDAP group. These cannot be changed within the Nexus Repository Manager.
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        firstName:
+          description: The first name of the user.
+          type: string
+        lastName:
+          description: The last name of the user.
+          type: string
+        readOnly:
+          description: Indicates whether the user's properties could be modified by the Nexus Repository Manager. When false only roles are considered during update.
+          type: boolean
+        roles:
+          description: The roles which the user has been assigned within Nexus.
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        source:
+          description: The source of the user. When creating user, if the source is "default", the local Nexus Security User will be created. If the source is anything but "default" (i.e., LDAP or SAML), a local LdapUser (or SamlUser) will be created and have the listed roles assigned to that user.
+          type: string
         status:
           description: The user's status, e.g. active or disabled.
           enum:
