@@ -1,0 +1,14 @@
+fetched: '2026-10-13'
+method: fetched
+source: https://help.sonatype.com/en/docker-registry.html
+page: https://help.sonatype.com/en/docker-registry.html
+file: sonatype-nexus-oci-distribution-1.md
+bytes: 45689
+sha256: fa9e48acb9443ceb3f7efdd0ecbcee66dc19bf3a21a070b5d9abf9197ff910f8
+anchor: open-container-initiative
+shape: oci-distribution
+classification: declares-compatibility
+quote: Nexus Repository supports the Docker Registry API V1 and V2. All Docker repository configurations contain
+  a section to configure Docker Registry API Support . If you activate Enable Docker V1 API for a repository, it
+  is enabled to use V1 as a fallback from V2. Without this option, any V1 requests re
+note: text extracted from the provider's own page (tags stripped), saved for evidence

@@ -1,0 +1,20 @@
+edges:
+- partner_name: Open Container Initiative
+  partner: open-container-initiative
+  partner_match: shape-anchor
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  shape: oci-distribution
+  type: docs
+  degree: declared-unqualified
+  evidence: https://help.sonatype.com/en/docker-registry.html
+  evidence_kind: own-docs
+  evidence_file: https://github.com/api-evangelist/sonatype-nexus/blob/main/evidence/compatibility/sonatype-nexus-oci-distribution-1.md
+  quote: Nexus Repository supports the Docker Registry API V1 and V2. All Docker repository configurations contain
+    a section to configure Docker Registry API Support . If you activate Enable Docker V1 API for a repository,
+    it is enabled to use V1 as
+  detected_by: sweep-shape-compat.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
