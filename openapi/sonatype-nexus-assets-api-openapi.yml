@@ -103,6 +103,15 @@ paths:
       - Assets
 components:
   schemas:
+    PageAssetXO:
+      properties:
+        continuationToken:
+          type: string
+        items:
+          items:
+            $ref: '#/components/schemas/AssetXO'
+          type: array
+      type: object
     AssetXO:
       properties:
         blobCreated:
@@ -147,15 +156,6 @@ components:
           type: string
         uploaderIp:
           type: string
-      type: object
-    PageAssetXO:
-      properties:
-        continuationToken:
-          type: string
-        items:
-          items:
-            $ref: '#/components/schemas/AssetXO'
-          type: array
       type: object
   securitySchemes:
     BasicAuth:

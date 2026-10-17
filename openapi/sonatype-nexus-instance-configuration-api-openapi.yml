@@ -367,10 +367,33 @@ components:
           - FAILED
           type: string
       type: object
-    ConfigurationXO:
+    InstanceConfigurationXO:
       properties:
-        configurationTypeId:
+        configurationXOs:
+          items:
+            $ref: '#/components/schemas/ConfigurationXO'
+          type: array
+      type: object
+    TransferCompleteXO:
+      properties:
+        failedAssetTransferCount:
+          format: int64
+          type: integer
+        message:
           type: string
+        repositoryName:
+          type: string
+        skippedAssetTransferCount:
+          format: int64
+          type: integer
+        successful:
+          type: boolean
+        successfulAssetTransferCount:
+          format: int64
+          type: integer
+        timestamp:
+          format: int64
+          type: integer
       type: object
     AssetImportResponseXO:
       properties:
@@ -424,33 +447,10 @@ components:
             type: object
           type: array
       type: object
-    InstanceConfigurationXO:
+    ConfigurationXO:
       properties:
-        configurationXOs:
-          items:
-            $ref: '#/components/schemas/ConfigurationXO'
-          type: array
-      type: object
-    TransferCompleteXO:
-      properties:
-        failedAssetTransferCount:
-          format: int64
-          type: integer
-        message:
+        configurationTypeId:
           type: string
-        repositoryName:
-          type: string
-        skippedAssetTransferCount:
-          format: int64
-          type: integer
-        successful:
-          type: boolean
-        successfulAssetTransferCount:
-          format: int64
-          type: integer
-        timestamp:
-          format: int64
-          type: integer
       type: object
   securitySchemes:
     BasicAuth:

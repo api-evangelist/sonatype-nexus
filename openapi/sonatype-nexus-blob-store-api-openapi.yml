@@ -546,36 +546,25 @@ components:
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
       type: object
-    GroupBlobStoreApiModel:
+    S3BlobStoreApiModel:
       properties:
-        fillPolicy:
-          enum:
-          - roundRobin
-          - writeToFirst
+        bucketConfiguration:
+          $ref: '#/components/schemas/S3BlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the S3 blob store.
+          example: s3
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
-        members:
-          description: List of the names of blob stores that are members of this group
-          items:
-            type: string
-          type: array
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-      type: object
-    S3BlobStoreApiAdvancedBucketConnection:
-      properties:
-        endpoint:
-          description: A custom endpoint URL for third party object stores using the S3 API.
+        type:
+          description: The blob store type.
+          example: S3
+          readOnly: true
           type: string
-        forcePathStyle:
-          description: Setting this flag will result in path-style access being used for all requests.
-          type: boolean
-        maxConnectionPoolSize:
-          description: Setting this value will override the default connection pool size of Nexus of the s3 client for this blobstore.
-          format: int32
-          type: integer
-        signerType:
-          description: An API signature version which may be required for third party object stores using the S3 API.
-          type: string
+      required:
+      - bucketConfiguration
+      - name
       type: object
     GoogleCloudBlobStoreApiBucketConfiguration:
       properties:
@@ -613,58 +602,84 @@ components:
         message:
           type: string
       type: object
-    GoogleCloudBlobStoreApiBucket:
+    S3BlobStoreApiFailoverBucket:
       properties:
-        name:
-          description: The name of the GC Storage bucket
-          type: string
-        prefix:
-          description: The GC Storage blob store (i.e GC Storage object) key prefix
-          readOnly: true
-          type: string
-        projectId:
-          description: GCP Project ID
-          example: project_123
+        bucketName:
+          description: The name of the bucket in the region
           readOnly: true
           type: string
         region:
-          description: The GCP region to create a new GC Storage bucket in or an existing GC Storage bucket's region. Should be the same as Nexus deployment region.
-          example: us-central1
+          description: The region containing the bucket
+          readOnly: true
           type: string
       required:
-      - name
+      - bucketName
+      - region
       type: object
-    S3BlobStoreApiEncryption:
+    S3BlobStoreApiAdvancedBucketConnection:
       properties:
-        encryptionKey:
-          description: The encryption key.
+        endpoint:
+          description: A custom endpoint URL for third party object stores using the S3 API.
           type: string
-        encryptionType:
-          description: The type of S3 server side encryption to use.
+        forcePathStyle:
+          description: Setting this flag will result in path-style access being used for all requests.
+          type: boolean
+        maxConnectionPoolSize:
+          description: Setting this value will override the default connection pool size of Nexus of the s3 client for this blobstore.
+          format: int32
+          type: integer
+        signerType:
+          description: An API signature version which may be required for third party object stores using the S3 API.
+          type: string
+      type: object
+    GoogleCloudBlobStoreApiBucketAuthentication:
+      properties:
+        accountKey:
+          description: The credentials JSON file.
+          type: string
+        authenticationMethod:
+          description: The type of Google Cloud authentication to use.
           enum:
-          - s3ManagedEncryption
-          - kmsManagedEncryption
+          - applicationDefault
+          - accountKey
           type: string
+      required:
+      - authenticationMethod
       type: object
-    GoogleCloudBlobStoreApiEncryption:
+    GroupBlobStoreApiModel:
       properties:
-        encryptionKey:
-          description: CryptoKey ID for KMS encryption.
-          type: string
-        encryptionType:
-          description: The type of GCP server side encryption to use.
+        fillPolicy:
           enum:
-          - default
-          - kmsManagedEncryption
+          - roundRobin
+          - writeToFirst
           type: string
+        members:
+          description: List of the names of blob stores that are members of this group
+          items:
+            type: string
+          type: array
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
       type: object
-    FileBlobStoreApiModel:
+    GoogleCloudBlobstoreApiModel:
       properties:
-        path:
-          description: An absolute path or a path relative to <data-directory>/blobs
+        bucketConfiguration:
+          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketConfiguration'
+        name:
+          description: The name of the GC Storage blob store.
+          example: gc_storage
+          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
           type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+        type:
+          description: The blob store type.
+          example: Google Cloud Storage
+          readOnly: true
+          type: string
+      required:
+      - bucketConfiguration
+      - name
       type: object
     S3BlobStoreApiBucketConfiguration:
       properties:
@@ -692,35 +707,6 @@ components:
       required:
       - bucket
       type: object
-    S3BlobStoreApiBucketSecurity:
-      properties:
-        accessKeyId:
-          description: An IAM access key ID for granting access to the S3 bucket
-          type: string
-        role:
-          description: An IAM role to assume in order to access the S3 bucket
-          type: string
-        secretAccessKey:
-          description: The secret access key associated with the specified IAM access key ID
-          type: string
-        sessionToken:
-          description: An AWS STS session token associated with temporary security credentials which grant access to the S3 bucket
-          type: string
-      type: object
-    GoogleCloudBlobStoreApiBucketAuthentication:
-      properties:
-        accountKey:
-          description: The credentials JSON file.
-          type: string
-        authenticationMethod:
-          description: The type of Google Cloud authentication to use.
-          enum:
-          - applicationDefault
-          - accountKey
-          type: string
-      required:
-      - authenticationMethod
-      type: object
     S3BlobStoreApiBucket:
       properties:
         name:
@@ -737,11 +723,30 @@ components:
       - name
       - region
       type: object
-    FileBlobStoreApiUpdateRequest:
+    S3BlobStoreApiEncryption:
       properties:
-        path:
-          description: An absolute path or a path relative to <data-directory>/blobs
+        encryptionKey:
+          description: The encryption key.
           type: string
+        encryptionType:
+          description: The type of S3 server side encryption to use.
+          enum:
+          - s3ManagedEncryption
+          - kmsManagedEncryption
+          type: string
+      type: object
+    GroupBlobStoreApiUpdateRequest:
+      properties:
+        fillPolicy:
+          enum:
+          - roundRobin
+          - writeToFirst
+          type: string
+        members:
+          description: List of the names of blob stores that are members of this group
+          items:
+            type: string
+          type: array
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
       type: object
@@ -759,19 +764,34 @@ components:
           - spaceUsedQuota
           type: string
       type: object
-    S3BlobStoreApiFailoverBucket:
+    FileBlobStoreApiUpdateRequest:
       properties:
-        bucketName:
-          description: The name of the bucket in the region
+        path:
+          description: An absolute path or a path relative to <data-directory>/blobs
+          type: string
+        softQuota:
+          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    GoogleCloudBlobStoreApiBucket:
+      properties:
+        name:
+          description: The name of the GC Storage bucket
+          type: string
+        prefix:
+          description: The GC Storage blob store (i.e GC Storage object) key prefix
+          readOnly: true
+          type: string
+        projectId:
+          description: GCP Project ID
+          example: project_123
           readOnly: true
           type: string
         region:
-          description: The region containing the bucket
-          readOnly: true
+          description: The GCP region to create a new GC Storage bucket in or an existing GC Storage bucket's region. Should be the same as Nexus deployment region.
+          example: us-central1
           type: string
       required:
-      - bucketName
-      - region
+      - name
       type: object
     GenericBlobStoreApiResponse:
       properties:
@@ -793,25 +813,28 @@ components:
         unavailable:
           type: boolean
       type: object
-    GoogleCloudBlobstoreApiModel:
+    FileBlobStoreApiModel:
       properties:
-        bucketConfiguration:
-          $ref: '#/components/schemas/GoogleCloudBlobStoreApiBucketConfiguration'
-        name:
-          description: The name of the GC Storage blob store.
-          example: gc_storage
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
+        path:
+          description: An absolute path or a path relative to <data-directory>/blobs
           type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-        type:
-          description: The blob store type.
-          example: Google Cloud Storage
-          readOnly: true
+      type: object
+    S3BlobStoreApiBucketSecurity:
+      properties:
+        accessKeyId:
+          description: An IAM access key ID for granting access to the S3 bucket
           type: string
-      required:
-      - bucketConfiguration
-      - name
+        role:
+          description: An IAM role to assume in order to access the S3 bucket
+          type: string
+        secretAccessKey:
+          description: The secret access key associated with the specified IAM access key ID
+          type: string
+        sessionToken:
+          description: An AWS STS session token associated with temporary security credentials which grant access to the S3 bucket
+          type: string
       type: object
     AzureBlobStoreApiModel:
       properties:
@@ -827,21 +850,6 @@ components:
       - bucketConfiguration
       - name
       type: object
-    GroupBlobStoreApiUpdateRequest:
-      properties:
-        fillPolicy:
-          enum:
-          - roundRobin
-          - writeToFirst
-          type: string
-        members:
-          description: List of the names of blob stores that are members of this group
-          items:
-            type: string
-          type: array
-        softQuota:
-          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-      type: object
     AzureBlobStoreApiAuthentication:
       properties:
         accountKey:
@@ -856,26 +864,6 @@ components:
           type: string
       required:
       - authenticationMethod
-      type: object
-    S3BlobStoreApiModel:
-      properties:
-        bucketConfiguration:
-          $ref: '#/components/schemas/S3BlobStoreApiBucketConfiguration'
-        name:
-          description: The name of the S3 blob store.
-          example: s3
-          pattern: ^[a-zA-Z0-9\-]{1}[a-zA-Z0-9_\-\.]*$
-          type: string
-        softQuota:
-          $ref: '#/components/schemas/BlobStoreApiSoftQuota'
-        type:
-          description: The blob store type.
-          example: S3
-          readOnly: true
-          type: string
-      required:
-      - bucketConfiguration
-      - name
       type: object
     GroupBlobStoreApiCreateRequest:
       properties:
@@ -894,6 +882,18 @@ components:
           type: string
         softQuota:
           $ref: '#/components/schemas/BlobStoreApiSoftQuota'
+      type: object
+    GoogleCloudBlobStoreApiEncryption:
+      properties:
+        encryptionKey:
+          description: CryptoKey ID for KMS encryption.
+          type: string
+        encryptionType:
+          description: The type of GCP server side encryption to use.
+          enum:
+          - default
+          - kmsManagedEncryption
+          type: string
       type: object
   securitySchemes:
     BasicAuth:

@@ -97,22 +97,6 @@ paths:
       - Status
 components:
   schemas:
-    SystemCheckResultsApiDTO:
-      properties:
-        hostname:
-          description: The hostname of the originating node
-          example: nexus01
-          type: string
-        nodeId:
-          description: A unique identifier for the node, should not be considered stable
-          type: string
-        results:
-          additionalProperties:
-            $ref: '#/components/schemas/SystemCheckResultDTO'
-          description: The system status check results
-          example: '{"Check": {"healthy": false, "message": "An explanation of the check"}}'
-          type: object
-      type: object
     StackTraceElement:
       properties:
         classLoaderName:
@@ -133,6 +117,31 @@ components:
         nativeMethod:
           type: boolean
       type: object
+    SystemCheckResultDTO:
+      properties:
+        healthy:
+          description: Whether the system check succeeded of failed
+          type: boolean
+        message:
+          description: A description of the success or failure
+          type: string
+      type: object
+    SystemCheckResultsApiDTO:
+      properties:
+        hostname:
+          description: The hostname of the originating node
+          example: nexus01
+          type: string
+        nodeId:
+          description: A unique identifier for the node, should not be considered stable
+          type: string
+        results:
+          additionalProperties:
+            $ref: '#/components/schemas/SystemCheckResultDTO'
+          description: The system status check results
+          example: '{"Check": {"healthy": false, "message": "An explanation of the check"}}'
+          type: object
+      type: object
     Throwable:
       properties:
         cause:
@@ -149,15 +158,6 @@ components:
           items:
             $ref: '#/components/schemas/Throwable'
           type: array
-      type: object
-    SystemCheckResultDTO:
-      properties:
-        healthy:
-          description: Whether the system check succeeded of failed
-          type: boolean
-        message:
-          description: A description of the success or failure
-          type: string
       type: object
     Result:
       properties:
