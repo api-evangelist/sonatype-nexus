@@ -1009,6 +1009,8 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/sonatype-nexus/refs/heads/main/json-schema/sonatype-nexus-repository-schema.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/sonatype-nexus/overview
   - type: Plans
     url: plans/sonatype-nexus-plans-pricing.yml
   - type: RateLimits
