@@ -1,972 +1,946 @@
 {
+  "info": {
+    "_postman_id": "03aff4de-2bee-4bd5-9f6d-a11b9d1227ac",
+    "name": "Sonatype Nexus Repository Manager Script API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:09:16.000Z",
+    "updatedAt": "2026-10-21T21:09:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-03aff4de-2bee-4bd5-9f6d-a11b9d1227ac"
+  },
   "item": [
     {
-      "id": "0a7497f3-ec04-4353-bd1c-7e74fa1569fe",
-      "name": "Script",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "66a2d46a-c1ff-4b31-80c3-ec587c17cc49",
-          "name": "List all stored scripts",
-          "request": {
-            "name": "List all stored scripts",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "script"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "script",
+          "item": [
             {
-              "id": "7be31753-3cf1-4f0f-98e8-efe07239d9e7",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script"
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "run",
+                  "item": [
+                    {
+                      "name": "Run stored script by name",
+                      "id": "f0157008-b92a-4fb8-9cb8-ea41c7c54fb1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name/run",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name",
+                            "run"
+                          ],
+                          "variable": [
+                            {
+                              "id": "30ae1a20-99a7-40de-8569-b3e51ef205d3",
+                              "key": "name",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "83479222-105d-4787-9084-bbbd44ecdee8",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "<string>",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/script/:name/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "script",
+                                ":name",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"name\": \"<string>\",\n  \"result\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T21:09:17.000Z",
+                          "updatedAt": "2026-10-21T21:09:17.000Z",
+                          "uid": "35240-83479222-105d-4787-9084-bbbd44ecdee8"
+                        },
+                        {
+                          "id": "d9c9324f-f5ab-4b45-b543-0c19cb6877e1",
+                          "name": "No script with the specified name",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "<string>",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/script/:name/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "script",
+                                ":name",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:17.000Z",
+                          "updatedAt": "2026-10-21T21:09:17.000Z",
+                          "uid": "35240-d9c9324f-f5ab-4b45-b543-0c19cb6877e1"
+                        },
+                        {
+                          "id": "14a62ad4-81a7-455a-b225-bb62fa676f0d",
+                          "name": "Script execution failed with exception",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "<string>",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/script/:name/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "script",
+                                ":name",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "name"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:17.000Z",
+                          "updatedAt": "2026-10-21T21:09:17.000Z",
+                          "uid": "35240-14a62ad4-81a7-455a-b225-bb62fa676f0d"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-f0157008-b92a-4fb8-9cb8-ea41c7c54fb1"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "eb6cd4a2-9db4-4c9c-9799-fca4b2f35e07",
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-eb6cd4a2-9db4-4c9c-9799-fca4b2f35e07"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                {
+                  "name": "Delete stored script by name",
+                  "id": "4b6b5904-bff8-448b-8062-6d974a810641",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/script/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "script",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9d5cc1fe-448f-4370-a2f8-bfc0f9a428fe",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b4795968-c74a-4248-a280-a07325e55b83",
+                      "name": "Script was deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-b4795968-c74a-4248-a280-a07325e55b83"
+                    },
+                    {
+                      "id": "51c9d507-a5b3-4be3-ad9f-2ded04f9bd2f",
+                      "name": "No script with the specified name",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-51c9d507-a5b3-4be3-ad9f-2ded04f9bd2f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-4b6b5904-bff8-448b-8062-6d974a810641"
+                },
+                {
+                  "name": "Read stored script by name",
+                  "id": "a23f1465-69d4-46e0-bc25-031454ce040a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/script/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "script",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f71d0c59-54cc-4e27-9e0e-9419e8ace27a",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "34469541-7005-4d37-9f4c-906d3dcbca94",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-34469541-7005-4d37-9f4c-906d3dcbca94"
+                    },
+                    {
+                      "id": "7e15c5b2-b204-4934-b460-023c78a18359",
+                      "name": "No script with the specified name",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-7e15c5b2-b204-4934-b460-023c78a18359"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-a23f1465-69d4-46e0-bc25-031454ce040a"
+                },
+                {
+                  "name": "Update stored script by name",
+                  "id": "39dd5aa1-4e3c-4d9b-ac27-8c2a28716bc9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/script/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "script",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fac59cc3-35ca-473c-8312-836dfb911f4a",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "bc6c5c8a-b364-4608-a5ec-3f13e303be08",
+                      "name": "Script was updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-bc6c5c8a-b364-4608-a5ec-3f13e303be08"
+                    },
+                    {
+                      "id": "b6e832ba-73d1-40a6-996c-22e6be1a0606",
+                      "name": "No script with the specified name",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-b6e832ba-73d1-40a6-996c-22e6be1a0606"
+                    },
+                    {
+                      "id": "3be38484-6c4c-4eef-9441-4c4763253209",
+                      "name": "Script updating is disabled",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/script/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "script",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Gone",
+                      "code": 410,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:17.000Z",
+                      "updatedAt": "2026-10-21T21:09:17.000Z",
+                      "uid": "35240-3be38484-6c4c-4eef-9441-4c4763253209"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-39dd5aa1-4e3c-4d9b-ac27-8c2a28716bc9"
+                }
+              ],
+              "id": "0a7c6bec-a399-4969-b16a-b8c471bfefd3",
+              "createdAt": "2026-10-21T21:09:17.000Z",
+              "updatedAt": "2026-10-21T21:09:17.000Z",
+              "uid": "35240-0a7c6bec-a399-4969-b16a-b8c471bfefd3"
+            },
+            {
+              "name": "List all stored scripts",
+              "id": "45446a95-c3c2-4e41-a714-75ced754fd91",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"content\": \"string\",\n    \"name\": \"XowO55u\",\n    \"type\": \"string\"\n  },\n  {\n    \"content\": \"string\",\n    \"name\": \"YkP\",\n    \"type\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5a845a74-acca-4c2a-882a-2fae1a386937",
-          "name": "Add a new script",
-          "request": {
-            "name": "Add a new script",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "script"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e4114a68-eb3f-4c2f-a891-6c3728f51c51",
-              "name": "Script was added",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v1/script",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "script"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f2d40b85-0d6d-4dbc-85d8-fabb9d93dd14",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/script",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "script"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"content\": \"<string>\",\n    \"name\": \"RiquFpXdu\",\n    \"type\": \"<string>\"\n  },\n  {\n    \"content\": \"<string>\",\n    \"name\": \"N8GVh_CUOHY\",\n    \"type\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-f2d40b85-0d6d-4dbc-85d8-fabb9d93dd14"
+                }
+              ],
+              "createdAt": "2026-10-21T21:09:17.000Z",
+              "updatedAt": "2026-10-21T21:09:17.000Z",
+              "uid": "35240-45446a95-c3c2-4e41-a714-75ced754fd91"
+            },
+            {
+              "name": "Add a new script",
+              "id": "32194aaf-c803-41d7-9b47-efa3456bc2f1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "367ad5fb-53c6-4917-a17d-92fcd17ac07e",
-              "name": "Script creation is disabled",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v1/script",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "script"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
-              "status": "Gone",
-              "code": 410,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ae080100-e428-462c-a745-526e4edd2a50",
-          "name": "Delete stored script by name",
-          "request": {
-            "name": "Delete stored script by name",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "script",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "318e65dd-212f-465a-a3d2-1509f5a3fe02",
-              "name": "Script was deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "id": "8a563b4d-585b-4069-a811-a3ce7c40370b",
+                  "name": "Script was added",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "724e1d4e-9d99-4ad3-9be7-02c847b9a34b",
-              "name": "No script with the specified name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/script",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "script"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "00558c10-421b-4845-bb5a-d034bf8a0adc",
-          "name": "Read stored script by name",
-          "request": {
-            "name": "Read stored script by name",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "script",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "eb6a6e17-85d7-4e1e-9dad-c819efa2176b",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f274cbd9-6db6-4376-bc72-198c147aeef8",
-              "name": "No script with the specified name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-8a563b4d-585b-4069-a811-a3ce7c40370b"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                {
+                  "id": "bb4be95e-ab9f-4072-b90f-adee30a7619d",
+                  "name": "Script creation is disabled",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"4s\",\n  \"type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c2a04ce9-2f84-43e4-b0a2-0a6366a622e1",
-          "name": "Update stored script by name",
-          "request": {
-            "name": "Update stored script by name",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "script",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "bd8e4926-7698-43d5-bad7-9f806427c22c",
-              "name": "Script was updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/script",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "script"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fb9d0fdf-b55d-48f8-95e6-5998be611159",
-              "name": "No script with the specified name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5c4fcd4d-ddcc-4e6e-b4be-05b3f0f0506b",
-              "name": "Script updating is disabled",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"content\": \"<string>\",\n  \"name\": \"<string>\",\n  \"type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Gone",
-              "code": 410,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "47253781-b886-4af2-bbed-93498b37aa35",
-          "name": "Run stored script by name",
-          "request": {
-            "name": "Run stored script by name",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "script",
-                ":name",
-                "run"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<string>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "eb239e0b-0483-424a-877a-a9bcfc7ce2f3",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name",
-                    "run"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "status": "Gone",
+                  "code": 410,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:09:17.000Z",
+                  "updatedAt": "2026-10-21T21:09:17.000Z",
+                  "uid": "35240-bb4be95e-ab9f-4072-b90f-adee30a7619d"
                 }
               ],
-              "body": "{\n  \"name\": \"string\",\n  \"result\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f6043ca0-9978-40b2-b821-0d76cda6323f",
-              "name": "No script with the specified name",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name",
-                    "run"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "57303355-f742-41d2-829b-a6eb6de4d677",
-              "name": "Script execution failed with exception",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "script",
-                    ":name",
-                    "run"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T21:09:17.000Z",
+              "updatedAt": "2026-10-21T21:09:17.000Z",
+              "uid": "35240-32194aaf-c803-41d7-9b47-efa3456bc2f1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "29f21fdf-5177-4a59-a7fe-05a289ad14dd",
+          "createdAt": "2026-10-21T21:09:17.000Z",
+          "updatedAt": "2026-10-21T21:09:17.000Z",
+          "uid": "35240-29f21fdf-5177-4a59-a7fe-05a289ad14dd"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "581eb595-9736-4ce2-9ea4-921b4fe941e7",
+      "createdAt": "2026-10-21T21:09:17.000Z",
+      "updatedAt": "2026-10-21T21:09:17.000Z",
+      "uid": "35240-581eb595-9736-4ce2-9ea4-921b4fe941e7"
     }
   ],
   "auth": {
@@ -974,21 +948,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5824a233-a6c1-4947-aa69-a6f02cfaade2",
-    "name": "Sonatype Nexus Repository Manager assets Script API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

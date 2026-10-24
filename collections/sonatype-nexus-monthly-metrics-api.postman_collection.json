@@ -1,100 +1,106 @@
 {
+  "info": {
+    "_postman_id": "fb5e6827-b690-415c-ad59-3a4a1b8f7db3",
+    "name": "Sonatype Nexus Repository Manager Monthly Metrics API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:08:31.000Z",
+    "updatedAt": "2026-10-21T21:08:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fb5e6827-b690-415c-ad59-3a4a1b8f7db3"
+  },
   "item": [
     {
-      "id": "d5e0fea3-14a0-4759-97e4-02148ba2e24a",
-      "name": "Monthly Metrics",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "2f16425b-e625-45da-92a5-e69a6ded781f",
-          "name": "Get the last 12 months of metrics.",
-          "request": {
-            "name": "Get the last 12 months of metrics.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "monthly-metrics"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "monthly-metrics",
+          "item": [
             {
-              "id": "37cb853a-076f-4653-b01f-778e9e14745f",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "monthly-metrics"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Get the last 12 months of metrics",
+              "id": "e9d7058c-5f17-42dc-9c41-817d3a0127d6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/v1/monthly-metrics",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "monthly-metrics"
+                  ]
+                }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "23ade29c-e944-44a4-91d5-29bf5667367b",
+                  "name": "Successful response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/monthly-metrics",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "monthly-metrics"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"example\": [\n    {\n      \"componentCount\": 0,\n      \"metricDate\": \"2025-03-01T00:00:00Z\",\n      \"percentageChangeComponent\": \"N/A\",\n      \"percentageChangeRequest\": \"N/A\",\n      \"requestCount\": 0\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T21:08:32.000Z",
+                  "updatedAt": "2026-10-21T21:08:32.000Z",
+                  "uid": "35240-23ade29c-e944-44a4-91d5-29bf5667367b"
                 }
               ],
-              "body": "[\n  {\n    \"componentCount\": 0,\n    \"metricDate\": \"2025-03-01T00:00:00Z\",\n    \"percentageChangeComponent\": \"N/A\",\n    \"percentageChangeRequest\": \"N/A\",\n    \"requestCount\": 0\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T21:08:32.000Z",
+              "updatedAt": "2026-10-21T21:08:32.000Z",
+              "uid": "35240-e9d7058c-5f17-42dc-9c41-817d3a0127d6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "bdec9b64-138e-4ebb-bd75-b31ae824ba7f",
+          "createdAt": "2026-10-21T21:08:32.000Z",
+          "updatedAt": "2026-10-21T21:08:32.000Z",
+          "uid": "35240-bdec9b64-138e-4ebb-bd75-b31ae824ba7f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "42759c8a-9e71-402d-8525-195c321c11a5",
+      "createdAt": "2026-10-21T21:08:32.000Z",
+      "updatedAt": "2026-10-21T21:08:32.000Z",
+      "uid": "35240-42759c8a-9e71-402d-8525-195c321c11a5"
     }
   ],
   "auth": {
@@ -102,21 +108,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3b25b48b-b352-4a61-a9e2-c36ed77ad5c4",
-    "name": "Sonatype Nexus Repository Manager assets Monthly Metrics API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

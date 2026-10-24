@@ -1,133 +1,138 @@
 {
+  "info": {
+    "_postman_id": "5cb110cd-3b05-4c30-8454-0fcb889be98c",
+    "name": "Sonatype Nexus Repository Manager Security management: JWT\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:09:53.000Z",
+    "updatedAt": "2026-10-21T21:09:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5cb110cd-3b05-4c30-8454-0fcb889be98c"
+  },
   "item": [
     {
-      "id": "669dd503-d735-4fb8-91ea-d9504fd89926",
-      "name": "Security management: JWT",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "b3e4d5b6-e4b9-4690-b57f-718e4f5a6e79",
-          "name": "Reset JWT secret (note that session will be expired for the all logged-in users)",
-          "request": {
-            "name": "Reset JWT secret (note that session will be expired for the all logged-in users)",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "jwt"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "PUT",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "fdf8322b-faaa-43f6-9e29-84ab736f8b5a",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "jwt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "name": "jwt",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Reset JWT secret (note that session will be expired for the all logged-in users)",
+                  "id": "819862c5-1b58-4dbd-9301-d39cf4328bf3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/jwt",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "jwt"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "89567f93-55f2-4371-b443-38f635c1a3b1",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/jwt",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "jwt"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:54.000Z",
+                      "updatedAt": "2026-10-21T21:09:54.000Z",
+                      "uid": "35240-89567f93-55f2-4371-b443-38f635c1a3b1"
+                    },
+                    {
+                      "id": "4c40918e-3e15-4c3a-bf25-99039cc13b71",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/jwt",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "jwt"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:54.000Z",
+                      "updatedAt": "2026-10-21T21:09:54.000Z",
+                      "uid": "35240-4c40918e-3e15-4c3a-bf25-99039cc13b71"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:54.000Z",
+                  "updatedAt": "2026-10-21T21:09:54.000Z",
+                  "uid": "35240-819862c5-1b58-4dbd-9301-d39cf4328bf3"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3771e2d3-9ab7-4dea-88dc-eaa00b3594c8",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "jwt"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "f964768f-a09d-44c8-865e-e5023ce39c02",
+              "createdAt": "2026-10-21T21:09:54.000Z",
+              "updatedAt": "2026-10-21T21:09:54.000Z",
+              "uid": "35240-f964768f-a09d-44c8-865e-e5023ce39c02"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "be8c4f8d-41a0-4748-8b2f-f88c45549bdd",
+          "createdAt": "2026-10-21T21:09:54.000Z",
+          "updatedAt": "2026-10-21T21:09:54.000Z",
+          "uid": "35240-be8c4f8d-41a0-4748-8b2f-f88c45549bdd"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "da3a23eb-19a2-437e-aafa-e6182f2233c9",
+      "createdAt": "2026-10-21T21:09:54.000Z",
+      "updatedAt": "2026-10-21T21:09:54.000Z",
+      "uid": "35240-da3a23eb-19a2-437e-aafa-e6182f2233c9"
     }
   ],
   "auth": {
@@ -135,21 +140,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "042fbf8c-a891-44e7-a1ce-88e199d146af",
-    "name": "Sonatype Nexus Repository Manager assets Security management: JWT API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

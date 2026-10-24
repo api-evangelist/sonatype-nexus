@@ -1,279 +1,308 @@
 {
+  "info": {
+    "_postman_id": "2aacb886-5510-4c72-bbea-3b2c3a70bd95",
+    "name": "Sonatype Nexus Repository Manager Security management\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:10:23.000Z",
+    "updatedAt": "2026-10-21T21:10:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2aacb886-5510-4c72-bbea-3b2c3a70bd95"
+  },
   "item": [
     {
-      "id": "52dd8216-2167-492d-ae75-0fb91fecb32c",
-      "name": "Security management: realms",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "baeac2c9-26ab-4b3d-b8a4-45142e6fd5e7",
-          "name": "List the active realm IDs in order",
-          "request": {
-            "name": "List the active realm IDs in order",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "realms",
-                "active"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "8565d42a-48bb-4728-8d91-4e8223858229",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "realms",
-                    "active"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "realms",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  \"string\",\n  \"string\"\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b8d7a160-3a90-4b9d-990b-fc22947d71e5",
-          "name": "Set the active security realms in the order they should be used",
-          "request": {
-            "name": "Set the active security realms in the order they should be used",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "realms",
-                "active"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "e015843c-be3c-4334-8304-607cdfa4bb6f",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "realms",
-                    "active"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "name": "active",
+                  "item": [
+                    {
+                      "name": "List the active realm IDs in order",
+                      "id": "acd0d594-f432-4633-be27-2e3b85930120",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/realms/active",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "realms",
+                            "active"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "62cc1513-023b-4f49-a5cc-7a5579d97e0d",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/realms/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "realms",
+                                "active"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                          "createdAt": "2026-10-21T21:10:24.000Z",
+                          "updatedAt": "2026-10-21T21:10:24.000Z",
+                          "uid": "35240-62cc1513-023b-4f49-a5cc-7a5579d97e0d"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:10:24.000Z",
+                      "updatedAt": "2026-10-21T21:10:24.000Z",
+                      "uid": "35240-acd0d594-f432-4633-be27-2e3b85930120"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    {
+                      "name": "Set the active security realms in the order they should be used",
+                      "id": "c25f182c-68b3-48dd-ad1e-9eff9335210c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/realms/active",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "realms",
+                            "active"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "f22dc93a-f3f9-4dfe-801c-c8af88f03943",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "[\n  \"<string>\",\n  \"<string>\"\n]",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/realms/active",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "realms",
+                                "active"
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:24.000Z",
+                          "updatedAt": "2026-10-21T21:10:24.000Z",
+                          "uid": "35240-f22dc93a-f3f9-4dfe-801c-c8af88f03943"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:10:24.000Z",
+                      "updatedAt": "2026-10-21T21:10:24.000Z",
+                      "uid": "35240-c25f182c-68b3-48dd-ad1e-9eff9335210c"
                     }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "53f3258f-0197-42b5-b8d5-f453f23f19c2",
-          "name": "List the available realms",
-          "request": {
-            "name": "List the available realms",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "realms",
-                "available"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0f85e851-2b4c-4bab-88a5-f8e12e838fb0",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "realms",
-                    "available"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "88a6e675-4b81-4076-82a1-265c1377b187",
+                  "createdAt": "2026-10-21T21:10:24.000Z",
+                  "updatedAt": "2026-10-21T21:10:24.000Z",
+                  "uid": "35240-88a6e675-4b81-4076-82a1-265c1377b187"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "available",
+                  "item": [
+                    {
+                      "name": "List the available realms",
+                      "id": "6384073f-f6a2-4d5c-a9da-62b66c0795f6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/realms/available",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "realms",
+                            "available"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "fa4ceba3-019b-4c86-8054-a6001bfb7ff4",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/realms/available",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "realms",
+                                "available"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-10-21T21:10:24.000Z",
+                          "updatedAt": "2026-10-21T21:10:24.000Z",
+                          "uid": "35240-fa4ceba3-019b-4c86-8054-a6001bfb7ff4"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:10:24.000Z",
+                      "updatedAt": "2026-10-21T21:10:24.000Z",
+                      "uid": "35240-6384073f-f6a2-4d5c-a9da-62b66c0795f6"
+                    }
+                  ],
+                  "id": "e8ee0bf6-9d0b-4482-8042-b2e93bca3e14",
+                  "createdAt": "2026-10-21T21:10:24.000Z",
+                  "updatedAt": "2026-10-21T21:10:24.000Z",
+                  "uid": "35240-e8ee0bf6-9d0b-4482-8042-b2e93bca3e14"
                 }
               ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "43cc4d2c-65ca-41d0-8b7d-d38a970a906d",
+              "createdAt": "2026-10-21T21:10:24.000Z",
+              "updatedAt": "2026-10-21T21:10:24.000Z",
+              "uid": "35240-43cc4d2c-65ca-41d0-8b7d-d38a970a906d"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "32b0bb46-44a1-49cc-a132-c2274930d2ca",
+          "createdAt": "2026-10-21T21:10:24.000Z",
+          "updatedAt": "2026-10-21T21:10:24.000Z",
+          "uid": "35240-32b0bb46-44a1-49cc-a132-c2274930d2ca"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "f3d9044f-18c1-4084-83eb-d5a8c9c35305",
+      "createdAt": "2026-10-21T21:10:24.000Z",
+      "updatedAt": "2026-10-21T21:10:24.000Z",
+      "uid": "35240-f3d9044f-18c1-4084-83eb-d5a8c9c35305"
     }
   ],
   "auth": {
@@ -281,21 +310,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "dbae91c3-001c-4c0c-8b29-3b7b8a90790b",
-    "name": "Sonatype Nexus Repository Manager assets Security management: realms API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

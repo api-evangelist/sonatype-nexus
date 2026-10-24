@@ -1,199 +1,226 @@
 {
+  "info": {
+    "_postman_id": "f0b2a94b-c3dd-4db2-8ede-c8a638741a8e",
+    "name": "Sonatype Nexus Repository Manager Formats API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:07:53.000Z",
+    "updatedAt": "2026-10-21T21:07:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f0b2a94b-c3dd-4db2-8ede-c8a638741a8e"
+  },
   "item": [
     {
-      "id": "b77e852d-b3f5-4d83-b528-cb00d0d007f2",
-      "name": "Formats",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "3eab8cfa-cdc0-48d0-810d-c7c940e18356",
-          "name": "Get upload field requirements for each supported format",
-          "request": {
-            "name": "Get upload field requirements for each supported format",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "formats",
-                "upload-specs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "formats",
+          "item": [
             {
-              "id": "516b32a3-2fbc-48c8-b3ae-5b96418ae610",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "formats",
-                    "upload-specs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "upload-specs",
+              "item": [
+                {
+                  "name": "Get upload field requirements for each supported format",
+                  "id": "3af27056-acda-4b4c-beb3-a71e44e2b281",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"assetFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"componentFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"format\": \"string\",\n    \"multipleUpload\": false\n  },\n  {\n    \"assetFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"componentFields\": [\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": true,\n        \"options\": {\n          \"key_0\": \"string\"\n        },\n        \"type\": \"string\"\n      },\n      {\n        \"description\": \"string\",\n        \"group\": \"string\",\n        \"groupHelpText\": \"string\",\n        \"name\": \"string\",\n        \"optional\": false,\n        \"options\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\",\n          \"key_3\": \"string\"\n        },\n        \"type\": \"string\"\n      }\n    ],\n    \"format\": \"string\",\n    \"multipleUpload\": true\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cadc73b9-9bd5-477d-b8a2-ecd276942b9e",
-          "name": "Get upload field requirements for the desired format",
-          "request": {
-            "name": "Get upload field requirements for the desired format",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "formats",
-                ":format",
-                "upload-specs"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "format",
-                  "description": "(Required) The desired repository format"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0e6ed699-3c56-485d-9992-e46cdb80f757",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "formats",
-                    ":format",
-                    "upload-specs"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "format",
-                      "description": "(Required) The desired repository format"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formats/upload-specs",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formats",
+                        "upload-specs"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "response": [
+                    {
+                      "id": "a06a7093-adc6-4ff6-8d8a-f39909326cd5",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formats/upload-specs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formats",
+                            "upload-specs"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"assetFields\": [\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"consectetur_861\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"aliquipf4\": \"<string>\",\n          \"pariatur69\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      }\n    ],\n    \"componentFields\": [\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"eiusmod7\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"sed4d4\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      }\n    ],\n    \"format\": \"<string>\",\n    \"multipleUpload\": \"<boolean>\"\n  },\n  {\n    \"assetFields\": [\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"tempor48\": \"<string>\",\n          \"reprehenderitd68\": \"<string>\",\n          \"Excepteur_6fe\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"proident5\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      }\n    ],\n    \"componentFields\": [\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"commodo_eeb\": \"<string>\",\n          \"id_1e5\": \"<string>\",\n          \"do_e\": \"<string>\",\n          \"nisi_db_\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"group\": \"<string>\",\n        \"groupHelpText\": \"<string>\",\n        \"name\": \"<string>\",\n        \"optional\": \"<boolean>\",\n        \"options\": {\n          \"laboris_4\": \"<string>\"\n        },\n        \"type\": \"<string>\"\n      }\n    ],\n    \"format\": \"<string>\",\n    \"multipleUpload\": \"<boolean>\"\n  }\n]",
+                      "createdAt": "2026-10-21T21:07:53.000Z",
+                      "updatedAt": "2026-10-21T21:07:53.000Z",
+                      "uid": "35240-a06a7093-adc6-4ff6-8d8a-f39909326cd5"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:53.000Z",
+                  "updatedAt": "2026-10-21T21:07:53.000Z",
+                  "uid": "35240-3af27056-acda-4b4c-beb3-a71e44e2b281"
                 }
               ],
-              "body": "{\n  \"assetFields\": [\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": true,\n      \"options\": {\n        \"key_0\": \"string\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": true,\n      \"options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"componentFields\": [\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": false,\n      \"options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"type\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"group\": \"string\",\n      \"groupHelpText\": \"string\",\n      \"name\": \"string\",\n      \"optional\": true,\n      \"options\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"type\": \"string\"\n    }\n  ],\n  \"format\": \"string\",\n  \"multipleUpload\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "51fa4a96-587c-4766-aa62-2b187a1a04f0",
+              "createdAt": "2026-10-21T21:07:53.000Z",
+              "updatedAt": "2026-10-21T21:07:53.000Z",
+              "uid": "35240-51fa4a96-587c-4766-aa62-2b187a1a04f0"
+            },
+            {
+              "name": "{format}",
+              "item": [
+                {
+                  "name": "upload-specs",
+                  "item": [
+                    {
+                      "name": "Get upload field requirements for the desired format",
+                      "id": "c2fab45d-13e5-4dcc-af4a-5de3320b9586",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formats/:format/upload-specs",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formats",
+                            ":format",
+                            "upload-specs"
+                          ],
+                          "variable": [
+                            {
+                              "id": "97621310-734b-4165-9429-85c6e4ef5061",
+                              "key": "format",
+                              "value": "<string>",
+                              "description": "(Required) The desired repository format"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "bbca9d2d-81a6-42d1-904d-6461923b976e",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/formats/:format/upload-specs",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "formats",
+                                ":format",
+                                "upload-specs"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "format"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"assetFields\": [\n    {\n      \"description\": \"<string>\",\n      \"group\": \"<string>\",\n      \"groupHelpText\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optional\": \"<boolean>\",\n      \"options\": {\n        \"in_a\": \"<string>\",\n        \"pariatur_c\": \"<string>\",\n        \"essedc\": \"<string>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"group\": \"<string>\",\n      \"groupHelpText\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optional\": \"<boolean>\",\n      \"options\": {\n        \"labore_867\": \"<string>\",\n        \"in_9\": \"<string>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ],\n  \"componentFields\": [\n    {\n      \"description\": \"<string>\",\n      \"group\": \"<string>\",\n      \"groupHelpText\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optional\": \"<boolean>\",\n      \"options\": {\n        \"tempor_065\": \"<string>\",\n        \"in_9b2\": \"<string>\"\n      },\n      \"type\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"group\": \"<string>\",\n      \"groupHelpText\": \"<string>\",\n      \"name\": \"<string>\",\n      \"optional\": \"<boolean>\",\n      \"options\": {\n        \"occaecat_66\": \"<string>\",\n        \"laborum_b\": \"<string>\",\n        \"ipsum_839\": \"<string>\"\n      },\n      \"type\": \"<string>\"\n    }\n  ],\n  \"format\": \"<string>\",\n  \"multipleUpload\": \"<boolean>\"\n}",
+                          "createdAt": "2026-10-21T21:07:53.000Z",
+                          "updatedAt": "2026-10-21T21:07:53.000Z",
+                          "uid": "35240-bbca9d2d-81a6-42d1-904d-6461923b976e"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:07:53.000Z",
+                      "updatedAt": "2026-10-21T21:07:53.000Z",
+                      "uid": "35240-c2fab45d-13e5-4dcc-af4a-5de3320b9586"
+                    }
+                  ],
+                  "id": "9095ad01-4ce9-4a49-9e34-14182e23e773",
+                  "createdAt": "2026-10-21T21:07:53.000Z",
+                  "updatedAt": "2026-10-21T21:07:53.000Z",
+                  "uid": "35240-9095ad01-4ce9-4a49-9e34-14182e23e773"
+                }
+              ],
+              "id": "92e3c315-c683-40b0-a263-d86686047ba6",
+              "createdAt": "2026-10-21T21:07:53.000Z",
+              "updatedAt": "2026-10-21T21:07:53.000Z",
+              "uid": "35240-92e3c315-c683-40b0-a263-d86686047ba6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5f5596c2-120e-4c6d-879b-54e72e443e9f",
+          "createdAt": "2026-10-21T21:07:53.000Z",
+          "updatedAt": "2026-10-21T21:07:53.000Z",
+          "uid": "35240-5f5596c2-120e-4c6d-879b-54e72e443e9f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "d7ea9bee-2969-479a-9a61-ba585f9eaaa2",
+      "createdAt": "2026-10-21T21:07:53.000Z",
+      "updatedAt": "2026-10-21T21:07:53.000Z",
+      "uid": "35240-d7ea9bee-2969-479a-9a61-ba585f9eaaa2"
     }
   ],
   "auth": {
@@ -201,21 +228,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b8de259a-9b5d-454f-82da-4707aead2fc1",
-    "name": "Sonatype Nexus Repository Manager assets Formats API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

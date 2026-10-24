@@ -1,292 +1,305 @@
 {
+  "info": {
+    "_postman_id": "c23f8aef-b612-437f-8302-237f34bd1d0c",
+    "name": "Sonatype Nexus Repository Manager Security Management\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:09:37.000Z",
+    "updatedAt": "2026-10-21T21:09:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c23f8aef-b612-437f-8302-237f34bd1d0c"
+  },
   "item": [
     {
-      "id": "e2daff4d-267d-4132-ac09-0cac9ad7ff81",
-      "name": "Security Management: Anonymous Access",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "84b9a27e-407a-4284-9083-20569baec1d3",
-          "name": "Get Anonymous Access settings",
-          "request": {
-            "name": "Get Anonymous Access settings",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "anonymous"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "19769104-4a84-41f2-ab9b-6b61047a2d68",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "anonymous"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "anonymous",
+              "item": [
+                {
+                  "name": "Get Anonymous Access settings",
+                  "id": "6a55ea25-2c3d-4079-a18a-c5f712faccf7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"enabled\": false,\n  \"realmName\": \"string\",\n  \"userId\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "b5c1ab21-3cee-4fa9-86a9-88f048050c1f",
-              "name": "Insufficient permissions to update settings",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "anonymous"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/anonymous",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "anonymous"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c89092a8-e9b7-4241-a9da-b7d5421ed0be",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/anonymous",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "anonymous"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:09:38.000Z",
+                      "updatedAt": "2026-10-21T21:09:38.000Z",
+                      "uid": "35240-c89092a8-e9b7-4241-a9da-b7d5421ed0be"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
+                    {
+                      "id": "ce17e842-6273-4378-9c31-647dfd227dd7",
+                      "name": "Insufficient permissions to update settings",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/anonymous",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "anonymous"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:38.000Z",
+                      "updatedAt": "2026-10-21T21:09:38.000Z",
+                      "uid": "35240-ce17e842-6273-4378-9c31-647dfd227dd7"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:38.000Z",
+                  "updatedAt": "2026-10-21T21:09:38.000Z",
+                  "uid": "35240-6a55ea25-2c3d-4079-a18a-c5f712faccf7"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Update Anonymous Access settings",
+                  "id": "5c06d91d-a415-4596-b357-3c29cf87b525",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/anonymous",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "anonymous"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f40f0f9d-203e-4f3a-a7db-353d35df0736",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/anonymous",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "anonymous"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:09:38.000Z",
+                      "updatedAt": "2026-10-21T21:09:38.000Z",
+                      "uid": "35240-f40f0f9d-203e-4f3a-a7db-353d35df0736"
+                    },
+                    {
+                      "id": "b63a236a-dbfa-4905-8644-4dc98e3ed862",
+                      "name": "Insufficient permissions to update settings",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/anonymous",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "anonymous"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:38.000Z",
+                      "updatedAt": "2026-10-21T21:09:38.000Z",
+                      "uid": "35240-b63a236a-dbfa-4905-8644-4dc98e3ed862"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:38.000Z",
+                  "updatedAt": "2026-10-21T21:09:38.000Z",
+                  "uid": "35240-5c06d91d-a415-4596-b357-3c29cf87b525"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "726a9e96-6819-43f2-80b0-327e8b484fd9",
+              "createdAt": "2026-10-21T21:09:38.000Z",
+              "updatedAt": "2026-10-21T21:09:38.000Z",
+              "uid": "35240-726a9e96-6819-43f2-80b0-327e8b484fd9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "380b9963-129e-41b1-bcba-216012dc3d1f",
-          "name": "Update Anonymous Access settings",
-          "request": {
-            "name": "Update Anonymous Access settings",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "anonymous"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "fec73d8c-e61e-4879-8808-1a12bf9fbb72",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "anonymous"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "85472f53-d21c-4c98-9a79-dcc1268a32cc",
-              "name": "Insufficient permissions to update settings",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "anonymous"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmName\": \"<string>\",\n  \"userId\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b8ad65e5-3ec4-4ee9-a165-b9efc6747e83",
+          "createdAt": "2026-10-21T21:09:38.000Z",
+          "updatedAt": "2026-10-21T21:09:38.000Z",
+          "uid": "35240-b8ad65e5-3ec4-4ee9-a165-b9efc6747e83"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "1c6eba23-7d35-4302-a308-31eebc01b241",
+      "createdAt": "2026-10-21T21:09:38.000Z",
+      "updatedAt": "2026-10-21T21:09:38.000Z",
+      "uid": "35240-1c6eba23-7d35-4302-a308-31eebc01b241"
     }
   ],
   "auth": {
@@ -294,21 +307,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "c2f28072-49e3-4005-8f0f-e4fb6ea929be",
-    "name": "Sonatype Nexus Repository Manager assets Security Management: Anonymous Access API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

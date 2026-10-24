@@ -1,243 +1,257 @@
 {
+  "info": {
+    "_postman_id": "12a01517-be54-46ea-97d5-caa10e5ec435",
+    "name": "Sonatype Nexus Repository Manager Community Edition Eula API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:07:18.000Z",
+    "updatedAt": "2026-10-21T21:07:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-12a01517-be54-46ea-97d5-caa10e5ec435"
+  },
   "item": [
     {
-      "id": "cdb98a47-1bb8-41be-a3e3-53ae1c9485ad",
-      "name": "Community Edition Eula",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "f94c3381-b204-4cb8-9f88-111c14408488",
-          "name": "Get the current Community Eula status.",
-          "request": {
-            "name": "Get the current Community Eula status.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "system",
-                "eula"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "system",
+          "item": [
             {
-              "id": "2c66665f-03d7-483e-b1e4-a90c487b7ca2",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "system",
-                    "eula"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "eula",
+              "item": [
+                {
+                  "name": "Get the current Community Eula status",
+                  "id": "7b40e12d-6056-4cb3-8947-bbb6fb627f50",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/system/eula",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "system",
+                        "eula"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c47ce81e-769a-4f41-8116-579c0bc97b44",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/system/eula",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "system",
+                            "eula"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"example\": {\n    \"accepted\": false,\n    \"disclaimer\": \"Use of Sonatype Nexus Repository - Community Edition is governed by the End User License Agreement at https://links.sonatype.com/products/nxrm/ce-eula. By returning the value from \u2018accepted:false\u2019 to \u2018accepted:true\u2019, you acknowledge that you have read and agree to the End User License Agreement at https://links.sonatype.com/products/nxrm/ce-eula.\"\n  }\n}",
+                      "createdAt": "2026-10-21T21:07:19.000Z",
+                      "updatedAt": "2026-10-21T21:07:19.000Z",
+                      "uid": "35240-c47ce81e-769a-4f41-8116-579c0bc97b44"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:19.000Z",
+                  "updatedAt": "2026-10-21T21:07:19.000Z",
+                  "uid": "35240-7b40e12d-6056-4cb3-8947-bbb6fb627f50"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Set the Community Eula status",
+                  "id": "14e5109f-8b02-45a6-b1f0-eddb8fff15a9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"accepted\": \"<boolean>\",\n  \"disclaimer\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/system/eula",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "system",
+                        "eula"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "011d4fe5-961b-4c1e-984b-d4dd9f3b13cf",
+                      "name": "EULA status set successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"accepted\": \"<boolean>\",\n  \"disclaimer\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/system/eula",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "system",
+                            "eula"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:19.000Z",
+                      "updatedAt": "2026-10-21T21:07:19.000Z",
+                      "uid": "35240-011d4fe5-961b-4c1e-984b-d4dd9f3b13cf"
+                    },
+                    {
+                      "id": "054ebfc4-7d62-45c3-8d84-be043c2e3294",
+                      "name": "Incorrect EULA Status",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"accepted\": \"<boolean>\",\n  \"disclaimer\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/system/eula",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "system",
+                            "eula"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:19.000Z",
+                      "updatedAt": "2026-10-21T21:07:19.000Z",
+                      "uid": "35240-054ebfc4-7d62-45c3-8d84-be043c2e3294"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:19.000Z",
+                  "updatedAt": "2026-10-21T21:07:19.000Z",
+                  "uid": "35240-14e5109f-8b02-45a6-b1f0-eddb8fff15a9"
                 }
               ],
-              "body": "{\n  \"accepted\": false,\n  \"disclaimer\": \"Use of Sonatype Nexus Repository - Community Edition is governed by the End User License Agreement at https://links.sonatype.com/products/nxrm/ce-eula. By returning the value from ‘accepted:false’ to ‘accepted:true’, you acknowledge that you have read and agree to the End User License Agreement at https://links.sonatype.com/products/nxrm/ce-eula.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "a8a6172f-6bd5-431a-82c3-cd9a4e255270",
+              "createdAt": "2026-10-21T21:07:19.000Z",
+              "updatedAt": "2026-10-21T21:07:19.000Z",
+              "uid": "35240-a8a6172f-6bd5-431a-82c3-cd9a4e255270"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "266aa1af-1b14-4f58-90d6-0861ad09ca8c",
-          "name": "Set the Community Eula status.",
-          "request": {
-            "name": "Set the Community Eula status.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "system",
-                "eula"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"accepted\": \"<boolean>\",\n  \"disclaimer\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f921948e-d35a-41d4-8b03-ca3107eebe86",
-              "name": "EULA status set successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "system",
-                    "eula"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"accepted\": \"<boolean>\",\n  \"disclaimer\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8d3a4204-fbde-4f4f-94f6-9391fe5659bc",
-              "name": "Incorrect EULA Status",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "system",
-                    "eula"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"accepted\": \"<boolean>\",\n  \"disclaimer\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "5eab4e69-9bd2-4842-8ad6-0c83678831ff",
+          "createdAt": "2026-10-21T21:07:19.000Z",
+          "updatedAt": "2026-10-21T21:07:19.000Z",
+          "uid": "35240-5eab4e69-9bd2-4842-8ad6-0c83678831ff"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "ed5d62f1-1aa0-4362-9cbc-7ac63e8fa5f9",
+      "createdAt": "2026-10-21T21:07:19.000Z",
+      "updatedAt": "2026-10-21T21:07:19.000Z",
+      "uid": "35240-ed5d62f1-1aa0-4362-9cbc-7ac63e8fa5f9"
     }
   ],
   "auth": {
@@ -245,21 +259,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b018196c-3a01-40bd-ae9a-545dfbcc48ae",
-    "name": "Sonatype Nexus Repository Manager assets Community Edition Eula API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

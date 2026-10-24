@@ -1,1075 +1,1024 @@
 {
+  "info": {
+    "_postman_id": "1801d222-32d4-438c-85a8-7014cfe00cd8",
+    "name": "Sonatype Nexus Repository Manager Security management: SAML\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:10:41.000Z",
+    "updatedAt": "2026-10-21T21:10:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1801d222-32d4-438c-85a8-7014cfe00cd8"
+  },
   "item": [
     {
-      "id": "33fdc751-cb1b-45a2-9d92-a4b6d742f080",
-      "name": "Security management: SAML",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "69bbc89d-fa0f-4aff-b307-23d661bc46ab",
-          "name": "Delete SAML configuration",
-          "request": {
-            "name": "Delete SAML configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "saml"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "02184413-d5ea-405f-b176-b957acd12ddf",
-              "name": "SAML configuration deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "name": "saml",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6fad3382-9783-440c-bb52-1309a2270a91",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4e810ca3-a052-4cf4-a045-6b704b0477c1",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cc936250-380a-471f-ade3-57fe2f8f64ab",
-          "name": "Get SAML configuration",
-          "request": {
-            "name": "Get SAML configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "saml"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "01bdcb6e-45d9-4801-b01f-f2368284dd5d",
-              "name": "SAML configuration returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "28ec62b3-b49b-4927-96b6-eddd3a25f6a4",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b4589ec1-73f5-49cb-8329-0cb2937c1f44",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e3dca7b3-49e2-449a-91d4-eb2513f25593",
-              "name": "SAML configuration not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3a56b495-7f31-49ca-a752-3661ee46b621",
-          "name": "Create or update SAML configuration",
-          "request": {
-            "name": "Create or update SAML configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "saml"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "7f3c4681-156f-405f-92e8-817748e86941",
-              "name": "SAML configuration created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6dd75838-6472-4c68-816e-248727b18831",
-              "name": "SAML configuration updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "15134ddb-19d0-41de-bdd0-66cb4fc24f18",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b8223ebf-c107-4a64-848d-f9402847a67d",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c30df587-6ad1-4cc7-8eed-709a56089618",
-              "name": "SAML configuration not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c178c38d-331c-4b39-8ffa-f7f642b17951",
-          "name": "Get service provider metadata XML document",
-          "request": {
-            "name": "Get service provider metadata XML document",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "saml",
-                "metadata"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f5e691a0-7d8d-4066-90aa-c728af5850ed",
-              "name": "Metadata Returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "metadata"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9bd8b587-05e5-4cef-8926-b3952932272f",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "metadata"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3f4b7836-33ab-4d8c-9da5-f645afa91f6d",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "metadata"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e9bd1e91-e666-42e0-8df1-1891e859c5a9",
-              "name": "Metadata not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "metadata"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6c0b957c-2b41-4323-8ebf-326f663dd5a4",
-          "name": "Get service provider signing or decryption certificate in PEM format",
-          "request": {
-            "name": "Get service provider signing or decryption certificate in PEM format",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "saml",
-                "pem"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "signing",
-                  "description": "Type of certificate to return: 'signing' or 'decryption'. Defaults to 'signing' if not provided."
-                }
-              ],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c459d5e2-ded1-4919-9454-098dd0257d5e",
-              "name": "PEM file Returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "pem"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "metadata",
+                  "item": [
                     {
-                      "key": "type",
-                      "value": "signing"
+                      "name": "Get service provider metadata XML document",
+                      "id": "6cda92c0-3adf-4b2d-b014-255f193934cd",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml/metadata",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml",
+                            "metadata"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "ea764830-83d0-4b69-aacf-06606f00a419",
+                          "name": "Metadata Returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "metadata"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-ea764830-83d0-4b69-aacf-06606f00a419"
+                        },
+                        {
+                          "id": "064c000e-e93f-4bd7-9b7e-f89e2e9703d4",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "metadata"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-064c000e-e93f-4bd7-9b7e-f89e2e9703d4"
+                        },
+                        {
+                          "id": "411ff578-5ef9-4661-ab19-b83d0bf40ff3",
+                          "name": "Insufficient permissions",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "metadata"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-411ff578-5ef9-4661-ab19-b83d0bf40ff3"
+                        },
+                        {
+                          "id": "389e5455-9108-4e1f-a6e9-fd2010df3754",
+                          "name": "Metadata not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/metadata",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "metadata"
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-389e5455-9108-4e1f-a6e9-fd2010df3754"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-6cda92c0-3adf-4b2d-b014-255f193934cd"
                     }
                   ],
-                  "variable": []
+                  "id": "b0181880-34c9-4db1-9355-64dc05545de5",
+                  "createdAt": "2026-10-21T21:10:41.000Z",
+                  "updatedAt": "2026-10-21T21:10:41.000Z",
+                  "uid": "35240-b0181880-34c9-4db1-9355-64dc05545de5"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3289cea9-ae23-48f8-afee-aaba0e91b188",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "pem"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "pem",
+                  "item": [
                     {
-                      "key": "type",
-                      "value": "signing"
+                      "name": "Get service provider signing or decryption certificate in PEM format",
+                      "id": "2a0d661b-ff6d-4759-a9f8-ee6319dafc26",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml/pem?type=signing",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml",
+                            "pem"
+                          ],
+                          "query": [
+                            {
+                              "description": "Type of certificate to return: 'signing' or 'decryption'. Defaults to 'signing' if not provided.",
+                              "key": "type",
+                              "value": "signing"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "abe468c8-2407-4aa5-9ef8-9be26e57703f",
+                          "name": "PEM file Returned",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/pem?type=signing",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "pem"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Type of certificate to return: 'signing' or 'decryption'. Defaults to 'signing' if not provided.",
+                                  "key": "type",
+                                  "value": "signing"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-abe468c8-2407-4aa5-9ef8-9be26e57703f"
+                        },
+                        {
+                          "id": "fd144a4b-1ed9-47f5-bd41-baf021325fc0",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/pem?type=signing",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "pem"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Type of certificate to return: 'signing' or 'decryption'. Defaults to 'signing' if not provided.",
+                                  "key": "type",
+                                  "value": "signing"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-fd144a4b-1ed9-47f5-bd41-baf021325fc0"
+                        },
+                        {
+                          "id": "83b690b4-b6e7-418f-870b-ec8fe24b7f08",
+                          "name": "Insufficient permissions",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/pem?type=signing",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "pem"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Type of certificate to return: 'signing' or 'decryption'. Defaults to 'signing' if not provided.",
+                                  "key": "type",
+                                  "value": "signing"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-83b690b4-b6e7-418f-870b-ec8fe24b7f08"
+                        },
+                        {
+                          "id": "d82f270e-cd75-446c-b539-e0a1498401e9",
+                          "name": "PEM file not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/saml/pem?type=signing",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "saml",
+                                "pem"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Type of certificate to return: 'signing' or 'decryption'. Defaults to 'signing' if not provided.",
+                                  "key": "type",
+                                  "value": "signing"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:10:41.000Z",
+                          "updatedAt": "2026-10-21T21:10:41.000Z",
+                          "uid": "35240-d82f270e-cd75-446c-b539-e0a1498401e9"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-2a0d661b-ff6d-4759-a9f8-ee6319dafc26"
                     }
                   ],
-                  "variable": []
+                  "id": "ede6dd7f-0438-4dd8-b08a-cfe4116ccad4",
+                  "createdAt": "2026-10-21T21:10:41.000Z",
+                  "updatedAt": "2026-10-21T21:10:41.000Z",
+                  "uid": "35240-ede6dd7f-0438-4dd8-b08a-cfe4116ccad4"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "59994da2-fb0c-4121-8394-e325c4a854a4",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "pem"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "name": "Delete SAML configuration",
+                  "id": "a4589945-0160-4a50-9dcf-69db0ac3e786",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/saml",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "saml"
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "type",
-                      "value": "signing"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                      "id": "ca82b0f5-bd20-4361-8278-95e9636b91f1",
+                      "name": "SAML configuration deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-ca82b0f5-bd20-4361-8278-95e9636b91f1"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b9b997ae-5b81-463e-82e9-65fbca3af7a1",
-              "name": "PEM file not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "saml",
-                    "pem"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
                     {
-                      "key": "type",
-                      "value": "signing"
+                      "id": "912244b1-000b-4936-871e-aa32fead02a0",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-912244b1-000b-4936-871e-aa32fead02a0"
+                    },
+                    {
+                      "id": "7b9c02e0-1483-4126-a978-77e3934d177a",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-7b9c02e0-1483-4126-a978-77e3934d177a"
                     }
                   ],
-                  "variable": []
+                  "createdAt": "2026-10-21T21:10:41.000Z",
+                  "updatedAt": "2026-10-21T21:10:41.000Z",
+                  "uid": "35240-a4589945-0160-4a50-9dcf-69db0ac3e786"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "Get SAML configuration",
+                  "id": "a293d367-1430-4f2b-9b79-f3827015be6b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/saml",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "saml"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "53b96157-ec8b-4bbc-8f0b-bf0cc5fbc49c",
+                      "name": "SAML configuration returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-53b96157-ec8b-4bbc-8f0b-bf0cc5fbc49c"
+                    },
+                    {
+                      "id": "e7fefdfb-5d07-4496-93bb-517b4d7be6b8",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-e7fefdfb-5d07-4496-93bb-517b4d7be6b8"
+                    },
+                    {
+                      "id": "613bc902-1009-4dec-bff9-760d8c14768b",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-613bc902-1009-4dec-bff9-760d8c14768b"
+                    },
+                    {
+                      "id": "078fc5db-f5ed-4c5f-b80e-0a2ec11233f1",
+                      "name": "SAML configuration not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-078fc5db-f5ed-4c5f-b80e-0a2ec11233f1"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:10:41.000Z",
+                  "updatedAt": "2026-10-21T21:10:41.000Z",
+                  "uid": "35240-a293d367-1430-4f2b-9b79-f3827015be6b"
+                },
+                {
+                  "name": "Create or update SAML configuration",
+                  "id": "c584540d-a004-4bd1-a821-edd96cfb40df",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/saml",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "saml"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a1ed9e6d-c6d9-4fe8-bbfa-92a4f5a8531e",
+                      "name": "SAML configuration created",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-a1ed9e6d-c6d9-4fe8-bbfa-92a4f5a8531e"
+                    },
+                    {
+                      "id": "1ab99275-8ac9-4065-923f-fa6db578aeda",
+                      "name": "SAML configuration updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-1ab99275-8ac9-4065-923f-fa6db578aeda"
+                    },
+                    {
+                      "id": "c53462c6-5380-4165-90c8-b73fa7a01b48",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-c53462c6-5380-4165-90c8-b73fa7a01b48"
+                    },
+                    {
+                      "id": "ac0f629c-e5ef-46cd-bc89-1bb0d0d1ce69",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-ac0f629c-e5ef-46cd-bc89-1bb0d0d1ce69"
+                    },
+                    {
+                      "id": "6430edc3-a00b-409b-b1dd-b92ca3fd2859",
+                      "name": "SAML configuration not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"idpMetadata\": \"<string>\",\n  \"usernameAttribute\": \"<string>\",\n  \"emailAttribute\": \"<string>\",\n  \"entityId\": \"<string>\",\n  \"firstNameAttribute\": \"<string>\",\n  \"groupsAttribute\": \"<string>\",\n  \"lastNameAttribute\": \"<string>\",\n  \"validateAssertionSignature\": \"<boolean>\",\n  \"validateResponseSignature\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/saml",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "saml"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:10:41.000Z",
+                      "updatedAt": "2026-10-21T21:10:41.000Z",
+                      "uid": "35240-6430edc3-a00b-409b-b1dd-b92ca3fd2859"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:10:41.000Z",
+                  "updatedAt": "2026-10-21T21:10:41.000Z",
+                  "uid": "35240-c584540d-a004-4bd1-a821-edd96cfb40df"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "9e947930-3bd7-490a-a677-5fa25eb2d456",
+              "createdAt": "2026-10-21T21:10:41.000Z",
+              "updatedAt": "2026-10-21T21:10:41.000Z",
+              "uid": "35240-9e947930-3bd7-490a-a677-5fa25eb2d456"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "d4f26ce3-3d5e-404e-bad7-eb9da6fb35a7",
+          "createdAt": "2026-10-21T21:10:41.000Z",
+          "updatedAt": "2026-10-21T21:10:41.000Z",
+          "uid": "35240-d4f26ce3-3d5e-404e-bad7-eb9da6fb35a7"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "17c41dfc-f27d-407f-a797-406d5109b426",
+      "createdAt": "2026-10-21T21:10:41.000Z",
+      "updatedAt": "2026-10-21T21:10:41.000Z",
+      "uid": "35240-17c41dfc-f27d-407f-a797-406d5109b426"
     }
   ],
   "auth": {
@@ -1077,21 +1026,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "adf67526-0caf-4250-b3d5-b7df0068bfc7",
-    "name": "Sonatype Nexus Repository Manager assets Security management: SAML API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

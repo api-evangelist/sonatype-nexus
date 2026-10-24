@@ -1,579 +1,594 @@
 {
+  "info": {
+    "_postman_id": "c168af3a-ee1b-4d6b-84a2-23253a6f6807",
+    "name": "Sonatype Nexus Repository Manager Status API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:11:19.000Z",
+    "updatedAt": "2026-10-21T21:11:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c168af3a-ee1b-4d6b-84a2-23253a6f6807"
+  },
   "item": [
     {
-      "id": "73ce3f3e-2f54-47bf-9685-2346d4228240",
-      "name": "Status",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "beta",
       "item": [
         {
-          "id": "eefb98c7-31e2-4f13-b5da-d5c26aa8c5d3",
-          "name": "Health check endpoint that returns the results of the system status checks",
-          "request": {
-            "name": "Health check endpoint that returns the results of the system status checks",
-            "description": {},
-            "url": {
-              "path": [
-                "beta",
-                "status",
-                "check",
-                "cluster"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "status",
+          "item": [
             {
-              "id": "2c102970-c84d-4646-97d2-f64f0c34ba27",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "beta",
-                    "status",
-                    "check",
-                    "cluster"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "check",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"hostname\": \"nexus01\",\n    \"nodeId\": \"string\",\n    \"results\": {\n      \"key_0\": {\n        \"healthy\": true,\n        \"message\": \"string\"\n      }\n    }\n  },\n  {\n    \"hostname\": \"nexus01\",\n    \"nodeId\": \"string\",\n    \"results\": {\n      \"key_0\": {\n        \"healthy\": true,\n        \"message\": \"string\"\n      }\n    }\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4bbb9985-e6d4-472a-9822-98a277fdae30",
-              "name": "Insufficient permissions to retrieve system status checks",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "beta",
-                    "status",
-                    "check",
-                    "cluster"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "86afaddc-b7a4-44bf-98bf-dfe51d4391f5",
-          "name": "Health check endpoint that returns the results of the system status checks of specified Node",
-          "request": {
-            "name": "Health check endpoint that returns the results of the system status checks of specified Node",
-            "description": {},
-            "url": {
-              "path": [
-                "beta",
-                "status",
-                "check",
-                ":nodeId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "nodeId",
-                  "description": "(Required) Node Id"
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "629bd2c1-8f0f-44fc-b27b-0a2cdc2c2a3e",
-              "name": "The system status check results",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "beta",
-                    "status",
-                    "check",
-                    ":nodeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "cluster",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodeId",
-                      "description": "(Required) Node Id"
+                      "name": "Health check endpoint that returns the results of the system status checks",
+                      "id": "861b54d0-7ef8-42fe-9c9d-a06e542c72ec",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/beta/status/check/cluster",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "beta",
+                            "status",
+                            "check",
+                            "cluster"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "32deef20-17b9-43a4-ba81-d27178ccf227",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/beta/status/check/cluster",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "beta",
+                                "status",
+                                "check",
+                                "cluster"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"hostname\": \"<string>\",\n    \"nodeId\": \"<string>\",\n    \"results\": {\n      \"eu58\": {\n        \"healthy\": \"<boolean>\",\n        \"message\": \"<string>\"\n      }\n    }\n  },\n  {\n    \"hostname\": \"<string>\",\n    \"nodeId\": \"<string>\",\n    \"results\": {\n      \"enim4\": {\n        \"healthy\": \"<boolean>\",\n        \"message\": \"<string>\"\n      }\n    }\n  }\n]",
+                          "createdAt": "2026-10-21T21:11:19.000Z",
+                          "updatedAt": "2026-10-21T21:11:19.000Z",
+                          "uid": "35240-32deef20-17b9-43a4-ba81-d27178ccf227"
+                        },
+                        {
+                          "id": "073d3b2f-bb92-4c59-b699-9da0e091987a",
+                          "name": "Insufficient permissions to retrieve system status checks",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/beta/status/check/cluster",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "beta",
+                                "status",
+                                "check",
+                                "cluster"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:19.000Z",
+                          "updatedAt": "2026-10-21T21:11:19.000Z",
+                          "uid": "35240-073d3b2f-bb92-4c59-b699-9da0e091987a"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:11:19.000Z",
+                      "updatedAt": "2026-10-21T21:11:19.000Z",
+                      "uid": "35240-861b54d0-7ef8-42fe-9c9d-a06e542c72ec"
                     }
-                  ]
+                  ],
+                  "id": "19fe55a6-8729-41ff-985a-6ef972d9bbbb",
+                  "createdAt": "2026-10-21T21:11:19.000Z",
+                  "updatedAt": "2026-10-21T21:11:19.000Z",
+                  "uid": "35240-19fe55a6-8729-41ff-985a-6ef972d9bbbb"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e2e84dc1-669f-467f-bdf5-38df4af9cd95",
-              "name": "System status information not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "beta",
-                    "status",
-                    "check",
-                    ":nodeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "name": "{nodeId}",
+                  "item": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "nodeId",
-                      "description": "(Required) Node Id"
+                      "name": "Health check endpoint that returns the results of the system status checks of\u2026",
+                      "id": "cf5db7f2-6be5-435c-83b4-a1f471193d62",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/beta/status/check/:nodeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "beta",
+                            "status",
+                            "check",
+                            ":nodeId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "1948f76d-5004-4473-8afa-bff31ebe4829",
+                              "key": "nodeId",
+                              "value": "<string>",
+                              "description": "(Required) Node Id"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "660eccd0-313a-40f4-950f-2f862aeb14e3",
+                          "name": "The system status check results",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/beta/status/check/:nodeId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "beta",
+                                "status",
+                                "check",
+                                ":nodeId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "nodeId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:19.000Z",
+                          "updatedAt": "2026-10-21T21:11:19.000Z",
+                          "uid": "35240-660eccd0-313a-40f4-950f-2f862aeb14e3"
+                        },
+                        {
+                          "id": "20950bd4-9a33-4206-8da2-0a918e7e5dac",
+                          "name": "System status information not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/beta/status/check/:nodeId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "beta",
+                                "status",
+                                "check",
+                                ":nodeId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "nodeId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:19.000Z",
+                          "updatedAt": "2026-10-21T21:11:19.000Z",
+                          "uid": "35240-20950bd4-9a33-4206-8da2-0a918e7e5dac"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:11:19.000Z",
+                      "updatedAt": "2026-10-21T21:11:19.000Z",
+                      "uid": "35240-cf5db7f2-6be5-435c-83b4-a1f471193d62"
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  ],
+                  "id": "8fd1d126-cb06-4f42-89fd-61f580282fac",
+                  "createdAt": "2026-10-21T21:11:19.000Z",
+                  "updatedAt": "2026-10-21T21:11:19.000Z",
+                  "uid": "35240-8fd1d126-cb06-4f42-89fd-61f580282fac"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "4f408e7b-20a8-45de-8f00-4a088adbfbe5",
+              "createdAt": "2026-10-21T21:11:19.000Z",
+              "updatedAt": "2026-10-21T21:11:19.000Z",
+              "uid": "35240-4f408e7b-20a8-45de-8f00-4a088adbfbe5"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "624a487f-a31c-4f7a-b52e-957362106879",
-          "name": "Health check endpoint that validates server can respond to read requests",
-          "request": {
-            "name": "Health check endpoint that validates server can respond to read requests",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "status"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f24704d9-0233-45bc-ac90-0cf0ec48f977",
-              "name": "Available to service requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9f02de1b-6b23-4215-9a25-59b3d0397f2a",
-              "name": "Unavailable to service requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ccccab58-6ef3-4946-a15d-2445ca5efccd",
-          "name": "Health check endpoint that returns the results of the system status checks",
-          "request": {
-            "name": "Health check endpoint that returns the results of the system status checks",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "status",
-                "check"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "84ba41fb-e29d-4e69-9452-612617eaf782",
-              "name": "The system status check results",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "status",
-                    "check"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"key_0\": {\n    \"details\": {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    \"duration\": 3562,\n    \"error\": {\n      \"cause\": {\n        \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n      },\n      \"localizedMessage\": \"string\",\n      \"message\": \"string\",\n      \"stackTrace\": [\n        {\n          \"classLoaderName\": \"string\",\n          \"className\": \"string\",\n          \"fileName\": \"string\",\n          \"lineNumber\": 8367,\n          \"methodName\": \"string\",\n          \"moduleName\": \"string\",\n          \"moduleVersion\": \"string\",\n          \"nativeMethod\": true\n        },\n        {\n          \"classLoaderName\": \"string\",\n          \"className\": \"string\",\n          \"fileName\": \"string\",\n          \"lineNumber\": 8329,\n          \"methodName\": \"string\",\n          \"moduleName\": \"string\",\n          \"moduleVersion\": \"string\",\n          \"nativeMethod\": false\n        }\n      ],\n      \"suppressed\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n        }\n      ]\n    },\n    \"healthy\": false,\n    \"message\": \"string\",\n    \"time\": 2904,\n    \"timestamp\": \"string\"\n  },\n  \"key_1\": {\n    \"details\": {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    \"duration\": 1278,\n    \"error\": {\n      \"cause\": {\n        \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n      },\n      \"localizedMessage\": \"string\",\n      \"message\": \"string\",\n      \"stackTrace\": [\n        {\n          \"classLoaderName\": \"string\",\n          \"className\": \"string\",\n          \"fileName\": \"string\",\n          \"lineNumber\": 8157,\n          \"methodName\": \"string\",\n          \"moduleName\": \"string\",\n          \"moduleVersion\": \"string\",\n          \"nativeMethod\": true\n        },\n        {\n          \"classLoaderName\": \"string\",\n          \"className\": \"string\",\n          \"fileName\": \"string\",\n          \"lineNumber\": 3168,\n          \"methodName\": \"string\",\n          \"moduleName\": \"string\",\n          \"moduleVersion\": \"string\",\n          \"nativeMethod\": true\n        }\n      ],\n      \"suppressed\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n        }\n      ]\n    },\n    \"healthy\": false,\n    \"message\": \"string\",\n    \"time\": 2828,\n    \"timestamp\": \"string\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "939b89a9-8d22-43ad-9c23-7c412fdf5854",
-          "name": "Health check endpoint that validates server can respond to read and write requests",
-          "request": {
-            "name": "Health check endpoint that validates server can respond to read and write requests",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "status",
-                "writable"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "db5b7c78-5b9a-4c1a-8dd5-d4375e8c5857",
-              "name": "Available to service requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "status",
-                    "writable"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "61fc1edc-4bbd-4093-b40e-85ec4d9b6a52",
-              "name": "Unavailable to service requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "status",
-                    "writable"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "03e7ce0d-260d-42fd-a19e-4b1c27afc322",
+          "createdAt": "2026-10-21T21:11:19.000Z",
+          "updatedAt": "2026-10-21T21:11:19.000Z",
+          "uid": "35240-03e7ce0d-260d-42fd-a19e-4b1c27afc322"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "4b35b873-750f-4146-a98c-28c4dea59df9",
+      "createdAt": "2026-10-21T21:11:19.000Z",
+      "updatedAt": "2026-10-21T21:11:19.000Z",
+      "uid": "35240-4b35b873-750f-4146-a98c-28c4dea59df9"
+    },
     {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "name": "v1",
+      "item": [
+        {
+          "name": "status",
+          "item": [
+            {
+              "name": "check",
+              "item": [
+                {
+                  "name": "Health check endpoint that returns the results of the system status checks",
+                  "id": "a6965519-d6e7-4fdc-8e6a-ffbc3db1ba4c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/status/check",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "status",
+                        "check"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "a6374668-7aab-4e30-b171-d8107deec724",
+                      "name": "The system status check results",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/status/check",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "status",
+                            "check"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"labore_07d\": {\n    \"details\": {\n      \"tempor_b3\": {},\n      \"deserunt_a\": {},\n      \"esse_81d\": {},\n      \"deserunt3a\": {}\n    },\n    \"duration\": \"<long>\",\n    \"error\": {\n      \"cause\": {\n        \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n      },\n      \"localizedMessage\": \"<string>\",\n      \"message\": \"<string>\",\n      \"stackTrace\": [\n        {\n          \"classLoaderName\": \"<string>\",\n          \"className\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"lineNumber\": \"<integer>\",\n          \"methodName\": \"<string>\",\n          \"moduleName\": \"<string>\",\n          \"moduleVersion\": \"<string>\",\n          \"nativeMethod\": \"<boolean>\"\n        },\n        {\n          \"classLoaderName\": \"<string>\",\n          \"className\": \"<string>\",\n          \"fileName\": \"<string>\",\n          \"lineNumber\": \"<integer>\",\n          \"methodName\": \"<string>\",\n          \"moduleName\": \"<string>\",\n          \"moduleVersion\": \"<string>\",\n          \"nativeMethod\": \"<boolean>\"\n        }\n      ],\n      \"suppressed\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Throwable detected>\"\n        }\n      ]\n    },\n    \"healthy\": \"<boolean>\",\n    \"message\": \"<string>\",\n    \"time\": \"<long>\",\n    \"timestamp\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-10-21T21:11:19.000Z",
+                      "updatedAt": "2026-10-21T21:11:19.000Z",
+                      "uid": "35240-a6374668-7aab-4e30-b171-d8107deec724"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:11:19.000Z",
+                  "updatedAt": "2026-10-21T21:11:19.000Z",
+                  "uid": "35240-a6965519-d6e7-4fdc-8e6a-ffbc3db1ba4c"
+                }
+              ],
+              "id": "11e5f153-0a0d-4f7f-a10c-dc0f51f0e82d",
+              "createdAt": "2026-10-21T21:11:19.000Z",
+              "updatedAt": "2026-10-21T21:11:19.000Z",
+              "uid": "35240-11e5f153-0a0d-4f7f-a10c-dc0f51f0e82d"
+            },
+            {
+              "name": "writable",
+              "item": [
+                {
+                  "name": "Health check endpoint that validates server can respond to read and write\u2026",
+                  "id": "fc8c0ca2-c9d8-4fad-9fb2-3d0c8552e83e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/status/writable",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "status",
+                        "writable"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f749206b-ef92-402f-a2bf-686a58bfcda5",
+                      "name": "Available to service requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/status/writable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "status",
+                            "writable"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:11:19.000Z",
+                      "updatedAt": "2026-10-21T21:11:19.000Z",
+                      "uid": "35240-f749206b-ef92-402f-a2bf-686a58bfcda5"
+                    },
+                    {
+                      "id": "0f17689c-bf77-4b62-b63d-47ab9abee930",
+                      "name": "Unavailable to service requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/status/writable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "status",
+                            "writable"
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:11:19.000Z",
+                      "updatedAt": "2026-10-21T21:11:19.000Z",
+                      "uid": "35240-0f17689c-bf77-4b62-b63d-47ab9abee930"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:11:19.000Z",
+                  "updatedAt": "2026-10-21T21:11:19.000Z",
+                  "uid": "35240-fc8c0ca2-c9d8-4fad-9fb2-3d0c8552e83e"
+                }
+              ],
+              "id": "0e1240f0-53fe-4eb2-bd56-08ca9a8d6002",
+              "createdAt": "2026-10-21T21:11:19.000Z",
+              "updatedAt": "2026-10-21T21:11:19.000Z",
+              "uid": "35240-0e1240f0-53fe-4eb2-bd56-08ca9a8d6002"
+            },
+            {
+              "name": "Health check endpoint that validates server can respond to read requests",
+              "id": "d58c49dc-1421-42a9-8756-ff53e1a62409",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "status"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b62f1e0a-aaf9-493d-a1bc-1cc3150e9a87",
+                  "name": "Available to service requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:19.000Z",
+                  "updatedAt": "2026-10-21T21:11:19.000Z",
+                  "uid": "35240-b62f1e0a-aaf9-493d-a1bc-1cc3150e9a87"
+                },
+                {
+                  "id": "03a83551-2316-470e-bbb9-05d9d940201f",
+                  "name": "Unavailable to service requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "status"
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:19.000Z",
+                  "updatedAt": "2026-10-21T21:11:19.000Z",
+                  "uid": "35240-03a83551-2316-470e-bbb9-05d9d940201f"
+                }
+              ],
+              "createdAt": "2026-10-21T21:11:19.000Z",
+              "updatedAt": "2026-10-21T21:11:19.000Z",
+              "uid": "35240-d58c49dc-1421-42a9-8756-ff53e1a62409"
+            }
+          ],
+          "id": "13c04abf-abe7-47bb-b112-425a831c93e5",
+          "createdAt": "2026-10-21T21:11:19.000Z",
+          "updatedAt": "2026-10-21T21:11:19.000Z",
+          "uid": "35240-13c04abf-abe7-47bb-b112-425a831c93e5"
+        }
+      ],
+      "id": "09db7df1-7f53-4e88-8cc2-9d574185abfd",
+      "createdAt": "2026-10-21T21:11:19.000Z",
+      "updatedAt": "2026-10-21T21:11:19.000Z",
+      "uid": "35240-09db7df1-7f53-4e88-8cc2-9d574185abfd"
     }
   ],
   "auth": {
@@ -581,21 +596,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "fc992328-4802-41c1-bcd3-b214f1c08463",
-    "name": "Sonatype Nexus Repository Manager assets Status API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

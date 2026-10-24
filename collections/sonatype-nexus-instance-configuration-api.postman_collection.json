@@ -1,324 +1,1706 @@
 {
+  "info": {
+    "_postman_id": "69ef1cb6-1922-4e04-aad2-f2917ee402a4",
+    "name": "Sonatype Nexus Repository Manager Instance configuration API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:07:58.000Z",
+    "updatedAt": "2026-10-21T21:07:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-69ef1cb6-1922-4e04-aad2-f2917ee402a4"
+  },
   "item": [
     {
-      "id": "465e5be9-10f1-4ea8-a698-dab5972bc6e2",
-      "name": "Instance configuration",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "a8c9a532-8b57-42fa-a3fe-4d7afc3022bc",
-          "name": "Export instance configuration",
-          "request": {
-            "name": "Export instance configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "configuration",
+          "item": [
             {
-              "id": "23861e1f-5603-440f-8105-566226cfb105",
-              "name": "Successful Operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "assets",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"string\"\n    },\n    {\n      \"configurationTypeId\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "91b0bf8b-81d6-4e47-8bed-6ff6782fcdb6",
-              "name": "Missing or invalid protocol version",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
+                  "name": "{repositoryName}",
+                  "item": [
+                    {
+                      "name": "import",
+                      "item": [
+                        {
+                          "name": "Import assets to repository",
+                          "id": "c3b82f45-c89b-4815-9f20-052527fc658a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "(Required) Migration protocol version (must be '1')",
+                                "key": "X-Nexus-Migration-Protocol-Version",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/configuration/assets/:repositoryName/import",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "configuration",
+                                "assets",
+                                ":repositoryName",
+                                "import"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "09870c20-cd63-4b81-8590-2bb326cd6068",
+                                  "key": "repositoryName",
+                                  "value": "<string>",
+                                  "description": "(Required) Repository name to import assets to"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "aef1fa10-e9ba-47ea-a0c7-4dfc81278236",
+                              "name": "Assets imported successfully",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Migration protocol version (must be '1')",
+                                    "key": "X-Nexus-Migration-Protocol-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/configuration/assets/:repositoryName/import",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "configuration",
+                                    "assets",
+                                    ":repositoryName",
+                                    "import"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "repositoryName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"assetId\": \"<string>\",\n    \"componentId\": \"<string>\",\n    \"errorMessage\": \"<string>\",\n    \"importTimestamp\": \"<dateTime>\",\n    \"path\": \"<string>\",\n    \"repository\": \"<string>\",\n    \"status\": \"SUCCESS_WITH_WARNINGS\",\n    \"warnings\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"assetId\": \"<string>\",\n    \"componentId\": \"<string>\",\n    \"errorMessage\": \"<string>\",\n    \"importTimestamp\": \"<dateTime>\",\n    \"path\": \"<string>\",\n    \"repository\": \"<string>\",\n    \"status\": \"FAILED\",\n    \"warnings\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                              "createdAt": "2026-10-21T21:07:58.000Z",
+                              "updatedAt": "2026-10-21T21:07:58.000Z",
+                              "uid": "35240-aef1fa10-e9ba-47ea-a0c7-4dfc81278236"
+                            },
+                            {
+                              "id": "dfd4e80e-fafa-4541-a06e-d44e63c4b583",
+                              "name": "Repository not found or missing/invalid protocol version",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Migration protocol version (must be '1')",
+                                    "key": "X-Nexus-Migration-Protocol-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/configuration/assets/:repositoryName/import",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "configuration",
+                                    "assets",
+                                    ":repositoryName",
+                                    "import"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "repositoryName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Bad Request",
+                              "code": 400,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-10-21T21:07:58.000Z",
+                              "updatedAt": "2026-10-21T21:07:58.000Z",
+                              "uid": "35240-dfd4e80e-fafa-4541-a06e-d44e63c4b583"
+                            },
+                            {
+                              "id": "1e708023-dcf4-4eff-bd1e-ee749a9fadef",
+                              "name": "Authentication required",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Migration protocol version (must be '1')",
+                                    "key": "X-Nexus-Migration-Protocol-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/configuration/assets/:repositoryName/import",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "configuration",
+                                    "assets",
+                                    ":repositoryName",
+                                    "import"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "repositoryName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-10-21T21:07:58.000Z",
+                              "updatedAt": "2026-10-21T21:07:58.000Z",
+                              "uid": "35240-1e708023-dcf4-4eff-bd1e-ee749a9fadef"
+                            },
+                            {
+                              "id": "ec442c74-53f3-4b02-9f48-b929ccd8c935",
+                              "name": "Insufficient permissions",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Migration protocol version (must be '1')",
+                                    "key": "X-Nexus-Migration-Protocol-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/configuration/assets/:repositoryName/import",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "configuration",
+                                    "assets",
+                                    ":repositoryName",
+                                    "import"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "repositoryName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Forbidden",
+                              "code": 403,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-10-21T21:07:58.000Z",
+                              "updatedAt": "2026-10-21T21:07:58.000Z",
+                              "uid": "35240-ec442c74-53f3-4b02-9f48-b929ccd8c935"
+                            },
+                            {
+                              "id": "8f7f32e7-972f-4196-a4ec-72ccc8e7e211",
+                              "name": "Asset import failed",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "description": "(Required) Migration protocol version (must be '1')",
+                                    "key": "X-Nexus-Migration-Protocol-Version",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/configuration/assets/:repositoryName/import",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "configuration",
+                                    "assets",
+                                    ":repositoryName",
+                                    "import"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "repositoryName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "<string>",
+                              "createdAt": "2026-10-21T21:07:58.000Z",
+                              "updatedAt": "2026-10-21T21:07:58.000Z",
+                              "uid": "35240-8f7f32e7-972f-4196-a4ec-72ccc8e7e211"
+                            }
+                          ],
+                          "createdAt": "2026-10-21T21:07:58.000Z",
+                          "updatedAt": "2026-10-21T21:07:58.000Z",
+                          "uid": "35240-c3b82f45-c89b-4815-9f20-052527fc658a"
+                        }
+                      ],
+                      "id": "fb497038-218a-4545-ae57-601f7024e5b2",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-fb497038-218a-4545-ae57-601f7024e5b2"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "9fe4dd70-4359-4544-9c2d-255d28d36a24",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-9fe4dd70-4359-4544-9c2d-255d28d36a24"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "List assets",
+                  "id": "2d17f6da-f018-45db-a585-0d7b5c47708b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration/assets?continuationToken=<string>&repository=<string>&newerThan=<long>&olderThan=<long>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration",
+                        "assets"
+                      ],
+                      "query": [
+                        {
+                          "description": "A token returned by a prior request. If present, the next page of results are returned",
+                          "key": "continuationToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Repository from which you would like to retrieve assets.",
+                          "key": "repository",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp",
+                          "key": "newerThan",
+                          "value": "<long>"
+                        },
+                        {
+                          "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp",
+                          "key": "olderThan",
+                          "value": "<long>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "26584b28-6a96-4aab-87e4-75e345e24be0",
+                      "name": "Successful Operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/assets?continuationToken=<string>&repository=<string>&newerThan=<long>&olderThan=<long>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A token returned by a prior request. If present, the next page of results are returned",
+                              "key": "continuationToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Repository from which you would like to retrieve assets.",
+                              "key": "repository",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp",
+                              "key": "newerThan",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp",
+                              "key": "olderThan",
+                              "value": "<long>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"continuationToken\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-26584b28-6a96-4aab-87e4-75e345e24be0"
+                    },
+                    {
+                      "id": "afdd1a94-82ba-4b7f-8a73-082d478e6449",
+                      "name": "Missing or invalid protocol version",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/assets?continuationToken=<string>&repository=<string>&newerThan=<long>&olderThan=<long>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A token returned by a prior request. If present, the next page of results are returned",
+                              "key": "continuationToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Repository from which you would like to retrieve assets.",
+                              "key": "repository",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp",
+                              "key": "newerThan",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp",
+                              "key": "olderThan",
+                              "value": "<long>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-afdd1a94-82ba-4b7f-8a73-082d478e6449"
+                    },
+                    {
+                      "id": "c79882ae-1eb5-488f-878d-346226ae0d4d",
+                      "name": "Insufficient permissions to list assets",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/assets?continuationToken=<string>&repository=<string>&newerThan=<long>&olderThan=<long>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A token returned by a prior request. If present, the next page of results are returned",
+                              "key": "continuationToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Repository from which you would like to retrieve assets.",
+                              "key": "repository",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp",
+                              "key": "newerThan",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp",
+                              "key": "olderThan",
+                              "value": "<long>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-c79882ae-1eb5-488f-878d-346226ae0d4d"
+                    },
+                    {
+                      "id": "134691a5-fa46-4142-8d0d-2dbd52a3a4b5",
+                      "name": "Parameter 'repository' is required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/assets?continuationToken=<string>&repository=<string>&newerThan=<long>&olderThan=<long>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "assets"
+                          ],
+                          "query": [
+                            {
+                              "description": "A token returned by a prior request. If present, the next page of results are returned",
+                              "key": "continuationToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Repository from which you would like to retrieve assets.",
+                              "key": "repository",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp",
+                              "key": "newerThan",
+                              "value": "<long>"
+                            },
+                            {
+                              "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp",
+                              "key": "olderThan",
+                              "value": "<long>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-134691a5-fa46-4142-8d0d-2dbd52a3a4b5"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-2d17f6da-f018-45db-a585-0d7b5c47708b"
                 }
               ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "d28f8655-2910-4ae4-b01b-2abb4c4abd78",
+              "createdAt": "2026-10-21T21:07:58.000Z",
+              "updatedAt": "2026-10-21T21:07:58.000Z",
+              "uid": "35240-d28f8655-2910-4ae4-b01b-2abb4c4abd78"
             },
             {
-              "id": "fe3c69ba-741b-4289-9f23-0b52f4660671",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "name": "cipher",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d8a8b202-c4fc-4e19-ad89-0fbb9e8cec05",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "name": "Clear migration cipher password",
+                  "id": "b1b62e85-093e-4a96-b211-7aa3c8840f8c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration/cipher",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration",
+                        "cipher"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "e2d7e3ef-64c2-460d-b412-7065a5030921",
+                      "name": "Cipher password cleared successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-e2d7e3ef-64c2-460d-b412-7065a5030921"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
+                    {
+                      "id": "bbe11c52-7206-4b1a-994a-1a331badffb2",
+                      "name": "Missing or invalid protocol version",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-bbe11c52-7206-4b1a-994a-1a331badffb2"
+                    },
+                    {
+                      "id": "220323ec-3729-456e-b60b-e97e8dda3e3c",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-220323ec-3729-456e-b60b-e97e8dda3e3c"
+                    },
+                    {
+                      "id": "2da2cf67-35c9-4a5e-98d4-7fde822d8bb2",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-2da2cf67-35c9-4a5e-98d4-7fde822d8bb2"
+                    },
+                    {
+                      "id": "4ba71b31-572f-4325-8cd2-2ebba3519e8a",
+                      "name": "Failed to clear cipher password",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-4ba71b31-572f-4325-8cd2-2ebba3519e8a"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-b1b62e85-093e-4a96-b211-7aa3c8840f8c"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Set migration cipher password for decrypting imported secrets",
+                  "id": "492123ca-d6a9-4b60-b410-6feeecf4bcb4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration/cipher",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration",
+                        "cipher"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "71e974d0-fccc-4921-9b16-267fbad622c6",
+                      "name": "Cipher password set successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-71e974d0-fccc-4921-9b16-267fbad622c6"
+                    },
+                    {
+                      "id": "ab94381f-5236-4a6e-a198-562f755e5164",
+                      "name": "Missing password or invalid protocol version",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-ab94381f-5236-4a6e-a198-562f755e5164"
+                    },
+                    {
+                      "id": "fbec325b-6dd9-4e84-8ced-38a1390cc765",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-fbec325b-6dd9-4e84-8ced-38a1390cc765"
+                    },
+                    {
+                      "id": "0c11ba46-5482-4f45-b851-620ca8a953cb",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-0c11ba46-5482-4f45-b851-620ca8a953cb"
+                    },
+                    {
+                      "id": "6186ed71-05eb-4e2f-8873-ffab81ae558d",
+                      "name": "Failed to set cipher password",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/cipher",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "cipher"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-6186ed71-05eb-4e2f-8873-ffab81ae558d"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-492123ca-d6a9-4b60-b410-6feeecf4bcb4"
                 }
               ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1cf380bf-bc3d-40a9-9b39-9076f581c7ee",
-          "name": "Apply instance configuration",
-          "request": {
-            "name": "Apply instance configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              "id": "fe2b52d9-8f97-4d7b-94a0-3fc471acfc32",
+              "createdAt": "2026-10-21T21:07:58.000Z",
+              "updatedAt": "2026-10-21T21:07:58.000Z",
+              "uid": "35240-fe2b52d9-8f97-4d7b-94a0-3fc471acfc32"
             },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
             {
-              "id": "67583ede-361a-4cbe-883d-ccabf7ec13fa",
-              "name": "Successful Operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
+              "name": "transfer-complete",
+              "item": [
+                {
+                  "name": "Receive transfer complete notification from migrator",
+                  "id": "1d057fcf-b2ad-48b5-9799-89b7b5736b29",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration/transfer-complete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration",
+                        "transfer-complete"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "48372bda-6207-4f39-a26b-df07e27260ca",
+                      "name": "Transfer complete notification received",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/transfer-complete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "transfer-complete"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-48372bda-6207-4f39-a26b-df07e27260ca"
+                    },
+                    {
+                      "id": "18ef1437-30d0-401a-944a-0b9e6c7d8031",
+                      "name": "Missing notification data, repository name, or invalid protocol version",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/transfer-complete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "transfer-complete"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-18ef1437-30d0-401a-944a-0b9e6c7d8031"
+                    },
+                    {
+                      "id": "b7b7e8a0-a222-47ec-8586-250b29f197ba",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/transfer-complete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "transfer-complete"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-b7b7e8a0-a222-47ec-8586-250b29f197ba"
+                    },
+                    {
+                      "id": "bd41683c-02f2-473b-916e-6820ac872f5f",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/transfer-complete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "transfer-complete"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-bd41683c-02f2-473b-916e-6820ac872f5f"
+                    },
+                    {
+                      "id": "dd2025cb-da65-4dd7-bc51-9d8e9fe8c64c",
+                      "name": "Failed to process notification",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "(Required) Migration protocol version (must be '1')",
+                            "key": "X-Nexus-Migration-Protocol-Version",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/configuration/transfer-complete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "configuration",
+                            "transfer-complete"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:07:58.000Z",
+                      "updatedAt": "2026-10-21T21:07:58.000Z",
+                      "uid": "35240-dd2025cb-da65-4dd7-bc51-9d8e9fe8c64c"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-1d057fcf-b2ad-48b5-9799-89b7b5736b29"
+                }
+              ],
+              "id": "f9d2ce9a-0fe1-4914-a014-cf8fdfb135ba",
+              "createdAt": "2026-10-21T21:07:58.000Z",
+              "updatedAt": "2026-10-21T21:07:58.000Z",
+              "uid": "35240-f9d2ce9a-0fe1-4914-a014-cf8fdfb135ba"
+            },
+            {
+              "name": "Export instance configuration",
+              "id": "fc2edfad-2c0a-463a-aae0-e5e57fe6b419",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
                     "description": "(Required) Migration protocol version (must be '1')",
                     "key": "X-Nexus-Migration-Protocol-Version",
                     "value": "<string>"
@@ -328,1864 +1710,524 @@
                     "value": "application/json"
                   }
                 ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/configuration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "configuration"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "a19174eb-1926-4984-83ff-0b1391d80444",
+                  "name": "Successful Operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-a19174eb-1926-4984-83ff-0b1391d80444"
+                },
+                {
+                  "id": "123edd09-317a-4d29-b321-c58edfb87210",
+                  "name": "Missing or invalid protocol version",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-123edd09-317a-4d29-b321-c58edfb87210"
+                },
+                {
+                  "id": "eedb43d1-7635-4749-851f-bcadcb52a030",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-eedb43d1-7635-4749-851f-bcadcb52a030"
+                },
+                {
+                  "id": "26d71e2b-f8ff-429f-ae2c-e7bb23ea0451",
+                  "name": "Insufficient permissions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-26d71e2b-f8ff-429f-ae2c-e7bb23ea0451"
+                }
+              ],
+              "createdAt": "2026-10-21T21:07:58.000Z",
+              "updatedAt": "2026-10-21T21:07:58.000Z",
+              "uid": "35240-fc2edfad-2c0a-463a-aae0-e5e57fe6b419"
+            },
+            {
+              "name": "Apply instance configuration",
+              "id": "82e76fef-1631-465a-bf98-70e5202b9db6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "PUT",
+                "header": [
+                  {
+                    "description": "(Required) Migration protocol version (must be '1')",
+                    "key": "X-Nexus-Migration-Protocol-Version",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"appliedConfigurations\": [\n    {\n      \"entity\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"APPLIED\"\n    },\n    {\n      \"entity\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"APPLIED\"\n    }\n  ],\n  \"failedConfigurations\": [\n    {\n      \"entity\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"APPLIED\"\n    },\n    {\n      \"entity\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"NOT_APPLIED\"\n    }\n  ],\n  \"notAppliedConfigurations\": [\n    {\n      \"entity\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"APPLIED\"\n    },\n    {\n      \"entity\": \"string\",\n      \"message\": \"string\",\n      \"status\": \"APPLIED\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "76110c7f-b056-4852-8186-c9b271bce810",
-              "name": "Invalid request or missing/invalid protocol version",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v1/configuration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "configuration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dcb99a8d-5735-40d7-9333-28d324582c7c",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "852dc86a-020d-4310-aac8-3ed4ae7c5128",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0593dbff-0e68-40aa-ac9e-0930358e7943",
-          "name": "List assets",
-          "request": {
-            "name": "List assets",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration",
-                "assets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "continuationToken",
-                  "value": "<string>",
-                  "description": "A token returned by a prior request. If present, the next page of results are returned"
-                },
-                {
-                  "disabled": false,
-                  "key": "repository",
-                  "value": "<string>",
-                  "description": "(Required) Repository from which you would like to retrieve assets."
-                },
-                {
-                  "disabled": false,
-                  "key": "newerThan",
-                  "value": "<long>",
-                  "description": "Unix timestamp (milliseconds since epoch). Return assets last updated after this timestamp"
-                },
-                {
-                  "disabled": false,
-                  "key": "olderThan",
-                  "value": "<long>",
-                  "description": "Unix timestamp (milliseconds since epoch). Return assets last updated before this timestamp"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c2bc7a42-0a67-4eac-aded-12c655136189",
-              "name": "Successful Operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "continuationToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "repository",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "newerThan",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "olderThan",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"continuationToken\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "977b3b4a-c969-4366-8e95-d3189158e28a",
-              "name": "Missing or invalid protocol version",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "continuationToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "repository",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "newerThan",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "olderThan",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6569b743-93de-4dc2-b149-7f557f485f12",
-              "name": "Insufficient permissions to list assets",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "continuationToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "repository",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "newerThan",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "olderThan",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "522f1951-08a7-4c18-b889-07e6bd1f54a7",
-              "name": "Parameter 'repository' is required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "continuationToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "repository",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "newerThan",
-                      "value": "<long>"
-                    },
-                    {
-                      "key": "olderThan",
-                      "value": "<long>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6e54783f-adc6-407e-8994-0dcbda977165",
-          "name": "Import assets to repository",
-          "request": {
-            "name": "Import assets to repository",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration",
-                "assets",
-                ":repositoryName",
-                "import"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "repositoryName",
-                  "description": "(Required) Repository name to import assets to"
-                }
-              ]
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "89499cb0-49df-4166-8cb7-ed65c13c057e",
-              "name": "Assets imported successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets",
-                    ":repositoryName",
-                    "import"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) Repository name to import assets to"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
                 }
-              ],
-              "body": "[\n  {\n    \"assetId\": \"string\",\n    \"componentId\": \"string\",\n    \"errorMessage\": \"string\",\n    \"importTimestamp\": \"1990-12-15T23:24:45.384Z\",\n    \"path\": \"string\",\n    \"repository\": \"string\",\n    \"status\": \"FAILED\",\n    \"warnings\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"assetId\": \"string\",\n    \"componentId\": \"string\",\n    \"errorMessage\": \"string\",\n    \"importTimestamp\": \"1965-04-10T12:56:33.480Z\",\n    \"path\": \"string\",\n    \"repository\": \"string\",\n    \"status\": \"SKIPPED_ALREADY_EXISTS\",\n    \"warnings\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "75265a53-047c-4719-864e-f8fb954f89bd",
-              "name": "Repository not found or missing/invalid protocol version",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets",
-                    ":repositoryName",
-                    "import"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) Repository name to import assets to"
+              },
+              "response": [
+                {
+                  "id": "98de0a2a-0167-48cd-941a-4bbab3e36889",
+                  "name": "Successful Operation",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "3225feab-cb9a-4a45-98f7-8bdcc37ea64f",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets",
-                    ":repositoryName",
-                    "import"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) Repository name to import assets to"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"appliedConfigurations\": [\n    {\n      \"entity\": \"<string>\",\n      \"message\": \"<string>\",\n      \"status\": \"FAILED\"\n    },\n    {\n      \"entity\": \"<string>\",\n      \"message\": \"<string>\",\n      \"status\": \"APPLIED\"\n    }\n  ],\n  \"failedConfigurations\": [\n    {\n      \"entity\": \"<string>\",\n      \"message\": \"<string>\",\n      \"status\": \"NOT_APPLIED\"\n    },\n    {\n      \"entity\": \"<string>\",\n      \"message\": \"<string>\",\n      \"status\": \"NOT_APPLIED\"\n    }\n  ],\n  \"notAppliedConfigurations\": [\n    {\n      \"entity\": \"<string>\",\n      \"message\": \"<string>\",\n      \"status\": \"NOT_APPLIED\"\n    },\n    {\n      \"entity\": \"<string>\",\n      \"message\": \"<string>\",\n      \"status\": \"NOT_APPLIED\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-98de0a2a-0167-48cd-941a-4bbab3e36889"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d61c3f1e-146e-4ed8-9d8f-4939fd521963",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets",
-                    ":repositoryName",
-                    "import"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "fbe9f2c3-421c-4b44-b0d2-8d5095983b23",
+                  "name": "Invalid request or missing/invalid protocol version",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) Repository name to import assets to"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-fbe9f2c3-421c-4b44-b0d2-8d5095983b23"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d7ee383b-4138-4768-a971-bc0161e4fc87",
-              "name": "Asset import failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "assets",
-                    ":repositoryName",
-                    "import"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "id": "2147616e-f387-44ab-b9b2-6617be340ed4",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) Repository name to import assets to"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-2147616e-f387-44ab-b9b2-6617be340ed4"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "4b4eb79e-2416-42a4-b5e7-30baf721858f",
+                  "name": "Insufficient permissions",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "(Required) Migration protocol version (must be '1')",
+                        "key": "X-Nexus-Migration-Protocol-Version",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configurationXOs\": [\n    {\n      \"configurationTypeId\": \"<string>\"\n    },\n    {\n      \"configurationTypeId\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/configuration",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "configuration"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-10-21T21:07:58.000Z",
+                  "updatedAt": "2026-10-21T21:07:58.000Z",
+                  "uid": "35240-4b4eb79e-2416-42a4-b5e7-30baf721858f"
                 }
               ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T21:07:58.000Z",
+              "updatedAt": "2026-10-21T21:07:58.000Z",
+              "uid": "35240-82e76fef-1631-465a-bf98-70e5202b9db6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "170c0d6d-94fa-4c14-a9aa-bb3cd75ada7e",
-          "name": "Clear migration cipher password",
-          "request": {
-            "name": "Clear migration cipher password",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration",
-                "cipher"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "f0f6c3bc-0282-4d03-bc34-08f433f1676a",
-              "name": "Cipher password cleared successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f9651239-507a-4c76-b553-16c5573457fb",
-              "name": "Missing or invalid protocol version",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "8be26b85-3822-4074-ad50-c15f49c98f77",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ce81484c-72a5-419f-8e9b-98a04a2dd249",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "366bf476-91c1-4bff-915a-3e0ed021b165",
-              "name": "Failed to clear cipher password",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e8d578e5-11c0-4f45-b7ee-5294f8a8d1ce",
-          "name": "Set migration cipher password for decrypting imported secrets",
-          "request": {
-            "name": "Set migration cipher password for decrypting imported secrets",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration",
-                "cipher"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<string>"
-            }
-          },
-          "response": [
-            {
-              "id": "b3b20420-e77e-41e6-a1ae-748a44c15086",
-              "name": "Cipher password set successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4a2d7f5a-8ad1-43db-bd3f-6e61b00b7f3a",
-              "name": "Missing password or invalid protocol version",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "86ecea72-ec44-4110-8c6a-a89a4b81eabf",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "612e10e3-8121-47b1-8c43-d37aa9be71c2",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cd1324a0-a879-4f3c-ae71-802f1d0855f1",
-              "name": "Failed to set cipher password",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "cipher"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5d5f99d7-6e50-4724-aeab-c81e4379ffee",
-          "name": "Receive transfer complete notification from migrator",
-          "request": {
-            "name": "Receive transfer complete notification from migrator",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "configuration",
-                "transfer-complete"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "disabled": false,
-                "description": "(Required) Migration protocol version (must be '1')",
-                "key": "X-Nexus-Migration-Protocol-Version",
-                "value": "<string>"
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "73438846-8a17-451b-95d9-62e33349df5b",
-              "name": "Transfer complete notification received",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "transfer-complete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9b93c750-60a4-4218-83c1-e96cea4a9197",
-              "name": "Missing notification data, repository name, or invalid protocol version",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "transfer-complete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2273cc4e-bba0-4c0f-a176-5437770c160b",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "transfer-complete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a4db43d9-a0c8-4dea-ae54-f825bd599f62",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "transfer-complete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ec91b489-ad23-4636-9ed8-c2c40d60ffb5",
-              "name": "Failed to process notification",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "configuration",
-                    "transfer-complete"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "(Required) Migration protocol version (must be '1')",
-                    "key": "X-Nexus-Migration-Protocol-Version",
-                    "value": "<string>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"failedAssetTransferCount\": \"<long>\",\n  \"message\": \"<string>\",\n  \"repositoryName\": \"<string>\",\n  \"skippedAssetTransferCount\": \"<long>\",\n  \"successful\": \"<boolean>\",\n  \"successfulAssetTransferCount\": \"<long>\",\n  \"timestamp\": \"<long>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "\"string\"",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "fbccf313-a9c8-46bc-98a5-7a73a634a892",
+          "createdAt": "2026-10-21T21:07:58.000Z",
+          "updatedAt": "2026-10-21T21:07:58.000Z",
+          "uid": "35240-fbccf313-a9c8-46bc-98a5-7a73a634a892"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "1eccacaa-54c0-4061-9ff9-8254bdc1a17e",
+      "createdAt": "2026-10-21T21:07:58.000Z",
+      "updatedAt": "2026-10-21T21:07:58.000Z",
+      "uid": "35240-1eccacaa-54c0-4061-9ff9-8254bdc1a17e"
     }
   ],
   "auth": {
@@ -2193,21 +2235,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "43517415-3b0f-42eb-b4e1-b3bc52a2c544",
-    "name": "Sonatype Nexus Repository Manager assets Instance configuration API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

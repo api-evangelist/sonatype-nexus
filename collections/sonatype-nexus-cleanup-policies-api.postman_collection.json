@@ -1,717 +1,697 @@
 {
+  "info": {
+    "_postman_id": "781ea8b6-c678-4c0e-867d-556e3ffa2e7e",
+    "name": "Sonatype Nexus Repository Manager Cleanup policies API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:07:12.000Z",
+    "updatedAt": "2026-10-21T21:07:12.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-781ea8b6-c678-4c0e-867d-556e3ffa2e7e"
+  },
   "item": [
     {
-      "id": "bcc3143e-7ee5-461e-bd6e-77fd94945845",
-      "name": "Cleanup policies",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "b7623e62-67e7-42ee-97c6-787e1b5b888c",
-          "name": "Get a list of existing policies",
-          "request": {
-            "name": "Get a list of existing policies",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "cleanup-policies"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "cleanup-policies",
+          "item": [
             {
-              "id": "ae05e88f-5912-4fc8-a512-2034f2008c2f",
-              "name": "The list of existing policies",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "Delete cleanup policy",
+                  "id": "95a25888-ab64-44f0-8cd2-b38464eb1a62",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c9d9f412-6eed-4bfe-b643-4c1445706b09",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "d76d012d-5d8b-40e8-84d6-d646aa816456",
+                      "name": "Given policy successfully deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/cleanup-policies/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "cleanup-policies",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:13.000Z",
+                      "updatedAt": "2026-10-21T21:07:13.000Z",
+                      "uid": "35240-d76d012d-5d8b-40e8-84d6-d646aa816456"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
+                    {
+                      "id": "4ed94775-0882-4400-af08-485c9ae64491",
+                      "name": "The policy with the given name not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/cleanup-policies/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "cleanup-policies",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:13.000Z",
+                      "updatedAt": "2026-10-21T21:07:13.000Z",
+                      "uid": "35240-4ed94775-0882-4400-af08-485c9ae64491"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-95a25888-ab64-44f0-8cd2-b38464eb1a62"
+                },
+                {
+                  "name": "Get a policy by name",
+                  "id": "e2e8893f-5939-4c24-ad99-1a929c90b591",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c3e6f77a-3643-4413-a247-d59a8208da05",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "35f60d89-7791-47b1-8f97-8008b8d6fa8f",
+                      "name": "Policy if exists",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/cleanup-policies/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "cleanup-policies",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:13.000Z",
+                      "updatedAt": "2026-10-21T21:07:13.000Z",
+                      "uid": "35240-35f60d89-7791-47b1-8f97-8008b8d6fa8f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-e2e8893f-5939-4c24-ad99-1a929c90b591"
+                }
+              ],
+              "id": "eb305784-43ab-4e36-b2d0-7bf924713a54",
+              "createdAt": "2026-10-21T21:07:13.000Z",
+              "updatedAt": "2026-10-21T21:07:13.000Z",
+              "uid": "35240-eb305784-43ab-4e36-b2d0-7bf924713a54"
+            },
+            {
+              "name": "{policyName}",
+              "item": [
+                {
+                  "name": "Update existing policy",
+                  "id": "90f9938e-a45b-41f1-909d-b4bb096eec58",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies/:policyName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies",
+                        ":policyName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f2aaa854-dba8-4d45-8a97-10a697bc735b",
+                          "key": "policyName",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6033cc43-3810-4872-abee-74559302e28d",
+                      "name": "Policy was successfully updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/cleanup-policies/:policyName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "cleanup-policies",
+                            ":policyName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "policyName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:13.000Z",
+                      "updatedAt": "2026-10-21T21:07:13.000Z",
+                      "uid": "35240-6033cc43-3810-4872-abee-74559302e28d"
+                    },
+                    {
+                      "id": "fbfd5fe0-e5f3-49c6-8060-8df8b93fc282",
+                      "name": "Given payload has invalid data",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/cleanup-policies/:policyName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "cleanup-policies",
+                            ":policyName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "policyName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:13.000Z",
+                      "updatedAt": "2026-10-21T21:07:13.000Z",
+                      "uid": "35240-fbfd5fe0-e5f3-49c6-8060-8df8b93fc282"
+                    },
+                    {
+                      "id": "8d036b82-7ffd-4f42-9609-43135f9f55df",
+                      "name": "Given policy name does not exist",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/cleanup-policies/:policyName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "cleanup-policies",
+                            ":policyName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "policyName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:13.000Z",
+                      "updatedAt": "2026-10-21T21:07:13.000Z",
+                      "uid": "35240-8d036b82-7ffd-4f42-9609-43135f9f55df"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-90f9938e-a45b-41f1-909d-b4bb096eec58"
+                }
+              ],
+              "id": "90131d1d-fa73-4205-b268-64a16e9ac352",
+              "createdAt": "2026-10-21T21:07:13.000Z",
+              "updatedAt": "2026-10-21T21:07:13.000Z",
+              "uid": "35240-90131d1d-fa73-4205-b268-64a16e9ac352"
+            },
+            {
+              "name": "Get a list of existing policies",
+              "id": "6879a08b-aa20-448d-98a6-6a966f9c2078",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8b19cfee-93a1-42e0-b454-45adac1abd44",
-          "name": "Create a new policy",
-          "request": {
-            "name": "Create a new policy",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "cleanup-policies"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "c9378110-4d7d-4a3e-a1c1-cab4b0b8472d",
-              "name": "Policy was successfully created",
-              "originalRequest": {
+                "header": [],
                 "url": {
+                  "raw": "{{baseUrl}}/v1/cleanup-policies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "cleanup-policies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "e51ed076-11e9-4ee2-bbfa-922493810c04",
+                  "name": "The list of existing policies",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-e51ed076-11e9-4ee2-bbfa-922493810c04"
+                }
+              ],
+              "createdAt": "2026-10-21T21:07:13.000Z",
+              "updatedAt": "2026-10-21T21:07:13.000Z",
+              "uid": "35240-6879a08b-aa20-448d-98a6-6a966f9c2078"
+            },
+            {
+              "name": "Create a new policy",
+              "id": "bda5ab4c-862d-4bc3-8e75-d1dc32ea855a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e0aa1e4a-9250-4a6b-bc3c-62de053264bf",
-              "name": "Given payload has invalid data",
-              "originalRequest": {
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v1/cleanup-policies",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "cleanup-policies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "38b1f78c-bbd5-40a1-bf3b-85c75b1e3f82",
-              "name": "Given policy name already exists",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "id": "55940dd6-76d3-4fdd-80a2-5b178320abf4",
+                  "name": "Policy was successfully created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies"
+                      ]
                     }
-                  }
-                }
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-55940dd6-76d3-4fdd-80a2-5b178320abf4"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "6299fc69-3857-4dc1-b059-3699d53efb29",
+                  "name": "Given payload has invalid data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-6299fc69-3857-4dc1-b059-3699d53efb29"
+                },
+                {
+                  "id": "c92005e0-0982-4ca0-8510-03c5b32ac8c0",
+                  "name": "Given policy name already exists",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"vI-\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"PRERELEASES\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/cleanup-policies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "cleanup-policies"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:13.000Z",
+                  "updatedAt": "2026-10-21T21:07:13.000Z",
+                  "uid": "35240-c92005e0-0982-4ca0-8510-03c5b32ac8c0"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T21:07:13.000Z",
+              "updatedAt": "2026-10-21T21:07:13.000Z",
+              "uid": "35240-bda5ab4c-862d-4bc3-8e75-d1dc32ea855a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a962f458-770c-4886-8ad1-c1a59cd91343",
-          "name": "Delete cleanup policy",
-          "request": {
-            "name": "Delete cleanup policy",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "cleanup-policies",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d5a7a558-e156-4d37-83bf-d2f4b29b9b91",
-              "name": "Given policy successfully deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "16b7ed13-086c-404f-a9c2-8cb815076cbf",
-              "name": "The policy with the given name not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9fa7617f-5627-495b-bc49-5a77977a1f5f",
-          "name": "Get a policy by name",
-          "request": {
-            "name": "Get a policy by name",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "cleanup-policies",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "ddcdc969-4297-4605-8950-7c0d93bbef9d",
-              "name": "Policy if exists",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "22225db4-2a2a-466a-83c4-3f57a5750a04",
-          "name": "Update existing policy",
-          "request": {
-            "name": "Update existing policy",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "cleanup-policies",
-                ":policyName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "policyName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "5d2f46e3-48cc-4b51-97a9-e87eea5d6efd",
-              "name": "Policy was successfully updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies",
-                    ":policyName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "policyName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c858eebc-92e4-4553-96ff-7cbf82312890",
-              "name": "Given payload has invalid data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies",
-                    ":policyName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "policyName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "df2466cb-d4e5-4b5e-bfcd-1004841476ad",
-              "name": "Given policy name does not exist",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "cleanup-policies",
-                    ":policyName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "policyName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"format\": \"<string>\",\n  \"name\": \"<string>\",\n  \"criteriaAssetRegex\": \"<string>\",\n  \"criteriaLastBlobUpdated\": \"<long>\",\n  \"criteriaLastDownloaded\": \"<long>\",\n  \"criteriaReleaseType\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"retain\": \"<integer>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "9cfc019d-a0f4-46b5-a2a5-5f574218897f",
+          "createdAt": "2026-10-21T21:07:13.000Z",
+          "updatedAt": "2026-10-21T21:07:13.000Z",
+          "uid": "35240-9cfc019d-a0f4-46b5-a2a5-5f574218897f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "2925806f-ea82-466d-89db-8d999d973475",
+      "createdAt": "2026-10-21T21:07:13.000Z",
+      "updatedAt": "2026-10-21T21:07:13.000Z",
+      "uid": "35240-2925806f-ea82-466d-89db-8d999d973475"
     }
   ],
   "auth": {
@@ -719,21 +699,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "61581cb1-38f0-4254-ab4a-3d0aaaa610d3",
-    "name": "Sonatype Nexus Repository Manager assets Cleanup policies API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

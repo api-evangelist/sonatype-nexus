@@ -1,596 +1,614 @@
 {
+  "info": {
+    "_postman_id": "74fa6b99-92a0-49f4-9f22-84f6a753e514",
+    "name": "Sonatype Nexus Repository Manager Security management: user\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:11:01.000Z",
+    "updatedAt": "2026-10-21T21:11:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-74fa6b99-92a0-49f4-9f22-84f6a753e514"
+  },
   "item": [
     {
-      "id": "5ebc8677-5dd6-4a62-95dd-6ac657b7122a",
-      "name": "Security management: user tokens",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "dc2cd1e6-b09f-41d2-9ddf-1e71cca7f2e9",
-          "name": "reset All User Tokens",
-          "request": {
-            "name": "reset All User Tokens",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "user-tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "be46299a-afb4-4a95-8a7d-6a08dcba5062",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
+              "name": "user-tokens",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f6322ee2-6175-4528-8d9b-f12d28a0de97",
-          "name": "Show if the user token capability is enabled or not",
-          "request": {
-            "name": "Show if the user token capability is enabled or not",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "user-tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a92a0ed3-c713-4d5e-833e-a46232126bb6",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens"
+                  "name": "tokens",
+                  "item": [
+                    {
+                      "name": "List all user tokens",
+                      "id": "cb06847a-f501-4980-95f5-6539c2eae79b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/user-tokens/tokens?realm=<string>&userId=<string>&includeExpired=<boolean>&skip=<integer>&limit=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "user-tokens",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "description": "The realm of the user (optional for cloud, required for self-hosted)",
+                              "key": "realm",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by user ID (optional)",
+                              "key": "userId",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Include expired tokens (default: false)",
+                              "key": "includeExpired",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "Number of items to skip for pagination (default: 0)",
+                              "key": "skip",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Maximum number of items to return (default: 25, max: 100)",
+                              "key": "limit",
+                              "value": "<integer>"
+                            }
+                          ]
+                        },
+                        "description": "Lists all user tokens with optional filtering and pagination. Returns metadata only, never the passCode."
+                      },
+                      "response": [
+                        {
+                          "id": "3df9a836-0d24-42c8-a0bf-0d969ab02e2c",
+                          "name": "User tokens retrieved successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/user-tokens/tokens?realm=<string>&userId=<string>&includeExpired=<boolean>&skip=<integer>&limit=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "user-tokens",
+                                "tokens"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The realm of the user (optional for cloud, required for self-hosted)",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by user ID (optional)",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include expired tokens (default: false)",
+                                  "key": "includeExpired",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Number of items to skip for pagination (default: 0)",
+                                  "key": "skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of items to return (default: 25, max: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"continuationToken\": \"<string>\",\n  \"items\": [\n    {\n      \"created\": \"<dateTime>\",\n      \"nameCode\": \"<string>\",\n      \"createdByRealm\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"expires\": \"<dateTime>\",\n      \"isExpired\": \"<boolean>\",\n      \"passCode\": \"<string>\",\n      \"realm\": \"<string>\",\n      \"userId\": \"<string>\"\n    },\n    {\n      \"created\": \"<dateTime>\",\n      \"nameCode\": \"<string>\",\n      \"createdByRealm\": \"<string>\",\n      \"createdByUserId\": \"<string>\",\n      \"expires\": \"<dateTime>\",\n      \"isExpired\": \"<boolean>\",\n      \"passCode\": \"<string>\",\n      \"realm\": \"<string>\",\n      \"userId\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-10-21T21:11:01.000Z",
+                          "updatedAt": "2026-10-21T21:11:01.000Z",
+                          "uid": "35240-3df9a836-0d24-42c8-a0bf-0d969ab02e2c"
+                        },
+                        {
+                          "id": "a716f407-4f41-4b4f-9543-2a56bd935ffa",
+                          "name": "Invalid request parameters. Check filter values and pagination settings.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/user-tokens/tokens?realm=<string>&userId=<string>&includeExpired=<boolean>&skip=<integer>&limit=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "user-tokens",
+                                "tokens"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The realm of the user (optional for cloud, required for self-hosted)",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by user ID (optional)",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include expired tokens (default: false)",
+                                  "key": "includeExpired",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Number of items to skip for pagination (default: 0)",
+                                  "key": "skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of items to return (default: 25, max: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:01.000Z",
+                          "updatedAt": "2026-10-21T21:11:01.000Z",
+                          "uid": "35240-a716f407-4f41-4b4f-9543-2a56bd935ffa"
+                        },
+                        {
+                          "id": "8f50c12e-db1b-49a5-8f58-6e6870337c52",
+                          "name": "Insufficient privileges to view or audit user tokens.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/user-tokens/tokens?realm=<string>&userId=<string>&includeExpired=<boolean>&skip=<integer>&limit=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "user-tokens",
+                                "tokens"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The realm of the user (optional for cloud, required for self-hosted)",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by user ID (optional)",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include expired tokens (default: false)",
+                                  "key": "includeExpired",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Number of items to skip for pagination (default: 0)",
+                                  "key": "skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of items to return (default: 25, max: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:01.000Z",
+                          "updatedAt": "2026-10-21T21:11:01.000Z",
+                          "uid": "35240-8f50c12e-db1b-49a5-8f58-6e6870337c52"
+                        },
+                        {
+                          "id": "9d4ea67b-e087-4f98-b8f7-fc3ddb0cfb1b",
+                          "name": "Unexpected server error. Please try again later.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/user-tokens/tokens?realm=<string>&userId=<string>&includeExpired=<boolean>&skip=<integer>&limit=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "user-tokens",
+                                "tokens"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The realm of the user (optional for cloud, required for self-hosted)",
+                                  "key": "realm",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Filter by user ID (optional)",
+                                  "key": "userId",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Include expired tokens (default: false)",
+                                  "key": "includeExpired",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "Number of items to skip for pagination (default: 0)",
+                                  "key": "skip",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Maximum number of items to return (default: 25, max: 100)",
+                                  "key": "limit",
+                                  "value": "<integer>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:01.000Z",
+                          "updatedAt": "2026-10-21T21:11:01.000Z",
+                          "uid": "35240-9d4ea67b-e087-4f98-b8f7-fc3ddb0cfb1b"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:11:01.000Z",
+                      "updatedAt": "2026-10-21T21:11:01.000Z",
+                      "uid": "35240-cb06847a-f501-4980-95f5-6539c2eae79b"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  "id": "48982a56-05ce-403a-b883-8936afa420b5",
+                  "createdAt": "2026-10-21T21:11:01.000Z",
+                  "updatedAt": "2026-10-21T21:11:01.000Z",
+                  "uid": "35240-48982a56-05ce-403a-b883-8936afa420b5"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                {
+                  "name": "Reset all user tokens",
+                  "id": "3d408443-9d8c-4bc8-a5de-af026565600f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"enabled\": false,\n  \"expirationDays\": 30,\n  \"expirationEnabled\": false,\n  \"protectContent\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9f5384ee-aa8e-4b3c-a302-36c4c601c1a8",
-          "name": "set Service Status",
-          "request": {
-            "name": "set Service Status",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "user-tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": \"<integer>\",\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "511bda89-cae7-4465-8496-8e2b161ef21a",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/user-tokens",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "user-tokens"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": 30,\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": 30,\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e90f6491-241d-42b2-9b97-e043e3a41f22",
-          "name": "List all user tokens",
-          "request": {
-            "name": "List all user tokens",
-            "description": {
-              "content": "Lists all user tokens with optional filtering and pagination. Returns metadata only, never the passCode.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "user-tokens",
-                "tokens"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "realm",
-                  "value": "<string>",
-                  "description": "The realm of the user (optional for cloud, required for self-hosted)"
-                },
-                {
-                  "disabled": false,
-                  "key": "userId",
-                  "value": "<string>",
-                  "description": "Filter by user ID (optional)"
-                },
-                {
-                  "disabled": false,
-                  "key": "includeExpired",
-                  "value": "<boolean>",
-                  "description": "Include expired tokens (default: false)"
-                },
-                {
-                  "disabled": false,
-                  "key": "skip",
-                  "value": "<integer>",
-                  "description": "Number of items to skip for pagination (default: 0)"
-                },
-                {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "<integer>",
-                  "description": "Maximum number of items to return (default: 25, max: 100)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "1b28bbab-7d5b-4af5-9db3-3b368b6e9f9b",
-              "name": "User tokens retrieved successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "response": [
                     {
-                      "key": "realm",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "includeExpired",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "skip",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
+                      "id": "111bbb9a-eb34-4ce7-9ebe-8a897585adaf",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/user-tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "user-tokens"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:11:01.000Z",
+                      "updatedAt": "2026-10-21T21:11:01.000Z",
+                      "uid": "35240-111bbb9a-eb34-4ce7-9ebe-8a897585adaf"
                     }
                   ],
-                  "variable": []
+                  "createdAt": "2026-10-21T21:11:01.000Z",
+                  "updatedAt": "2026-10-21T21:11:01.000Z",
+                  "uid": "35240-3d408443-9d8c-4bc8-a5de-af026565600f"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                {
+                  "name": "Show if the user token capability is enabled or not",
+                  "id": "f977604d-549c-4f7d-8d89-e6c7b5679006",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"continuationToken\": \"string\",\n  \"items\": [\n    {\n      \"created\": \"1985-10-31T04:59:39.607Z\",\n      \"nameCode\": \"string\",\n      \"createdByRealm\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"expires\": \"1952-04-13T12:56:10.200Z\",\n      \"isExpired\": true,\n      \"passCode\": \"string\",\n      \"realm\": \"string\",\n      \"userId\": \"string\"\n    },\n    {\n      \"created\": \"1996-12-15T07:20:27.228Z\",\n      \"nameCode\": \"string\",\n      \"createdByRealm\": \"string\",\n      \"createdByUserId\": \"string\",\n      \"expires\": \"1971-02-06T23:50:05.930Z\",\n      \"isExpired\": true,\n      \"passCode\": \"string\",\n      \"realm\": \"string\",\n      \"userId\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1bdee088-b5d3-488d-b56d-5fbfdff2e824",
-              "name": "Invalid request parameters. Check filter values and pagination settings.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/user-tokens",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "user-tokens"
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "realm",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "includeExpired",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "skip",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
+                      "id": "5ab0d35b-1c04-4907-94f6-98bfcf86afa6",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/user-tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "user-tokens"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": \"<integer>\",\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T21:11:01.000Z",
+                      "updatedAt": "2026-10-21T21:11:01.000Z",
+                      "uid": "35240-5ab0d35b-1c04-4907-94f6-98bfcf86afa6"
                     }
                   ],
-                  "variable": []
+                  "createdAt": "2026-10-21T21:11:01.000Z",
+                  "updatedAt": "2026-10-21T21:11:01.000Z",
+                  "uid": "35240-f977604d-549c-4f7d-8d89-e6c7b5679006"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "e41a7232-df4c-4d9a-b8ef-7e5a6fc43fb7",
-              "name": "Insufficient privileges to view or audit user tokens.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "realm",
-                      "value": "<string>"
+                  "name": "Set service status",
+                  "id": "462101ae-1003-491b-b7d0-e46c9b1f902b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": \"<integer>\",\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/user-tokens",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "user-tokens"
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "includeExpired",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "skip",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
+                      "id": "1cda9729-be87-4a99-a00c-a5a77cd08a33",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": \"<integer>\",\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/user-tokens",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "user-tokens"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"enabled\": \"<boolean>\",\n  \"expirationDays\": \"<integer>\",\n  \"expirationEnabled\": \"<boolean>\",\n  \"protectContent\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T21:11:01.000Z",
+                      "updatedAt": "2026-10-21T21:11:01.000Z",
+                      "uid": "35240-1cda9729-be87-4a99-a00c-a5a77cd08a33"
                     }
                   ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "createdAt": "2026-10-21T21:11:01.000Z",
+                  "updatedAt": "2026-10-21T21:11:01.000Z",
+                  "uid": "35240-462101ae-1003-491b-b7d0-e46c9b1f902b"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b3eb4785-e8a1-456d-a14d-6a1120ec471c",
-              "name": "Unexpected server error. Please try again later.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-tokens",
-                    "tokens"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "realm",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "userId",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "includeExpired",
-                      "value": "<boolean>"
-                    },
-                    {
-                      "key": "skip",
-                      "value": "<integer>"
-                    },
-                    {
-                      "key": "limit",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "f9b692b6-92e3-4979-9849-ddceebfdf055",
+              "createdAt": "2026-10-21T21:11:01.000Z",
+              "updatedAt": "2026-10-21T21:11:01.000Z",
+              "uid": "35240-f9b692b6-92e3-4979-9849-ddceebfdf055"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "3990f785-4ab7-425a-bb03-2a597933193e",
+          "createdAt": "2026-10-21T21:11:01.000Z",
+          "updatedAt": "2026-10-21T21:11:01.000Z",
+          "uid": "35240-3990f785-4ab7-425a-bb03-2a597933193e"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "f5faca73-ae0c-4e2b-aa2f-b1e82ce7c13b",
+      "createdAt": "2026-10-21T21:11:01.000Z",
+      "updatedAt": "2026-10-21T21:11:01.000Z",
+      "uid": "35240-f5faca73-ae0c-4e2b-aa2f-b1e82ce7c13b"
     }
   ],
   "auth": {
@@ -598,21 +616,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "6aaf3f9c-5168-40aa-b6d3-e124bc6b76e9",
-    "name": "Sonatype Nexus Repository Manager assets Security management: user tokens API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

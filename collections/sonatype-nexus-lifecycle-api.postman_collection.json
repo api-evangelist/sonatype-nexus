@@ -1,269 +1,285 @@
 {
+  "info": {
+    "_postman_id": "df03af65-a882-4192-a399-2fcd4821c3b4",
+    "name": "Sonatype Nexus Repository Manager Lifecycle API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:08:06.000Z",
+    "updatedAt": "2026-10-21T21:08:06.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-df03af65-a882-4192-a399-2fcd4821c3b4"
+  },
   "item": [
     {
-      "id": "d4a71d88-3f17-4f2d-992d-d66ed3e1050c",
-      "name": "Lifecycle",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "fd1b829b-00d6-4596-90ca-8f94952b2b47",
-          "name": "Bounce lifecycle phase",
-          "request": {
-            "name": "Bounce lifecycle phase",
-            "description": {
-              "content": "Re-runs all phases from the given phase to the current phase",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "lifecycle",
-                "bounce"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<string>"
-            }
-          },
-          "response": [
+          "name": "lifecycle",
+          "item": [
             {
-              "id": "871162ed-d320-4676-9b28-35c6adb55eae",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "lifecycle",
-                    "bounce"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
+              "name": "bounce",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b93f10d8-3fa3-41a0-8903-82abf45060c7",
-          "name": "Get current lifecycle phase",
-          "request": {
-            "name": "Get current lifecycle phase",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "lifecycle",
-                "phase"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "text/plain"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9efc807f-ea2f-4a70-86f6-8c010202db94",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "lifecycle",
-                    "phase"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "name": "Bounce lifecycle phase",
+                  "id": "9ec633b2-d38b-4783-ba11-9df200ffd0af",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "text/plain"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "string",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d33f5401-a8f8-4e2b-b9f1-a4c3aef86c12",
-          "name": "Move to new lifecycle phase",
-          "request": {
-            "name": "Move to new lifecycle phase",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "lifecycle",
-                "phase"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "text/plain"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<string>"
-            }
-          },
-          "response": [
-            {
-              "id": "693b38f6-e77c-4dde-8438-51b2ede9c195",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "lifecycle",
-                    "phase"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/lifecycle/bounce",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "lifecycle",
+                        "bounce"
+                      ]
+                    },
+                    "description": "Re-runs all phases from the given phase to the current phase"
+                  },
+                  "response": [
+                    {
+                      "id": "02c1e7e6-1088-448e-935e-3f0cc09bec5d",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/lifecycle/bounce",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "lifecycle",
+                            "bounce"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:07.000Z",
+                      "updatedAt": "2026-10-21T21:08:07.000Z",
+                      "uid": "35240-02c1e7e6-1088-448e-935e-3f0cc09bec5d"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:07.000Z",
+                  "updatedAt": "2026-10-21T21:08:07.000Z",
+                  "uid": "35240-9ec633b2-d38b-4783-ba11-9df200ffd0af"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "2bae798e-32b1-4000-bec0-0ab45ca8f562",
+              "createdAt": "2026-10-21T21:08:07.000Z",
+              "updatedAt": "2026-10-21T21:08:07.000Z",
+              "uid": "35240-2bae798e-32b1-4000-bec0-0ab45ca8f562"
+            },
+            {
+              "name": "phase",
+              "item": [
+                {
+                  "name": "Get current lifecycle phase",
+                  "id": "3c6bda96-37c2-40a7-a756-56c2e082d937",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/lifecycle/phase",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "lifecycle",
+                        "phase"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4e5d796d-8f37-437a-a643-5d99090660c4",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/lifecycle/phase",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "lifecycle",
+                            "phase"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-10-21T21:08:07.000Z",
+                      "updatedAt": "2026-10-21T21:08:07.000Z",
+                      "uid": "35240-4e5d796d-8f37-437a-a643-5d99090660c4"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:07.000Z",
+                  "updatedAt": "2026-10-21T21:08:07.000Z",
+                  "uid": "35240-3c6bda96-37c2-40a7-a756-56c2e082d937"
+                },
+                {
+                  "name": "Move to new lifecycle phase",
+                  "id": "d444b958-f528-4ca3-9ada-719931aef65d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/lifecycle/phase",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "lifecycle",
+                        "phase"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "03875e3d-093b-4626-96e9-83ccbf226eed",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/lifecycle/phase",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "lifecycle",
+                            "phase"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:07.000Z",
+                      "updatedAt": "2026-10-21T21:08:07.000Z",
+                      "uid": "35240-03875e3d-093b-4626-96e9-83ccbf226eed"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:07.000Z",
+                  "updatedAt": "2026-10-21T21:08:07.000Z",
+                  "uid": "35240-d444b958-f528-4ca3-9ada-719931aef65d"
+                }
+              ],
+              "id": "faa4d050-6513-4a43-8e23-368c92b7266b",
+              "createdAt": "2026-10-21T21:08:07.000Z",
+              "updatedAt": "2026-10-21T21:08:07.000Z",
+              "uid": "35240-faa4d050-6513-4a43-8e23-368c92b7266b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "7adfda91-cdbb-48ae-b458-bc322a5e0e6f",
+          "createdAt": "2026-10-21T21:08:07.000Z",
+          "updatedAt": "2026-10-21T21:08:07.000Z",
+          "uid": "35240-7adfda91-cdbb-48ae-b458-bc322a5e0e6f"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "e4be0fbf-5475-4003-8759-ee413b4f2816",
+      "createdAt": "2026-10-21T21:08:07.000Z",
+      "updatedAt": "2026-10-21T21:08:07.000Z",
+      "uid": "35240-e4be0fbf-5475-4003-8759-ee413b4f2816"
     }
   ],
   "auth": {
@@ -271,21 +287,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1312900e-b6aa-4c81-a9e7-9ed1093f31f6",
-    "name": "Sonatype Nexus Repository Manager assets Lifecycle API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

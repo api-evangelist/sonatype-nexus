@@ -1,0 +1,332 @@
+{
+  "info": {
+    "_postman_id": "ca9d2731-c628-4f9c-b328-1186d978b293",
+    "name": "Sonatype Nexus Repository Manager Data Store API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:11:58.000Z",
+    "updatedAt": "2026-10-21T21:11:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ca9d2731-c628-4f9c-b328-1186d978b293"
+  },
+  "item": [
+    {
+      "name": "beta",
+      "item": [
+        {
+          "name": "data-store",
+          "item": [
+            {
+              "name": "Get the data store",
+              "id": "2b8f544a-d182-446c-9fe5-08a6386969ab",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/beta/data-store",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "beta",
+                    "data-store"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "838c58e5-6ef3-4fbe-a765-4c7f3f3ab473",
+                  "name": "Data Store configuration returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/beta/data-store",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "beta",
+                        "data-store"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:59.000Z",
+                  "updatedAt": "2026-10-21T21:11:59.000Z",
+                  "uid": "35240-838c58e5-6ef3-4fbe-a765-4c7f3f3ab473"
+                },
+                {
+                  "id": "45336a65-731e-4a77-a72b-6c671d53ce77",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/beta/data-store",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "beta",
+                        "data-store"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:59.000Z",
+                  "updatedAt": "2026-10-21T21:11:59.000Z",
+                  "uid": "35240-45336a65-731e-4a77-a72b-6c671d53ce77"
+                }
+              ],
+              "createdAt": "2026-10-21T21:11:59.000Z",
+              "updatedAt": "2026-10-21T21:11:59.000Z",
+              "uid": "35240-2b8f544a-d182-446c-9fe5-08a6386969ab"
+            },
+            {
+              "name": "Update the data store",
+              "id": "5960f095-087a-4fb5-a626-8da595f93168",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jdbcUrl\": \"<string>\",\n  \"advanced\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"source\": \"local\",\n  \"type\": \"jdbc\",\n  \"username\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/beta/data-store",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "beta",
+                    "data-store"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "46ecbb1f-afb1-4842-b4cb-8f10a3c33b07",
+                  "name": "Data Store configuration updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"jdbcUrl\": \"<string>\",\n  \"advanced\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"source\": \"local\",\n  \"type\": \"jdbc\",\n  \"username\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/beta/data-store",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "beta",
+                        "data-store"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:59.000Z",
+                  "updatedAt": "2026-10-21T21:11:59.000Z",
+                  "uid": "35240-46ecbb1f-afb1-4842-b4cb-8f10a3c33b07"
+                },
+                {
+                  "id": "d0af0f0c-f4c5-43f2-8b71-c40558a11c54",
+                  "name": "Update Failed",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"jdbcUrl\": \"<string>\",\n  \"advanced\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"source\": \"local\",\n  \"type\": \"jdbc\",\n  \"username\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/beta/data-store",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "beta",
+                        "data-store"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:59.000Z",
+                  "updatedAt": "2026-10-21T21:11:59.000Z",
+                  "uid": "35240-d0af0f0c-f4c5-43f2-8b71-c40558a11c54"
+                },
+                {
+                  "id": "97cf8e43-afbf-442d-ad37-7ae845b59e0e",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"jdbcUrl\": \"<string>\",\n  \"advanced\": \"<string>\",\n  \"name\": \"<string>\",\n  \"password\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"source\": \"local\",\n  \"type\": \"jdbc\",\n  \"username\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/beta/data-store",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "beta",
+                        "data-store"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:11:59.000Z",
+                  "updatedAt": "2026-10-21T21:11:59.000Z",
+                  "uid": "35240-97cf8e43-afbf-442d-ad37-7ae845b59e0e"
+                }
+              ],
+              "createdAt": "2026-10-21T21:11:59.000Z",
+              "updatedAt": "2026-10-21T21:11:59.000Z",
+              "uid": "35240-5960f095-087a-4fb5-a626-8da595f93168"
+            }
+          ],
+          "id": "c9143570-9e9a-4b25-9d12-b514c67fb4d6",
+          "createdAt": "2026-10-21T21:11:59.000Z",
+          "updatedAt": "2026-10-21T21:11:59.000Z",
+          "uid": "35240-c9143570-9e9a-4b25-9d12-b514c67fb4d6"
+        }
+      ],
+      "id": "04690e90-87ae-4342-9031-e506d36fd91c",
+      "createdAt": "2026-10-21T21:11:59.000Z",
+      "updatedAt": "2026-10-21T21:11:59.000Z",
+      "uid": "35240-04690e90-87ae-4342-9031-e506d36fd91c"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
+    }
+  ]
+}

@@ -1,694 +1,635 @@
 {
+  "info": {
+    "_postman_id": "d0ff19ef-3ede-4b4e-b12e-fe420764f282",
+    "name": "Sonatype Nexus Repository Manager Assets API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:06:52.000Z",
+    "updatedAt": "2026-10-21T21:06:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d0ff19ef-3ede-4b4e-b12e-fe420764f282"
+  },
   "item": [
     {
-      "id": "ee08d4ed-8395-4c49-a50d-cf5daf565065",
-      "name": "assets",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "6bb9dbdb-078e-4fbf-be3d-8077746ad021",
-          "name": "List assets",
-          "request": {
-            "name": "List assets",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "assets"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "continuationToken",
-                  "value": "<string>",
-                  "description": "A token returned by a prior request. If present, the next page of results are returned"
-                },
-                {
-                  "disabled": false,
-                  "key": "repository",
-                  "value": "<string>",
-                  "description": "(Required) Repository from which you would like to retrieve assets."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "assets",
+          "item": [
             {
-              "id": "2f0f2144-6b9a-482d-a8f2-b28d79059d85",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Delete a single asset",
+                  "id": "2195f75b-47a3-4b1c-9f8d-d7c4c6e34e0c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/assets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "assets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a4c0fbd-cbb7-4774-bf05-5389153b26b7",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Id of the asset to delete"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
                     {
-                      "key": "continuationToken",
-                      "value": "<string>"
+                      "id": "a7595e5c-5bda-45ff-be24-cee54b334684",
+                      "name": "Asset was successfully deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-a7595e5c-5bda-45ff-be24-cee54b334684"
                     },
                     {
-                      "key": "repository",
-                      "value": "<string>"
+                      "id": "4e705422-9700-481d-ad00-92b5364f203a",
+                      "name": "Insufficient permissions to delete asset",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-4e705422-9700-481d-ad00-92b5364f203a"
+                    },
+                    {
+                      "id": "b294494f-aad3-4e52-bc4d-50e42eff75b8",
+                      "name": "Asset not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-b294494f-aad3-4e52-bc4d-50e42eff75b8"
+                    },
+                    {
+                      "id": "a64c6ffc-28c7-4621-9e97-57520e82ac6c",
+                      "name": "Malformed ID",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-a64c6ffc-28c7-4621-9e97-57520e82ac6c"
                     }
                   ],
-                  "variable": []
+                  "createdAt": "2026-10-21T21:06:53.000Z",
+                  "updatedAt": "2026-10-21T21:06:53.000Z",
+                  "uid": "35240-2195f75b-47a3-4b1c-9f8d-d7c4c6e34e0c"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                {
+                  "name": "Get a single asset",
+                  "id": "946c25e6-291e-4e0a-a6a0-0c5d75f271b9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/assets/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "assets",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "832fcf22-8689-4194-87de-66870bf77984",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Id of the asset to get"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9d461632-33a4-4094-b3d8-3c9cd325633a",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"blobCreated\": \"<dateTime>\",\n  \"blobRef\": \"<string>\",\n  \"blobStoreName\": \"<string>\",\n  \"blobUpdated\": \"<dateTime>\",\n  \"checksum\": {\n    \"esse_6\": \"<string>\",\n    \"tempor8\": \"<string>\"\n  },\n  \"contentType\": \"<string>\",\n  \"downloadUrl\": \"<string>\",\n  \"fileSize\": \"<long>\",\n  \"format\": \"<string>\",\n  \"id\": \"<string>\",\n  \"lastDownloaded\": \"<dateTime>\",\n  \"lastModified\": \"<dateTime>\",\n  \"lastVerified\": \"<dateTime>\",\n  \"path\": \"<string>\",\n  \"repository\": \"<string>\",\n  \"uploader\": \"<string>\",\n  \"uploaderIp\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-9d461632-33a4-4094-b3d8-3c9cd325633a"
+                    },
+                    {
+                      "id": "333b8646-f06d-4775-9dc2-86fdbfccace3",
+                      "name": "Insufficient permissions to get asset",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-333b8646-f06d-4775-9dc2-86fdbfccace3"
+                    },
+                    {
+                      "id": "8a119aa3-064d-418c-8dc4-0b4742a6b69e",
+                      "name": "Asset not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-8a119aa3-064d-418c-8dc4-0b4742a6b69e"
+                    },
+                    {
+                      "id": "e7b42539-06ac-45d5-b542-ce6928ff5304",
+                      "name": "Malformed ID",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/assets/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "assets",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:06:53.000Z",
+                      "updatedAt": "2026-10-21T21:06:53.000Z",
+                      "uid": "35240-e7b42539-06ac-45d5-b542-ce6928ff5304"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:06:53.000Z",
+                  "updatedAt": "2026-10-21T21:06:53.000Z",
+                  "uid": "35240-946c25e6-291e-4e0a-a6a0-0c5d75f271b9"
+                }
+              ],
+              "id": "8895f194-c747-4c67-b145-bc49f2fbeec1",
+              "createdAt": "2026-10-21T21:06:52.000Z",
+              "updatedAt": "2026-10-21T21:06:52.000Z",
+              "uid": "35240-8895f194-c747-4c67-b145-bc49f2fbeec1"
+            },
+            {
+              "name": "List assets",
+              "id": "ebeedcbe-2344-40d9-a6ce-5f1e603d6636",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"continuationToken\": \"string\",\n  \"items\": [\n    {\n      \"blobCreated\": \"1951-05-31T05:18:57.399Z\",\n      \"blobRef\": \"string\",\n      \"blobStoreName\": \"string\",\n      \"blobUpdated\": \"1961-03-01T14:44:38.959Z\",\n      \"checksum\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"contentType\": \"string\",\n      \"downloadUrl\": \"string\",\n      \"fileSize\": 5714,\n      \"format\": \"string\",\n      \"id\": \"string\",\n      \"lastDownloaded\": \"1980-12-25T16:26:56.462Z\",\n      \"lastModified\": \"1958-02-26T00:25:25.656Z\",\n      \"lastVerified\": \"2000-02-27T13:03:21.539Z\",\n      \"path\": \"string\",\n      \"repository\": \"string\",\n      \"uploader\": \"string\",\n      \"uploaderIp\": \"string\"\n    },\n    {\n      \"blobCreated\": \"2025-08-09T09:40:20.119Z\",\n      \"blobRef\": \"string\",\n      \"blobStoreName\": \"string\",\n      \"blobUpdated\": \"2006-10-09T15:05:56.813Z\",\n      \"checksum\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      },\n      \"contentType\": \"string\",\n      \"downloadUrl\": \"string\",\n      \"fileSize\": 3027,\n      \"format\": \"string\",\n      \"id\": \"string\",\n      \"lastDownloaded\": \"2004-12-25T01:15:08.139Z\",\n      \"lastModified\": \"2026-04-20T00:24:10.114Z\",\n      \"lastVerified\": \"1994-08-09T22:19:05.225Z\",\n      \"path\": \"string\",\n      \"repository\": \"string\",\n      \"uploader\": \"string\",\n      \"uploaderIp\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "01c0a561-e1d0-4837-bb55-d493db3cd763",
-              "name": "Insufficient permissions to list assets",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v1/assets?continuationToken=<string>&repository=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "assets"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "A token returned by a prior request. If present, the next page of results are returned",
                       "key": "continuationToken",
                       "value": "<string>"
                     },
                     {
+                      "description": "(Required) Repository from which you would like to retrieve assets.",
                       "key": "repository",
                       "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b704c6b6-0ec9-46ec-afca-14d1447ea824",
-              "name": "Parameter 'repository' is required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "continuationToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "repository",
-                      "value": "<string>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6cb94fc4-1419-4c63-bac2-5c3c27d11637",
-          "name": "Delete a single asset",
-          "request": {
-            "name": "Delete a single asset",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "assets",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Id of the asset to delete"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "8c0d5cdf-44bb-4369-ac3a-280d1e3c0767",
-              "name": "Asset was successfully deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to delete"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
+                }
               },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "637f6364-1489-4563-93fd-ef1d0ea2f8e1",
-              "name": "Insufficient permissions to delete asset",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to delete"
+                  "id": "d0aa3b80-7b6b-4431-b8bd-bd449aa91144",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/assets?continuationToken=<string>&repository=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "assets"
+                      ],
+                      "query": [
+                        {
+                          "description": "A token returned by a prior request. If present, the next page of results are returned",
+                          "key": "continuationToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Repository from which you would like to retrieve assets.",
+                          "key": "repository",
+                          "value": "<string>"
+                        }
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "fa2c890d-7510-4b81-ae20-2cebdce063de",
-              "name": "Asset not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "c1c72a7c-2332-4fdc-8b5e-87d38be7845e",
-              "name": "Malformed ID",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f4d10f8a-6605-43f2-b56e-11119962d641",
-          "name": "Get a single asset",
-          "request": {
-            "name": "Get a single asset",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "assets",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Id of the asset to get"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "4f38c828-9242-4b6f-8aab-b5ac72718db6",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"blobCreated\": \"1975-05-31T01:48:58.267Z\",\n  \"blobRef\": \"string\",\n  \"blobStoreName\": \"string\",\n  \"blobUpdated\": \"2011-03-10T22:31:06.589Z\",\n  \"checksum\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"contentType\": \"string\",\n  \"downloadUrl\": \"string\",\n  \"fileSize\": 515,\n  \"format\": \"string\",\n  \"id\": \"string\",\n  \"lastDownloaded\": \"1992-12-14T13:05:03.673Z\",\n  \"lastModified\": \"2000-04-19T09:36:10.089Z\",\n  \"lastVerified\": \"1998-01-02T15:39:07.923Z\",\n  \"path\": \"string\",\n  \"repository\": \"string\",\n  \"uploader\": \"string\",\n  \"uploaderIp\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0eedcd61-187a-4a35-a835-aefe1cda84e8",
-              "name": "Insufficient permissions to get asset",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to get"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  ]
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"continuationToken\": \"<string>\",\n  \"items\": [\n    {\n      \"blobCreated\": \"<dateTime>\",\n      \"blobRef\": \"<string>\",\n      \"blobStoreName\": \"<string>\",\n      \"blobUpdated\": \"<dateTime>\",\n      \"checksum\": {\n        \"veniam12\": \"<string>\"\n      },\n      \"contentType\": \"<string>\",\n      \"downloadUrl\": \"<string>\",\n      \"fileSize\": \"<long>\",\n      \"format\": \"<string>\",\n      \"id\": \"<string>\",\n      \"lastDownloaded\": \"<dateTime>\",\n      \"lastModified\": \"<dateTime>\",\n      \"lastVerified\": \"<dateTime>\",\n      \"path\": \"<string>\",\n      \"repository\": \"<string>\",\n      \"uploader\": \"<string>\",\n      \"uploaderIp\": \"<string>\"\n    },\n    {\n      \"blobCreated\": \"<dateTime>\",\n      \"blobRef\": \"<string>\",\n      \"blobStoreName\": \"<string>\",\n      \"blobUpdated\": \"<dateTime>\",\n      \"checksum\": {\n        \"aliquip_833\": \"<string>\",\n        \"non58\": \"<string>\"\n      },\n      \"contentType\": \"<string>\",\n      \"downloadUrl\": \"<string>\",\n      \"fileSize\": \"<long>\",\n      \"format\": \"<string>\",\n      \"id\": \"<string>\",\n      \"lastDownloaded\": \"<dateTime>\",\n      \"lastModified\": \"<dateTime>\",\n      \"lastVerified\": \"<dateTime>\",\n      \"path\": \"<string>\",\n      \"repository\": \"<string>\",\n      \"uploader\": \"<string>\",\n      \"uploaderIp\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T21:06:53.000Z",
+                  "updatedAt": "2026-10-21T21:06:53.000Z",
+                  "uid": "35240-d0aa3b80-7b6b-4431-b8bd-bd449aa91144"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "2b019694-7815-41c4-bfdb-44418aa81223",
+                  "name": "Insufficient permissions to list assets",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/assets?continuationToken=<string>&repository=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "assets"
+                      ],
+                      "query": [
+                        {
+                          "description": "A token returned by a prior request. If present, the next page of results are returned",
+                          "key": "continuationToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Repository from which you would like to retrieve assets.",
+                          "key": "repository",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:06:53.000Z",
+                  "updatedAt": "2026-10-21T21:06:53.000Z",
+                  "uid": "35240-2b019694-7815-41c4-bfdb-44418aa81223"
+                },
+                {
+                  "id": "9706dc02-20ed-49b9-9c67-ac88aa03336c",
+                  "name": "Parameter 'repository' is required",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/assets?continuationToken=<string>&repository=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "assets"
+                      ],
+                      "query": [
+                        {
+                          "description": "A token returned by a prior request. If present, the next page of results are returned",
+                          "key": "continuationToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Repository from which you would like to retrieve assets.",
+                          "key": "repository",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                  "code": 422,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:06:53.000Z",
+                  "updatedAt": "2026-10-21T21:06:53.000Z",
+                  "uid": "35240-9706dc02-20ed-49b9-9c67-ac88aa03336c"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4fda44e1-2ad5-4ca0-a7ad-dc8161cea249",
-              "name": "Asset not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6159ac38-0d2e-47fd-937b-915fc01a519e",
-              "name": "Malformed ID",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "assets",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the asset to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T21:06:53.000Z",
+              "updatedAt": "2026-10-21T21:06:53.000Z",
+              "uid": "35240-ebeedcbe-2344-40d9-a6ce-5f1e603d6636"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "07ce9e35-bfd6-472e-80b3-311e3107cd88",
+          "createdAt": "2026-10-21T21:06:52.000Z",
+          "updatedAt": "2026-10-21T21:06:52.000Z",
+          "uid": "35240-07ce9e35-bfd6-472e-80b3-311e3107cd88"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "da8a7bf3-c16a-483b-8245-21f9689c4e6a",
+      "createdAt": "2026-10-21T21:06:52.000Z",
+      "updatedAt": "2026-10-21T21:06:52.000Z",
+      "uid": "35240-da8a7bf3-c16a-483b-8245-21f9689c4e6a"
     }
   ],
   "auth": {
@@ -696,21 +637,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "522947c8-0548-4e4d-9e24-2f35e94bb432",
-    "name": "Sonatype Nexus Repository Manager assets API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

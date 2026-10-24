@@ -1,555 +1,557 @@
 {
+  "info": {
+    "_postman_id": "fe33bcaa-ee20-44a0-8a7b-35f5576a0859",
+    "name": "Sonatype Nexus Repository Manager Email API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:07:48.000Z",
+    "updatedAt": "2026-10-21T21:07:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe33bcaa-ee20-44a0-8a7b-35f5576a0859"
+  },
   "item": [
     {
-      "id": "326eee76-bdd7-4c8a-9d51-43bf97024b19",
-      "name": "Email",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "a6576b50-9847-4d70-9846-48b6088f87c0",
-          "name": "Disable and clear the email configuration",
-          "request": {
-            "name": "Disable and clear the email configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "email"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
+          "name": "email",
+          "item": [
             {
-              "id": "21f17e4a-7ba4-4b7f-b41d-0b99bd8a0209",
-              "name": "Email configuration was successfully cleared",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+              "name": "verify",
+              "item": [
+                {
+                  "name": "Send a test email to the email address provided in the request body",
+                  "id": "a3a7d8a2-ba5e-48c7-8308-fcedfab37a5e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<string>"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email/verify",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email",
+                        "verify"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "946e137f-a055-4b83-846e-af5701eba91d",
+                      "name": "Test email was sent successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/email/verify",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "email",
+                            "verify"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"reason\": \"<string>\",\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T21:07:49.000Z",
+                      "updatedAt": "2026-10-21T21:07:49.000Z",
+                      "uid": "35240-946e137f-a055-4b83-846e-af5701eba91d"
+                    },
+                    {
+                      "id": "b381c3b9-07e0-41ac-9e12-2db196421810",
+                      "name": "There was a problem sending the test email",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/email/verify",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "email",
+                            "verify"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"reason\": \"<string>\",\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T21:07:49.000Z",
+                      "updatedAt": "2026-10-21T21:07:49.000Z",
+                      "uid": "35240-b381c3b9-07e0-41ac-9e12-2db196421810"
+                    },
+                    {
+                      "id": "f0e1ed1a-bfb7-4115-8050-13662f6fc0b6",
+                      "name": "Insufficient permissions to verify the email configuration",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<string>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/email/verify",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "email",
+                            "verify"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:49.000Z",
+                      "updatedAt": "2026-10-21T21:07:49.000Z",
+                      "uid": "35240-f0e1ed1a-bfb7-4115-8050-13662f6fc0b6"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-a3a7d8a2-ba5e-48c7-8308-fcedfab37a5e"
+                }
+              ],
+              "id": "ae1df575-d48d-4265-9462-41a81d1a8251",
+              "createdAt": "2026-10-21T21:07:49.000Z",
+              "updatedAt": "2026-10-21T21:07:49.000Z",
+              "uid": "35240-ae1df575-d48d-4265-9462-41a81d1a8251"
+            },
+            {
+              "name": "Disable and clear the email configuration",
+              "id": "c90b0870-f19d-47f6-bd81-c20794fa599f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "46f507dc-0ae9-479f-90c3-e73c7a1d77ee",
-          "name": "Retrieve the current email configuration",
-          "request": {
-            "name": "Retrieve the current email configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "email"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c2be1d28-1132-4984-b488-54f3ff895883",
-              "name": "successful operation",
-              "originalRequest": {
+                "header": [],
                 "url": {
-                  "path": [
-                    "v1",
-                    "email"
-                  ],
+                  "raw": "{{baseUrl}}/v1/email",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "path": [
+                    "v1",
+                    "email"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9a4bc47d-a00c-4258-82a6-d2e5069a3246",
+                  "name": "Email configuration was successfully cleared",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-9a4bc47d-a00c-4258-82a6-d2e5069a3246"
+                }
+              ],
+              "createdAt": "2026-10-21T21:07:49.000Z",
+              "updatedAt": "2026-10-21T21:07:49.000Z",
+              "uid": "35240-c90b0870-f19d-47f6-bd81-c20794fa599f"
+            },
+            {
+              "name": "Retrieve the current email configuration",
+              "id": "b86eb98d-ebb0-4d76-b831-181a3f5cf374",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
                 "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"port\": 6224,\n  \"enabled\": false,\n  \"fromAddress\": \"nexus@example.org\",\n  \"host\": \"string\",\n  \"nexusTrustStoreEnabled\": false,\n  \"password\": \"string\",\n  \"sslOnConnectEnabled\": false,\n  \"sslServerIdentityCheckEnabled\": true,\n  \"startTlsEnabled\": true,\n  \"startTlsRequired\": false,\n  \"subjectPrefix\": \"string\",\n  \"username\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "68ab1428-91e5-4749-ac3e-95328da3bca9",
-              "name": "Insufficient permissions to retrieve the email configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3c4877f8-2310-4d62-9915-6eb5bc4bdbf9",
-          "name": "Set the current email configuration",
-          "request": {
-            "name": "Set the current email configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "email"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "*/*"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"<string>\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
-            }
-          },
-          "response": [
-            {
-              "id": "1b6d61e1-2548-4d58-a6fb-8b3f2b537cb6",
-              "name": "Email configuration was successfully updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"nexus@example.org\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "add04ad6-39a7-43c4-866d-7f9136900e87",
-              "name": "Invalid request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"nexus@example.org\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "03b59844-a6cc-4aeb-b53e-68fd02584acc",
-              "name": "Insufficient permissions to update the email configuration",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "email"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"nexus@example.org\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "917fba1c-87f7-4171-904a-ef7da205205f",
-          "name": "Send a test email to the email address provided in the request body",
-          "request": {
-            "name": "Send a test email to the email address provided in the request body",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "email",
-                "verify"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "*/*"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<string>"
-            }
-          },
-          "response": [
-            {
-              "id": "a3b069ce-f958-4a4e-9fcd-5ed614d9326e",
-              "name": "Test email was sent successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "email",
-                    "verify"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"reason\": \"string\",\n  \"success\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7e57e080-fdbf-484f-b957-a8174bb17ed3",
-              "name": "There was a problem sending the test email",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "v1",
-                    "email",
-                    "verify"
-                  ],
+                  "raw": "{{baseUrl}}/v1/email",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "path": [
+                    "v1",
+                    "email"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "0ff016e4-56e4-46b6-bfab-fc6a44c41796",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"<string>\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-0ff016e4-56e4-46b6-bfab-fc6a44c41796"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "6154a9d3-1cea-4ad9-bf1c-e73f69b09706",
+                  "name": "Insufficient permissions to retrieve the email configuration",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-6154a9d3-1cea-4ad9-bf1c-e73f69b09706"
                 }
               ],
-              "body": "{\n  \"message\": \"string\",\n  \"success\": false\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T21:07:49.000Z",
+              "updatedAt": "2026-10-21T21:07:49.000Z",
+              "uid": "35240-b86eb98d-ebb0-4d76-b831-181a3f5cf374"
             },
             {
-              "id": "b0cd5e57-7bb6-4704-bb80-5be7bf226687",
-              "name": "Insufficient permissions to verify the email configuration",
-              "originalRequest": {
+              "name": "Set the current email configuration",
+              "id": "c832a72b-94c9-4973-a9e3-72b981c64bb0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"<string>\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
+                },
                 "url": {
-                  "path": [
-                    "v1",
-                    "email",
-                    "verify"
-                  ],
+                  "raw": "{{baseUrl}}/v1/email",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<string>"
+                  "path": [
+                    "v1",
+                    "email"
+                  ]
                 }
               },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "1642c782-871b-4949-80e2-a44585bf94bf",
+                  "name": "Email configuration was successfully updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"<string>\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-1642c782-871b-4949-80e2-a44585bf94bf"
+                },
+                {
+                  "id": "c5cf9eab-ab89-44e5-80ab-decea6061ded",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"<string>\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-c5cf9eab-ab89-44e5-80ab-decea6061ded"
+                },
+                {
+                  "id": "6b7c90d5-83ff-46ed-a7f6-5b36bd5a4095",
+                  "name": "Insufficient permissions to update the email configuration",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"port\": \"<integer>\",\n  \"enabled\": \"<boolean>\",\n  \"fromAddress\": \"<string>\",\n  \"host\": \"<string>\",\n  \"nexusTrustStoreEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"sslOnConnectEnabled\": \"<boolean>\",\n  \"sslServerIdentityCheckEnabled\": \"<boolean>\",\n  \"startTlsEnabled\": \"<boolean>\",\n  \"startTlsRequired\": \"<boolean>\",\n  \"subjectPrefix\": \"<string>\",\n  \"username\": \"<string>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/email",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "email"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:07:49.000Z",
+                  "updatedAt": "2026-10-21T21:07:49.000Z",
+                  "uid": "35240-6b7c90d5-83ff-46ed-a7f6-5b36bd5a4095"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T21:07:49.000Z",
+              "updatedAt": "2026-10-21T21:07:49.000Z",
+              "uid": "35240-c832a72b-94c9-4973-a9e3-72b981c64bb0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a3f1b549-3d8f-44f7-9052-3ad2fa656bbd",
+          "createdAt": "2026-10-21T21:07:49.000Z",
+          "updatedAt": "2026-10-21T21:07:49.000Z",
+          "uid": "35240-a3f1b549-3d8f-44f7-9052-3ad2fa656bbd"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "cd09f58f-973f-4e74-9c94-ec8f32b93f8f",
+      "createdAt": "2026-10-21T21:07:49.000Z",
+      "updatedAt": "2026-10-21T21:07:49.000Z",
+      "uid": "35240-cd09f58f-973f-4e74-9c94-ec8f32b93f8f"
     }
   ],
   "auth": {
@@ -557,21 +559,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "1fb324da-9c03-4d75-ac1b-6815925f90f6",
-    "name": "Sonatype Nexus Repository Manager assets Email API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

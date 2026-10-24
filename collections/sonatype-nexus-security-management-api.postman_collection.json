@@ -1,143 +1,152 @@
 {
+  "info": {
+    "_postman_id": "ceb1a566-a5a9-46d1-87cf-2c13fcafce24",
+    "name": "Sonatype Nexus Repository Manager Security management API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:09:48.000Z",
+    "updatedAt": "2026-10-21T21:09:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ceb1a566-a5a9-46d1-87cf-2c13fcafce24"
+  },
   "item": [
     {
-      "id": "6f0b5f44-5230-4860-9346-dd043c740351",
-      "name": "Security management",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "51989e21-5c4c-4732-bec7-4b87bb2c93c0",
-          "name": "Retrieve a list of the available user sources.",
-          "request": {
-            "name": "Retrieve a list of the available user sources.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "user-sources"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "cde8b19e-a149-411a-a28b-3a8a3a08ff64",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-sources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "user-sources",
+              "item": [
+                {
+                  "name": "Retrieve a list of the available user sources",
+                  "id": "7b460ef5-807d-4c6b-9d63-5dd851110ae2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0816e78b-cf72-480e-ac2a-744a3c104c45",
-              "name": "The user does not have permission to perform the operation.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "user-sources"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/user-sources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "user-sources"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b4460524-11ef-4092-b0f5-1a73b6918991",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/user-sources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "user-sources"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-10-21T21:09:48.000Z",
+                      "updatedAt": "2026-10-21T21:09:48.000Z",
+                      "uid": "35240-b4460524-11ef-4092-b0f5-1a73b6918991"
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                    {
+                      "id": "94e91c6d-2459-455f-b0c7-c1b939851640",
+                      "name": "The user does not have permission to perform the operation.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/user-sources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "user-sources"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:48.000Z",
+                      "updatedAt": "2026-10-21T21:09:48.000Z",
+                      "uid": "35240-94e91c6d-2459-455f-b0c7-c1b939851640"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:48.000Z",
+                  "updatedAt": "2026-10-21T21:09:48.000Z",
+                  "uid": "35240-7b460ef5-807d-4c6b-9d63-5dd851110ae2"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "1e5ce663-401f-4e2b-84ca-409c35014c71",
+              "createdAt": "2026-10-21T21:09:48.000Z",
+              "updatedAt": "2026-10-21T21:09:48.000Z",
+              "uid": "35240-1e5ce663-401f-4e2b-84ca-409c35014c71"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c5ae5dd3-8420-4e48-b594-261d4ad08702",
+          "createdAt": "2026-10-21T21:09:48.000Z",
+          "updatedAt": "2026-10-21T21:09:48.000Z",
+          "uid": "35240-c5ae5dd3-8420-4e48-b594-261d4ad08702"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "ad99767d-4f9a-4497-b017-5086fb942564",
+      "createdAt": "2026-10-21T21:09:48.000Z",
+      "updatedAt": "2026-10-21T21:09:48.000Z",
+      "uid": "35240-ad99767d-4f9a-4497-b017-5086fb942564"
     }
   ],
   "auth": {
@@ -145,21 +154,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "e9d5812d-51b0-444e-8c9e-69674ebc048a",
-    "name": "Sonatype Nexus Repository Manager assets Security management API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

@@ -1,895 +1,893 @@
 {
+  "info": {
+    "_postman_id": "c6024ae4-96d9-44fd-8dd0-e3e5a17d9620",
+    "name": "Sonatype Nexus Repository Manager Manage Sonatype\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:08:26.000Z",
+    "updatedAt": "2026-10-21T21:08:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c6024ae4-96d9-44fd-8dd0-e3e5a17d9620"
+  },
   "item": [
     {
-      "id": "7c4ccb2a-b66b-41ee-b34d-b73703bfd36e",
-      "name": "Manage Sonatype Repository Firewall configuration",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "a4dc039b-9ae8-4e5b-af8b-54771615c2d4",
-          "name": "Get Sonatype Repository Firewall configuration",
-          "request": {
-            "name": "Get Sonatype Repository Firewall configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "iq",
+          "item": [
             {
-              "id": "8302c484-8f04-4604-9c19-da9f0a8fc32c",
-              "name": "Sonatype Repository Firewall configuration returned",
-              "originalRequest": {
+              "name": "audit",
+              "item": [
+                {
+                  "name": "{repositoryName}",
+                  "item": [
+                    {
+                      "name": "Get audit status for the repository",
+                      "id": "e1ea75a1-0596-4fe9-853d-c85cdc8c11e8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/audit/:repositoryName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "audit",
+                            ":repositoryName"
+                          ],
+                          "variable": [
+                            {
+                              "id": "78ebe17e-fb26-4ede-941a-7cff7636d949",
+                              "key": "repositoryName",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "232e632d-d2bc-442f-b597-69d47673697c",
+                          "name": "Given repository is not a proxy",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/iq/audit/:repositoryName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "iq",
+                                "audit",
+                                ":repositoryName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "repositoryName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:08:27.000Z",
+                          "updatedAt": "2026-10-21T21:08:27.000Z",
+                          "uid": "35240-232e632d-d2bc-442f-b597-69d47673697c"
+                        },
+                        {
+                          "id": "fcfc10c0-e34c-4ae5-8fd6-62d6de625e51",
+                          "name": "Given repository not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/iq/audit/:repositoryName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "iq",
+                                "audit",
+                                ":repositoryName"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "repositoryName"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:08:27.000Z",
+                          "updatedAt": "2026-10-21T21:08:27.000Z",
+                          "uid": "35240-fcfc10c0-e34c-4ae5-8fd6-62d6de625e51"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:08:26.000Z",
+                      "updatedAt": "2026-10-21T21:08:26.000Z",
+                      "uid": "35240-e1ea75a1-0596-4fe9-853d-c85cdc8c11e8"
+                    }
+                  ],
+                  "id": "ddb39e45-065e-40a3-899b-0a78ff5ace8b",
+                  "createdAt": "2026-10-21T21:08:26.000Z",
+                  "updatedAt": "2026-10-21T21:08:26.000Z",
+                  "uid": "35240-ddb39e45-065e-40a3-899b-0a78ff5ace8b"
+                },
+                {
+                  "name": "List repositories audit statuses",
+                  "id": "bf335ff9-ce89-4147-b39e-bcb5eb28068d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq/audit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq",
+                        "audit"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "ee242767-120d-470d-a9e0-d88c6b33d749",
+                      "name": "Successful Operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/audit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "audit"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"enabledQuarantine\": \"<boolean>\",\n    \"repositoryName\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  },\n  {\n    \"enabledQuarantine\": \"<boolean>\",\n    \"repositoryName\": \"<string>\",\n    \"enabled\": \"<boolean>\"\n  }\n]",
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-ee242767-120d-470d-a9e0-d88c6b33d749"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:26.000Z",
+                  "updatedAt": "2026-10-21T21:08:26.000Z",
+                  "uid": "35240-bf335ff9-ce89-4147-b39e-bcb5eb28068d"
+                },
+                {
+                  "name": "Manage audit",
+                  "id": "9093f413-7a6b-47e4-9d22-2a428c97481d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq/audit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq",
+                        "audit"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c9308cb1-17fb-4311-a17b-df815878369b",
+                      "name": "Repository audit is successfully updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/audit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "audit"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-c9308cb1-17fb-4311-a17b-df815878369b"
+                    },
+                    {
+                      "id": "203d7593-2fa3-4ad5-968e-a41b0dc237a6",
+                      "name": "Given repository is not a proxy",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/audit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "audit"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-203d7593-2fa3-4ad5-968e-a41b0dc237a6"
+                    },
+                    {
+                      "id": "ac6588f9-2359-4e81-890d-8367362ad0c5",
+                      "name": "Given repository not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/audit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "audit"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-ac6588f9-2359-4e81-890d-8367362ad0c5"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:26.000Z",
+                  "updatedAt": "2026-10-21T21:08:26.000Z",
+                  "uid": "35240-9093f413-7a6b-47e4-9d22-2a428c97481d"
+                }
+              ],
+              "id": "c60ac7e9-ddd7-460a-91cc-fab9c4280fab",
+              "createdAt": "2026-10-21T21:08:26.000Z",
+              "updatedAt": "2026-10-21T21:08:26.000Z",
+              "uid": "35240-c60ac7e9-ddd7-460a-91cc-fab9c4280fab"
+            },
+            {
+              "name": "disable",
+              "item": [
+                {
+                  "name": "Disable Sonatype Repository Firewall",
+                  "id": "092cf664-6708-46f4-a0ad-4d5357ddb1e6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq/disable",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq",
+                        "disable"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "77fc0b56-3cc0-401c-adfc-628baa914bce",
+                      "name": "Sonatype Repository Firewall has been disabled",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/disable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "disable"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-77fc0b56-3cc0-401c-adfc-628baa914bce"
+                    },
+                    {
+                      "id": "aee4d588-aee6-4db7-8663-411eb7cedfde",
+                      "name": "Sonatype Repository Firewall connection not configured",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/disable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "disable"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-aee4d588-aee6-4db7-8663-411eb7cedfde"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:26.000Z",
+                  "updatedAt": "2026-10-21T21:08:26.000Z",
+                  "uid": "35240-092cf664-6708-46f4-a0ad-4d5357ddb1e6"
+                }
+              ],
+              "id": "6cfa7a7c-5a5a-4631-84bf-822a66730131",
+              "createdAt": "2026-10-21T21:08:26.000Z",
+              "updatedAt": "2026-10-21T21:08:26.000Z",
+              "uid": "35240-6cfa7a7c-5a5a-4631-84bf-822a66730131"
+            },
+            {
+              "name": "enable",
+              "item": [
+                {
+                  "name": "Enable Sonatype Repository Firewall",
+                  "id": "8b7f00fb-61b2-4ec6-a87b-44333ff8664f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq/enable",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq",
+                        "enable"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8393f82c-c033-4f5e-98fa-975fd769082e",
+                      "name": "Sonatype Repository Firewall has been enabled",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/enable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "enable"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-8393f82c-c033-4f5e-98fa-975fd769082e"
+                    },
+                    {
+                      "id": "d5671be2-469b-490a-8a1c-dde5cba631c6",
+                      "name": "Sonatype Repository Firewall connection not configured",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/enable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "enable"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-d5671be2-469b-490a-8a1c-dde5cba631c6"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:26.000Z",
+                  "updatedAt": "2026-10-21T21:08:26.000Z",
+                  "uid": "35240-8b7f00fb-61b2-4ec6-a87b-44333ff8664f"
+                }
+              ],
+              "id": "a424fb8e-4554-4d71-bfba-78bbd17ef0a0",
+              "createdAt": "2026-10-21T21:08:26.000Z",
+              "updatedAt": "2026-10-21T21:08:26.000Z",
+              "uid": "35240-a424fb8e-4554-4d71-bfba-78bbd17ef0a0"
+            },
+            {
+              "name": "verify-connection",
+              "item": [
+                {
+                  "name": "Verify Sonatype Repository Firewall connection",
+                  "id": "a9133ed4-9532-42f2-bbe4-c9da90bb3242",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq/verify-connection",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq",
+                        "verify-connection"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3314ac17-36fb-4661-8532-fc4fe87f4d30",
+                      "name": "Connection verification complete, check response body for result",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/iq/verify-connection",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "iq",
+                            "verify-connection"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"reason\": \"<string>\",\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-10-21T21:08:27.000Z",
+                      "updatedAt": "2026-10-21T21:08:27.000Z",
+                      "uid": "35240-3314ac17-36fb-4661-8532-fc4fe87f4d30"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:26.000Z",
+                  "updatedAt": "2026-10-21T21:08:26.000Z",
+                  "uid": "35240-a9133ed4-9532-42f2-bbe4-c9da90bb3242"
+                }
+              ],
+              "id": "88d063ee-fec4-4e4f-b025-6f009f260a88",
+              "createdAt": "2026-10-21T21:08:26.000Z",
+              "updatedAt": "2026-10-21T21:08:26.000Z",
+              "uid": "35240-88d063ee-fec4-4e4f-b025-6f009f260a88"
+            },
+            {
+              "name": "Get Sonatype Repository Firewall configuration",
+              "id": "80e04170-2fda-4737-9fa4-dc711cca0c5c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/v1/iq",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "iq"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "db5aa701-4774-41bb-93b3-8693946d50ea",
+                  "name": "Sonatype Repository Firewall configuration returned",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"authenticationType\": \"PKI\",\n  \"enabled\": \"<boolean>\",\n  \"failOpenModeEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"properties\": \"<string>\",\n  \"showLink\": \"<boolean>\",\n  \"timeoutSeconds\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\",\n  \"username\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T21:08:27.000Z",
+                  "updatedAt": "2026-10-21T21:08:27.000Z",
+                  "uid": "35240-db5aa701-4774-41bb-93b3-8693946d50ea"
+                }
+              ],
+              "createdAt": "2026-10-21T21:08:26.000Z",
+              "updatedAt": "2026-10-21T21:08:26.000Z",
+              "uid": "35240-80e04170-2fda-4737-9fa4-dc711cca0c5c"
+            },
+            {
+              "name": "Update Sonatype Repository Firewall configuration",
+              "id": "c36c0a74-f8a7-4747-adbe-91836ee08c7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
+                    "key": "Content-Type",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"authenticationType\": \"USER\",\n  \"enabled\": false,\n  \"failOpenModeEnabled\": false,\n  \"password\": \"string\",\n  \"properties\": \"string\",\n  \"showLink\": true,\n  \"timeoutSeconds\": 514,\n  \"url\": \"string\",\n  \"useTrustStoreForUrl\": false,\n  \"username\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6f042aa6-7f15-4b0e-acc3-0a249c3ba18a",
-          "name": "Update Sonatype Repository Firewall configuration",
-          "request": {
-            "name": "Update Sonatype Repository Firewall configuration",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"authenticationType\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"failOpenModeEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"properties\": \"<string>\",\n  \"showLink\": \"<boolean>\",\n  \"timeoutSeconds\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\",\n  \"username\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "9be67962-6119-4a8e-8b0c-b2e93698d8e3",
-              "name": "Sonatype Repository Firewall configuration has been updated",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authenticationType\": \"PKI\",\n  \"enabled\": \"<boolean>\",\n  \"failOpenModeEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"properties\": \"<string>\",\n  \"showLink\": \"<boolean>\",\n  \"timeoutSeconds\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\",\n  \"username\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v1/iq",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "iq"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"authenticationType\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"failOpenModeEnabled\": false,\n  \"password\": \"<string>\",\n  \"properties\": \"<string>\",\n  \"showLink\": \"<boolean>\",\n  \"timeoutSeconds\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\",\n  \"username\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "df2b4e13-b716-454d-bc82-e3c80e484eac",
-          "name": "List repositories audit statuses.",
-          "request": {
-            "name": "List repositories audit statuses.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq",
-                "audit"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9f6d3f30-a891-4d16-a869-0f1dcc153d07",
-              "name": "Successful Operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "audit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"enabledQuarantine\": true,\n    \"repositoryName\": \"string\",\n    \"enabled\": true\n  },\n  {\n    \"enabledQuarantine\": true,\n    \"repositoryName\": \"string\",\n    \"enabled\": true\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ae794cd4-087c-4056-a6a9-64804f9a5b72",
-          "name": "Manage audit",
-          "request": {
-            "name": "Manage audit",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq",
-                "audit"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "ad0bf1f4-a84c-46bf-95f2-ca110a6115cb",
-              "name": "Repository audit is successfully updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "audit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "5aac6cda-c50c-44ac-9b35-57ab810ff1e3",
-              "name": "Given repository is not a proxy",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "audit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "8361b978-605d-4bec-8c88-69dc463e2189",
-              "name": "Given repository not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "audit"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabledQuarantine\": \"<boolean>\",\n  \"repositoryName\": \"<string>\",\n  \"enabled\": \"<boolean>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f2bd60e8-81a4-439b-91c2-5d1bb3064c42",
-          "name": "Get audit status for the repository",
-          "request": {
-            "name": "Get audit status for the repository",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq",
-                "audit",
-                ":repositoryName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "repositoryName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "17bb984e-5a4b-4ce3-bec3-1ffce6c3a7b5",
-              "name": "Given repository is not a proxy",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "audit",
-                    ":repositoryName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) "
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
                 }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "4814111f-153e-4504-a3ac-0aa1bef3ad9a",
-              "name": "Given repository not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "audit",
-                    ":repositoryName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "repositoryName",
-                      "description": "(Required) "
+              },
+              "response": [
+                {
+                  "id": "8c1702ae-19de-4921-bea2-82a0e7ab5536",
+                  "name": "Sonatype Repository Firewall configuration has been updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"authenticationType\": \"PKI\",\n  \"enabled\": \"<boolean>\",\n  \"failOpenModeEnabled\": \"<boolean>\",\n  \"password\": \"<string>\",\n  \"properties\": \"<string>\",\n  \"showLink\": \"<boolean>\",\n  \"timeoutSeconds\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\",\n  \"username\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/iq",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "iq"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f39a1487-781e-4b5b-8091-a95c3445ca68",
-          "name": "Disable Sonatype Repository Firewall",
-          "request": {
-            "name": "Disable Sonatype Repository Firewall",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq",
-                "disable"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "532af202-8c7c-4b65-b8a9-2565adf27f84",
-              "name": "Sonatype Repository Firewall has been disabled",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "disable"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9b4c2550-70ed-49b0-a464-95dd468e2fe2",
-              "name": "Sonatype Repository Firewall connection not configured",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "disable"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e09651ba-45c3-4a91-8054-bbc99e638200",
-          "name": "Enable Sonatype Repository Firewall",
-          "request": {
-            "name": "Enable Sonatype Repository Firewall",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq",
-                "enable"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "18f8feff-c277-4ec7-a398-c7a541ab3ad8",
-              "name": "Sonatype Repository Firewall has been enabled",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "enable"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "88aeb507-b8f7-4b17-8f03-3f8d15529473",
-              "name": "Sonatype Repository Firewall connection not configured",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "enable"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a34de934-c165-4b85-bf45-b00d3022eaf3",
-          "name": "Verify Sonatype Repository Firewall connection",
-          "request": {
-            "name": "Verify Sonatype Repository Firewall connection",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "iq",
-                "verify-connection"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "70b17eca-2e7e-401d-9161-dbb89d36c291",
-              "name": "Connection verification complete, check response body for result",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "iq",
-                    "verify-connection"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:08:27.000Z",
+                  "updatedAt": "2026-10-21T21:08:27.000Z",
+                  "uid": "35240-8c1702ae-19de-4921-bea2-82a0e7ab5536"
                 }
               ],
-              "body": "{\n  \"reason\": \"string\",\n  \"success\": true\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T21:08:26.000Z",
+              "updatedAt": "2026-10-21T21:08:26.000Z",
+              "uid": "35240-c36c0a74-f8a7-4747-adbe-91836ee08c7b"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "2a62bf19-5ec6-4d93-88bd-a89131d6cb7a",
+          "createdAt": "2026-10-21T21:08:26.000Z",
+          "updatedAt": "2026-10-21T21:08:26.000Z",
+          "uid": "35240-2a62bf19-5ec6-4d93-88bd-a89131d6cb7a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "ac26f3c6-298f-4762-96ca-4beb201e9a73",
+      "createdAt": "2026-10-21T21:08:26.000Z",
+      "updatedAt": "2026-10-21T21:08:26.000Z",
+      "uid": "35240-ac26f3c6-298f-4762-96ca-4beb201e9a73"
     }
   ],
   "auth": {
@@ -897,21 +895,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "b0101460-eabf-4ef8-a3ca-e3d7ca163401",
-    "name": "Sonatype Nexus Repository Manager assets Manage Sonatype Repository Firewall configuration API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

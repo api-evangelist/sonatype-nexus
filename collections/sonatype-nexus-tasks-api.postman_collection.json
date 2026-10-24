@@ -1,1097 +1,1069 @@
 {
+  "info": {
+    "_postman_id": "1a102fe2-d807-4b8c-9ae4-0be40ab7b75c",
+    "name": "Sonatype Nexus Repository Manager Tasks API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:11:51.000Z",
+    "updatedAt": "2026-10-21T21:11:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1a102fe2-d807-4b8c-9ae4-0be40ab7b75c"
+  },
   "item": [
     {
-      "id": "275f11ba-adbe-4d2e-b1e5-6186a3a4ef47",
-      "name": "Tasks",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "670db387-d5be-4410-93c6-39ec3620371a",
-          "name": "List tasks",
-          "request": {
-            "name": "List tasks",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "tasks",
+          "item": [
+            {
+              "name": "templates",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "<string>",
-                  "description": "Type of the tasks to get"
+                  "name": "{typeId}",
+                  "item": [
+                    {
+                      "name": "Get task template by type. This is the base to create new tasks",
+                      "id": "9d57c305-0143-4946-aba1-d3cfc2ba121b",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/templates/:typeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            "templates",
+                            ":typeId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d2261b97-7a7e-4c03-88a3-03113ecdad9c",
+                              "key": "typeId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "8c494e98-f0fe-45a3-9b7c-6c92492b66b4",
+                          "name": "successful operation",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/templates/:typeId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                "templates",
+                                ":typeId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "typeId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"SUCCESS_FAILURE\",\n  \"type\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"nisi02\": \"<string>\",\n    \"Duis068\": \"<string>\",\n    \"dolore_4\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-8c494e98-f0fe-45a3-9b7c-6c92492b66b4"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-9d57c305-0143-4946-aba1-d3cfc2ba121b"
+                    }
+                  ],
+                  "id": "2d8c1b11-acf1-4554-8c5e-814440725950",
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-2d8c1b11-acf1-4554-8c5e-814440725950"
+                },
+                {
+                  "name": "List tasks of template tasks. This is the base to create new tasks",
+                  "id": "36e26c49-8201-4158-ad00-5335997a3c2d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tasks/templates",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tasks",
+                        "templates"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "ea4c67f3-d456-443a-95cb-661322dbf93e",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/templates",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            "templates"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"enabled\": \"<boolean>\",\n    \"frequency\": {\n      \"schedule\": \"<string>\",\n      \"cronExpression\": \"<string>\",\n      \"recurringDays\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"startDate\": \"<long>\",\n      \"timeZoneOffset\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"notificationCondition\": \"SUCCESS_FAILURE\",\n    \"type\": \"<string>\",\n    \"alertEmail\": \"<string>\",\n    \"properties\": {\n      \"culpa612\": \"<string>\",\n      \"aute5d7\": \"<string>\"\n    }\n  },\n  {\n    \"enabled\": \"<boolean>\",\n    \"frequency\": {\n      \"schedule\": \"<string>\",\n      \"cronExpression\": \"<string>\",\n      \"recurringDays\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"startDate\": \"<long>\",\n      \"timeZoneOffset\": \"<string>\"\n    },\n    \"name\": \"<string>\",\n    \"notificationCondition\": \"FAILURE\",\n    \"type\": \"<string>\",\n    \"alertEmail\": \"<string>\",\n    \"properties\": {\n      \"culpa_4\": \"<string>\",\n      \"qui8\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-ea4c67f3-d456-443a-95cb-661322dbf93e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-36e26c49-8201-4158-ad00-5335997a3c2d"
                 }
               ],
-              "variable": []
+              "id": "6cd60a38-13b4-4be7-8a1d-81ae14126b91",
+              "createdAt": "2026-10-21T21:11:51.000Z",
+              "updatedAt": "2026-10-21T21:11:51.000Z",
+              "uid": "35240-6cd60a38-13b4-4be7-8a1d-81ae14126b91"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "81f33b5c-e0ab-4cb6-b809-06ce2ea05150",
-              "name": "successful operation",
-              "originalRequest": {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "run",
+                  "item": [
+                    {
+                      "name": "Run task",
+                      "id": "b3eaa74a-5b97-4e32-8906-7aa502bcf5cc",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/:id/run",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            ":id",
+                            "run"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b9778e1f-1cfc-417e-9503-63c33d638194",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Id of the task to run"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "6b46d3e5-4eba-4a68-964d-365aecb55146",
+                          "name": "Task was run",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/:id/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                ":id",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-6b46d3e5-4eba-4a68-964d-365aecb55146"
+                        },
+                        {
+                          "id": "e602b6a5-59e7-4995-b432-3ff2ef35f9d8",
+                          "name": "Task not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/:id/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                ":id",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-e602b6a5-59e7-4995-b432-3ff2ef35f9d8"
+                        },
+                        {
+                          "id": "35afc785-b634-4396-8851-d47d43c82fce",
+                          "name": "Task is disabled",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/:id/run",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                ":id",
+                                "run"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Method Not Allowed",
+                          "code": 405,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-35afc785-b634-4396-8851-d47d43c82fce"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-b3eaa74a-5b97-4e32-8906-7aa502bcf5cc"
+                    }
+                  ],
+                  "id": "195b0fc5-61d0-4fb0-bfb5-3b8f11c12371",
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-195b0fc5-61d0-4fb0-bfb5-3b8f11c12371"
+                },
+                {
+                  "name": "stop",
+                  "item": [
+                    {
+                      "name": "Stop task",
+                      "id": "05ad85a7-8607-4624-b5b7-844ec32c6852",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/:id/stop",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            ":id",
+                            "stop"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9a069ca0-f878-4147-b4dd-636a85c16050",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Id of the task to stop"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "3206e9a9-ba73-4efb-85e1-fd3d7ba31017",
+                          "name": "Task was stopped",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-3206e9a9-ba73-4efb-85e1-fd3d7ba31017"
+                        },
+                        {
+                          "id": "d9c8c192-2120-4aa7-a283-25db6d314d2f",
+                          "name": "Task not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-d9c8c192-2120-4aa7-a283-25db6d314d2f"
+                        },
+                        {
+                          "id": "399c42c6-5aa8-4ffc-a7c2-cc281f277140",
+                          "name": "Unable to stop task",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/tasks/:id/stop",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "tasks",
+                                ":id",
+                                "stop"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Conflict",
+                          "code": 409,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:11:51.000Z",
+                          "updatedAt": "2026-10-21T21:11:51.000Z",
+                          "uid": "35240-399c42c6-5aa8-4ffc-a7c2-cc281f277140"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-05ad85a7-8607-4624-b5b7-844ec32c6852"
+                    }
+                  ],
+                  "id": "c15b6b12-eee0-4d7e-838e-a443da15b010",
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-c15b6b12-eee0-4d7e-838e-a443da15b010"
+                },
+                {
+                  "name": "Delete task by id",
+                  "id": "f323a052-b4f8-4296-95f5-c9e73fffc5b7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tasks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tasks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a888537d-4e37-4a38-91eb-133b3af27b44",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "9971755c-6e77-4801-8811-4a6b74642354",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-9971755c-6e77-4801-8811-4a6b74642354"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-f323a052-b4f8-4296-95f5-c9e73fffc5b7"
+                },
+                {
+                  "name": "Get a single task by id",
+                  "id": "09ccb67c-cf55-4d10-ba3c-e73d59b1f3d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tasks/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tasks",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a61bf2f4-2022-4117-bd5b-6988f687dd82",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Id of the task to get"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b6e49066-16cf-4707-83c1-d5009b4b09fe",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"currentState\": \"<string>\",\n  \"id\": \"<string>\",\n  \"lastRun\": \"<dateTime>\",\n  \"lastRunResult\": \"<string>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nextRun\": \"<dateTime>\",\n  \"type\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-b6e49066-16cf-4707-83c1-d5009b4b09fe"
+                    },
+                    {
+                      "id": "11992d19-2039-439b-bbad-e47908db5a34",
+                      "name": "Task not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-11992d19-2039-439b-bbad-e47908db5a34"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-09ccb67c-cf55-4d10-ba3c-e73d59b1f3d9"
+                }
+              ],
+              "id": "f37d07b8-850b-4744-8269-ee801cb17c2e",
+              "createdAt": "2026-10-21T21:11:51.000Z",
+              "updatedAt": "2026-10-21T21:11:51.000Z",
+              "uid": "35240-f37d07b8-850b-4744-8269-ee801cb17c2e"
+            },
+            {
+              "name": "{taskId}",
+              "item": [
+                {
+                  "name": "Update an existing task",
+                  "id": "2599b248-df58-449c-ae6c-5f743e82de3f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"SUCCESS_FAILURE\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"dolore_4\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tasks/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tasks",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d57193e5-dcde-4aef-b05a-04999edc9905",
+                          "key": "taskId",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "27599a56-33d4-420b-a685-24cba940a1fa",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"SUCCESS_FAILURE\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"dolore_4\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tasks/:taskId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tasks",
+                            ":taskId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "taskId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:11:51.000Z",
+                      "updatedAt": "2026-10-21T21:11:51.000Z",
+                      "uid": "35240-27599a56-33d4-420b-a685-24cba940a1fa"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-2599b248-df58-449c-ae6c-5f743e82de3f"
+                }
+              ],
+              "id": "7bf09996-aafb-4909-b6ad-3cb8142a56e1",
+              "createdAt": "2026-10-21T21:11:51.000Z",
+              "updatedAt": "2026-10-21T21:11:51.000Z",
+              "uid": "35240-7bf09996-aafb-4909-b6ad-3cb8142a56e1"
+            },
+            {
+              "name": "List tasks",
+              "id": "19414895-8044-4e29-88ee-945683e480bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/v1/tasks?type=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "tasks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
                   ],
                   "query": [
                     {
+                      "description": "Type of the tasks to get",
                       "key": "type",
                       "value": "<string>"
                     }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "bb94bc53-baea-410a-8bee-a4b6a8d73b25",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tasks?type=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tasks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Type of the tasks to get",
+                          "key": "type",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
                   ],
-                  "variable": []
-                },
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"continuationToken\": \"<string>\",\n  \"items\": [\n    {\n      \"currentState\": \"<string>\",\n      \"id\": \"<string>\",\n      \"lastRun\": \"<dateTime>\",\n      \"lastRunResult\": \"<string>\",\n      \"message\": \"<string>\",\n      \"name\": \"<string>\",\n      \"nextRun\": \"<dateTime>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"currentState\": \"<string>\",\n      \"id\": \"<string>\",\n      \"lastRun\": \"<dateTime>\",\n      \"lastRunResult\": \"<string>\",\n      \"message\": \"<string>\",\n      \"name\": \"<string>\",\n      \"nextRun\": \"<dateTime>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-bb94bc53-baea-410a-8bee-a4b6a8d73b25"
+                }
+              ],
+              "createdAt": "2026-10-21T21:11:51.000Z",
+              "updatedAt": "2026-10-21T21:11:51.000Z",
+              "uid": "35240-19414895-8044-4e29-88ee-945683e480bf"
+            },
+            {
+              "name": "Create task",
+              "id": "6eb3a0f3-d5b2-4e1a-8435-5b7dbced3476",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"continuationToken\": \"string\",\n  \"items\": [\n    {\n      \"currentState\": \"string\",\n      \"id\": \"string\",\n      \"lastRun\": \"1954-04-20T01:05:23.544Z\",\n      \"lastRunResult\": \"string\",\n      \"message\": \"string\",\n      \"name\": \"string\",\n      \"nextRun\": \"1975-04-25T22:32:29.040Z\",\n      \"type\": \"string\"\n    },\n    {\n      \"currentState\": \"string\",\n      \"id\": \"string\",\n      \"lastRun\": \"1956-04-23T08:13:12.571Z\",\n      \"lastRunResult\": \"string\",\n      \"message\": \"string\",\n      \"name\": \"string\",\n      \"nextRun\": \"1980-07-05T00:27:45.435Z\",\n      \"type\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d52f2016-4ed0-444d-b44e-cf228dcdebf3",
-          "name": "Create task",
-          "request": {
-            "name": "Create task",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"<string>\",\n  \"type\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "0abc7b76-700b-431a-ad2f-cd8f95b27f22",
-              "name": "Task created successfully",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"SUCCESS_FAILURE\",\n  \"type\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"nisi02\": \"<string>\",\n    \"Duis068\": \"<string>\",\n    \"dolore_4\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/v1/tasks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "tasks"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "85c8904d-a0a7-4037-af3e-d7362b2d5432",
+                  "name": "Task created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"SUCCESS_FAILURE\",\n  \"type\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"nisi02\": \"<string>\",\n    \"Duis068\": \"<string>\",\n    \"dolore_4\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
                     },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tasks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tasks"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"0 1 2 * * ?\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"-05:00\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"<string>\",\n  \"type\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
-                  }
-                }
-              },
-              "status": "Created",
-              "code": 201,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"currentState\": \"<string>\",\n  \"id\": \"<string>\",\n  \"lastRun\": \"<dateTime>\",\n  \"lastRunResult\": \"<string>\",\n  \"message\": \"<string>\",\n  \"name\": \"<string>\",\n  \"nextRun\": \"<dateTime>\",\n  \"type\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T21:11:51.000Z",
+                  "updatedAt": "2026-10-21T21:11:51.000Z",
+                  "uid": "35240-85c8904d-a0a7-4037-af3e-d7362b2d5432"
                 }
               ],
-              "body": "{\n  \"currentState\": \"string\",\n  \"id\": \"string\",\n  \"lastRun\": \"1947-10-22T18:23:57.373Z\",\n  \"lastRunResult\": \"string\",\n  \"message\": \"string\",\n  \"name\": \"string\",\n  \"nextRun\": \"2014-06-18T00:28:08.055Z\",\n  \"type\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T21:11:51.000Z",
+              "updatedAt": "2026-10-21T21:11:51.000Z",
+              "uid": "35240-6eb3a0f3-d5b2-4e1a-8435-5b7dbced3476"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e59f093c-d618-41c8-a8c0-e027fa7f8f1e",
-          "name": "List tasks of template tasks. This is the base to create new tasks",
-          "request": {
-            "name": "List tasks of template tasks. This is the base to create new tasks",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                "templates"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "85f092b2-96ea-4f81-97ed-22dc30db405d",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    "templates"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"enabled\": \"<boolean>\",\n    \"frequency\": {\n      \"schedule\": \"<string>\",\n      \"cronExpression\": \"0 1 2 * * ?\",\n      \"recurringDays\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"startDate\": \"<long>\",\n      \"timeZoneOffset\": \"-05:00\"\n    },\n    \"name\": \"<string>\",\n    \"notificationCondition\": \"<string>\",\n    \"type\": \"<string>\",\n    \"alertEmail\": \"<string>\",\n    \"properties\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  {\n    \"enabled\": \"<boolean>\",\n    \"frequency\": {\n      \"schedule\": \"<string>\",\n      \"cronExpression\": \"0 1 2 * * ?\",\n      \"recurringDays\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"startDate\": \"<long>\",\n      \"timeZoneOffset\": \"-05:00\"\n    },\n    \"name\": \"<string>\",\n    \"notificationCondition\": \"<string>\",\n    \"type\": \"<string>\",\n    \"alertEmail\": \"<string>\",\n    \"properties\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    }\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f11542b5-2bb0-4bd1-8534-1130db70834d",
-          "name": "Get task template by type. This is the base to create new tasks",
-          "request": {
-            "name": "Get task template by type. This is the base to create new tasks",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                "templates",
-                ":typeId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "typeId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "2a7e5477-caae-4934-a36d-b4249e307c63",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    "templates",
-                    ":typeId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "typeId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"0 1 2 * * ?\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"-05:00\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"<string>\",\n  \"type\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "6f9bb924-9de0-4033-9657-8d9f9c4d3b89",
-          "name": "Delete task by id",
-          "request": {
-            "name": "Delete task by id",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "cff008cc-f95d-4d7c-abed-0b40c4b3d03b",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "af92e794-bf2d-493e-8b3a-a7d02072c061",
-          "name": "Get a single task by id",
-          "request": {
-            "name": "Get a single task by id",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                ":id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Id of the task to get"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "c2dcecf1-3732-40b5-8e77-82b60cded794",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"currentState\": \"string\",\n  \"id\": \"string\",\n  \"lastRun\": \"1947-10-22T18:23:57.373Z\",\n  \"lastRunResult\": \"string\",\n  \"message\": \"string\",\n  \"name\": \"string\",\n  \"nextRun\": \"2014-06-18T00:28:08.055Z\",\n  \"type\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "97c1a142-cac4-4ceb-a325-a13523d7cf84",
-              "name": "Task not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "2d347b52-ceba-4515-8f09-e1f3b4d06e3d",
-          "name": "Run task",
-          "request": {
-            "name": "Run task",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                ":id",
-                "run"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Id of the task to run"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "33f5d4df-0148-4580-9d2f-4c93edb272e5",
-              "name": "Task was run",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id",
-                    "run"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to run"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "aa2c59bc-18d0-469f-87ba-98694af1e7fa",
-              "name": "Task not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id",
-                    "run"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to run"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "76707447-2826-475f-a45e-2cbe396b0bf8",
-              "name": "Task is disabled",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id",
-                    "run"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to run"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Method Not Allowed",
-              "code": 405,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "296659fd-2efb-487f-aefc-de10f1ff12f7",
-          "name": "Stop task",
-          "request": {
-            "name": "Stop task",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                ":id",
-                "stop"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "id",
-                  "description": "(Required) Id of the task to stop"
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "53e06bf8-ada2-4ec1-9226-62de86677bd2",
-              "name": "Task was stopped",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id",
-                    "stop"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to stop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bf439c8a-042b-4e3f-a74c-c32a51ea36b7",
-              "name": "Task not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id",
-                    "stop"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to stop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "72461e1c-9324-48b4-9b88-d8134f7b81e0",
-              "name": "Unable to stop task",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":id",
-                    "stop"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "id",
-                      "description": "(Required) Id of the task to stop"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Conflict",
-              "code": 409,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "48404829-ac6b-4197-8f9e-d7a3a8ee5af2",
-          "name": "Update an existing task",
-          "request": {
-            "name": "Update an existing task",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "tasks",
-                ":taskId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "taskId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"<string>\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1313af27-e8f7-4d8f-8c2e-299b3454c42b",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "tasks",
-                    ":taskId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "taskId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"frequency\": {\n    \"schedule\": \"<string>\",\n    \"cronExpression\": \"0 1 2 * * ?\",\n    \"recurringDays\": [\n      \"<integer>\",\n      \"<integer>\"\n    ],\n    \"startDate\": \"<long>\",\n    \"timeZoneOffset\": \"-05:00\"\n  },\n  \"name\": \"<string>\",\n  \"notificationCondition\": \"<string>\",\n  \"alertEmail\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a853b192-49d2-4b2e-beb6-f861bd16dd89",
+          "createdAt": "2026-10-21T21:11:51.000Z",
+          "updatedAt": "2026-10-21T21:11:51.000Z",
+          "uid": "35240-a853b192-49d2-4b2e-beb6-f861bd16dd89"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "f5679acb-f15b-41d5-9bc1-c5a7c4313c2f",
+      "createdAt": "2026-10-21T21:11:51.000Z",
+      "updatedAt": "2026-10-21T21:11:51.000Z",
+      "uid": "35240-f5679acb-f15b-41d5-9bc1-c5a7c4313c2f"
     }
   ],
   "auth": {
@@ -1099,21 +1071,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "aacfd771-261a-4d53-8a5d-878b8ce35719",
-    "name": "Sonatype Nexus Repository Manager assets Tasks API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

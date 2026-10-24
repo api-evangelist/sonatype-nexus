@@ -1,263 +1,272 @@
 {
+  "info": {
+    "_postman_id": "b9bd49ea-e455-4863-bcca-90533758693f",
+    "name": "Sonatype Nexus Repository Manager Product licensing API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:08:36.000Z",
+    "updatedAt": "2026-10-21T21:08:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b9bd49ea-e455-4863-bcca-90533758693f"
+  },
   "item": [
     {
-      "id": "6e6153bf-bf60-48b3-ad08-fd07b21b9fd4",
-      "name": "Product licensing",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "dfaebce6-6eae-48c2-aef4-e139029666ec",
-          "name": "Uninstall license if present.",
-          "request": {
-            "name": "Uninstall license if present.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "system",
-                "license"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
+          "name": "system",
+          "item": [
             {
-              "id": "67edf838-b511-47fd-892e-1ff854c6b841",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "system",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
+              "name": "license",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b02f15ce-2ea6-4273-9f77-34023312c822",
-          "name": "Get the current license status.",
-          "request": {
-            "name": "Get the current license status.",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "system",
-                "license"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "61c34cd7-b6dc-410c-8ff9-bf6b45999506",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "system",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "name": "Uninstall license if present",
+                  "id": "aa566529-7a9b-4566-adbc-27aea0d0074b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"contactCompany\": \"string\",\n  \"contactEmail\": \"string\",\n  \"contactName\": \"string\",\n  \"effectiveDate\": \"1973-10-17T08:40:39.038Z\",\n  \"expirationDate\": \"2021-03-25T22:40:30.813Z\",\n  \"features\": \"string\",\n  \"fingerprint\": \"string\",\n  \"licenseType\": \"string\",\n  \"licensedUsers\": \"string\",\n  \"maxRepoComponents\": 181,\n  \"maxRepoRequests\": 4461\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3179a3c9-a6d9-4a43-a667-bad951ebbb8f",
-          "name": "Upload a new license file.",
-          "request": {
-            "name": "Upload a new license file.",
-            "description": {
-              "content": "Server must be restarted to take effect",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "v1",
-                "system",
-                "license"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/octet-stream"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "<binary>"
-            }
-          },
-          "response": [
-            {
-              "id": "4558bb6b-cb65-4045-91ca-0c2de4146a88",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "system",
-                    "license"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/system/license",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "system",
+                        "license"
+                      ]
+                    }
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "file"
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "response": [
+                    {
+                      "id": "5abca4fd-d177-4aea-a464-5bfb919e991c",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/system/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "system",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:08:37.000Z",
+                      "updatedAt": "2026-10-21T21:08:37.000Z",
+                      "uid": "35240-5abca4fd-d177-4aea-a464-5bfb919e991c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:37.000Z",
+                  "updatedAt": "2026-10-21T21:08:37.000Z",
+                  "uid": "35240-aa566529-7a9b-4566-adbc-27aea0d0074b"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Get the current license status",
+                  "id": "7384ac15-e398-4e78-ac5c-9327536eb939",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/system/license",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "system",
+                        "license"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8e8fa87d-bbc0-42b9-a836-b7f7aade4c65",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/system/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "system",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"contactCompany\": \"<string>\",\n  \"contactEmail\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"effectiveDate\": \"<dateTime>\",\n  \"expirationDate\": \"<dateTime>\",\n  \"features\": \"<string>\",\n  \"fingerprint\": \"<string>\",\n  \"licenseType\": \"<string>\",\n  \"licensedUsers\": \"<string>\",\n  \"maxRepoComponents\": \"<long>\",\n  \"maxRepoRequests\": \"<long>\"\n}",
+                      "createdAt": "2026-10-21T21:08:37.000Z",
+                      "updatedAt": "2026-10-21T21:08:37.000Z",
+                      "uid": "35240-8e8fa87d-bbc0-42b9-a836-b7f7aade4c65"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:37.000Z",
+                  "updatedAt": "2026-10-21T21:08:37.000Z",
+                  "uid": "35240-7384ac15-e398-4e78-ac5c-9327536eb939"
+                },
+                {
+                  "name": "Upload a new license file",
+                  "id": "320deda5-3c18-45de-8cdd-a755e8778457",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/octet-stream"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<binary>"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/system/license",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "system",
+                        "license"
+                      ]
+                    },
+                    "description": "Server must be restarted to take effect"
+                  },
+                  "response": [
+                    {
+                      "id": "b016a2b7-6bca-4536-8324-71c0b043b08e",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/octet-stream"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "<binary>"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/system/license",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "system",
+                            "license"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"contactCompany\": \"<string>\",\n  \"contactEmail\": \"<string>\",\n  \"contactName\": \"<string>\",\n  \"effectiveDate\": \"<dateTime>\",\n  \"expirationDate\": \"<dateTime>\",\n  \"features\": \"<string>\",\n  \"fingerprint\": \"<string>\",\n  \"licenseType\": \"<string>\",\n  \"licensedUsers\": \"<string>\",\n  \"maxRepoComponents\": \"<long>\",\n  \"maxRepoRequests\": \"<long>\"\n}",
+                      "createdAt": "2026-10-21T21:08:37.000Z",
+                      "updatedAt": "2026-10-21T21:08:37.000Z",
+                      "uid": "35240-b016a2b7-6bca-4536-8324-71c0b043b08e"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:08:37.000Z",
+                  "updatedAt": "2026-10-21T21:08:37.000Z",
+                  "uid": "35240-320deda5-3c18-45de-8cdd-a755e8778457"
                 }
               ],
-              "body": "{\n  \"contactCompany\": \"string\",\n  \"contactEmail\": \"string\",\n  \"contactName\": \"string\",\n  \"effectiveDate\": \"1973-10-17T08:40:39.038Z\",\n  \"expirationDate\": \"2021-03-25T22:40:30.813Z\",\n  \"features\": \"string\",\n  \"fingerprint\": \"string\",\n  \"licenseType\": \"string\",\n  \"licensedUsers\": \"string\",\n  \"maxRepoComponents\": 181,\n  \"maxRepoRequests\": 4461\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "9db6b84b-ff8b-4d26-a4f7-1907d93a0557",
+              "createdAt": "2026-10-21T21:08:37.000Z",
+              "updatedAt": "2026-10-21T21:08:37.000Z",
+              "uid": "35240-9db6b84b-ff8b-4d26-a4f7-1907d93a0557"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "af873e8a-f500-4187-b3d7-98e50cd2eaeb",
+          "createdAt": "2026-10-21T21:08:37.000Z",
+          "updatedAt": "2026-10-21T21:08:37.000Z",
+          "uid": "35240-af873e8a-f500-4187-b3d7-98e50cd2eaeb"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "908eea73-1095-4e50-a8d3-fc491202ec9a",
+      "createdAt": "2026-10-21T21:08:37.000Z",
+      "updatedAt": "2026-10-21T21:08:37.000Z",
+      "uid": "35240-908eea73-1095-4e50-a8d3-fc491202ec9a"
     }
   ],
   "auth": {
@@ -265,21 +274,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5727258d-ac0e-4427-8952-4c53f2bbf401",
-    "name": "Sonatype Nexus Repository Manager assets Product licensing API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

@@ -1,718 +1,705 @@
 {
+  "info": {
+    "_postman_id": "4cc5d9a9-7cfa-4626-b8d3-00cd0cb40558",
+    "name": "Sonatype Nexus Repository Manager Security: Atlassian Crowd\u2026",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:09:29.000Z",
+    "updatedAt": "2026-10-21T21:09:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4cc5d9a9-7cfa-4626-b8d3-00cd0cb40558"
+  },
   "item": [
     {
-      "id": "595df3cc-5525-420e-9047-c0a7c621c8d5",
-      "name": "Security: Atlassian Crowd",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "ce3f6774-4272-4c1a-897b-1e880cdd67fe",
-          "name": "Retrieve Atlassian Crowd settings configured in Nexus Repository Manager",
-          "request": {
-            "name": "Retrieve Atlassian Crowd settings configured in Nexus Repository Manager",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "atlassian-crowd"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "security",
+          "item": [
             {
-              "id": "1df14ef9-8e85-4a96-8824-7132297ba15f",
-              "name": "Atlassian Crowd settings returned",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "atlassian-crowd",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "name": "clear-cache",
+                  "item": [
+                    {
+                      "name": "Clear Atlassian Crowd cache",
+                      "id": "abe0365d-0106-4bfd-b040-8ab5367ec2d2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd/clear-cache",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd",
+                            "clear-cache"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "1c1984e3-70b0-4eff-ae52-16d3818b04d5",
+                          "name": "Atlassian Crowd cache has been cleared",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/clear-cache",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "clear-cache"
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-1c1984e3-70b0-4eff-ae52-16d3818b04d5"
+                        },
+                        {
+                          "id": "1b9844ef-8b23-4e25-9998-d0ad92edc829",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/clear-cache",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "clear-cache"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-1b9844ef-8b23-4e25-9998-d0ad92edc829"
+                        },
+                        {
+                          "id": "5c78f49c-aa80-4ab6-b3f8-97408f47e758",
+                          "name": "Insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/clear-cache",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "clear-cache"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-5c78f49c-aa80-4ab6-b3f8-97408f47e758"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-abe0365d-0106-4bfd-b040-8ab5367ec2d2"
+                    }
+                  ],
+                  "id": "1c4915f5-9117-4701-ab6a-7a2ddabbaefd",
+                  "createdAt": "2026-10-21T21:09:29.000Z",
+                  "updatedAt": "2026-10-21T21:09:29.000Z",
+                  "uid": "35240-1c4915f5-9117-4701-ab6a-7a2ddabbaefd"
+                },
+                {
+                  "name": "verify-connection",
+                  "item": [
+                    {
+                      "name": "Verify connection using supplied Atlassian Crowd settings",
+                      "id": "915262f3-bea8-4971-8f8f-62eb1e91218e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd/verify-connection",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd",
+                            "verify-connection"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "bc71db6c-a24a-48cb-8d0c-82ffa7c7a354",
+                          "name": "Atlassian Crowd connection was successful",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/verify-connection",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "verify-connection"
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-bc71db6c-a24a-48cb-8d0c-82ffa7c7a354"
+                        },
+                        {
+                          "id": "6a3b90d0-1405-496c-a17c-6664aa92bd19",
+                          "name": "Atlassian Crowd connection failed",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/verify-connection",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "verify-connection"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-6a3b90d0-1405-496c-a17c-6664aa92bd19"
+                        },
+                        {
+                          "id": "7772b586-cf71-476a-8b6e-d1f15d25e42a",
+                          "name": "Authentication required",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/verify-connection",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "verify-connection"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-7772b586-cf71-476a-8b6e-d1f15d25e42a"
+                        },
+                        {
+                          "id": "ba7ea5ea-d612-4292-8004-37ee8ec3c3f7",
+                          "name": "Insufficient permissions",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v1/security/atlassian-crowd/verify-connection",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v1",
+                                "security",
+                                "atlassian-crowd",
+                                "verify-connection"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T21:09:29.000Z",
+                          "updatedAt": "2026-10-21T21:09:29.000Z",
+                          "uid": "35240-ba7ea5ea-d612-4292-8004-37ee8ec3c3f7"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-915262f3-bea8-4971-8f8f-62eb1e91218e"
+                    }
+                  ],
+                  "id": "b45e8cb8-9889-417c-a7e4-0f37204e8bfb",
+                  "createdAt": "2026-10-21T21:09:29.000Z",
+                  "updatedAt": "2026-10-21T21:09:29.000Z",
+                  "uid": "35240-b45e8cb8-9889-417c-a7e4-0f37204e8bfb"
+                },
+                {
+                  "name": "Retrieve Atlassian Crowd settings configured in Nexus Repository Manager",
+                  "id": "3d467696-18ca-4f38-b08a-a0693a95b2d9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "atlassian-crowd"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4a620397-ff1d-4892-9d7a-b3d2ec5cc5d2",
+                      "name": "Atlassian Crowd settings returned",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-4a620397-ff1d-4892-9d7a-b3d2ec5cc5d2"
+                    },
+                    {
+                      "id": "c4b0d66b-7131-4271-b291-cfc0380dc251",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-c4b0d66b-7131-4271-b291-cfc0380dc251"
+                    },
+                    {
+                      "id": "bfc3fd9d-8aac-44f3-bb3d-083f779de0f1",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-bfc3fd9d-8aac-44f3-bb3d-083f779de0f1"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:29.000Z",
+                  "updatedAt": "2026-10-21T21:09:29.000Z",
+                  "uid": "35240-3d467696-18ca-4f38-b08a-a0693a95b2d9"
+                },
+                {
+                  "name": "Update Atlassian Crowd settings configured in Nexus Repository Manager",
+                  "id": "8ddc317c-73a7-45fc-80dc-3ac911222a9f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "security",
+                        "atlassian-crowd"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "f11a0874-c808-4249-930e-cbc15de812ff",
+                      "name": "Atlassian Crowd settings updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-f11a0874-c808-4249-930e-cbc15de812ff"
+                    },
+                    {
+                      "id": "1bf899f7-01ff-4054-9ec6-62abec788d40",
+                      "name": "Authentication required",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-1bf899f7-01ff-4054-9ec6-62abec788d40"
+                    },
+                    {
+                      "id": "cc90bb89-ee9b-4f43-9a37-47bec8a42b1c",
+                      "name": "Insufficient permissions",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/security/atlassian-crowd",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "security",
+                            "atlassian-crowd"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:29.000Z",
+                      "updatedAt": "2026-10-21T21:09:29.000Z",
+                      "uid": "35240-cc90bb89-ee9b-4f43-9a37-47bec8a42b1c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:29.000Z",
+                  "updatedAt": "2026-10-21T21:09:29.000Z",
+                  "uid": "35240-8ddc317c-73a7-45fc-80dc-3ac911222a9f"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d9b896cc-66a7-49bf-8350-ffc5f18c1be1",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "363fdeee-a228-4cf3-bb97-6bd936ddd9d8",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "171c9783-039e-4637-ae29-60e609b15dea",
+              "createdAt": "2026-10-21T21:09:29.000Z",
+              "updatedAt": "2026-10-21T21:09:29.000Z",
+              "uid": "35240-171c9783-039e-4637-ae29-60e609b15dea"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4d60b237-3ed2-4bfd-8c1a-3e5a2eefcb50",
-          "name": "Update Atlassian Crowd settings configured in Nexus Repository Manager",
-          "request": {
-            "name": "Update Atlassian Crowd settings configured in Nexus Repository Manager",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "atlassian-crowd"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "*/*"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-            }
-          },
-          "response": [
-            {
-              "id": "e489461b-1218-46b8-94b3-234703a39118",
-              "name": "Atlassian Crowd settings updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ccdddc14-2f9a-4ff4-a14c-007b4325f3e1",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "84af81d7-fe34-47f3-8f74-3c069d7d64f2",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "da720499-a707-4120-bd0f-eda1b0526913",
-          "name": "Clear Atlassian Crowd cache",
-          "request": {
-            "name": "Clear Atlassian Crowd cache",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "atlassian-crowd",
-                "clear-cache"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d5f28fce-2181-4e17-9691-219ccddba795",
-              "name": "Atlassian Crowd cache has been cleared",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "clear-cache"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "0c02a6f5-2ff6-4335-97eb-cc560eebd2ac",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "clear-cache"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bc4aa5ac-cd44-46fd-80b0-8da6140952ee",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "clear-cache"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9d30c989-9dce-4cb2-a012-c28a59a9444e",
-          "name": "Verify connection using supplied Atlassian Crowd settings",
-          "request": {
-            "name": "Verify connection using supplied Atlassian Crowd settings",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "security",
-                "atlassian-crowd",
-                "verify-connection"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "*/*"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-            }
-          },
-          "response": [
-            {
-              "id": "b3a48ac9-f055-4ece-a612-60c4753d8aae",
-              "name": "Atlassian Crowd connection was successful",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "verify-connection"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "13308ab2-c5da-49ec-92c5-18b6a0a62245",
-              "name": "Atlassian Crowd connection failed",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "verify-connection"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "ab392d37-ef69-4c5e-b74b-202295a1b155",
-              "name": "Authentication required",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "verify-connection"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3002d5b4-156c-479c-93ab-d87c27af1224",
-              "name": "Insufficient permissions",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "security",
-                    "atlassian-crowd",
-                    "verify-connection"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"realmActive\": \"<boolean>\",\n  \"applicationName\": \"<string>\",\n  \"applicationPassword\": \"<string>\",\n  \"timeout\": \"<integer>\",\n  \"url\": \"<string>\",\n  \"useTrustStoreForUrl\": \"<boolean>\"\n}"
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6c41e06c-6c50-4468-b079-2d48d1f483f2",
+          "createdAt": "2026-10-21T21:09:29.000Z",
+          "updatedAt": "2026-10-21T21:09:29.000Z",
+          "uid": "35240-6c41e06c-6c50-4468-b079-2d48d1f483f2"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "ea5a3b59-e32c-4717-9c17-831048c2765c",
+      "createdAt": "2026-10-21T21:09:29.000Z",
+      "updatedAt": "2026-10-21T21:09:29.000Z",
+      "uid": "35240-ea5a3b59-e32c-4717-9c17-831048c2765c"
     }
   ],
   "auth": {
@@ -720,21 +707,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "5502a3cf-3a71-48e4-a337-8491f34b4519",
-    "name": "Sonatype Nexus Repository Manager assets Security: Atlassian Crowd API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

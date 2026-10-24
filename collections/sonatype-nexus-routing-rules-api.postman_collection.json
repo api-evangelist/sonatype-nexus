@@ -1,981 +1,924 @@
 {
+  "info": {
+    "_postman_id": "9a13f1d0-548b-4817-8c36-2c924997012d",
+    "name": "Sonatype Nexus Repository Manager Routing rules API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:09:10.000Z",
+    "updatedAt": "2026-10-21T21:09:10.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9a13f1d0-548b-4817-8c36-2c924997012d"
+  },
   "item": [
     {
-      "id": "bd2fe861-44e4-435f-8cbc-f885f83ecf72",
-      "name": "Routing rules",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "cc6e217d-8d35-4541-a121-3dd029ca7a3d",
-          "name": "List routing rules",
-          "request": {
-            "name": "List routing rules",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "routing-rules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "routing-rules",
+          "item": [
             {
-              "id": "8668a7c0-554c-42bd-a0b9-b021eef79fc4",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "Delete a single routing rule",
+                  "id": "716f9afc-9a82-48c9-87de-cfa9498f98f1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "00cd1594-862d-4ac4-bbdd-22b4091b7b2a",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the routing rule to delete"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "5b456664-b004-4a2a-a695-5e0f1a27d189",
+                      "name": "Routing rule was successfully deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-5b456664-b004-4a2a-a695-5e0f1a27d189"
+                    },
+                    {
+                      "id": "3c51e645-55d3-465e-b4f8-febf0e4815e9",
+                      "name": "Insufficient permissions to delete routing rules",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-3c51e645-55d3-465e-b4f8-febf0e4815e9"
+                    },
+                    {
+                      "id": "caa65c02-f093-4b81-b15e-484755c2289c",
+                      "name": "Routing rule not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-caa65c02-f093-4b81-b15e-484755c2289c"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-716f9afc-9a82-48c9-87de-cfa9498f98f1"
+                },
+                {
+                  "name": "Get a single routing rule",
+                  "id": "72c1ef3d-f151-4c9f-8db4-aed3f734546e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "04f6e7e8-d5d9-4010-97c1-2b2ceb8dec9f",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the routing rule to get"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "6a5bcfe3-3f1b-45a7-8aa8-4bd208783780",
+                      "name": "successful operation",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-6a5bcfe3-3f1b-45a7-8aa8-4bd208783780"
+                    },
+                    {
+                      "id": "0524b737-8549-427d-8e59-2527ca566b2b",
+                      "name": "Insufficient permissions to read routing rules",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-0524b737-8549-427d-8e59-2527ca566b2b"
+                    },
+                    {
+                      "id": "2b6f275b-0cda-4538-a9f1-1908a3239313",
+                      "name": "Routing rule not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-2b6f275b-0cda-4538-a9f1-1908a3239313"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-72c1ef3d-f151-4c9f-8db4-aed3f734546e"
+                },
+                {
+                  "name": "Update a single routing rule",
+                  "id": "3dbe6da3-cc6d-438f-88a0-251b8dd2be93",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules",
+                        ":name"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ed7832c5-7336-4ab2-bd4e-3cc2f9556244",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) The name of the routing rule to update"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "51871098-d10e-470e-93a6-840fad69e8bf",
+                      "name": "Routing rule was successfully updated",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-51871098-d10e-470e-93a6-840fad69e8bf"
+                    },
+                    {
+                      "id": "13851a01-7e6a-4d52-9fcc-3896430ae800",
+                      "name": "Another routing rule with the same name already exists or required parameters missing",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-13851a01-7e6a-4d52-9fcc-3896430ae800"
+                    },
+                    {
+                      "id": "691ced98-2d1a-4126-a740-d2e9bc036326",
+                      "name": "Insufficient permissions to edit routing rules",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-691ced98-2d1a-4126-a740-d2e9bc036326"
+                    },
+                    {
+                      "id": "a317a714-9ff8-4a64-8e71-775c3aa7c5cb",
+                      "name": "Routing rule not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/routing-rules/:name",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "routing-rules",
+                            ":name"
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:09:11.000Z",
+                      "updatedAt": "2026-10-21T21:09:11.000Z",
+                      "uid": "35240-a317a714-9ff8-4a64-8e71-775c3aa7c5cb"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-3dbe6da3-cc6d-438f-88a0-251b8dd2be93"
+                }
+              ],
+              "id": "5b843070-66b8-4d85-a308-acbea3dc8e6c",
+              "createdAt": "2026-10-21T21:09:11.000Z",
+              "updatedAt": "2026-10-21T21:09:11.000Z",
+              "uid": "35240-5b843070-66b8-4d85-a308-acbea3dc8e6c"
+            },
+            {
+              "name": "List routing rules",
+              "id": "c31a47cf-8a60-4085-a6b4-466a536dae08",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "[\n  {\n    \"description\": \"string\",\n    \"matchers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"mode\": \"BLOCK\",\n    \"name\": \"vMt7eMoDfe\"\n  },\n  {\n    \"description\": \"string\",\n    \"matchers\": [\n      \"string\",\n      \"string\"\n    ],\n    \"mode\": \"ALLOW\",\n    \"name\": \"IMRM4xftnnH\"\n  }\n]",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2ec22ed3-9a67-4c27-9a95-36ee2b01f616",
-              "name": "Insufficient permissions to read routing rules",
-              "originalRequest": {
                 "url": {
+                  "raw": "{{baseUrl}}/v1/routing-rules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "v1",
                     "routing-rules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c91e11db-1278-4c9c-a99d-c3e5ddd3506d",
-          "name": "Create a single routing rule",
-          "request": {
-            "name": "Create a single routing rule",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "routing-rules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "f10b1a34-07bf-47b4-b780-5889ccdededd",
-              "name": "Routing rule was successfully created",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "7e819984-ca71-4483-b968-533f34446214",
-              "name": "A routing rule with the same name already exists or required parameters missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "3c82ef45-7305-4cc5-bafb-bd9679f45dcf",
-              "name": "Insufficient permissions to create routing rule",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "3a0c7248-ed6b-46c1-8baf-ffa04e4761a3",
-          "name": "Delete a single routing rule",
-          "request": {
-            "name": "Delete a single routing rule",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "routing-rules",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) The name of the routing rule to delete"
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "3af9eaea-1014-4a0e-9ace-4c146bd69796",
-              "name": "Routing rule was successfully deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to delete"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
+                }
               },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "63f3d9c5-82a8-49b6-9db8-d61a6120ef8a",
-              "name": "Insufficient permissions to delete routing rules",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to delete"
+                  "id": "a771afb3-16a7-4dab-84cb-a24a2452f785",
+                  "name": "successful operation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules"
+                      ]
                     }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "936a5b35-7067-4c90-8279-39234743b8b3",
-              "name": "Routing rule not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to delete"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b77fdad7-9e15-4010-bc4c-e104ec2d9c08",
-          "name": "Get a single routing rule",
-          "request": {
-            "name": "Get a single routing rule",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "routing-rules",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) The name of the routing rule to get"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9f1e7014-8940-4823-8e6b-6ea3d0e8d844",
-              "name": "successful operation",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
                   },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"description\": \"<string>\",\n    \"matchers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mode\": \"ALLOW\",\n    \"name\": \"oxYdX\"\n  },\n  {\n    \"description\": \"<string>\",\n    \"matchers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"mode\": \"ALLOW\",\n    \"name\": \"ekXDubMYN\"\n  }\n]",
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-a771afb3-16a7-4dab-84cb-a24a2452f785"
+                },
+                {
+                  "id": "d42bc35c-aed3-481d-a611-4c040c312a00",
+                  "name": "Insufficient permissions to read routing rules",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-d42bc35c-aed3-481d-a611-4c040c312a00"
+                }
+              ],
+              "createdAt": "2026-10-21T21:09:11.000Z",
+              "updatedAt": "2026-10-21T21:09:11.000Z",
+              "uid": "35240-c31a47cf-8a60-4085-a6b4-466a536dae08"
+            },
+            {
+              "name": "Create a single routing rule",
+              "id": "fb30f1a5-7ad2-4a04-8fae-a69d9423e074",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
                   {
-                    "key": "Accept",
+                    "key": "Content-Type",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c5639506-1103-42ab-bc7f-5222ffa86920",
-              "name": "Insufficient permissions to read routing rules",
-              "originalRequest": {
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
+                  "raw": "{{baseUrl}}/v1/routing-rules",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to get"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "6c6a651c-59a8-4c7e-b3c7-f6479f8452f2",
-              "name": "Routing rule not found",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to get"
-                    }
+                    "routing-rules"
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "b7f81dc7-e060-498b-9ccf-c2a202df04d1",
+                  "name": "Routing rule was successfully created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules"
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-b7f81dc7-e060-498b-9ccf-c2a202df04d1"
+                },
+                {
+                  "id": "3ed5c144-0131-4dc0-8bfa-0c085d2be536",
+                  "name": "A routing rule with the same name already exists or required parameters missing",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-3ed5c144-0131-4dc0-8bfa-0c085d2be536"
+                },
+                {
+                  "id": "b966a988-cfd6-466c-aa03-e096582b1cdf",
+                  "name": "Insufficient permissions to create routing rule",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"BLOCK\",\n  \"name\": \"TZw\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/routing-rules",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "routing-rules"
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T21:09:11.000Z",
+                  "updatedAt": "2026-10-21T21:09:11.000Z",
+                  "uid": "35240-b966a988-cfd6-466c-aa03-e096582b1cdf"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-21T21:09:11.000Z",
+              "updatedAt": "2026-10-21T21:09:11.000Z",
+              "uid": "35240-fb30f1a5-7ad2-4a04-8fae-a69d9423e074"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "26ae4f7b-2a1c-49fd-bb68-b7f7ccf8d4e8",
-          "name": "Update a single routing rule",
-          "request": {
-            "name": "Update a single routing rule",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "routing-rules",
-                ":name"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "name",
-                  "description": "(Required) The name of the routing rule to update"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "41e19119-684f-4776-85e9-cb072e7b513e",
-              "name": "Routing rule was successfully updated",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to update"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "f7f3b59d-ca70-43bc-95b9-c5eb5c9fa31a",
-              "name": "Another routing rule with the same name already exists or required parameters missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to update"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "b9691519-008c-433a-b1d8-f351a598723f",
-              "name": "Insufficient permissions to edit routing rules",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to update"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "79c71e50-a203-45d1-9240-945dbba01e90",
-              "name": "Routing rule not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "routing-rules",
-                    ":name"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "name",
-                      "description": "(Required) The name of the routing rule to update"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"description\": \"<string>\",\n  \"matchers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"mode\": \"<string>\",\n  \"name\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "1fb676ba-008c-4a32-bcfc-48e70311204b",
+          "createdAt": "2026-10-21T21:09:11.000Z",
+          "updatedAt": "2026-10-21T21:09:11.000Z",
+          "uid": "35240-1fb676ba-008c-4a32-bcfc-48e70311204b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "d16d5b5d-308e-4359-a9cb-cae9b8798415",
+      "createdAt": "2026-10-21T21:09:11.000Z",
+      "updatedAt": "2026-10-21T21:09:11.000Z",
+      "uid": "35240-d16d5b5d-308e-4359-a9cb-cae9b8798415"
     }
   ],
   "auth": {
@@ -983,21 +926,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "3d531116-23cc-456c-9a22-424eab856f73",
-    "name": "Sonatype Nexus Repository Manager assets Routing rules API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }

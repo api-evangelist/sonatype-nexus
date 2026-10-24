@@ -1,363 +1,346 @@
 {
+  "info": {
+    "_postman_id": "169011a0-6c8d-4172-9041-6e9491f1d848",
+    "name": "Sonatype Nexus Repository Manager Database Upgrade API",
+    "description": "This documents the available APIs into Sonatype Nexus Repository Manager as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T21:07:40.000Z",
+    "updatedAt": "2026-10-21T21:07:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-169011a0-6c8d-4172-9041-6e9491f1d848"
+  },
   "item": [
     {
-      "id": "8f3c2d88-dce2-4ebf-b8da-53b0fd3d85e2",
-      "name": "Database Upgrade",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "v1",
       "item": [
         {
-          "id": "3ca00409-368a-46ac-ae3f-27d7408df7d6",
-          "name": "Clears a stored database schema upgrade success or a recoverable error",
-          "request": {
-            "name": "Clears a stored database schema upgrade success or a recoverable error",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "clustered",
-                "upgrade-database-schema"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
+          "name": "clustered",
+          "item": [
             {
-              "id": "bfe56e54-87a0-4f04-b84b-d84e7dc7b90a",
-              "name": "An error was successfully cleared or no errors were stored.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "clustered",
-                    "upgrade-database-schema"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
+              "name": "upgrade-database-schema",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "bce97846-2edf-4bcb-a014-e59cd23d590c",
-              "name": "An error exists which cannot be cleared. Contact support for assistance.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "clustered",
-                    "upgrade-database-schema"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5971e053-73a9-46f1-97f3-31f404e963f9",
-          "name": "Check the progress of a database schema upgrade",
-          "request": {
-            "name": "Check the progress of a database schema upgrade",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "clustered",
-                "upgrade-database-schema"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "814a8007-1c9f-4dd9-9be6-4ee82dda0099",
-              "name": "See the response body for database schema upgrade details.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "clustered",
-                    "upgrade-database-schema"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
+                  "name": "Clears a stored database schema upgrade success or a recoverable error",
+                  "id": "3620867b-d2a5-471c-919a-f6512cfc303e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
                   },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "clustered",
+                        "upgrade-database-schema"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "8d66f55c-b2e1-44fd-aa64-01f2bcf6728e",
+                      "name": "An error was successfully cleared or no errors were stored.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "clustered",
+                            "upgrade-database-schema"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:41.000Z",
+                      "updatedAt": "2026-10-21T21:07:41.000Z",
+                      "uid": "35240-8d66f55c-b2e1-44fd-aa64-01f2bcf6728e"
+                    },
+                    {
+                      "id": "b7699a8a-f31a-4991-aa74-758810622609",
+                      "name": "An error exists which cannot be cleared. Contact support for assistance.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "clustered",
+                            "upgrade-database-schema"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:41.000Z",
+                      "updatedAt": "2026-10-21T21:07:41.000Z",
+                      "uid": "35240-b7699a8a-f31a-4991-aa74-758810622609"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:40.000Z",
+                  "updatedAt": "2026-10-21T21:07:40.000Z",
+                  "uid": "35240-3620867b-d2a5-471c-919a-f6512cfc303e"
+                },
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Check the progress of a database schema upgrade",
+                  "id": "68c168c2-df42-435c-baae-ab8ee7b8736f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "clustered",
+                        "upgrade-database-schema"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "4c2054d9-3989-4bf0-91fc-e63a62dd7197",
+                      "name": "See the response body for database schema upgrade details.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "clustered",
+                            "upgrade-database-schema"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"state\": \"MIGRATION_SUCCEED\"\n}",
+                      "createdAt": "2026-10-21T21:07:41.000Z",
+                      "updatedAt": "2026-10-21T21:07:41.000Z",
+                      "uid": "35240-4c2054d9-3989-4bf0-91fc-e63a62dd7197"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:40.000Z",
+                  "updatedAt": "2026-10-21T21:07:40.000Z",
+                  "uid": "35240-68c168c2-df42-435c-baae-ab8ee7b8736f"
+                },
+                {
+                  "name": "Begins a database schema upgrade",
+                  "id": "2c09a388-4057-4ed2-a4e9-6d12c303f731",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "clustered",
+                        "upgrade-database-schema"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "20213f58-d2ab-43eb-8ca5-09074aea49e0",
+                      "name": "The responding node was able to start database schema upgrade",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "clustered",
+                            "upgrade-database-schema"
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:41.000Z",
+                      "updatedAt": "2026-10-21T21:07:41.000Z",
+                      "uid": "35240-20213f58-d2ab-43eb-8ca5-09074aea49e0"
+                    },
+                    {
+                      "id": "b2dc17ee-cb39-4a4c-bbda-6ed5329e2c03",
+                      "name": "The cluster is not able to start the database schema upgrade; see the response for details",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "clustered",
+                            "upgrade-database-schema"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:41.000Z",
+                      "updatedAt": "2026-10-21T21:07:41.000Z",
+                      "uid": "35240-b2dc17ee-cb39-4a4c-bbda-6ed5329e2c03"
+                    },
+                    {
+                      "id": "c83adf05-737b-499d-93d4-c8785f092d05",
+                      "name": "An internal error occurred",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/clustered/upgrade-database-schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "clustered",
+                            "upgrade-database-schema"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-10-21T21:07:41.000Z",
+                      "updatedAt": "2026-10-21T21:07:41.000Z",
+                      "uid": "35240-c83adf05-737b-499d-93d4-c8785f092d05"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T21:07:40.000Z",
+                  "updatedAt": "2026-10-21T21:07:40.000Z",
+                  "uid": "35240-2c09a388-4057-4ed2-a4e9-6d12c303f731"
                 }
               ],
-              "body": "{\n  \"message\": \"string\",\n  \"state\": \"MIGRATION_REQUIRED\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "5f307b29-e3ac-4490-adde-16aca6ccf0a1",
+              "createdAt": "2026-10-21T21:07:40.000Z",
+              "updatedAt": "2026-10-21T21:07:40.000Z",
+              "uid": "35240-5f307b29-e3ac-4490-adde-16aca6ccf0a1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8710304d-c7cb-447b-9b38-52ab8dc7d100",
-          "name": "Begins a database schema upgrade",
-          "request": {
-            "name": "Begins a database schema upgrade",
-            "description": {},
-            "url": {
-              "path": [
-                "v1",
-                "clustered",
-                "upgrade-database-schema"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "POST",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "d836699c-894c-4b12-a59c-3d5a5d6531cb",
-              "name": "The responding node was able to start database schema upgrade",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "clustered",
-                    "upgrade-database-schema"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "9bd56ee3-45c2-4f61-bb34-f91de3eb92b9",
-              "name": "The cluster is not able to start the database schema upgrade; see the response for details",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "clustered",
-                    "upgrade-database-schema"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "2762b85d-a3b4-4772-b09d-677c021c3d58",
-              "name": "An internal error occurred",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "v1",
-                    "clustered",
-                    "upgrade-database-schema"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: basic",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Basic <credentials>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "0d43ffce-b336-4429-ba9f-e0d5630e1f2b",
+          "createdAt": "2026-10-21T21:07:40.000Z",
+          "updatedAt": "2026-10-21T21:07:40.000Z",
+          "uid": "35240-0d43ffce-b336-4429-ba9f-e0d5630e1f2b"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "/service/rest/",
-      "key": "baseUrl"
+      "id": "27f93fe0-84a5-43f8-971e-5a62bfb9bb0c",
+      "createdAt": "2026-10-21T21:07:40.000Z",
+      "updatedAt": "2026-10-21T21:07:40.000Z",
+      "uid": "35240-27f93fe0-84a5-43f8-971e-5a62bfb9bb0c"
     }
   ],
   "auth": {
@@ -365,21 +348,20 @@
     "basic": [
       {
         "key": "username",
-        "value": "{{basicAuthUsername}}"
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
       },
       {
         "key": "password",
-        "value": "{{basicAuthPassword}}"
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "ffa647a8-0ed7-423e-bc24-0f17f989e09a",
-    "name": "Sonatype Nexus Repository Manager assets Database Upgrade API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "This documents the available APIs into [Sonatype Nexus Repository Manager](https://www.sonatype.com/products/sonatype-nexus-repository) as of version 3.91.0-07.\n\nContact Support:\n Name: Sonatype Community Maintainers",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/service/rest/"
     }
-  }
+  ]
 }
